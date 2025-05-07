@@ -1,11 +1,6 @@
 import React from "react";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import Head from "next/head";
-
-<Head>
-  <title>MG Solutions - Privatpersonen</title>
-  <meta name="description" content="Sicherheitslösungen für Privatpersonen" />
-</Head>
+import Footer from "components/Footers/Footer.js";
 
 export default function BusinessPage() {
   return (
@@ -18,6 +13,8 @@ export default function BusinessPage() {
         </h1>
         
       </div>
+    {/* Footer einfügen */}
+          <Footer />
     </>
   );
 }

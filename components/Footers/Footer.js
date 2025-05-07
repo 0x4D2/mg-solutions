@@ -71,6 +71,14 @@ export default function Footer() {
   >
     <i className="fab fa-linkedin"></i>
   </a>
+  <a
+    href="https://www.youtube.com/@ichwillsicherheit"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-white text-blue-700 shadow-lg font-normal h-10 w-10 flex items-center justify-center rounded-full outline-none focus:outline-none"
+  >
+    <i className="fab fa-youtube"></i>
+  </a>
   {/* <a
     href="https://github.com/ichwillsicherheit"
     target="_blank"

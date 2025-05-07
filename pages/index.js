@@ -17,7 +17,7 @@ export default function Index() {
                 Willkommen bei MG Solutions
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
-                MG Solutions bietet maßgeschneiderte Cybersecurity-Lösungen für kleine Unternehmen und Privatpersonen. 
+                MG Solutions bietet maßgeschneiderte Cybersecurity-Lösungen für kleine Unternehmen und Privatpersonen.
                 Unser Ziel ist es, Sie proaktiv vor digitalen Bedrohungen zu schützen – bevor diese entstehen.
               </p>
               <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
@@ -36,8 +36,8 @@ export default function Index() {
         </div>
         <img
           className="absolute top-0 b-auto right-0 pt-16 sm:w-6/12 -mt-48 sm:mt-0 w-10/12 max-h-860-px"
-          src="/img/pattern_nextjs.png"
-          alt="..."
+          src="/img/lock.png"
+          alt="Cybersecurity Pattern"
         />
       </section>
 
