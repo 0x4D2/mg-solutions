@@ -22,12 +22,12 @@ export default function Sidebar() {
           </button>
           {/* Brand */}
           <Link href="/">
-            <a
+            
               href="#pablo"
               className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
-            >
+          
               Notus NextJS
-            </a>
+            
           </Link>
           {/* User */}
           <ul className="md:hidden items-center flex flex-wrap list-none">
@@ -50,12 +50,12 @@ export default function Sidebar() {
               <div className="flex flex-wrap">
                 <div className="w-6/12">
                   <Link href="/">
-                    <a
+                    
                       href="#pablo"
                       className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
-                    >
+                    
                       Notus NextJS
-                    </a>
+                    
                   </Link>
                 </div>
                 <div className="w-6/12 flex justify-end">
@@ -91,7 +91,7 @@ export default function Sidebar() {
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               <li className="items-center">
                 <Link href="/admin/dashboard">
-                  <a
+                  
                     href="#pablo"
                     className={
                       "text-xs uppercase py-3 font-bold block " +
@@ -99,7 +99,7 @@ export default function Sidebar() {
                         ? "text-lightBlue-500 hover:text-lightBlue-600"
                         : "text-blueGray-700 hover:text-blueGray-500")
                     }
-                  >
+                  
                     <i
                       className={
                         "fas fa-tv mr-2 text-sm " +
@@ -109,13 +109,13 @@ export default function Sidebar() {
                       }
                     ></i>{" "}
                     Dashboard
-                  </a>
+                  
                 </Link>
               </li>
 
               <li className="items-center">
                 <Link href="/admin/settings">
-                  <a
+                  
                     href="#pablo"
                     className={
                       "text-xs uppercase py-3 font-bold block " +
@@ -123,7 +123,7 @@ export default function Sidebar() {
                         ? "text-lightBlue-500 hover:text-lightBlue-600"
                         : "text-blueGray-700 hover:text-blueGray-500")
                     }
-                  >
+                  
                     <i
                       className={
                         "fas fa-tools mr-2 text-sm " +
@@ -133,7 +133,7 @@ export default function Sidebar() {
                       }
                     ></i>{" "}
                     Settings
-                  </a>
+                  
                 </Link>
               </li>
 
@@ -163,7 +163,7 @@ export default function Sidebar() {
 
               <li className="items-center">
                 <Link href="/admin/maps">
-                  <a
+                  
                     href="#pablo"
                     className={
                       "text-xs uppercase py-3 font-bold block " +
@@ -171,7 +171,7 @@ export default function Sidebar() {
                         ? "text-lightBlue-500 hover:text-lightBlue-600"
                         : "text-blueGray-700 hover:text-blueGray-500")
                     }
-                  >
+                  
                     <i
                       className={
                         "fas fa-map-marked mr-2 text-sm " +
@@ -181,7 +181,7 @@ export default function Sidebar() {
                       }
                     ></i>{" "}
                     Maps
-                  </a>
+                  
                 </Link>
               </li>
             </ul>
@@ -197,25 +197,25 @@ export default function Sidebar() {
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center">
                 <Link href="/auth/login">
-                  <a
+                  
                     href="#pablo"
                     className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  >
+                  
                     <i className="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i>{" "}
                     Login
-                  </a>
+                  
                 </Link>
               </li>
 
               <li className="items-center">
                 <Link href="/auth/register">
-                  <a
+                  
                     href="#pablo"
                     className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  >
+                  
                     <i className="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>{" "}
                     Register
-                  </a>
+                  
                 </Link>
               </li>
             </ul>
@@ -231,25 +231,25 @@ export default function Sidebar() {
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center">
                 <Link href="/landing">
-                  <a
+                  
                     href="#pablo"
                     className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  >
+                  
                     <i className="fas fa-newspaper text-blueGray-400 mr-2 text-sm"></i>{" "}
                     Landing Page
-                  </a>
+                  
                 </Link>
               </li>
 
               <li className="items-center">
                 <Link href="/profile">
-                  <a
+                  
                     href="#pablo"
                     className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  >
+                  
                     <i className="fas fa-user-circle text-blueGray-400 mr-2 text-sm"></i>{" "}
                     Profile Page
-                  </a>
+                  
                 </Link>
               </li>
             </ul>

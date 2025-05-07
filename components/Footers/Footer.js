@@ -26,113 +26,98 @@ export default function Footer() {
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap text-center lg:text-left">
             <div className="w-full lg:w-6/12 px-4">
-              <h4 className="text-3xl font-semibold">Let's keep in touch!</h4>
+              <h4 className="text-3xl font-semibold">Bleiben Sie mit uns in Kontakt!</h4>
               <h5 className="text-lg mt-0 mb-2 text-blueGray-600">
-                Find us on any of these platforms, we respond 1-2 business days.
+                Folgen Sie uns auf unseren Social-Media-Kanälen oder kontaktieren Sie uns direkt.
               </h5>
-              <div className="mt-6 lg:mb-0 mb-6">
-                <button
-                  className="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                  type="button"
-                >
-                  <i className="fab fa-twitter"></i>
-                </button>
-                <button
-                  className="bg-white text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                  type="button"
-                >
-                  <i className="fab fa-facebook-square"></i>
-                </button>
-                <button
-                  className="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                  type="button"
-                >
-                  <i className="fab fa-dribbble"></i>
-                </button>
-                <button
-                  className="bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                  type="button"
-                >
-                  <i className="fab fa-github"></i>
-                </button>
-              </div>
+              <div className="mt-6 lg:mb-0 mb-6 flex justify-center space-x-2">
+  <a
+    href="https://twitter.com/willsicherheit"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 flex items-center justify-center rounded-full outline-none focus:outline-none"
+  >
+    <i className="fab fa-twitter"></i>
+  </a>
+  {/* <a
+    href="https://facebook.com/ichwillsicherheit"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-white text-lightBlue-600 shadow-lg font-normal h-10 w-10 flex items-center justify-center rounded-full outline-none focus:outline-none"
+  >
+    <i className="fab fa-facebook-square"></i>
+  </a> */}
+  <a
+    href="https://instagram.com/ichwillsicherheit"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 flex items-center justify-center rounded-full outline-none focus:outline-none"
+  >
+    <i className="fab fa-instagram"></i>
+  </a>
+  <a
+    href="https://www.tiktok.com/@ichwillsicherheit"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-white text-black shadow-lg font-normal h-10 w-10 flex items-center justify-center rounded-full outline-none focus:outline-none"
+  >
+    <i className="fab fa-tiktok"></i>
+  </a>
+  <a
+    href="https://linkedin.com/in/ichwillsicherheit"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-white text-blue-700 shadow-lg font-normal h-10 w-10 flex items-center justify-center rounded-full outline-none focus:outline-none"
+  >
+    <i className="fab fa-linkedin"></i>
+  </a>
+  {/* <a
+    href="https://github.com/ichwillsicherheit"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 flex items-center justify-center rounded-full outline-none focus:outline-none"
+  >
+    <i className="fab fa-github"></i>
+  </a> */}
+</div>
             </div>
             <div className="w-full lg:w-6/12 px-4">
               <div className="flex flex-wrap items-top mb-6">
                 <div className="w-full lg:w-4/12 px-4 ml-auto">
                   <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">
-                    Useful Links
+                    Nützliche Links
                   </span>
                   <ul className="list-unstyled">
                     <li>
                       <a
                         className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://www.creative-tim.com/presentation?ref=nnjs-footer"
+                        href="/about"
                       >
-                        About Us
+                        Über uns
                       </a>
                     </li>
                     <li>
                       <a
                         className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://blog.creative-tim.com?ref=nnjs-footer"
+                        href="/contact"
                       >
-                        Blog
+                        Kontakt
                       </a>
                     </li>
                     <li>
                       <a
                         className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://www.github.com/creativetimofficial?ref=nnjs-footer"
+                        href="/privacy"
                       >
-                        Github
+                        Datenschutz
                       </a>
                     </li>
                     <li>
                       <a
                         className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://www.creative-tim.com/bootstrap-themes/free?ref=nnjs-footer"
+                        href="/imprint"
                       >
-                        Free Products
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="w-full lg:w-4/12 px-4">
-                  <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">
-                    Other Resources
-                  </span>
-                  <ul className="list-unstyled">
-                    <li>
-                      <a
-                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://github.com/creativetimofficial/notus-nextjs/blob/main/LICENSE.md?ref=nnjs-footer"
-                      >
-                        MIT License
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://creative-tim.com/terms?ref=nnjs-footer"
-                      >
-                        Terms & Conditions
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://creative-tim.com/privacy?ref=nnjs-footer"
-                      >
-                        Privacy Policy
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://creative-tim.com/contact-us?ref=nnjs-footer"
-                      >
-                        Contact Us
+                        Impressum
                       </a>
                     </li>
                   </ul>
@@ -144,14 +129,7 @@ export default function Footer() {
           <div className="flex flex-wrap items-center md:justify-between justify-center">
             <div className="w-full md:w-4/12 px-4 mx-auto text-center">
               <div className="text-sm text-blueGray-500 font-semibold py-1">
-                Copyright © {new Date().getFullYear()} Notus NextJS by{" "}
-                <a
-                  href="https://www.creative-tim.com?ref=nnjs-footer"
-                  className="text-blueGray-500 hover:text-blueGray-800"
-                >
-                  Creative Tim
-                </a>
-                .
+                © {new Date().getFullYear()} MG Solutions. Alle Rechte vorbehalten.
               </div>
             </div>
           </div>

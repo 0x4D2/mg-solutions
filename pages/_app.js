@@ -29,7 +29,6 @@ Router.events.on("routeChangeError", () => {
 export default class MyApp extends App {
   componentDidMount() {
     let comment = document.createComment(`
-
 =========================================================
 * Notus NextJS - v1.1.0 based on Tailwind Starter Kit by Creative Tim
 =========================================================
@@ -45,10 +44,10 @@ export default class MyApp extends App {
 =========================================================
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
 `);
     document.insertBefore(comment, document.documentElement);
   }
+
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
 
@@ -58,6 +57,7 @@ export default class MyApp extends App {
 
     return { pageProps };
   }
+
   render() {
     const { Component, pageProps } = this.props;
 
@@ -66,11 +66,17 @@ export default class MyApp extends App {
     return (
       <React.Fragment>
         <Head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
-          <title>Notus NextJS by Creative Tim</title>
+          {/* Meta-Tags für SEO und Social Media */}
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+          <title>MG Solutions - Ihre Sicherheitslösung</title>
+          <meta name="description" content="MG Solutions bietet maßgeschneiderte Cybersecurity-Lösungen für Unternehmen und Privatpersonen." />
+          <meta name="keywords" content="Cybersecurity, Sicherheitslösungen, Unternehmen, Privatpersonen, MG Solutions" />
+          <meta property="og:title" content="MG Solutions - Ihre Sicherheitslösung" />
+          <meta property="og:description" content="MG Solutions bietet maßgeschneiderte Cybersecurity-Lösungen für Unternehmen und Privatpersonen." />
+          <meta property="og:image" content="/img/social-preview.png" />
+          <meta property="og:url" content="https://www.ichwillsicherheit.de" />
+          <meta property="og:type" content="website" />
+          <link rel="icon" href="/favicon.ico" />
           <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
         </Head>
         <Layout>
