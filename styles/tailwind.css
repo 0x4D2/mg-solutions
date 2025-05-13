@@ -34,7 +34,9 @@
 5. Use the user's configured `sans` font-feature-settings by default.
 6. Use the user's configured `sans` font-variation-settings by default.
 */
-
+.neon-effect {
+  filter: drop-shadow(0 0 5px #00FFFF) drop-shadow(0 0 10px #00FFFF);
+}
 html {
   line-height: 1.5;
   /* 1 */
@@ -61,6 +63,7 @@ body {
   /* 1 */
   line-height: inherit;
   /* 2 */
+    /* Höhe der Navbar */
 }
 
 /*

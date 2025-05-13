@@ -1,27 +1,36 @@
 /* eslint-disable react/jsx-no-target-blank */
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import TypingEffect from "react-typing-effect";
+import { particlesConfig } from "../particles-config";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
 export default function Index() {
+  useEffect(() => {
+    // Überprüfen, ob `window` verfügbar ist (nur im Browser)
+    if (typeof window !== "undefined") {
+      // Importiere `particles.js` dynamisch
+      import("particles.js").then(() => {
+        // Verwende das globale `particlesJS`-Objekt
+        window.particlesJS("particles-js", particlesConfig);
+      });
+    }
+  }, []);
+
   return (
     <>
       <IndexNavbar fixed />
-      {/* Hero Section */}
       <section
         className="header relative pt-16 items-center flex h-screen max-h-860-px"
         style={{
-          backgroundImage: `
-            linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-            url('https://cdn.pixabay.com/photo/2018/05/04/15/49/cyber-security-3374252_1280.jpg')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
+          backgroundColor: "#001f3f", // Dunkelblau als Hintergrundfarbe
         }}
       >
+        {/* Particles.js Canvas */}
+        <div id="particles-js" className="absolute top-0 left-0 w-full h-full z-0"></div>
+
         <div className="container mx-auto items-center flex flex-wrap relative z-10">
           <div className="w-full px-4">
             <div className="pt-32 sm:pt-0 text-center">
@@ -42,59 +51,51 @@ export default function Index() {
                 Cybersecurity-Branche.
               </p>
 
-              <div className="mt-16 flex justify-center items-center gap-10 flex-wrap">
+              <div className="mt-16 flex justify-center flex-wrap gap-12 px-4"> {/* gap-12 für 3rem Abstand, px-4 für mobile */}
                 <Link
                   href="/business"
-                  className="flex flex-col items-center justify-center w-80 h-60 border border-cyan-400 text-white hover:bg-cyan-400 hover:text-white transition duration-300 rounded-md"
+                  className="flex flex-col items-center justify-center w-[450px] h-[300px] border-2 text-white hover:bg-transparent hover:text-white transition duration-300 rounded-lg"
+                  style={{
+                    backgroundColor: "rgba(0, 31, 63, 0.8)",
+                    borderColor: "#00FFFF",
+                    boxShadow: "0 0 15px rgba(0, 255, 255, 0.3)",
+                    transform: "scale(1)",
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.03)"}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
                 >
-                  <i className="fas fa-building text-4xl text-cyan-400 mb-6"></i>
+                  <div className="mb-8 p-6 rounded-full bg-opacity-20" style={{ backgroundColor: "rgba(0, 255, 255, 0.1)" }}>
+                    <i className="fas fa-building text-5xl text-cyan-400"></i>
+                  </div>
                   <span className="text-2xl font-semibold">Für Unternehmen</span>
                 </Link>
-
-                {/* Unsichtbare Box für Abstand */}
-                <div className="w-10 h-10"></div>
+                     <div className="w-10 h-10"></div>
 
                 <Link
                   href="/private"
-                  className="flex flex-col items-center justify-center w-80 h-60 border border-cyan-400 text-white hover:bg-cyan-400 hover:text-white transition duration-300 rounded-md"
+                  className="flex flex-col items-center justify-center w-[450px] h-[300px] border-2 text-white hover:bg-transparent hover:text-white transition duration-300 rounded-lg"
+                  style={{
+                    backgroundColor: "rgba(0, 31, 63, 0.8)",
+                    borderColor: "#00FFFF",
+                    boxShadow: "0 0 15px rgba(0, 255, 255, 0.3)",
+                    transform: "scale(1)",
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.03)"}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
                 >
-                  <i className="fas fa-user-shield text-4xl text-cyan-400 mb-6"></i>
+                  <div className="mb-8 p-6 rounded-full bg-opacity-20" style={{ backgroundColor: "rgba(0, 255, 255, 0.1)" }}>
+                    <i className="fas fa-user-shield text-5xl text-cyan-400"></i>
+                  </div>
                   <span className="text-2xl font-semibold">Für Privatkunden</span>
                 </Link>
+
+                
               </div>
+              
             </div>
           </div>
         </div>
       </section>
-
-      {/* Kundenvertrauen Section */}
-      <div className="py-20 bg-gray-900">
-        <h2 className="text-4xl font-bold text-center text-cyan-400 mb-6">
-          UNSERE KUNDEN VERTRAUEN UNS
-        </h2>
-        <p className="text-center text-gray-400 mb-12">
-          Wir sind stolz auf die Zusammenarbeit mit führenden Unternehmen und Organisationen.
-        </p>
-        <div className="flex justify-center items-center gap-8 flex-wrap">
-          {/* Kundenlogos */}
-          <div className="w-32 h-16 bg-gray-800 rounded-md flex items-center justify-center">
-            <span className="text-gray-500">Kundenlogo 1</span>
-          </div>
-          <div className="w-32 h-16 bg-gray-800 rounded-md flex items-center justify-center">
-            <span className="text-gray-500">Kundenlogo 2</span>
-          </div>
-          <div className="w-32 h-16 bg-gray-800 rounded-md flex items-center justify-center">
-            <span className="text-gray-500">Kundenlogo 3</span>
-          </div>
-          <div className="w-32 h-16 bg-gray-800 rounded-md flex items-center justify-center">
-            <span className="text-gray-500">Kundenlogo 4</span>
-          </div>
-          <div className="w-32 h-16 bg-gray-800 rounded-md flex items-center justify-center">
-            <span className="text-gray-500">Kundenlogo 5</span>
-          </div>
-        </div>
-      </div>
-
       <Footer />
     </>
   );

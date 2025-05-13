@@ -19,6 +19,9 @@ module.exports = {
         roboto: ['Roboto', 'sans-serif'], // Beispiel: Schriftart
       },
     extend: {
+       spacing: {
+        12: '3rem', // Falls gap-12 nicht funktioniert
+      },
       minHeight: {
         "screen-75": "75vh",
       },
