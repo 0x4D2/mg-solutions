@@ -11,8 +11,13 @@ module.exports = {
   },
   theme: {
     colors: {
-      ...colors,
-    },
+        primary: '#336699', // Beispiel: Primärfarbe
+        secondary: '#FF6600', // Beispiel: Sekundärfarbe
+        accent: '#33CC99', // Beispiel: Akzentfarbe
+      },
+      fontFamily: {
+        roboto: ['Roboto', 'sans-serif'], // Beispiel: Schriftart
+      },
     extend: {
       minHeight: {
         "screen-75": "75vh",

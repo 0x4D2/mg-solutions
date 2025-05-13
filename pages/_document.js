@@ -14,6 +14,11 @@ class MyDocument extends Document {
             sizes="76x76"
             href="/img/brand/apple-icon.png"
           />
+          {/* Font Awesome CDN */}
+          <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+            rel="stylesheet"
+          />
         </Head>
         <body className="text-blueGray-700 antialiased">
           <div id="page-transition"></div>
