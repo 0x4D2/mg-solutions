@@ -1,98 +1,106 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-// components
-
 import IndexDropdown from "components/Dropdowns/IndexDropdown.js";
 
-export default function Navbar(props) {
-  const [navbarOpen, setNavbarOpen] = React.useState(false);
+// Constants
+const NAVBAR_STYLES = {
+  backgroundColor: "rgba(0, 31, 63, 0.8)",
+  borderBottom: "0.5px solid #00FFFF"
+};
+
+const SOCIAL_LINKS = [
+  { icon: "facebook", label: "Share", href: "..." },
+  { icon: "twitter", label: "Tweet", href: "..." },
+  { icon: "github", label: "Star", href: "..." }
+];
+
+// Subcomponents
+const Logo = () => (
+  <Link href="/" passHref>
+    <div className="flex flex-col cursor-pointer">
+      <span className="text-3xl font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase flex items-center">
+        <i className="fa fa-shield-alt text-cyan-400 neon-effect mr-2" />
+        <span className="text-white mr-2">MG</span>
+        <span className="ml-1 text-cyan-400"> Solutions</span>
+      </span>
+    </div>
+  </Link>
+);
+
+const SocialIcon = ({ icon, label, href }) => (
+  <li className="flex items-center">
+    <a
+      className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <i className={`text-blueGray-400 fab fa-${icon} text-lg leading-lg`} />
+      <span className="lg:hidden inline-block ml-2">{label}</span>
+    </a>
+  </li>
+);
+
+const MobileMenuButton = ({ onClick }) => (
+  <button
+    className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+    type="button"
+    onClick={onClick}
+    aria-label="Toggle menu"
+  >
+    <i className="fas fa-bars text-white" />
+  </button>
+);
+
+const DownloadButton = () => (
+  <li className="flex items-center">
+    <button
+      className="bg-blueGray-700 text-white active:bg-blueGray-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+      type="button"
+    >
+      <i className="fas fa-arrow-alt-circle-down mr-2" />
+      Download
+    </button>
+  </li>
+);
+
+export default function Navbar() {
+  const [navbarOpen, setNavbarOpen] = useState(false);
+
   return (
-    <>
-      <nav
-        className="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg"
-        style={{
-          backgroundColor: "rgba(0, 31, 63, 0.8)", // Transparentes Blau
-          borderBottom: "0.5px solid #00FFFF", // Dünnere neonblaue Linie
-        }}
-      >
-        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-            <Link href="/">
-              <span className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-blueGray-700">
-                <img
-                  src="/img/banner_black.png"
-                  className="h-20 w-auto mr-7 neon-effect" // Klasse für Neon-Effekt
-                  alt="MG Solutions Logo"
-                  
-                />
-              </span>
-            </Link>
-            <button
-              className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-              type="button"
-              onClick={() => setNavbarOpen(!navbarOpen)}
-            >
-              <i className="fas fa-bars"></i>
-            </button>
-          </div>
-          <div
-            className={
-              "lg:flex flex-grow items-center lg:bg-opacity-0 lg:shadow-none" +
-              (navbarOpen ? " block" : " hidden")
-            }
-            id="example-navbar-warning"
-          >
-            <ul className="flex flex-col lg:flex-row list-none mr-auto">
-              <li className="flex items-center">
-                {/* Optional: Weitere Links */}
-              </li>
-            </ul>
-            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-              <li className="flex items-center">
-                <IndexDropdown />
-              </li>
-              <li className="flex items-center">
-                <a
-                  className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-nextjs%2F"
-                  target="_blank"
-                >
-                  <i className="text-blueGray-400 fab fa-facebook text-lg leading-lg " />
-                  <span className="lg:hidden inline-block ml-2">Share</span>
-                </a>
-              </li>
-              <li className="flex items-center">
-                <a
-                  className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-nextjs%2F&text=Start%20your%20development%20with%20a%20Free%20Tailwind%20CSS%20and%20NextJS%20UI%20Kit%20and%20Admin.%20Let%20Notus%20NextJS%20amaze%20you%20with%20its%20cool%20features%20and%20build%20tools%20and%20get%20your%20project%20to%20a%20whole%20new%20level."
-                  target="_blank"
-                >
-                  <i className="text-blueGray-400 fab fa-twitter text-lg leading-lg " />
-                  <span className="lg:hidden inline-block ml-2">Tweet</span>
-                </a>
-              </li>
-              <li className="flex items-center">
-                <a
-                  className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index-navbar"
-                  target="_blank"
-                >
-                  <i className="text-blueGray-400 fab fa-github text-lg leading-lg " />
-                  <span className="lg:hidden inline-block ml-2">Star</span>
-                </a>
-              </li>
-              <li className="flex items-center">
-                <button
-                  className="bg-blueGray-700 text-white active:bg-blueGray-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-                  type="button"
-                >
-                  <i className="fas fa-arrow-alt-circle-down"></i> Download
-                </button>
-              </li>
-            </ul>
-          </div>
+    <nav 
+      className="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg"
+      style={NAVBAR_STYLES}
+    >
+      <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+        <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+          <Logo />
+          <MobileMenuButton onClick={() => setNavbarOpen(!navbarOpen)} />
         </div>
-      </nav>
-    </>
+
+        <div
+          className={`lg:flex flex-grow items-center lg:bg-opacity-0 lg:shadow-none ${
+            navbarOpen ? "block" : "hidden"
+          }`}
+          id="navbar-content"
+        >
+          <ul className="flex flex-col lg:flex-row list-none mr-auto">
+            {/* Main navigation items */}
+          </ul>
+
+          <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+            <li className="flex items-center">
+              <IndexDropdown />
+            </li>
+
+            {SOCIAL_LINKS.map((link) => (
+              <SocialIcon key={link.icon} {...link} />
+            ))}
+
+            <DownloadButton />
+          </ul>
+        </div>
+      </div>
+    </nav>
   );
 }

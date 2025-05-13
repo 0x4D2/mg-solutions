@@ -5,9 +5,11 @@ import Head from "next/head";
 import Router from "next/router";
 
 import PageChange from "components/PageChange/PageChange.js";
+import Navbar from "components/Navbars/IndexNavbar.js";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
+import "styles/globals.css";
 
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
@@ -61,7 +63,24 @@ export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
-    const Layout = Component.layout || (({ children }) => <>{children}</>);
+ const Layout = Component.layout || (({ children }) => (
+  <>
+    <Navbar />
+    <div className="main-container">
+      {/* Particles/Background müssen vor dem Body-Hintergrund liegen */}
+      {Component.background && (
+        <div className="fixed top-0 left-0 w-full h-full z-0">
+          <Component.background />
+        </div>
+      )}
+      
+      {/* Content mit Padding unter Navbar */}
+      <main className="relative z-10 pt-20"> {/* pt-20 = 80px */}
+        {children}
+      </main>
+    </div>
+  </>
+));
 
     return (
       <React.Fragment>

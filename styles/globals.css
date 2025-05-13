@@ -1,0 +1,32 @@
+/* Basis-Hintergrund (für den Fall, dass Particles geladen werden) */
+body {
+  background-color: #001f3f; /* Dunkelblau wie die Navbar */
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar – Transparent mit Blur-Effekt */
+nav {
+  background-color: rgba(0, 31, 63, 0.7) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* Für Safari */
+  border-bottom: 0.5px solid #00FFFF;
+  box-shadow: none !important;
+}
+
+/* Particle-Container muss hinter dem Content liegen */
+.particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Hinter allem */
+}
+
+/* Haupt-Content mit Abstand unter Navbar */
+.main-content {
+  position: relative;
+  z-index: 10; /* Über den Particles */
+  padding-top: 80px; /* Höhe der Navbar */
+}
