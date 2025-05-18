@@ -6,6 +6,7 @@ import Router from "next/router";
 
 import PageChange from "components/PageChange/PageChange.js";
 import Navbar from "components/Navbars/IndexNavbar.js";
+import "../styles/Preloader.css";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";

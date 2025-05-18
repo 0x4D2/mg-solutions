@@ -49,6 +49,7 @@ export default function FAQPage() {
       answer:
         "Gut informierte Nutzer erkennen Gefahren frühzeitig und vermeiden typische Fallen wie Phishing, unsichere Netzwerke oder Social Engineering.",
     },
+    
   ];
 
   const allgemeinFAQs = [
@@ -67,6 +68,11 @@ export default function FAQPage() {
       answer:
         "Regelmäßige Updates schließen Sicherheitslücken. Aktivieren Sie automatische Updates für Betriebssystem, Browser, Antivirensoftware und Apps.",
     },
+    {
+      question: "Warum genau sollte ich einen Servicevertrag abschließen?",
+      answer:
+        "Zusätzlich zur anfänglichen Einrichtung sollte die Cybersicherheit als fortlaufender Prozess betrachtet werden, der regelmäßige Audits und Anpassungen erfordert, um mit neuen Bedrohungen Schritt zu halten.",
+    },
   ];
 
   return (
@@ -82,19 +88,19 @@ export default function FAQPage() {
       <IndexNavbar fixed />
 
       {/* Hero */}
-      <section className="relative pt-20 items-center flex min-h-[80vh] bg-gray-900">
+      <section className="relative pt-20 items-center flex min-h-[80vh] ">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold text-cyan-400">
             Cybersecurity – Häufige Fragen
           </h1>
-          <p className="mt-6 text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="mt-6 text-xl max-w-3xl mx-auto">
             Antworten rund um digitale Sicherheit – für Unternehmen und Privatpersonen.
           </p>
         </div>
       </section>
 
       {/* FAQ Sektionen */}
-      <div className="py-20 bg-gray-800">
+      <div className="py-10">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-12">
             <FAQSection title="Allgemein" faqs={allgemeinFAQs} />
@@ -105,7 +111,7 @@ export default function FAQPage() {
       </div>
 
       {/* Call to Action */}
-      <div className="py-20 bg-gray-900 text-center">
+      <div className="py-20 text-center">
         <h2 className="text-4xl font-bold text-cyan-400">Noch Fragen offen?</h2>
         <p className="mt-4 text-lg text-gray-400">
           Wir beraten Sie gerne persönlich zu Ihrer Cybersicherheit.
@@ -125,7 +131,7 @@ export default function FAQPage() {
 // Einzelne FAQ-Sektion
 function FAQSection({ title, faqs }) {
   return (
-    <div className="bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+    <div className=" p-6 rounded-lg shadow-lg hover:shadow-xl transition">
       <h2 className="text-3xl font-semibold text-cyan-400 mb-6 text-center">
         {title}
       </h2>

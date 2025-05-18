@@ -20,7 +20,7 @@ const Logo = () => (
     <div className="flex flex-col cursor-pointer">
       <span className="text-3xl font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase flex items-center">
         <i className="fa fa-shield-alt text-cyan-400 neon-effect mr-2" />
-        <span className="text-white mr-2">MG</span>
+        <span className="text-white ml-2 mr-2">MG</span>
         <span className="ml-1 text-cyan-400"> Solutions</span>
       </span>
     </div>

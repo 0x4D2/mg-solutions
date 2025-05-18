@@ -1,0 +1,126 @@
+:root {
+  --dark-color: #0c1a2b;
+  --accent-color: #00f6ff;
+}
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  background-color: cyan;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  visibility: visible;
+  /* Sichtbarkeit erst nach Opazität-Transition umschalten */
+  transition: opacity 0.8s ease-in-out, visibility 0s ease 0.8s;
+}
+
+.preloader.fadeout {
+  opacity: 0;
+  visibility: hidden;
+  /* visibility wird erst nach 1.2s sofort umgeschaltet */
+  transition: opacity 1.2s ease, visibility 0s ease 1.2s;
+}
+
+.lock-animation {
+  width: 6.25rem; /* 100px */
+  height: 6.25rem;
+  position: relative;
+  animation: lock 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  backface-visibility: hidden;
+}
+
+.lock-animation.fadeout-animation {
+  animation: zoomOut3D 2.5s ease forwards;
+  transform-origin: center center;
+}
+
+.lock-shackle {
+  width: 4.375rem; /* 70px */
+  height: 2.5rem;  /* 40px */
+  border: 0.625rem solid var(--accent-color); /* 10px */
+  border-bottom: none;
+  border-radius: 40px 40px 0 0;
+  position: absolute;
+  top: 0;
+  left: 0.9375rem; /* 15px */
+  backface-visibility: hidden;
+}
+
+.lock-body {
+  width: 3.75rem; /* 60px */
+  height: 3.125rem; /* 50px */
+  background-color: var(--accent-color);
+  border-radius: 0.625rem; /* 10px */
+  position: absolute;
+  bottom: 0;
+  left: 1.25rem; /* 20px */
+  animation: glow 2s ease-in-out infinite alternate, pulse 1.5s ease-in-out infinite;
+  backface-visibility: hidden;
+}
+
+.lock-hole {
+  width: 1.25rem; /* 20px */
+  height: 1.25rem;
+  background-color: var(--dark-color);
+  border-radius: 50%;
+  position: absolute;
+  top: 0.9375rem; /* 15px */
+  left: 1.25rem;
+  backface-visibility: hidden;
+}
+
+/* Animationen */
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px rgba(0, 246, 255, 0.3);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(0, 246, 255, 0.7);
+  }
+}
+
+@keyframes lock {
+  0% {
+    transform: translateY(-100%) rotateX(-45deg) rotateZ(-30deg);
+    opacity: 0;
+  }
+  80% {
+    transform: translateY(10%) rotateX(20deg) rotateZ(5deg);
+  }
+  100% {
+    transform: translateY(0) rotateX(0) rotateZ(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes zoomOut3D {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotateX(0deg) rotateY(0deg);
+    filter: drop-shadow(0 0 15px var(--accent-color));
+  }
+  60% {
+    opacity: 1;
+    transform: scale(2.5) rotateX(25deg) rotateY(20deg);
+    filter: drop-shadow(0 0 50px var(--accent-color));
+  }
+  100% {
+    opacity: 0;
+    transform: scale(3) rotateX(40deg) rotateY(35deg);
+    filter: drop-shadow(0 0 0 transparent);
+  }
+}
