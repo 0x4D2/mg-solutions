@@ -1,9 +1,14 @@
 /* Basis-Hintergrund (für den Fall, dass Particles geladen werden) */
+html,
 body {
-  background-color: #001f3f; /* Dunkelblau wie die Navbar */
   margin: 0;
   padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  background-color: #001f3f; /* Dunkelblau */
 }
+
 
 /* Navbar – Transparent mit Blur-Effekt */
 nav {
@@ -21,9 +26,22 @@ nav {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* Hinter allem */
+  z-index: -1; /* Hinter allem */
+  pointer-events: none;
 }
-
+#root,
+#__next {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+/* Optional: App-Wrapper für Layout */
+.app-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Seite füllt Viewport, Footer rutscht ans Ende */
+}
 /* Haupt-Content mit Abstand unter Navbar */
 .main-content {
   position: relative;

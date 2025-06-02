@@ -89,7 +89,7 @@ export default function Index() {
             className="header relative pt-16 items-center flex h-screen max-h-860-px"
             style={{ backgroundColor: "#001f3f" }}
           >
-            <div id="particles-js" className="absolute top-0 left-0 w-full h-full z-0"></div>
+            <div id="particles-js" className="absolute top-0 left-0 w-full h-screen z-0 overflow-hidden"></div>
             <div className="container mx-auto items-center flex flex-wrap relative z-10">
               <div className="w-full px-4">
                 <div className="pt-32 sm:pt-0 text-center">

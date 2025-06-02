@@ -1,131 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { createPopper } from "@popperjs/core";
 
-const IndexDropdown = () => {
-  // dropdown props
-  const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
-  const btnDropdownRef = React.createRef();
-  const popoverDropdownRef = React.createRef();
-  const openDropdownPopover = () => {
-    createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
-      placement: "bottom-start",
-    });
-    setDropdownPopoverShow(true);
-  };
-  const closeDropdownPopover = () => {
-    setDropdownPopoverShow(false);
-  };
+const ALL_NAV_LINKS = [
+  { name: "Startseite", path: "/" },
+  { name: "Für Unternehmen", path: "/business" },
+  { name: "Für Privatkunden", path: "/private" },
+  { name: "FAQ", path: "/faq" },
+  { name: "Kontakt", path: "/contact" },
+  { name: "Impressum", path: "/imprint" },
+  { name: "Datenschutz", path: "/privacy" }
+];
+
+export const NavLinksDesktop = () => {
+  const maxVisible = 3;
+  const visibleLinks = ALL_NAV_LINKS.slice(0, maxVisible);
+  const extraLinks = ALL_NAV_LINKS.slice(maxVisible);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
   return (
-    <>
-      <a
-        className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-        href="#pablo"
-        ref={btnDropdownRef}
-        onClick={(e) => {
-          e.preventDefault();
-          dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
-        }}
-      >
-        Demo Pages
-      </a>
-      <div
-        ref={popoverDropdownRef}
-        className={
-          (dropdownPopoverShow ? "block " : "hidden ") +
-          "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
-        }
-      >
-        <span
-          className={
-            "text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
-          }
-        >
-          Admin Layout
-        </span>
+    <div className="hidden lg:flex space-x-4 items-left relative">
+      {visibleLinks.map((link) => (
         <Link
-          href="/admin/dashboard"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
+          key={link.path}
+          href={link.path}
+          className="text-white hover:text-cyan-400 px-3 py-2 text-lg font-bold transition-colors duration-200"
         >
-          Dashboard
+          {link.name}
         </Link>
-        <Link
-          href="/admin/settings"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-        >
-          Settings
-        </Link>
-        <Link
-          href="/admin/tables"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-        >
-          Tables
-        </Link>
-        <Link
-          href="/admin/maps"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-        >
-          Maps
-        </Link>
-        <div className="h-0 mx-4 my-2 border border-solid border-blueGray-100" />
-        <span
-          className={
-            "text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
-          }
-        >
-          Auth Layout
-        </span>
-        <Link
-          href="/auth/login"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-        >
-          Login
-        </Link>
-        <Link
-          href="/auth/register"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-        >
-          Register
-        </Link>
-        <div className="h-0 mx-4 my-2 border border-solid border-blueGray-100" />
-        <span
-          className={
-            "text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
-          }
-        >
-          No Layout
-        </span>
-        <Link
-          href="/landing"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-        >
-          Landing
-        </Link>
-        <Link
-          href="/profile"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-        >
-          Profile
-        </Link>
-      </div>
-    </>
+      ))}
+
+      {extraLinks.length > 0 && (
+        <div className="relative">
+          <button
+            onClick={() => setDropdownOpen(!dropdownOpen)}
+            className="text-white hover:text-cyan-400 px-3 py-2 text-lg font-bold"
+          >
+            ... ▾
+          </button>
+
+          {dropdownOpen && (
+            <div className="absolute right-0 top-full mt-2 w-48 bg-gray-900 shadow-lg rounded-lg py-2 z-50">
+              {extraLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  style={{ textAlign: "left" }}
+                  className="block px-4 py-2 text-white hover:text-cyan-400 transition-colors duration-150"
+                  onClick={() => setDropdownOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
   );
 };
+
+export const NavLinksMobile = ({ isOpen }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="lg:hidden flex flex-col space-y-3 mt-4 pl-4 bg-blue-900 bg-opacity-90">
+      {ALL_NAV_LINKS.map((link) => (
+        <Link
+          key={link.path}
+          href={link.path}
+          className="text-white hover:text-cyan-400 py-3 text-lg font-medium transition-colors duration-200 border-b border-blue-700"
+        >
+          {link.name}
+        </Link>
+      ))}
+    </div>
+  );
+};
+
+const IndexDropdown = () => <NavLinksDesktop />;
 
 export default IndexDropdown;
