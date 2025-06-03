@@ -11,9 +11,12 @@ const LinkCard = ({ href, iconClass, title, className = "" }) => {
   return (
     <Link
       href={href}
-      className={`flex flex-col items-center justify-center w-[450px] h-[300px] border-2 text-white hover:bg-transparent hover:text-white transition duration-300 rounded-lg p-6 ${className}`}
+      className={`flex flex-col items-center justify-center border-2 text-white 
+                 hover:bg-transparent hover:text-white transition duration-300 
+                 rounded-2xl p-8 min-w-[280px] max-w-[360px] min-h-[260px] 
+                 mx-auto ${className}`}
       style={{
-        backgroundColor: "rgba(0, 31, 63, 0.8)",
+        backgroundColor: "rgba(0, 31, 63, 0.85)",
         borderColor: "#00FFFF",
         boxShadow: "0 0 15px rgba(0, 255, 255, 0.3)",
         transform: "scale(1)",
@@ -22,7 +25,7 @@ const LinkCard = ({ href, iconClass, title, className = "" }) => {
       onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
     >
       <div
-        className="mb-8 p-6 rounded-full bg-opacity-20"
+        className="mb-8 p-6 rounded-2xl bg-opacity-20"
         style={{ backgroundColor: "rgba(0, 255, 255, 0.1)" }}
       >
         <i className={`${iconClass} text-5xl text-cyan-400`}></i>
@@ -71,7 +74,7 @@ export default function Index() {
 
   if (isInitialLoad) {
     return (
-      <Preloader 
+      <Preloader
         onComplete={() => {
           setIsInitialLoad(false);
           setShowContent(true);
@@ -89,7 +92,7 @@ export default function Index() {
             className="header relative pt-16 items-center flex h-screen max-h-860-px"
             style={{ backgroundColor: "#001f3f" }}
           >
-            <div id="particles-js" className="absolute top-0 left-0 w-full h-screen z-0 overflow-hidden"></div>
+            <div id="particles-js" className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden "></div>
             <div className="container mx-auto items-center flex flex-wrap relative z-10">
               <div className="w-full px-4">
                 <div className="pt-32 sm:pt-0 text-center">
@@ -106,21 +109,24 @@ export default function Index() {
                     Wir bieten maßgeschneiderte Sicherheitslösungen, um Ihre
                     wertvollen digitalen Assets zu schützen.
                   </p>
-                  <div className="mt-16 flex justify-center flex-wrap gap-12 px-4">
-                    <LinkCard
-                      href="/business"
-                      iconClass="fas fa-building"
-                      title="Für Unternehmen"
-                      className="mr-8"
-                    />
-                    <div className="w-16" />
-                    <LinkCard
-                      href="/private"
-                      iconClass="fas fa-user-shield"
-                      title="Für Privatkunden"
-                      className="ml-8"
-                    />
-                  </div>
+                  <section className="relative z-10 px-4 pb-24">
+                    <div
+                      className="mt-16 grid gap-10 justify-center"
+                      style={{ gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))" }}
+                    >
+                      <LinkCard
+                        href="/business"
+                        iconClass="fas fa-building"
+                        title="Für Unternehmen"
+                      />
+                      <LinkCard
+                        href="/private"
+                        iconClass="fas fa-user-shield"
+                        title="Für Privatkunden"
+                      />
+                    </div>
+                  </section>
+                  
                 </div>
               </div>
             </div>
