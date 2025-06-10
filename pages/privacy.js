@@ -7,10 +7,10 @@ export default function Privacy() {
         <>
             <IndexNavbar fixed />
             <div className="container mx-auto px-4 pt-16 pb-40">
-                <h1 className="text-4xl font-bold text-blueGray-700 text-center mt-12">
+                <h1 className="text-4xl font-bold text-center mt-12">
                     Datenschutzerklärung
                 </h1>
-                <div className="mt-8 text-blueGray-600 text-lg leading-relaxed">
+                <div className="mt-8 text-white text-lg leading-relaxed">
                     <p>
                         <strong>1. Allgemeine Hinweise:</strong><br />
                         Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.

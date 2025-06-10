@@ -7,10 +7,10 @@ export default function Imprint() {
     <>
       <IndexNavbar fixed />
       <div className="container mx-auto px-4 pt-16 pb-40">
-        <h1 className="text-4xl font-bold text-blueGray-700 text-center mt-12">
+        <h1 className="text-4xl font-bold text-center mt-12">
           Impressum
         </h1>
-        <div className="mt-8 text-blueGray-600 text-lg leading-relaxed">
+        <div className="mt-8 text-white text-lg leading-relaxed">
           <p>
             <strong>Name des Unternehmens:</strong><br />
             MG Solutions<br />

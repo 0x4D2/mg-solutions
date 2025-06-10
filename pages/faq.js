@@ -8,12 +8,12 @@ export default function FAQPage() {
     {
       question: "Was ist Cybersicherheit und warum ist sie wichtig?",
       answer:
-        "Cybersicherheit schützt Netzwerke, Geräte und Daten vor Bedrohungen wie Hacking oder Phishing. Unternehmen sind häufig Ziel solcher Angriffe – Schutzmaßnahmen verhindern Datenverlust, finanzielle Schäden und Imageschäden.",
+        "Cybersicherheit schützt Netzwerke, Geräte und Daten vor Bedrohungen wie Hacking oder Phishing. Unternehmen sind häufig Ziel solcher Angriffe - Schutzmaßnahmen verhindern Datenverlust, finanzielle Schäden und Imageschäden.",
     },
     {
       question: "Welche Schutzpakete bietet MG Solutions an?",
       answer: (
-        <ul className="list-disc pl-5 space-y-1">
+        <ul className="list-disc pl-5 space-y-1 text-gray-200">
           <li><strong>Basis:</strong> Support via E-Mail/Chat, Bedrohungserkennung, Sicherheitsberatung.</li>
           <li><strong>Erweitert:</strong> Fernwartung, Systemchecks, Mitarbeiterschulungen.</li>
           <li><strong>Premium:</strong> Krisenmanagement, monatliche Audits, individuelle Beratung.</li>
@@ -36,7 +36,7 @@ export default function FAQPage() {
     {
       question: "Welche Sicherheitsmaßnahmen sollte ich treffen?",
       answer: (
-        <ul className="list-disc pl-5 space-y-1">
+        <ul className="list-disc pl-5 space-y-1 text-gray-200">
           <li>Antiviren-Programme</li>
           <li>Starke, einzigartige Passwörter</li>
           <li>Regelmäßige Systemupdates</li>
@@ -49,7 +49,6 @@ export default function FAQPage() {
       answer:
         "Gut informierte Nutzer erkennen Gefahren frühzeitig und vermeiden typische Fallen wie Phishing, unsichere Netzwerke oder Social Engineering.",
     },
-    
   ];
 
   const allgemeinFAQs = [
@@ -78,7 +77,7 @@ export default function FAQPage() {
   return (
     <>
       <Helmet>
-        <h2>Cybersecurity FAQ – MG Solutions</h2>
+        <h2>Cybersecurity FAQ - MG Solutions</h2>
         <meta
           name="description"
           content="Antworten auf häufige Fragen zur Cybersicherheit für Unternehmen und Privatpersonen. Erfahren Sie, wie Sie sich effektiv schützen können."
@@ -90,11 +89,11 @@ export default function FAQPage() {
       {/* Hero */}
       <section className="relative pt-20 items-center flex min-h-[80vh] ">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold text-cyan-400">
-            Cybersecurity – Häufige Fragen
+          <h1 className="text-5xl font-bold">
+            Cybersecurity - Häufige Fragen
           </h1>
-          <p className="mt-6 text-xl max-w-3xl mx-auto">
-            Antworten rund um digitale Sicherheit – für Unternehmen und Privatpersonen.
+          <p className="mt-6 text-xl max-w-3xl mx-auto text-white">
+            Antworten rund um digitale Sicherheit - für Unternehmen und Privatpersonen.
           </p>
         </div>
       </section>
@@ -112,8 +111,8 @@ export default function FAQPage() {
 
       {/* Call to Action */}
       <div className="py-20 text-center">
-        <h2 className="text-4xl font-bold text-cyan-400">Noch Fragen offen?</h2>
-        <p className="mt-4 text-lg text-gray-400">
+        <h2 className="text-4xl font-bold ">Noch Fragen offen?</h2>
+        <p className="mt-4 text-lg text-white">
           Wir beraten Sie gerne persönlich zu Ihrer Cybersicherheit.
         </p>
         <button
@@ -131,8 +130,8 @@ export default function FAQPage() {
 // Einzelne FAQ-Sektion
 function FAQSection({ title, faqs }) {
   return (
-    <div className=" p-6 rounded-lg shadow-lg hover:shadow-xl transition">
-      <h2 className="text-3xl font-semibold text-cyan-400 mb-6 text-center">
+    <div className="p-6 rounded-lg shadow-lg hover:shadow-xl transition bg-gray-800">
+      <h2 className="text-3xl font-semibold mb-6 text-center">
         {title}
       </h2>
       <div className="space-y-4">
@@ -151,15 +150,15 @@ function FAQCard({ question, children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-gray-800 rounded-md shadow-md hover:shadow-lg transition">
+    <div className="bg-gray-700 rounded-md shadow-md hover:shadow-lg transition">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full text-left p-4 focus:outline-none flex justify-between items-center"
       >
-        <h3 className="text-lg font-semibold text-cyan-400">{question}</h3>
+        <h3 className="text-lg font-semibold text-white">{question}</h3>
         <span className="text-cyan-300 text-2xl">{isOpen ? "−" : "+"}</span>
       </button>
-      {isOpen && <div className="px-4 pb-4 text-gray-400">{children}</div>}
+      {isOpen && <div className="px-4 pb-4 text-white font-light">{children}</div>}
     </div>
   );
 }

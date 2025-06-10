@@ -35,17 +35,17 @@ export const NavLinksDesktop = () => {
             onClick={() => setDropdownOpen(!dropdownOpen)}
             className="text-white hover:text-cyan-400 px-3 py-2 text-lg font-bold"
           >
-            ... ▾
+            Mehr ▾
           </button>
 
           {dropdownOpen && (
-            <div className="absolute right-0 top-full mt-2 w-48 bg-gray-900 shadow-lg rounded-lg py-2 z-50">
+            <div className=" dropdown-fixed absolute right-0 top-full mt-2 w-48 bg-gray-800 rounded-lg py-2 z-[9999] shadow-lg">
               {extraLinks.map((link) => (
                 <Link
                   key={link.path}
                   href={link.path}
                   style={{ textAlign: "left" }}
-                  className="block px-4 py-2 text-white hover:text-cyan-400 transition-colors duration-150"
+                  className="block px-4 py-2 text-white hover:text-cyan-400 transition-colors duration-150 hover:bg-gray-700"
                   onClick={() => setDropdownOpen(false)}
                 >
                   {link.name}
@@ -63,7 +63,7 @@ export const NavLinksMobile = ({ isOpen }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="lg:hidden flex flex-col space-y-3 mt-4 pl-4 bg-blue-900 bg-opacity-90">
+    <div className="lg:hidden flex flex-col space-y-3 mt-4 pl-4 bg-blue-900">
       {ALL_NAV_LINKS.map((link) => (
         <Link
           key={link.path}

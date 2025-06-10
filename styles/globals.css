@@ -167,3 +167,7 @@ h2 {
 .text-cyan-400 { color: var(--neon-primary); }
 .bg-cyan-900 { background-color: rgba(0, 50, 50, 0.9); }
 .border-cyan-400 { border-color: var(--neon-primary); }
+.dropdown-fixed {
+  transform: translate3d(0, 0, 0) !important;
+  background-color:#00b4b4;
+}
