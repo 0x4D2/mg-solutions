@@ -171,3 +171,13 @@ h2 {
   transform: translate3d(0, 0, 0) !important;
   background-color:#00b4b4;
 }
+
+html, body, #__next {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#__next {
+  flex: 1;
+}

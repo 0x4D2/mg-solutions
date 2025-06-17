@@ -7,6 +7,31 @@ import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 import Preloader from "components/Preloader";
 
+// Wiederverwendbare Logo-Komponente
+const PartnerLogo = ({ href, src, alt, width = 220, height = 80 }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group transition-opacity hover:opacity-85"
+    aria-label={alt}
+  >
+    <div 
+      className="flex items-center justify-center"
+      style={{ width: `${width}px`, height: `${height}px` }}
+    >
+      <img
+        src={src}
+        alt={alt}
+        className="w-auto h-full object-contain"
+        width={width}
+        height={height}
+        loading="lazy"
+      />
+    </div>
+  </a>
+);
+
 const LinkCard = ({ href, iconClass, title, className = "" }) => {
   return (
     <Link
@@ -40,7 +65,6 @@ export default function Index() {
   const [isInitialLoad, setIsInitialLoad] = useState(true);
   const router = useRouter();
 
-  // Preloader- und Lade-Logik
   useEffect(() => {
     if (typeof window !== "undefined") {
       const hasVisited = localStorage.getItem("hasVisited");
@@ -55,13 +79,12 @@ export default function Index() {
       const timer = setTimeout(() => {
         setIsInitialLoad(false);
         setShowContent(true);
-      }, 2200); // Synchron mit Preloader-Animation (2.2s)
+      }, 2200);
 
       return () => clearTimeout(timer);
     }
   }, [router.asPath]);
 
-  // Particles.js Initialisierung
   useEffect(() => {
     if (showContent && typeof window !== "undefined") {
       import("particles.js").then(() => {
@@ -73,30 +96,26 @@ export default function Index() {
   }, [showContent]);
 
   if (isInitialLoad) {
-    return (
-      <Preloader
-        onComplete={() => {
-          setIsInitialLoad(false);
-          setShowContent(true);
-        }}
-      />
-    );
+    return <Preloader onComplete={() => {
+      setIsInitialLoad(false);
+      setShowContent(true);
+    }} />;
   }
 
   return (
     <>
       {showContent && (
-        <>
+        <div className="flex flex-col min-h-screen">
           <IndexNavbar fixed />
-          <section
-            className="header relative pt-16 items-center flex h-screen max-h-860-px"
-            style={{ backgroundColor: "#001f3f" }}
-          >
-            <div id="particles-js" className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden "></div>
-            <div className="container mx-auto items-center flex flex-wrap relative z-10">
-              <div className="w-full px-4">
-                <div className="pt-32 sm:pt-0 text-center">
-                  <h2 className="hero-title font-semibold text-6xl text-white">
+          <main className="flex-grow">
+            <section
+              className="header relative pt-16 items-center"
+              style={{ backgroundColor: "#001f3f" }}
+            >
+              <div id="particles-js" className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden"></div>
+              <div className="container mx-auto px-4 relative z-10">
+                <div className="pt-32 sm:pt-0 text-center pb-12">
+                  <h2 className="hero-title font-semibold text-4xl sm:text-6xl text-white">
                     <TypingEffect
                       text={["Ihre digitale Zukunft sicher gestalten"]}
                       speed={50}
@@ -105,34 +124,53 @@ export default function Index() {
                       cursorClassName="hidden-cursor"
                     />
                   </h2>
-                  <p className="mt-6 text-2xl leading-relaxed text-gray-500 max-w-3xl mx-auto">
+                  <p className="mt-6 text-xl sm:text-2xl leading-relaxed text-gray-500 max-w-3xl mx-auto">
                     Wir bieten maßgeschneiderte Sicherheitslösungen, um Ihre
                     wertvollen digitalen Assets zu schützen.
                   </p>
-                  <section className="relative z-10 px-4 pb-24">
-                    <div
-                      className="mt-16 grid gap-10 justify-center"
-                      style={{ gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))" }}
-                    >
-                      <LinkCard
-                        href="/business"
-                        iconClass="fas fa-building"
-                        title="Für Unternehmen"
+
+                  <div className="mt-16 grid gap-8 sm:gap-10 justify-center"
+                    style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
+                    <LinkCard
+                      href="/business"
+                      iconClass="fas fa-building"
+                      title="Für Unternehmen"
+                    />
+                    <LinkCard
+                      href="/private"
+                      iconClass="fas fa-user-shield"
+                      title="Für Privatkunden"
+                    />
+                  </div>
+
+                  <div className="mt-12 mb-8 sm:mb-12">
+                    <h3 className="text-center text-lg sm:text-xl text-gray-400 mb-6">
+                      Unsere Partner & Mitgliedschaften
+                    </h3>
+                    <div className="flex flex-wrap justify-center gap-4 sm:gap-6 px-4">
+                      <PartnerLogo
+                        href="https://www.cyber-sicherheitsnetzwerk.de"
+                        src="/img/csn-logo.png"
+                        alt="Mitglied im Cyber-Sicherheitsnetzwerk"
+                        width={200}
+                        height={70}
                       />
-                      <LinkCard
-                        href="/private"
-                        iconClass="fas fa-user-shield"
-                        title="Für Privatkunden"
-                      />
+                      {/* Platzhalter für weitere Logos */}
+                      {/* <PartnerLogo
+                        href="#"
+                        src="/img/partner2-logo.png"
+                        alt="Partner XYZ"
+                        width={180}
+                        height={70}
+                      /> */}
                     </div>
-                  </section>
-                  
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          </main>
           <Footer />
-        </>
+        </div>
       )}
     </>
   );
