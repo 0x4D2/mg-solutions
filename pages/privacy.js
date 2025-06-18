@@ -6,6 +6,7 @@ export default function Privacy() {
     return (
         <>
             <IndexNavbar fixed />
+            <div className="cyber-bg">
             <div className="container mx-auto px-4 pt-16 pb-40">
                 <h1 className="text-4xl font-bold text-center mt-12">
                     Datenschutzerklärung
@@ -83,7 +84,9 @@ export default function Privacy() {
                     </p>
                 </div>
             </div>
+            </div>
             <Footer />
+            
         </>
     );
 }

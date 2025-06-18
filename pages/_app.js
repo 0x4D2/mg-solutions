@@ -11,6 +11,7 @@ import "../styles/Preloader.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
 import "styles/globals.css";
+import "styles/cyber-background.css"; 
 
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);

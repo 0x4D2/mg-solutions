@@ -24,7 +24,7 @@ export default function BusinessPage() {
   return (
     <>
       <IndexNavbar fixed />
-      <main className="pt-20 bg-gray-900">
+      <main className="pt-20 bg-gray-900 cyber-bg">
         {/* Hero Section */}
         <section className="relative py-32 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-center overflow-hidden">
           <div className="absolute inset-0 bg-[url('/img/grid-pattern.svg')] opacity-10"></div>
@@ -51,10 +51,13 @@ export default function BusinessPage() {
               transition={{ delay: 0.5, duration: 0.8 }}
               className="mt-10 flex flex-col sm:flex-row justify-center gap-4"
             >
-              <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-800 font-bold px-8 py-4 rounded-full shadow-lg ">
-                Direkt zum Experten
-              </button>
+
+              <button className="cyber-direct-btn">
+              Direkt zum Experten
+            </button>
+
             </motion.div>
+            
           </div>
         </section>
 
@@ -171,7 +174,7 @@ export default function BusinessPage() {
                 <div className="text-white italic text-sm mb-6">
                   Geeignet für Teams bis 5 Personen, die erste Sicherheitsstrukturen aufbauen möchten.
                 </div>
-                <button className="mt-auto bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-full font-medium transition duration-300 w-full">
+                <button className="cyber-direct-btn mt-auto bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-full font-medium transition duration-300 w-full">
                   Jetzt starten
                 </button>
               </motion.div>
@@ -197,7 +200,7 @@ export default function BusinessPage() {
                 <div className="text-white italic text-sm mb-6">
                   Für Teams bis 20 Personen, die Compliance-Anforderungen erfüllen müssen.
                 </div>
-                <button className="mt-auto bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-full font-medium transition duration-300 w-full">
+                <button className="cyber-direct-btn mt-auto bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-full font-medium transition duration-300 w-full">
                   Jetzt upgraden
                 </button>
               </motion.div>
@@ -223,7 +226,7 @@ export default function BusinessPage() {
                 <div className="text-white italic text-sm mb-6">
                   Für regulierte Branchen (Fintech, Healthtech etc.) mit hohem Sicherheitsbedarf.
                 </div>
-                <button className="mt-auto bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-full font-medium transition duration-300 w-full">
+                <button className="cyber-direct-btn mt-auto bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-full font-medium transition duration-300 w-full">
                   Angebot anfragen
                 </button>
               </motion.div>
@@ -233,9 +236,9 @@ export default function BusinessPage() {
             <div className="mt-12 bg-gray-800/70 p-8 rounded-xl shadow border border-blue-800 max-w-3xl mx-auto">
               <h3 className="text-xl font-bold mb-4 text-white">Transparente Zusatzoptionen</h3>
               <ul className="space-y-2 text-blue-200">
-                <li>▸ <span className="font-semibold text-white">Onboarding-Crashkurs:</span> +290&nbsp;€ (einmalig)</li>
-                <li>▸ <span className="font-semibold text-white">Dokumenten-Templates:</span> +49&nbsp;€/Monat</li>
-                <li>▸ <span className="font-semibold text-white">Priority-Support:</span> +199&nbsp;€/Monat</li>
+                <li className="text-white">▸ <span className="font-semibold text-white">Onboarding-Crashkurs:</span> +290&nbsp;€ (einmalig)</li>
+                <li className="text-white">▸ <span className="font-semibold text-white">Dokumenten-Templates:</span> +49&nbsp;€/Monat</li>
+                <li className="text-white">▸ <span className="font-semibold text-white">Priority-Support:</span> +199&nbsp;€/Monat</li>
               </ul>
             </div>
 
@@ -256,7 +259,7 @@ export default function BusinessPage() {
               <div className="flex flex-col items-center justify-center mt-8 mb-4">
                 <a
                   href="contact"
-                  className="bg-cyan-500 hover:bg-cyan-600 text-white font-bold px-10 py-5 rounded-full shadow-xl transition-all duration-300 text-lg mt-8 mb-4"
+                  className="cyber-direct-btn bg-cyan-500 hover:bg-cyan-600 text-white font-bold px-10 py-5 rounded-full shadow-xl transition-all duration-300 text-lg mt-8 mb-4"
                 >
                   Termin buchen
                 </a>
@@ -387,7 +390,7 @@ export default function BusinessPage() {
                   ].map((step, index) => (
                     <div key={index} className="flex items-start">
                       <div className="bg-blue-700 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-0.5">
-  
+
                       </div>
                       <div>
                         <h4 className="font-bold text-white">{step.title}</h4>
@@ -396,7 +399,7 @@ export default function BusinessPage() {
                     </div>
                   ))}
                 </div>
-                <button className="mt-8 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full inline-flex items-center transition duration-300">
+                <button className="cyber-direct-btn mt-8 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full inline-flex center">
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>

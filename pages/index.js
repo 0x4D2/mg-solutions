@@ -144,7 +144,7 @@ export default function Index() {
                   </div>
 
                   <div className="mt-12 mb-8 sm:mb-12">
-                    <h3 className="text-center text-lg sm:text-xl text-gray-400 mb-6">
+                    <h3 className="text-center text-lg sm:text-xl text-gray-500 mb-6">
                       Unsere Partner & Mitgliedschaften
                     </h3>
                     <div className="flex flex-wrap justify-center gap-4 sm:gap-6 px-4">

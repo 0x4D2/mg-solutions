@@ -87,19 +87,21 @@ export default function FAQPage() {
       <IndexNavbar fixed />
 
       {/* Hero */}
-      <section className="relative pt-20 items-center flex min-h-[80vh] ">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold">
-            Cybersecurity - Häufige Fragen
-          </h1>
-          <p className="mt-6 text-xl max-w-3xl mx-auto text-white">
-            Antworten rund um digitale Sicherheit - für Unternehmen und Privatpersonen.
-          </p>
-        </div>
-      </section>
+      <div className="cyber-bg">
 
+        <section className="relative pt-20 items-center flex min-h-[80vh] ">
+          <div className="container mx-auto px-4 text-center">
+            <h1 className="text-5xl font-bold">
+              Cybersecurity - Häufige Fragen
+            </h1>
+            <p className="mt-6 text-xl max-w-3xl mx-auto text-white ">
+              Antworten rund um digitale Sicherheit - für Unternehmen und Privatpersonen.
+            </p>
+          </div>
+        </section>
+      
       {/* FAQ Sektionen */}
-      <div className="py-10">
+      <div className="py-10 ">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-12">
             <FAQSection title="Allgemein" faqs={allgemeinFAQs} />
@@ -108,7 +110,7 @@ export default function FAQPage() {
           </div>
         </div>
       </div>
-
+    
       {/* Call to Action */}
       <div className="py-20 text-center">
         <h2 className="text-4xl font-bold ">Noch Fragen offen?</h2>
@@ -116,13 +118,14 @@ export default function FAQPage() {
           Wir beraten Sie gerne persönlich zu Ihrer Cybersicherheit.
         </p>
         <button
-          className="mt-6 bg-cyan-500 text-black px-6 py-3 rounded-lg shadow-lg hover:bg-cyan-600 transition focus:outline-none focus:ring-2 focus:ring-cyan-300"
+          className="cyber-direct-btn mt-6 text-white text-black px-6 py-3 rounded-lg shadow-lg hover:bg-cyan-600 transition focus:outline-none focus:ring-2 focus:ring-cyan-300"
         >
           Jetzt Kontakt aufnehmen
         </button>
       </div>
 
       <Footer />
+      </div>
     </>
   );
 }
@@ -130,7 +133,7 @@ export default function FAQPage() {
 // Einzelne FAQ-Sektion
 function FAQSection({ title, faqs }) {
   return (
-    <div className="p-6 rounded-lg shadow-lg hover:shadow-xl transition bg-gray-800">
+    <div className="p-6 rounded-lg shadow-lg hover:shadow-xl transition bg-gray-800 border border-gray-700">
       <h2 className="text-3xl font-semibold mb-6 text-center">
         {title}
       </h2>
