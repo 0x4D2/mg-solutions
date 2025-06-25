@@ -5,6 +5,7 @@ const ALL_NAV_LINKS = [
   { name: "Startseite", path: "/" },
   { name: "Für Unternehmen", path: "/business" },
   { name: "Für Privatkunden", path: "/private" },
+  { name: "Über uns", path: "/about" },
   { name: "FAQ", path: "/faq" },
   { name: "Kontakt", path: "/contact" },
   { name: "Impressum", path: "/imprint" },

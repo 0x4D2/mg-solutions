@@ -5,7 +5,6 @@ import TypingEffect from "react-typing-effect";
 import { particlesConfig } from "../particles-config";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
-import Preloader from "components/Preloader";
 
 // Wiederverwendbare Logo-Komponente
 const PartnerLogo = ({ href, src, alt, width = 220, height = 80 }) => (
@@ -95,11 +94,9 @@ export default function Index() {
     }
   }, [showContent]);
 
-  if (isInitialLoad) {
-    return <Preloader onComplete={() => {
-      setIsInitialLoad(false);
-      setShowContent(true);
-    }} />;
+  // Remove Preloader logic: always show content
+  if (!showContent) {
+    return null;
   }
 
   return (
@@ -150,7 +147,7 @@ export default function Index() {
                     <div className="flex flex-wrap justify-center gap-4 sm:gap-6 px-4">
                       <PartnerLogo
                         href="https://www.cyber-sicherheitsnetzwerk.de"
-                        src="/img/csn-logo1.png"
+                        src="/img/csn-logo.png"
                         alt="Mitglied im Cyber-Sicherheitsnetzwerk"
                         width={200}
                         height={70}

@@ -53,22 +53,41 @@ export default function AboutPage() {
               <div className="space-y-2 mb-4">
                 <div className="flex items-center gap-3">
                   {/* Zertifikate Icon */}
-                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-800"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6l4 2" /></svg></span>
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 01-8 0V5a4 4 0 018 0v2z" />
+                      <circle cx="12" cy="17" r="4" />
+                    </svg>
+                  </span>
                   <span className="text-blue-100">Zertifikate im Aufbau → Praxiswissen täglich erweitert</span>
                 </div>
                 <div className="flex items-center gap-3">
                   {/* User Icon */}
-                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-800"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg></span>
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <circle cx="12" cy="8" r="4" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 20v-1a4 4 0 014-4h8a4 4 0 014 4v1" />
+                    </svg>
+                  </span>
                   <span className="text-blue-100">Privatpersonen geschützt → Echte Probleme gelöst</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  {/* Office Icon */}
-                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-800"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7h18M3 12h18M3 17h18" /></svg></span>
+                  {/* Office/Business Icon */}
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <rect x="3" y="7" width="7" height="13" rx="2" />
+                      <rect x="14" y="3" width="7" height="17" rx="2" />
+                    </svg>
+                  </span>
                   <span className="text-blue-100">KMU abgesichert → Lokale Wirtschaft gestärkt</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  {/* Behörden Icon */}
-                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-800"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 17l4 4 4-4m0-5V3a1 1 0 00-1-1H7a1 1 0 00-1 1v9" /></svg></span>
+                  {/* Behörden/Shield Icon */}
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4l7 4v4c0 5.25-3.5 9.74-7 12-3.5-2.26-7-6.75-7-12V8l7-4z" />
+                    </svg>
+                  </span>
                   <span className="text-blue-100">Behörden beraten → Kritische Infrastrukturen verteidigt</span>
                 </div>
               </div>
@@ -171,8 +190,8 @@ export default function AboutPage() {
             </motion.div>
           </div>
         </section>
-        <Footer />
       </main>
+      <Footer />
       <style jsx global>{`
         @keyframes gradient-x {
           0%, 100% { background-position: 0% 50%; }

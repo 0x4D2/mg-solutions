@@ -24,6 +24,15 @@ Router.events.on("routeChangeStart", (url) => {
 Router.events.on("routeChangeComplete", () => {
   ReactDOM.unmountComponentAtNode(document.getElementById("page-transition"));
   document.body.classList.remove("body-page-transition");
+  if (typeof window !== "undefined") {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      const mainContainer = document.querySelector('.main-container');
+      if (mainContainer) {
+        mainContainer.scrollTop = 0;
+      }
+    }, 50);
+  }
 });
 Router.events.on("routeChangeError", () => {
   ReactDOM.unmountComponentAtNode(document.getElementById("page-transition"));
@@ -100,6 +109,7 @@ export default class MyApp extends App {
           <link rel="icon" href="/favicon.ico" />
           <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
         </Head>
+        {/* <ScrollToTop /> */}
         <Layout>
           <Component {...pageProps} />
         </Layout>

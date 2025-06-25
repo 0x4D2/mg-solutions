@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
+import Link from "next/link";
 
 export default function FAQPage() {
   const unternehmenFAQs = [
@@ -91,11 +92,11 @@ export default function FAQPage() {
           content="Antworten auf häufige Fragen zur Cybersicherheit für Unternehmen und Privatpersonen. Erfahren Sie, wie Sie sich effektiv schützen können."
         />
       </Helmet>
-
       <IndexNavbar fixed />
-
-      {/* Hero */}
       <div className="cyber-bg">
+
+        {/* Hero */}
+        <div className="cyber-bg">
 
         <section className="relative pt-20 items-center flex min-h-[80vh] ">
           <div className="container mx-auto px-4 text-center">
@@ -125,13 +126,18 @@ export default function FAQPage() {
         <p className="mt-4 text-lg text-white">
           Wir beraten Sie gerne persönlich zu Ihrer Cybersicherheit.
         </p>
-        <button
-          className="cyber-direct-btn mt-6 text-white text-black px-6 py-3 rounded-lg shadow-lg hover:bg-cyan-600 transition focus:outline-none focus:ring-2 focus:ring-cyan-300"
-        >
-          Jetzt Kontakt aufnehmen
-        </button>
+        <br></br>
+        <Link href="/contact" passHref legacyBehavior>
+          <a className="cyber-direct-btn  hover:bg-blue-700 text-white py-3 px-8 rounded-full font-medium transition duration-300 text-center inline-block ">
+            Jetzt Kontakt aufnehmen
+          </a>
+        </Link>
+
+        
+        
       </div>
 
+      </div>
       <Footer />
       </div>
     </>

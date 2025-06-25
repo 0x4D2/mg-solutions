@@ -25,7 +25,7 @@ export default function BusinessPage() {
   return (
     <>
       <IndexNavbar fixed />
-      <main className="pt-20 bg-gray-900 cyber-bg">
+      <div className="bg-gray-900 cyber-bg pt-20">
         {/* Hero Section */}
         <section className="relative py-32 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-center overflow-hidden">
           <div className="absolute inset-0 bg-[url('/img/grid-pattern.svg')] opacity-10"></div>
@@ -414,9 +414,8 @@ export default function BusinessPage() {
             </div>
           </div>
         </section>
-
-        <Footer />
-      </main>
+      </div>
+      <Footer />
       <style jsx global>{`
         @keyframes gradient-x {
           0%, 100% { background-position: 0% 50%; }
