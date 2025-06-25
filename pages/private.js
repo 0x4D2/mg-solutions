@@ -36,34 +36,39 @@ export default function PrivatePage() {
       <IndexNavbar fixed />
         <main className="pt-20 bg-gray-900 cyber-bg ">
           {/* Hero Section */}
-          <section className="relative py-32 bg-gradient-to-br from-blue-900 via-gray-900 to-gray-900 text-center overflow-hidden">
+          <section className="relative py-32 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-center overflow-hidden">
             <div className="absolute inset-0 bg-[url('/img/grid-pattern.svg')] opacity-10"></div>
             <div className="container mx-auto px-4 relative z-10">
               <motion.h1
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-5xl md:text-6xl font-bold mb-6 text-white leading-tight"
+                className="text-5xl md:text-6xl font-bold mb-6 leading-tight"
               >
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-white">
-                  Sicherheit für Ihr digitales Leben
-                </span>
+                Schützen Sie, was Ihnen lieb ist – bevor es zu spät ist
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
-                className="text-xl text-blue-200 max-w-2xl mx-auto mb-8"
+                className="text-xl text-white max-w-2xl mx-auto mb-8"
               >
-                Professioneller Schutz ohne technischen Aufwand
+                Fotos, Bankdaten & Privatsphäre – sicher vor Hackern, Viren & Datendieben
               </motion.p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all"
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+                className="flex flex-col sm:flex-row justify-center gap-4"
               >
-                Kostenlose Beratung anfordern
-              </motion.button>
+                {/* <button className="cyber-direct-btn bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all">
+                  Jetzt kostenlos prüfen: Ist Ihr WLAN sicher?
+                </button> */}
+                <button className="cyber-direct-btn bg-cyan-600 hover:bg-cyan-700 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all">
+                  In 5 Minuten wissen Sie, wie gefährdet Sie sind – gratis Check starten
+                </button>
+              </motion.div>
+              <div className="mt-8 text-blue-200 text-sm">Jede Minute wird ein Passwort gestohlen – ist Ihres dabei?</div>
             </div>
           </section>
       
@@ -83,11 +88,11 @@ export default function PrivatePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
-              <h2 className="text-3xl font-bold mb-6 text-white">
+              <h2 className="text-3xl font-bold mb-6">
                 Warum digitale Sicherheit <span className="text-blue-400">unverzichtbar</span> ist
               </h2>
-              <p className="text-lg text-gray-300 mb-8">
-                In einer immer vernetzteren Welt sind unsere persönlichen Daten und Geräte ständig Gefahren ausgesetzt. MG Solutions schützt Sie zuverlässig und sorgt dafür, dass Sie sich sicher fühlen können – ganz ohne technisches Fachwissen.
+              <p className="text-lg text-white mb-8">
+                Ihre Fotos, Bankdaten und privaten Nachrichten sind wertvoll – und täglich im Visier von Betrügern. Wir schützen, was Ihnen wichtig ist: Ihr WLAN, Ihre Online-Einkäufe, Ihr Banking und Ihre Familie. Ganz ohne Technik-Kauderwelsch.
               </p>
             </motion.div>
             <motion.div
@@ -99,8 +104,8 @@ export default function PrivatePage() {
             >
               <div className="bg-gray-700 rounded-xl p-8 border border-gray-600">
                 <h3 className="text-xl font-bold text-white mb-4">Aktuelle Bedrohungen</h3>
-                <ul className="space-y-4">
-                  {[
+                <ul className="space-y-4 text-white">
+                  { [
                     "✓ 68% der Cyberangriffe richten sich an Privatpersonen",
                     "✓ Durchschnittlicher Schaden: 5.300€ pro Vorfall",
                     "✓ 43% der Nutzer verwenden Passwörter mehrfach",
@@ -110,7 +115,7 @@ export default function PrivatePage() {
                       <span className="text-blue-400 mr-2">•</span>
                       <span className="text-gray-300">{item}</span>
                     </li>
-                  ))}
+                  )) }
                 </ul>
               </div>
             </motion.div>
@@ -120,30 +125,10 @@ export default function PrivatePage() {
 
       {/* Services */}
       <section className="py-20 bg-gray-900">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl font-bold mb-4 text-white">
-              Unsere <span className="text-blue-400">Leistungen</span> für Sie
-            </h2>
-            <p className="text-xl text-blue-200 max-w-3xl mx-auto">
-              Maßgeschneiderter Schutz für Ihre digitalen Bedürfnisse
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
-          >
-            {[
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-3xl font-bold mb-8">Leistungen für Privatkunden</h2>
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
+            { [
               {
                 icon: (
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -151,8 +136,7 @@ export default function PrivatePage() {
                   </svg>
                 ),
                 title: "Rundumschutz für Ihre Geräte",
-                desc: "Beratung zu Viren-, Malware- und Zugriffsschutz für PCs, Smartphones und Tablets.",
-                highlight: "Gerätesicherheit"
+                desc: "Schützt Ihre Handys, Tablets & Computer vor Viren, Betrug und Datenklau."
               },
               {
                 icon: (
@@ -160,9 +144,8 @@ export default function PrivatePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                   </svg>
                 ),
-                title: "Sicheres Heimnetzwerk",
-                desc: "Unterstützung bei Firewall, VPN, Passwortänderungen und sicherer Nutzung Ihrer Smart Devices.",
-                highlight: "Netzwerksicherheit"
+                title: "Sicheres WLAN & Online-Banking",
+                desc: "Schützt Ihr WLAN vor Nachbarn & Hackern. Sicher einkaufen & Online-Banking nutzen."
               },
               {
                 icon: (
@@ -170,9 +153,8 @@ export default function PrivatePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                   </svg>
                 ),
-                title: "Datensicherung & Verschlüsselung",
-                desc: "Beratung zu Backups und sicherer Speicherung – unterstützt durch unser Know-how.",
-                highlight: "Datenmanagement"
+                title: "Sichere Backups Ihrer Fotos & Dokumente",
+                desc: "Wir sorgen dafür, dass Ihre Erinnerungen & Unterlagen nie verloren gehen."
               },
               {
                 icon: (
@@ -180,9 +162,8 @@ export default function PrivatePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
                   </svg>
                 ),
-                title: "Persönliche Beratung & Support",
-                desc: "Unkomplizierte, schnelle Hilfe bei Sicherheitsproblemen – direkt und persönlich.",
-                highlight: "24/7 Support"
+                title: "Wir finden gestohlene Passwörter – bevor Diebe sie nutzen",
+                desc: "Sofortige Warnung, wenn Ihre Zugangsdaten im Umlauf sind."
               },
               {
                 icon: (
@@ -191,8 +172,7 @@ export default function PrivatePage() {
                   </svg>
                 ),
                 title: "Update-Erinnerungen & Sicherheitschecks",
-                desc: "Regelmäßige Hinweise auf notwendige Software-Updates und Unterstützung bei der Umsetzung.",
-                highlight: "Proaktiver Schutz"
+                desc: "Wir erinnern Sie an wichtige Updates & prüfen Ihre Geräte regelmäßig."
               },
               {
                 icon: (
@@ -200,109 +180,79 @@ export default function PrivatePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                   </svg>
                 ),
-                title: "Frühwarnsystem für Datenlecks",
-                desc: "Monitoring Ihrer Daten im Darknet – bei Vorfällen werden Sie direkt informiert.",
-                highlight: "Darknet-Scan"
+                title: "Soforthilfe bei Hackern & Viren – Tag und Nacht",
+                desc: "Wir sind für Sie da, wenn es darauf ankommt – 24/7 Notfall-Support."
               }
             ].map((item, i) => (
-              <motion.div
-                key={i}
-                variants={itemVariants}
-                whileHover={hoverEffect}
-                className="group relative bg-gray-800/60 backdrop-blur-md p-8 rounded-2xl shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 border border-gray-700 overflow-hidden"
-              >
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600 group-hover:opacity-80 transition-opacity"></div>
-                <motion.div
-                  whileHover={{ rotate: 10, scale: 1.1 }}
-                  className="mb-6 group-hover:text-blue-300 transition-colors duration-300"
-                >
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 via-blue-400 to-blue-600 flex items-center justify-center shadow-lg">
-                    {item.icon}
-                  </div>
-                </motion.div>
-                <h3 className="text-2xl font-extrabold text-white mb-3 tracking-tight">{item.title}</h3>
-                <p className="text-gray-300 mb-4 leading-relaxed">{item.desc}</p>
-                {item.highlight && (
-                  <span className="inline-block bg-blue-900/30 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full">
-                    {item.highlight}
-                  </span>
-                )}
-              </motion.div>
+              <div key={i} className="backdrop-blur-md p-8 rounded-2xl shadow-2xl border text-center flex flex-col items-center">
+                <div className="text-white w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 via-blue-400 to-blue-600 flex items-center justify-center shadow-lg mb-4">
+                  {item.icon}
+                </div>
+                <h2 className="text-xl font-bold mb-2">{item.title}</h2>
+                <p className="text-white mb-2">{item.desc}</p>
+              </div>
             ))}
-          </motion.div>
+          </div>
+          <div className="bg-gray-800 rounded-2xl shadow-xl border border-blue-700 p-8 text-center mb-8 max-w-lg mx-auto">
+            <div className="text-2xl font-bold mb-2"><h2>Rundum-Schutz-Paket</h2></div>
+            <div className="text-4xl font-extrabold text-white mb-2">30€ <span className="text-lg font-normal text-blue-200">/Monat</span></div>
+            <div className="text-white mb-4">Monatlich kündbar – keine versteckten Kosten</div>
+            <button className="cyber-direct-btn bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all mt-2">
+              Jetzt Schutz starten
+            </button>
+          </div>
         </div>
       </section>
 
       {/* Process */}
       <section className="py-20 bg-gray-800">
         <div className="container mx-auto px-4 max-w-5xl">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl font-bold text-center text-white mb-16"
-          >
-            So einfach <span className="text-blue-400">funktioniert's</span>
-          </motion.h2>
-
-          <div className="relative">
-            <div className="hidden md:block absolute left-1/2 h-full w-0.5 bg-gradient-to-b from-blue-500 to-blue-700 transform -translate-x-1/2"></div>
-
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-12 md:space-y-0"
-            >
-              {[
-                {
-                  title: "Kostenlose Analyse",
-                  desc: "Wir besprechen Ihre Situation und identifizieren Risiken",
-                  icon: "1"
-                },
-                {
-                  title: "Maßgeschneiderter Plan",
-                  desc: "Sie erhalten ein auf Sie zugeschnittenes Sicherheitskonzept",
-                  icon: "2"
-                },
-                {
-                  title: "Umsetzung",
-                  desc: "Wir implementieren alle Schutzmaßnahmen für Sie",
-                  icon: "3"
-                },
-                {
-                  title: "Laufender Schutz",
-                  desc: "Regelmäßige Updates und Anpassungen an neue Bedrohungen",
-                  icon: "4"
-                }
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={itemVariants}
-                  className={`relative flex flex-col md:flex-row items-center ${i % 2 === 0 ? 'md:text-right md:flex-row-reverse' : 'md:text-left'}`}
-                >
-                  <div className={`md:w-1/2 p-6 ${i % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
-                    <div className="bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center mb-4 mx-auto md:mx-0">
-                      {item.icon}
-                    </div>
-                    <h3 className="text-xl font-bold mb-2 text-white">{item.title}</h3>
-                    <p className="text-gray-300">{item.desc}</p>
-                  </div>
-                  <div className="hidden md:block absolute left-1/2 w-10 h-10 bg-blue-600 rounded-full transform -translate-x-1/2 flex items-center justify-center text-white font-bold shadow-lg border-2 border-blue-400">
-                    {item.icon}
-                  </div>
-                  <div className="md:w-1/2"></div>
-                </motion.div>
-              ))}
-            </motion.div>
+          <h2 className="text-3xl font-bold mb-8 ">So einfach funktioniert's</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            { [
+              {
+                icon: (
+                  <svg className="w-10 h-10 text-blue-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" strokeWidth="2" />
+                    <text x="12" y="16" textAnchor="middle" fontSize="12" fill="currentColor">1</text>
+                  </svg>
+                ),
+                title: "Kostenlose Analyse",
+                desc: "Wir besprechen Ihre Situation und identifizieren Risiken – einfach & verständlich."
+              },
+              {
+                icon: (
+                  <svg className="w-10 h-10 text-blue-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" strokeWidth="2" />
+                    <text x="12" y="16" textAnchor="middle" fontSize="12" fill="currentColor">2</text>
+                  </svg>
+                ),
+                title: "Sicherheits-Paket buchen",
+                desc: "Sie erhalten Ihren persönlichen Schutz – ohne Technikstress."
+              },
+              {
+                icon: (
+                  <svg className="w-10 h-10 text-blue-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" strokeWidth="2" />
+                    <text x="12" y="16" textAnchor="middle" fontSize="12" fill="currentColor">3</text>
+                  </svg>
+                ),
+                title: "Soforthilfe & Updates",
+                desc: "Wir sind für Sie da, wenn es darauf ankommt – und halten Sie immer auf dem neuesten Stand."
+              }
+            ].map((step, i) => (
+              <div key={i} className="text-white bg-gray-800/60 rounded-2xl shadow-xl border border-blue-700 p-8 text-center flex flex-col items-center">
+                {step.icon}
+                <h2 className="text-xl font-bold mb-2">{step.title}</h2>
+                <p className="text-gray-300">{step.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Pricing */}
-      <section className="py-20 bg-gradient-to-br from-gray-800 to-gray-900 text-white">
+      {/* <section className="py-20 bg-gradient-to-br from-gray-800 to-gray-900 text-white">
         <div className="container mx-auto px-4 max-w-5xl">
           <motion.div
             initial={{ opacity: 0 }}
@@ -312,73 +262,68 @@ export default function PrivatePage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold mb-4 text-white">
-              Transparente <span className="text-blue-400">Preise</span>
+              Unsere Pakete im Vergleich
             </h2>
             <p className="text-xl text-blue-200 max-w-3xl mx-auto">
-              Keine versteckten Kosten, keine langen Vertragslaufzeiten
+              Günstiger als Ihr Handyvertrag – aber schützt Ihr ganzes digitales Leben
             </p>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="grid md:grid-cols-3 gap-8"
-          >
-            <div className="bg-gray-800 text-white rounded-xl shadow-xl overflow-hidden border border-gray-700 hover:border-blue-500 transition-colors">
-              <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-6">
-                <h3 className="text-xl font-bold">Grundumsorglos Paket</h3>
-                <div className="mt-4">
-                  <span className="text-3xl font-bold">€30</span>
-                  <span className="text-blue-200">/Monat</span>
-                </div>
-              </div>
-
-              <div className="p-6">
-                <ul className="space-y-3">
-                  {[
-                    "Alle Geräte geschützt",
-                    "Monatliche Sicherheitschecks",
-                    "E-Mail Support",
-                    "24/7 Monitoring",
-                    "Darknet-Scan inklusive",
-                    "Regelmäßige Sicherheitsupdates",
-                    "Persönliche Beratung & Support"
-                  ].map((feature, i) => (
-                    <li key={i} className="flex items-start">
-                      <svg
-                        className="w-5 h-5 text-blue-400 mr-2 mt-0.5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-gray-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="mt-12 text-center text-gray-400"
-          >
-            <p>
-              Sollten Ihre Anforderungen den Umfang des Grundumsorglos Pakets überschreiten,
-              erstellen wir Ihnen gerne ein individuelles Angebot. In solchen Fällen kann eine separate Abrechnung erfolgen.
-            </p>
-            <p className="mt-4">Alle Pakete monatlich kündbar. Individuelle Lösungen auf Anfrage.</p>
-          </motion.div>
+          <div className="overflow-x-auto">
+            <table className="min-w-full bg-gray-800 rounded-xl shadow-xl border border-gray-700">
+              <thead>
+                <tr>
+                  <th className="py-4 px-6 text-lg font-bold text-blue-400 bg-gray-900">Basis</th>
+                  <th className="py-4 px-6 text-lg font-bold text-blue-400 bg-gray-900">Premium</th>
+                  <th className="py-4 px-6 text-lg font-bold text-blue-400 bg-gray-900">Familie</th>
+                </tr>
+              </thead>
+              <tbody className="text-center text-white">
+                <tr>
+                  <td className="py-4 px-6">1 Gerät</td>
+                  <td className="py-4 px-6">3 Geräte</td>
+                  <td className="py-4 px-6">Bis zu 6 Geräte</td>
+                </tr>
+                <tr className="bg-gray-900/60">
+                  <td className="py-4 px-6">Sicheres WLAN & Banking</td>
+                  <td className="py-4 px-6">Alles aus Basis + Passwort-Check</td>
+                  <td className="py-4 px-6">Alles aus Premium + Familien-Notfallhilfe</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-6">Update-Erinnerungen</td>
+                  <td className="py-4 px-6">Backup-Service</td>
+                  <td className="py-4 px-6">Geräte für Kinder inklusive</td>
+                </tr>
+                <tr className="bg-gray-900/60">
+                  <td className="py-4 px-6">E-Mail Support</td>
+                  <td className="py-4 px-6">Soforthilfe 24/7</td>
+                  <td className="py-4 px-6">Soforthilfe 24/7</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-6 font-bold text-2xl text-blue-300">19€</td>
+                  <td className="py-4 px-6 font-bold text-2xl text-blue-300">29€</td>
+                  <td className="py-4 px-6 font-bold text-2xl text-blue-300">39€</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-6 text-xs text-blue-200">Monatlich kündbar</td>
+                  <td className="py-4 px-6 text-xs text-blue-200">Monatlich kündbar</td>
+                  <td className="py-4 px-6 text-xs text-blue-200">Monatlich kündbar</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-6">
+                    <button className="cyber-direct-btn bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2 rounded-full mt-2">Basis wählen</button>
+                  </td>
+                  <td className="py-4 px-6">
+                    <button className="cyber-direct-btn bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2 rounded-full mt-2">Premium wählen</button>
+                  </td>
+                  <td className="py-4 px-6">
+                    <button className="cyber-direct-btn bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2 rounded-full mt-2">Familie wählen</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Testimonials */}
       <section className="py-20 bg-gray-900">
@@ -390,7 +335,7 @@ export default function PrivatePage() {
             transition={{ duration: 0.6 }}
             className="text-3xl font-bold text-center text-white mb-16"
           >
-            Das sagen unsere <span className="text-blue-400">Kunden</span>
+            <h2>Das sagen unsere Kunden</h2>
           </motion.h2>
 
           <motion.div
@@ -426,14 +371,16 @@ export default function PrivatePage() {
                 key={i}
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
-                className="min-w-[320px] bg-gray-800/70 backdrop-blur-md p-8 rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-700 snap-center"
+                className=" text-white min-w-[320px] bg-gray-800/70 backdrop-blur-md p-8 rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-700 snap-center"
               >
                 <div className="flex mb-4">
+                  <>
                   {[...Array(5)].map((_, j) => (
                     <svg key={j} className={`w-5 h-5 ${j < item.rating ? 'text-yellow-400' : 'text-gray-600'}`} fill="currentColor" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
+                  </>
                 </div>
                 <blockquote className="text-gray-300 italic mb-6">"{item.quote}"</blockquote>
                 <div className="flex items-center">
@@ -484,7 +431,7 @@ export default function PrivatePage() {
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                0800 123 456 789
+                +49 176 75468985
               </span>
             </button>
           </motion.div>
@@ -505,8 +452,6 @@ export default function PrivatePage() {
           animation: gradient-x 8s ease-in-out infinite;
         }
       `}</style>
-      </>
-
-      );
-      
+    </>
+  );
 }

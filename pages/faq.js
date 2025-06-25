@@ -34,6 +34,14 @@ export default function FAQPage() {
         "Privatnutzer sind oft Ziel von Phishing, Identitätsdiebstahl oder Ransomware. Unsere Schutzlösungen helfen, Ihre Daten und Geräte abzusichern.",
     },
     {
+      question: "Was kostet der Rundum-Schutz für Privatkunden?",
+      answer: (
+        <span>
+          Unser <strong>Rundum-Schutz-Paket</strong> für Privatkunden kostet <strong>30&nbsp;Euro pro Monat</strong> und bietet umfassenden Schutz für Ihre digitale Sicherheit – ohne versteckte Kosten oder Zusatzpakete.
+        </span>
+      ),
+    },
+    {
       question: "Welche Sicherheitsmaßnahmen sollte ich treffen?",
       answer: (
         <ul className="list-disc pl-5 space-y-1 text-gray-200">

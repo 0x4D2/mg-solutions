@@ -9,15 +9,10 @@ const sectionVariants = {
 };
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", message: "", privacy: false, captcha: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "", privacy: false, captcha: "", customerType: "" });
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
-  const [captchaValue, setCaptchaValue] = useState(() => {
-    // Simple math captcha
-    const a = Math.floor(Math.random() * 10) + 1;
-    const b = Math.floor(Math.random() * 10) + 1;
-    return { question: `${a} + ${b}`, answer: (a + b).toString() };
-  });
+  const captchaWord = "sicher";
 
   const handleChange = e => {
     const { name, value, type, checked } = e.target;
@@ -34,8 +29,8 @@ export default function ContactPage() {
       setError("Bitte akzeptieren Sie die Datenschutzerklärung.");
       return;
     }
-    if (form.captcha.trim() !== captchaValue.answer) {
-      setError("Captcha falsch gelöst. Bitte versuchen Sie es erneut.");
+    if (form.captcha.trim().toLowerCase() !== captchaWord) {
+      setError("Bitte geben Sie das Wort 'sicher' korrekt ein.");
       return;
     }
     // Hier könnte ein API-Call erfolgen
@@ -55,7 +50,7 @@ export default function ContactPage() {
               transition={{ duration: 0.8 }}
               className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-white"
             >
-              Kontakt aufnehmen
+              Sichere Hilfe – direkt & unkompliziert
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}
@@ -63,7 +58,7 @@ export default function ContactPage() {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="text-xl text-blue-200 max-w-2xl mx-auto mb-8"
             >
-              Sie haben Fragen, wünschen eine Beratung oder möchten ein Angebot? Schreiben Sie mir – ich melde mich schnellstmöglich zurück.
+              Ihre Daten sind bei uns geschützt – wir antworten innerhalb von 24 Stunden.
             </motion.p>
           </div>
         </section>
@@ -84,12 +79,44 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-8">
+                  {/* Kundentyp Auswahl */}
+                  <div>
+                    <label className="block text-blue-200 font-semibold mb-2">
+                      Ich bin <span className="text-red-500">*</span>
+                    </label>
+                    <div className="flex gap-6">
+                      <label className="flex items-center cursor-pointer">
+                        <input
+                          type="radio"
+                          name="customerType"
+                          value="Privatkunde"
+                          checked={form.customerType === 'Privatkunde'}
+                          onChange={handleChange}
+                          required
+                          className="accent-blue-600 w-5 h-5 mr-2"
+                        />
+                        <span className="text-white">Privatkunde</span>
+                      </label>
+                      <label className="flex items-center cursor-pointer">
+                        <input
+                          type="radio"
+                          name="customerType"
+                          value="Unternehmen"
+                          checked={form.customerType === 'Unternehmen'}
+                          onChange={handleChange}
+                          required
+                          className="accent-blue-600 w-5 h-5 mr-2"
+                        />
+                        <span className="text-white">Unternehmen</span>
+                      </label>
+                    </div>
+                  </div>
                   <div>
                     <label className="block text-blue-200 font-semibold mb-2" htmlFor="name">
-                      Name
+                      Name <span className="text-red-500">*</span>
                     </label>
                     <input
-                      className="w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500 transition"
+                      className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-black focus:outline-none focus:border-blue-500 transition"
                       type="text"
                       id="name"
                       name="name"
@@ -100,11 +127,26 @@ export default function ContactPage() {
                     />
                   </div>
                   <div>
-                    <label className="block text-blue-200 font-semibold mb-2" htmlFor="email">
-                      E-Mail
+                    <label className="block text-blue-200 font-semibold mb-2" htmlFor="phone">
+                      Telefonnummer <span className="text-red-500">*</span>
                     </label>
                     <input
-                      className="w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500 transition"
+                      className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-black focus:outline-none focus:border-blue-500 transition"
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      required
+                      value={form.phone}
+                      onChange={handleChange}
+                      autoComplete="tel"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-blue-200 font-semibold mb-2" htmlFor="email">
+                      E-Mail <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-black focus:outline-none focus:border-blue-500 transition"
                       type="email"
                       id="email"
                       name="email"
@@ -115,11 +157,30 @@ export default function ContactPage() {
                     />
                   </div>
                   <div>
+                    <label className="block text-blue-200 font-semibold mb-2" htmlFor="subject">
+                      Betreff <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-black focus:outline-none focus:border-blue-500 transition"
+                      id="subject"
+                      name="subject"
+                      required
+                      value={form.subject || ''}
+                      onChange={handleChange}
+                    >
+                      <option value="">Bitte wählen…</option>
+                      <option value="Anfrage">Allgemeine Anfrage</option>
+                      <option value="Beratung">Beratung</option>
+                      <option value="Angebot">Angebot</option>
+                      <option value="Support">Support</option>
+                    </select>
+                  </div>
+                  <div>
                     <label className="block text-blue-200 font-semibold mb-2" htmlFor="message">
-                      Nachricht
+                      Nachricht <span className="text-red-500">*</span>
                     </label>
                     <textarea
-                      className="w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500 transition min-h-[120px]"
+                      className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-black focus:outline-none focus:border-blue-500 transition min-h-[120px]"
                       id="message"
                       name="message"
                       required
@@ -129,10 +190,10 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label className="block text-blue-200 font-semibold mb-2" htmlFor="captcha">
-                      Spamschutz: Was ist {captchaValue.question}?
+                      Spamschutz: Bitte geben Sie das Wort <b>sicher</b> ein <span className="text-red-500">*</span>
                     </label>
                     <input
-                      className="w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500 transition"
+                      className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-black focus:outline-none focus:border-blue-500 transition"
                       type="text"
                       id="captcha"
                       name="captcha"
@@ -140,30 +201,21 @@ export default function ContactPage() {
                       value={form.captcha}
                       onChange={handleChange}
                       autoComplete="off"
-                      inputMode="numeric"
                     />
                   </div>
-                  <div className="flex items-center">
+                  <div className="flex items-center bg-gray-700 rounded-lg p-3 border border-green-500 mt-2">
                     <input
                       type="checkbox"
                       id="privacy"
                       name="privacy"
                       checked={form.privacy}
                       onChange={handleChange}
-                      className="mr-3 accent-blue-600 w-5 h-5"
+                      className="mr-3 accent-green-500 w-6 h-6"
                       required
                     />
-                    <label htmlFor="privacy" className="text-gray-300 text-sm">
-                      Ich habe die{" "}
-                      <a
-                        href="#datenschutz"
-                        className="underline text-blue-400 hover:text-blue-300"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Datenschutzerklärung
-                      </a>{" "}
-                      gelesen und akzeptiere sie.
+                    <span className="text-green-400 text-xl mr-2">✔</span>
+                    <label htmlFor="privacy" className="text-gray-200 text-base">
+                      Ja, ich möchte Antworten auf meine Frage erhalten und akzeptiere die <a href="/privacy" className="underline text-blue-400 hover:text-blue-300" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>.
                     </label>
                   </div>
                   {error && (
@@ -171,73 +223,94 @@ export default function ContactPage() {
                   )}
                   <button
                     type="submit"
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-full shadow-lg transition-all duration-300 text-lg"
+                    className="cyber-direct-btn w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-full shadow-lg transition-all duration-300 text-lg"
                   >
                     Nachricht senden
                   </button>
                 </form>
               )}
+              {/* Trust Badges */}
+              <div className="flex justify-center gap-6 mt-8">
+                <div className="flex flex-col items-center">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-800 mb-2">
+                    {/* Shield Icon */}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                  </div>
+                  <span className="text-xs text-blue-200 mt-1">SSL-verschlüsselt</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-800 mb-2">
+                    {/* User Icon */}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                  </div>
+                  <span className="text-xs text-blue-200 mt-1">Keine Weitergabe</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-800 mb-2">
+                    {/* CheckCircle Icon */}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a10 10 0 11-20 0 10 10 0 0120 0z" /></svg>
+                  </div>
+                  <span className="text-xs text-blue-200 mt-1">DSGVO-konform</span>
+                </div>
+              </div>
             </motion.div>
-            <div className="text-center mt-12 text-blue-200">
-              <p>Oder direkt per E-Mail: <a href="mailto:kontakt@ichwillsicherheit.de" className="underline hover:text-blue-400">kontakt@ichwillsicherheit.de</a></p>
-              <p className="mt-2">Telefonisch: <a href="tel:+491234567890" className="underline hover:text-blue-400">+49 123 4567890</a></p>
+            {/* Alternative Kontaktwege als Buttons mit Icon-Kreis wie auf Business/Privatseite */}
+            <div className="text-center mt-12 flex flex-col md:flex-row gap-6 justify-center items-center">
+              <a href="mailto:info@ichwillsicherheit.de" className="flex items-center bg-blue-900/80 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-xl shadow transition-all duration-300 text-lg gap-3">
+                <span className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-700 mr-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12l-4-4-4 4m8 0l-4 4-4-4" /></svg>
+                </span>
+                <span>E-Mail: info@ichwillsicherheit.de</span>
+              </a>
+              <a href="tel:+4917675468985" className="flex items-center bg-blue-900/80 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-xl shadow transition-all duration-300 text-lg gap-3">
+                <span className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-700 mr-2">
+                
+                </span>
+                <span>Telefon: +49 176 754 689 85 <span className="ml-2 text-base text-blue-200">(Mo-Fr, 9-18 Uhr)</span></span>
+              </a>
             </div>
           </div>
         </section>
 
-              <div className="text-center mt-12 text-blue-200 space-y-8">
-              <motion.div
-                variants={sectionVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="bg-gray-900/80 p-6 rounded-2xl shadow border border-blue-800 max-w-xl mx-auto"
-              >
-                <h3 className="text-2xl font-bold mb-2 text-blue-400">Was passiert nach dem Absenden?</h3>
-                <p className="mb-4">
-                  Nach dem Absenden Ihrer Anfrage meldet sich unser Team innerhalb von 24 Stunden, um Ihr Anliegen persönlich zu besprechen und gemeinsam eine Lösung zu finden.
-                </p>
-                <h4 className="font-semibold text-blue-300 mb-1">Datenschutz ist uns wichtig</h4>
-                <p className="mb-4 text-blue-200">
-                  Ihre Daten werden streng vertraulich behandelt und ausschließlich zur Bearbeitung Ihrer Anfrage genutzt. Mehr dazu finden Sie in unserer <a href="#datenschutz" className="underline hover:text-blue-400">Datenschutzerklärung</a>.
-                </p>
-                <h4 className="font-semibold text-blue-300 mb-1">Kostenlose Erstberatung</h4>
-                <p>
-                  Nutzen Sie die Möglichkeit einer unverbindlichen Erstberatung!<br />
-                  <span className="block mt-2">E-Mail: <a href="mailto:info@ichwillsicherheit.de" className="underline hover:text-blue-400">info@ichwillsicherheit.de</a></span>
-                  <span>Telefon: <a href="tel:+4917675468985" className="underline hover:text-blue-400">+49 176 754 689 85</a></span>
-                </p>
-                <p className="mt-4">Wir freuen uns darauf, Ihnen mit maßgeschneiderten Cybersecurity-Lösungen zu helfen.</p>
-              </motion.div>
-            </div>
-
-        {/* Datenschutzerklärung */}
-        <section id="datenschutz" className="py-20 bg-gray-800">
+        {/* Schritt-für-Schritt Grafik: Was passiert nach dem Absenden? */}
+        <section className="py-16 bg-gray-900">
           <div className="container mx-auto px-4 max-w-3xl">
-            <motion.div
-              variants={sectionVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="bg-gray-900/80 p-8 rounded-2xl shadow-2xl border border-gray-700"
-            >
-              <h2 className="text-2xl font-bold mb-4 text-blue-400">Datenschutzerklärung</h2>
-              <p className="text-gray-300 mb-4">
-                Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht an Dritte weitergegeben. Die Übertragung erfolgt verschlüsselt. Sie können jederzeit Auskunft über die gespeicherten Daten verlangen oder deren Löschung beantragen.
-              </p>
-              <ul className="list-disc list-inside text-blue-200 space-y-2 mb-4 text-sm">
-                <li>Verantwortlicher: Max Mustermann, kontakt@ichwillsicherheit.de</li>
-                <li>Verarbeitete Daten: Name, E-Mail, Nachricht</li>
-                <li>Zweck: Kontaktaufnahme und Beantwortung Ihrer Anfrage</li>
-                <li>Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)</li>
-                <li>Speicherdauer: Bis zur abschließenden Bearbeitung Ihrer Anfrage</li>
-              </ul>
-              <p className="text-gray-400 text-xs">
-                Weitere Informationen finden Sie in der vollständigen Datenschutzerklärung auf Anfrage.
-              </p>
-            </motion.div>
+            <div className="bg-gray-900/80 p-8 rounded-2xl shadow-2xl border border-blue-800">
+              <h3 className="text-2xl font-bold mb-8 text-blue-400 text-center">Was passiert nach dem Absenden?</h3>
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                <div className="flex flex-col items-center">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-800 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10l9-6 9 6-9 6-9-6zm0 0v6a9 9 0 009 9 9 9 0 009-9v-6" /></svg>
+                  </div>
+                  <span className="font-semibold text-blue-200">Sie senden Ihre Anfrage</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-800 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                  </div>
+                  <span className="font-semibold text-blue-200">Wir antworten innerhalb von 24h</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-800 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2a4 4 0 018 0v2m-4-4a4 4 0 100-8 4 4 0 000 8zm0 0v4" /></svg>
+                  </div>
+                  <span className="font-semibold text-blue-200">Kostenlose Analyse Ihrer Situation</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-800 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                  </div>
+                  <span className="font-semibold text-blue-200">Maßgeschneiderte Lösung</span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
+
+        {/* Datenschutzerklärung nur verlinken */}
+        <div className="text-center text-blue-300 text-sm mt-8">
+          Mehr zum Umgang mit Ihren Daten finden Sie in unserer <a href="/privacy" className="underline hover:text-blue-400" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>.
+        </div>
         <Footer />
       </main>
       <style jsx global>{`

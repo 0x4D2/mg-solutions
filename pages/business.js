@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
+import Link from 'next/link';
 
 // Animationen wie auf der Privat-Seite
 const containerVariants = {
@@ -35,7 +36,7 @@ export default function BusinessPage() {
               transition={{ duration: 0.8 }}
               className="text-5xl md:text-6xl font-bold mb-6 leading-tight"
             >
-              Sicherheit, die Business stabilisiert
+              Cybersecurity, die Ihr Wachstum schützt – bevor Probleme entstehen
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}
@@ -43,7 +44,7 @@ export default function BusinessPage() {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="mt-6 text-xl text-white max-w-3xl mx-auto"
             >
-              Messbar · Nachvollziehbar · Wirtschaftlich
+              Proaktiver Schutz für Startups & Unternehmen – damit Sie wachsen, ohne böse Überraschungen.
             </motion.p>
             <motion.div
               initial={{ opacity: 0 }}
@@ -52,12 +53,17 @@ export default function BusinessPage() {
               className="mt-10 flex flex-col sm:flex-row justify-center gap-4"
             >
 
-              <button className="cyber-direct-btn">
-              Direkt zum Experten
-            </button>
+              <Link href="/contact" passHref legacyBehavior>
+                <a className="cyber-direct-btn text-center">
+                  Direkt zum Experten
+                </a>
+              </Link>
 
             </motion.div>
-            
+            <div className="mt-8 text-sm text-blue-200 flex flex-col items-center gap-2">
+              <span>Basierend auf Kunden-Daten 2025</span>
+              {/* <a href="#" className="underline text-blue-300 hover:text-blue-400">Wie Startup X mit uns 60% Kosten sparte (Case Study demnächst)</a> */}
+            </div>
           </div>
         </section>
 
@@ -71,7 +77,7 @@ export default function BusinessPage() {
               viewport={{ once: true }}
               className="grid md:grid-cols-3 gap-12"
             >
-              {[
+              { [
                 {
                   icon: (
                     <span className="inline-block rounded-full p-3">
@@ -124,6 +130,7 @@ export default function BusinessPage() {
                 </motion.div>
               ))}
             </motion.div>
+            <div className="mt-4 text-xs text-blue-300 text-center">* Basierend auf internen Analysen & Pilotprojekten 2025</div>
           </div>
         </section>
 
@@ -141,7 +148,7 @@ export default function BusinessPage() {
                 Startup-Sicherheitspakete <span className="text-blue-400">ohne Risiko</span>
               </h2>
               <p className="text-xl text-white max-w-3xl mx-auto">
-                Flexible IT-Security für jede Wachstumsphase – monatlich kündbar
+                Flexibel & monatlich kündbar – kein Lock-in
               </p>
               <br></br>
             </motion.div>
@@ -163,7 +170,7 @@ export default function BusinessPage() {
                 </div>
                 <div className="text-3xl font-bold text-white mb-2">ab 149&nbsp;€/Monat</div>
                 <div className="text-white mb-4 text-sm">oder 1.490&nbsp;€/Jahr – 2 Monate geschenkt</div>
-                <div className="text-white font-medium mb-4">Für: Startups in der Gründungsphase mit Basis-IT</div>
+                <div className="text-white font-medium mb-4">Für: Gründer und kleine Teams (1-5 Personen)</div>
                 <ul className="text-white mb-6">
                   <li>✔ E-Mail-Support (Mo-Fr, 9-18 Uhr)</li>
                   <li>✔ 1h Sicherheits-Check pro Quartal (Remote)</li>
@@ -172,11 +179,13 @@ export default function BusinessPage() {
                   <li>✔ Selbstbewertungs-Tool für Compliance</li>
                 </ul>
                 <div className="text-white italic text-sm mb-6">
-                  Geeignet für Teams bis 5 Personen, die erste Sicherheitsstrukturen aufbauen möchten.
+                  Geeignet für Gründer und kleine Teams, die erste Sicherheitsstrukturen aufbauen möchten.
                 </div>
-                <button className="cyber-direct-btn mt-auto bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-full font-medium transition duration-300 w-full">
-                  Jetzt starten
-                </button>
+                <Link href="/contact" passHref legacyBehavior>
+                  <a className="cyber-direct-btn mt-auto bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-full font-medium transition duration-300 w-full text-center block">
+                    Jetzt starten
+                  </a>
+                </Link>
               </motion.div>
               {/* Growth-Paket */}
               <motion.div
@@ -189,7 +198,8 @@ export default function BusinessPage() {
                   <span className="bg-blue-700/80  text-xs font-bold px-2 py-1 rounded-full" style={{ color: 'rgb(34,197,94)' }}>Beliebteste Option</span>
                 </div>
                 <div className="text-3xl font-bold text-white mb-2">ab 399&nbsp;€/Monat</div>
-                <div className="text-white font-medium mb-4">Für: Startups mit ersten Kunden/Investoren</div>
+                <div className="text-white font-medium mb-2">Für: Startups mit ersten Kunden/Investoren</div>
+                <div className="text-xs text-green-400 mb-4">Optimale Balance aus Preis und Schutz</div>
                 <ul className="space-y-3 text-white mb-6">
                   <li>✔ Schnellere Reaktion (Chat + E-Mail innerhalb 8h)</li>
                   <li>✔ 4h Beratung/Monat (flexibel einteilbar)</li>
@@ -200,9 +210,11 @@ export default function BusinessPage() {
                 <div className="text-white italic text-sm mb-6">
                   Für Teams bis 20 Personen, die Compliance-Anforderungen erfüllen müssen.
                 </div>
-                <button className="cyber-direct-btn mt-auto bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-full font-medium transition duration-300 w-full">
-                  Jetzt upgraden
-                </button>
+                <Link href="/contact" passHref legacyBehavior>
+                  <a className="cyber-direct-btn mt-auto bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-full font-medium transition duration-300 w-full text-center block">
+                    Jetzt upgraden
+                  </a>
+                </Link>
               </motion.div>
               {/* Enterprise-Paket */}
               <motion.div
@@ -213,8 +225,8 @@ export default function BusinessPage() {
                 <div className="mb-2">
                   <span className="bg-blue-500/20 text-white text-xs font-bold px-3 py-1 rounded-full">Enterprise-Paket</span>
                 </div>
-                <div className="text-3xl font-bold text-white mb-2">Individueller Preis</div>
-                <div className="text-white mb-4 text-sm">ab 1.200&nbsp;€/Monat</div>
+                <div className="text-3xl font-bold text-white mb-2">Individuell ab 1.200&nbsp;€/Monat</div>
+                <div className="text-white mb-4 text-sm">Richtwert – abhängig von Anforderungen</div>
                 <div className="text-white font-medium mb-4">Für: Startups mit kritischer Infrastruktur</div>
                 <ul className="space-y-3 text-white mb-6">
                   <li>✔ 24/7-Notfallnummer</li>
@@ -226,9 +238,11 @@ export default function BusinessPage() {
                 <div className="text-white italic text-sm mb-6">
                   Für regulierte Branchen (Fintech, Healthtech etc.) mit hohem Sicherheitsbedarf.
                 </div>
-                <button className="cyber-direct-btn mt-auto bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-full font-medium transition duration-300 w-full">
-                  Angebot anfragen
-                </button>
+                <Link href="/contact" passHref legacyBehavior>
+                  <a className="cyber-direct-btn mt-auto bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-full font-medium transition duration-300 w-full text-center block">
+                    Angebot anfragen
+                  </a>
+                </Link>
               </motion.div>
             </motion.div>
 
@@ -247,10 +261,10 @@ export default function BusinessPage() {
               <div>
                 <h2 className="text-2xl font-bold mb-4">Warum uns Startups vertrauen:</h2>
                 <ul className="space-y-3 text-white">
-                  <li>✓ Keine langen Verträge (monatlich kündbar)</li>
+                  <li>✓ Flexibel & monatlich kündbar – kein Lock-in</li>
                   <li>✓ Klare Erfolgskriterien (z. B. "100% Backup-Überprüfung")</li>
                   <li>✓ Pay-as-you-grow (Paketwechsel jederzeit)</li>
-                  <li>✓ Ehrliche Risikokommunikation (wir zeigen Schwachstellen ohne Panikmache)</li>
+                  <li>✓ Ehrliche Risikokommunikation (wir identifizieren Risiken – und lösen sie pragmatisch.)</li>
                 </ul>
                 <div className="mt-6 text-white italic">
                   Wir beginnen mit einer kostenlosen 30-minütigen IT-Sicherheitsbewertung – kein Sales-Gespräch, nur Fakten.
@@ -271,13 +285,13 @@ export default function BusinessPage() {
         {/* ROI-Sektion */}
         <section className="py-20 bg-gray-800">
           <div className="container mx-auto px-4 max-w-6xl">
-            <div className="bg-blue-900/40 backdrop-blur-md p-12 rounded-2xl shadow-2xl border border-blue-800">
+            <div className="bg-blue-900/40 backdrop-blur-md p-12 rounded-2xl shadow-2xl border-4 border-cyan-500 animate-pulse-slow">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h2 className="text-3xl font-bold mb-6">
+                  <h2 className="text-3xl font-bold mb-12 pl-4">
                     <span className="text-blue-400">Wie viel Geld</span> verlieren Sie ohne Security?
                   </h2>
-                  <p className="text-lg text-white mb-8">
+                  <p className="text-lg text-white mb-8 pl-4">
                     Unser Rechner zeigt konkrete Risiken für Ihr Unternehmen:
                   </p>
                   <div className="space-y-4">
@@ -298,28 +312,18 @@ export default function BusinessPage() {
                       <span className="text-white">Durchschnittliche Versicherungserhöhung nach Vorfall: <span className="font-bold text-white">+22%</span></span>
                     </div>
                   </div>
-                  <br></br>
+                  <div className="mt-6 text-cyan-200 text-sm italic pl-4">Ergebnis individuell für Ihr Unternehmen? Jetzt Risiko berechnen lassen!</div>
+                  <Link href="/contact" passHref legacyBehavior>
+                    <a className="cyber-direct-btn mt-4 bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-8 rounded-full inline-flex center">
+                      Risiko individuell berechnen
+                    </a>
+                  </Link>
+                  <br />
                 </div>
-                <div className="bg-gray-900/70 p-8 rounded-xl shadow border border-blue-800">
-                  <h3 className="text-xl font-bold mb-6 text-center text-white">Was Unternehmen wirklich verlieren</h3>
-                  <div className="space-y-6 text-white">
-                    {[
-                      { label: "Produktivitätsausfall", value: "85%", color: "bg-red-500", width: "85%" },
-                      { label: "Reputationsschaden", value: "72%", color: "bg-orange-500", width: "72%" },
-                      { label: "Kundenvertrauen", value: "68%", color: "bg-yellow-400", width: "68%" },
-                      { label: "Versicherungskosten", value: "+22%", color: "bg-blue-500", width: "22%" }
-                    ].map((item, index) => (
-                      <div key={index}>
-                        <div className="flex justify-between mb-2 text-gray-200">
-                          <span>{item.label}</span>
-                          <span className="font-bold">{item.value}</span>
-                        </div>
-                        <div className="w-full bg-gray-700 rounded-full h-2.5">
-                          <div className={`${item.color} h-2.5 rounded-full`} style={{ width: item.width }}></div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                {/* Rechner-Box */}
+                <div className="bg-gray-900/70 p-8 rounded-xl shadow border-4 border-cyan-500">
+                  <h2 className="text-xl font-bold mb-6 text-center">Schadenrechner</h2>
+                  <RechnerBox />
                 </div>
               </div>
             </div>
@@ -336,7 +340,7 @@ export default function BusinessPage() {
               transition={{ duration: 0.6 }}
               className="text-3xl font-bold text-center mb-4"
             >
-              Was <span className="text-blue-400">NIS-2 kostet</span>, wenn Sie es nicht erfüllen
+              NIS-2-Pflicht ab 2024: So vermeiden Sie Bußgelder bis 10 Mio. €
             </motion.h2>
             <p className="text-xl text-white text-center mb-16 max-w-3xl mx-auto">
               Und wie wir Sie vor den finanziellen Folgen schützen
@@ -382,7 +386,7 @@ export default function BusinessPage() {
                 <br></br>
                 <h3 className="text-xl font-bold mb-4 text-white">So machen wir Sie NIS-2 konform:</h3>
                 <div className="space-y-6">
-                  {[
+                  { [
                     { title: "1. Gap-Analyse", text: "Identifizierung kritischer Lücken in 48h" },
                     { title: "2. Maßnahmenplan", text: "Priorisierte To-Do-Liste mit Zeitplan" },
                     { title: "3. Umsetzung", text: "Technische + organisatorische Anpassungen" },
@@ -390,7 +394,6 @@ export default function BusinessPage() {
                   ].map((step, index) => (
                     <div key={index} className="flex items-start">
                       <div className="bg-blue-700 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-0.5">
-
                       </div>
                       <div>
                         <h4 className="font-bold text-white">{step.title}</h4>
@@ -399,60 +402,18 @@ export default function BusinessPage() {
                     </div>
                   ))}
                 </div>
-                <button className="cyber-direct-btn mt-8 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full inline-flex center">
-                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  NIS-2 Compliance-Checkliste
-                </button>
+                <Link href="/contact" passHref legacyBehavior>
+                  <a className="cyber-direct-btn mt-8 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full inline-flex center">
+                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    Jetzt kostenfreie Erstanalyse buchen
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
         </section>
-
-        {/* CTA */}
-        {/* <section className="py-20 bg-gradient-to-r from-blue-800 to-blue-900 animate-gradient-x text-white">
-          <div className="container mx-auto px-4 text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl font-bold mb-6"
-            >
-              In 15 Minuten wissen Sie, wo Sie <span className="text-blue-300">Sicherheitsrisiken verlieren</span>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-xl text-blue-200 max-w-3xl mx-auto mb-10"
-            >
-              Und wie Sie mit klaren Maßnahmen gegensteuern können
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="flex flex-col sm:flex-row justify-center gap-4"
-            >
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-full shadow-lg transition-all duration-300 flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                </svg>
-                Selbst-Check starten (kostenlos)
-              </button>
-              <button className="bg-transparent alig border-2 border-white hover:bg-white hover:text-blue-800 text-white font-bold px-8 py-4 rounded-full transition-all duration-300 flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                Direktberatung buchen
-              </button>
-            </motion.div>
-          </div>
-        </section> */}
 
         <Footer />
       </main>
@@ -467,5 +428,78 @@ export default function BusinessPage() {
         }
       `}</style>
     </>
+  );
+}
+
+// RechnerBox-Komponente am Ende der Datei:
+function RechnerBox() {
+  const [employees, setEmployees] = React.useState(100);
+  const [salary, setSalary] = React.useState(45);
+  const [days, setDays] = React.useState(3);
+  const totalLoss = employees * salary * 8 * days;
+  return (
+    <div className="space-y-6 text-cyan-100">
+      <div>
+        <label className="block text-sm text-white font-medium mb-2">
+          Mitarbeiterzahl: <span className="text-cyan-300 font-bold">{employees}</span>
+        </label>
+        <input
+          type="range"
+          min="1"
+          max="500"
+          value={employees}
+          onChange={e => setEmployees(Number(e.target.value))}
+          className="w-full h-1.5 bg-cyan-900 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+        />
+        <div className="flex justify-between text-xs text-cyan-400 mt-1">
+          <span>1</span>
+          <span>100</span>
+          <span>500+</span>
+        </div>
+      </div>
+      <div>
+        <label className="block text-sm text-white font-medium mb-2">Durchschnittsgehalt (€/h)</label>
+        <select
+          className="w-full bg-gray-900 border border-cyan-500/30 text-cyan-100 rounded-lg px-4 py-3 focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+          value={salary}
+          onChange={e => setSalary(Number(e.target.value))}
+        >
+          <option value="30">30 € (Einsteiger)</option>
+          <option value="45">45 € (Mittelstand)</option>
+          <option value="65">65 € (Experten)</option>
+        </select>
+      </div>
+      <div>
+        <label className="block text-sm text-white font-medium mb-2">Mögliche Ausfallzeit</label>
+        <div className="grid grid-cols-3 gap-3">
+          {[1, 3, 7].map(d => (
+            <button
+              key={d}
+              type="button"
+              onClick={() => setDays(d)}
+              className={`py-2 px-3 rounded-lg border transition-all font-bold
+                ${days === d
+                  ? "bg-cyan-600 border-cyan-400 text-white shadow-lg"
+                  : "bg-gray-900 border-gray-700 text-cyan-200 hover:border-cyan-400"}`}
+            >
+              {d} Tag{d > 1 ? "e" : ""}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="mt-8 p-5 bg-gradient-to-r from-gray-900/80 to-cyan-900/20 border border-cyan-500/30 rounded-lg relative overflow-hidden">
+        <div className="relative z-10">
+          <div className="flex justify-between items-center">
+            <span className="text-white font-medium">Potentieller Verlust:</span>
+            <span className="text-2xl md:text-3xl font-bold text-red-500 underline">
+              {new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(totalLoss)}
+            </span>
+          </div>
+          <div className="text-xs italic text-white mt-2">
+            * Basierend auf Produktivitätsausfällen und durchschnittlichen Wiederherstellungskosten
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

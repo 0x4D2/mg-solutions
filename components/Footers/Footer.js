@@ -28,7 +28,7 @@ export default function Footer() {
                   { href: "https://twitter.com/willsicherheit", icon: "fab fa-twitter" },
                   { href: "https://instagram.com/ichwillsicherheit", icon: "fab fa-instagram" },
                   { href: "https://www.tiktok.com/@ichwillsicherheit", icon: "fab fa-tiktok" },
-                  { href: "https://linkedin.com/in/ichwillsicherheit", icon: "fab fa-linkedin" },
+                  { href: "https://linkedin.com/company/ichwillsicherheit", icon: "fab fa-linkedin" },
                   { href: "https://www.youtube.com/@ichwillsicherheit", icon: "fab fa-youtube" },
                 ].map((link, idx) => (
                   <a
