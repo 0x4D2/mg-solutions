@@ -1,5 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React, { Suspense } from "react";
+import ReactDOM from "react-dom/client";
 import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
@@ -13,16 +13,32 @@ import "styles/tailwind.css";
 import "styles/globals.css";
 import "styles/cyber-background.css"; 
 
+// Hilfsfunktion für PageChange-Overlay mit React 18 createRoot
+let pageChangeRoot = null;
+function showPageChange(url) {
+  const container = document.getElementById("page-transition");
+  if (container) {
+    if (!pageChangeRoot) {
+      pageChangeRoot = ReactDOM.createRoot(container);
+    }
+    pageChangeRoot.render(<PageChange path={url} />);
+  }
+}
+function hidePageChange() {
+  const container = document.getElementById("page-transition");
+  if (container && pageChangeRoot) {
+    pageChangeRoot.unmount();
+    pageChangeRoot = null;
+  }
+}
+
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
   document.body.classList.add("body-page-transition");
-  ReactDOM.render(
-    <PageChange path={url} />,
-    document.getElementById("page-transition")
-  );
+  showPageChange(url);
 });
 Router.events.on("routeChangeComplete", () => {
-  ReactDOM.unmountComponentAtNode(document.getElementById("page-transition"));
+  hidePageChange();
   document.body.classList.remove("body-page-transition");
   if (typeof window !== "undefined") {
     setTimeout(() => {
@@ -35,9 +51,12 @@ Router.events.on("routeChangeComplete", () => {
   }
 });
 Router.events.on("routeChangeError", () => {
-  ReactDOM.unmountComponentAtNode(document.getElementById("page-transition"));
+  hidePageChange();
   document.body.classList.remove("body-page-transition");
 });
+
+// Lazy-Loading für Partikel-Effekt
+const LazyParticles = React.lazy(() => import("../particles-config.js"));
 
 export default class MyApp extends App {
   componentDidMount() {
@@ -74,24 +93,30 @@ export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
- const Layout = Component.layout || (({ children }) => (
-  <>
-    <Navbar />
-    <div className="main-container">
-      {/* Particles/Background müssen vor dem Body-Hintergrund liegen */}
-      {Component.background && (
-        <div className="fixed top-0 left-0 w-full h-full z-0">
-          <Component.background />
+    const Layout = Component.layout || (({ children }) => (
+      <>
+        <Navbar />
+        <div className="main-container">
+          {/* Particles/Background müssen vor dem Body-Hintergrund liegen */}
+          {Component.background && (
+            <div className="fixed top-0 left-0 w-full h-full z-0">
+              <Suspense fallback={
+                <div className="absolute inset-0 flex items-center justify-center z-10">
+                  <div className="w-12 h-12 border-4 border-blue-400 border-t-transparent rounded-full animate-spin" />
+                </div>
+              }>
+                <LazyParticles />
+              </Suspense>
+              <Component.background />
+            </div>
+          )}
+          {/* Content mit Padding unter Navbar */}
+          <main className="relative z-10 pt-20"> {/* pt-20 = 80px */}
+            {children}
+          </main>
         </div>
-      )}
-      
-      {/* Content mit Padding unter Navbar */}
-      <main className="relative z-10 pt-20"> {/* pt-20 = 80px */}
-        {children}
-      </main>
-    </div>
-  </>
-));
+      </>
+    ));
 
     return (
       <React.Fragment>

@@ -168,20 +168,11 @@ export default function PrivatePage() {
                 {
                   icon: (
                     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  ),
-                  title: "Update-Erinnerungen & Sicherheitschecks",
-                  desc: "Wir erinnern Sie an wichtige Updates & prüfen Ihre Geräte regelmäßig."
-                },
-                {
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                     </svg>
                   ),
-                  title: "Soforthilfe bei Hackern & Viren – Tag und Nacht",
-                  desc: "Wir sind für Sie da, wenn es darauf ankommt – 24/7 Notfall-Support."
+                  title: "Soforthilfe bei Hackern & Viren – werktags schnell erreichbar",
+                  desc: "Wir sind für Sie da, wenn es darauf ankommt – schnelle Hilfe während der Geschäftszeiten."
                 }
               ].map((item, i) => (
                 <div key={i} className="backdrop-blur-md p-8 rounded-2xl shadow-2xl border text-center flex flex-col items-center">

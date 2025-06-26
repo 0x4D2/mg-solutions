@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import Head from "next/head";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
@@ -9,9 +10,10 @@ const sectionVariants = {
 };
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "", privacy: false, captcha: "", customerType: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "", privacy: false, customerType: "" });
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
+  const [recaptchaError, setRecaptchaError] = useState("");
   const captchaWord = "sicher";
 
   const handleChange = e => {
@@ -22,23 +24,33 @@ export default function ContactPage() {
     }));
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setError("");
+    setRecaptchaError("");
     if (!form.privacy) {
       setError("Bitte akzeptieren Sie die Datenschutzerklärung.");
       return;
     }
-    if (form.captcha.trim().toLowerCase() !== captchaWord) {
-      setError("Bitte geben Sie das Wort 'sicher' korrekt ein.");
+    // reCAPTCHA v3 Token holen
+    if (typeof window.grecaptcha === "undefined") {
+      setRecaptchaError("reCAPTCHA konnte nicht geladen werden. Bitte versuchen Sie es später erneut.");
       return;
     }
-    // Hier könnte ein API-Call erfolgen
+    const token = await window.grecaptcha.execute("RECAPTCHA_SITE_KEY", { action: "submit" });
+    if (!token) {
+      setRecaptchaError("reCAPTCHA-Überprüfung fehlgeschlagen. Bitte versuchen Sie es erneut.");
+      return;
+    }
+    // Hier sollte das Token an das Backend gesendet und geprüft werden!
     setSent(true);
   };
 
   return (
     <>
+      <Head>
+        <script src="https://www.google.com/recaptcha/api.js?render=RECAPTCHA_SITE_KEY"></script>
+      </Head>
       <IndexNavbar fixed />
       <main className="cyber-bg pt-20 bg-gray-900 text-white min-h-screen">
         <section className="relative py-20 bg-gradient-to-br from-blue-900 via-gray-900 to-gray-900 text-center overflow-hidden">
@@ -110,6 +122,9 @@ export default function ContactPage() {
                         <span className="text-white">Unternehmen</span>
                       </label>
                     </div>
+                    {error && !form.customerType && (
+                      <div className="text-red-500 font-semibold mt-1">Bitte wählen Sie einen Kundentyp.</div>
+                    )}
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -128,6 +143,9 @@ export default function ContactPage() {
                         pattern="[A-Za-zÄÖÜäöüß\-\s]+"
                         title="Bitte geben Sie einen gültigen Namen ein."
                       />
+                      {error && !form.name && (
+                        <div className="text-red-500 font-semibold mt-1">Bitte geben Sie Ihren Namen ein.</div>
+                      )}
                     </div>
                     <div>
                       <label className="block text-blue-200 font-semibold mb-1" htmlFor="phone">
@@ -145,6 +163,9 @@ export default function ContactPage() {
                         pattern="[0-9+ ]{6,20}"
                         title="Bitte geben Sie nur Zahlen und ggf. + ein."
                       />
+                      {error && !form.phone && (
+                        <div className="text-red-500 font-semibold mt-1">Bitte geben Sie Ihre Telefonnummer ein.</div>
+                      )}
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -164,6 +185,9 @@ export default function ContactPage() {
                         pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
                         title="Bitte geben Sie eine gültige E-Mail-Adresse ein."
                       />
+                      {error && !form.email && (
+                        <div className="text-red-500 font-semibold mt-1">Bitte geben Sie Ihre E-Mail-Adresse ein.</div>
+                      )}
                     </div>
                     <div>
                       <label className="block text-blue-200 font-semibold mb-1" htmlFor="subject">
@@ -183,6 +207,9 @@ export default function ContactPage() {
                         <option value="Angebot">Angebot</option>
                         <option value="Support">Support</option>
                       </select>
+                      {error && !form.subject && (
+                        <div className="text-red-500 font-semibold mt-1">Bitte wählen Sie einen Betreff.</div>
+                      )}
                     </div>
                   </div>
                   <div>
@@ -197,21 +224,9 @@ export default function ContactPage() {
                       value={form.message}
                       onChange={handleChange}
                     />
-                  </div>
-                  <div>
-                    <label className="block text-blue-200 font-semibold mb-1" htmlFor="captcha">
-                      Spamschutz: Bitte geben Sie das Wort <b>sicher</b> ein <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-black focus:outline-none focus:border-blue-500 transition"
-                      type="text"
-                      id="captcha"
-                      name="captcha"
-                      required
-                      value={form.captcha}
-                      onChange={handleChange}
-                      autoComplete="off"
-                    />
+                    {error && !form.message && (
+                      <div className="text-red-500 font-semibold mt-1">Bitte geben Sie eine Nachricht ein.</div>
+                    )}
                   </div>
                   <div className="flex items-center bg-gray-700 rounded-lg p-3 border border-green-500 mt-2">
                     <input
@@ -228,8 +243,11 @@ export default function ContactPage() {
                       Ja, ich möchte Antworten auf meine Frage erhalten und akzeptiere die <a href="/privacy" className="underline text-blue-400 hover:text-blue-300" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>.
                     </label>
                   </div>
-                  {error && (
-                    <div className="text-red-400 font-semibold text-center mt-2">{error}</div>
+                  {error && !form.privacy && (
+                    <div className="text-red-500 font-semibold mt-1">Bitte akzeptieren Sie die Datenschutzerklärung.</div>
+                  )}
+                  {recaptchaError && (
+                    <div className="text-red-500 font-semibold text-center mt-2">{recaptchaError}</div>
                   )}
                   <div className="mt-4">
                     <button
@@ -270,15 +288,15 @@ export default function ContactPage() {
             <div className="text-center mt-12 flex flex-col md:flex-row gap-6 justify-center items-center">
               <a href="mailto:info@ichwillsicherheit.de" className="flex items-center bg-blue-900/80 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-xl shadow transition-all duration-300 text-lg gap-3">
                 <span className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-700 mr-2">
-                  {/* Mail Icon modern */}
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M2.25 6.75A2.25 2.25 0 014.5 4.5h15a2.25 2.25 0 012.25 2.25v10.5A2.25 2.25 0 0119.5 19.5h-15A2.25 2.25 0 012.25 17.25V6.75zm0 0l9.75 7.5 9.75-7.5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  {/* Envelope Icon */}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12l-4-4-4 4m8 0v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6m16 0V6a2 2 0 00-2-2H6a2 2 0 00-2 2v6" /></svg>
                 </span>
                 <span>E-Mail: info@ichwillsicherheit.de</span>
               </a>
               <a href="tel:+4917675468985" className="flex items-center bg-blue-900/80 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-xl shadow transition-all duration-300 text-lg gap-3">
                 <span className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-700 mr-2">
                   {/* Phone Icon modern */}
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 5.75A2.25 2.25 0 015.25 3.5h1.5a2.25 2.25 0 012.25 2.25v1.5a2.25 2.25 0 01-2.25 2.25h-1.5A2.25 2.25 0 013 7.25v-1.5zm0 0l7.5 7.5m0 0l7.5-7.5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                 </span>
                 <span>Telefon: +49 176 754 689 85 <span className="ml-2 text-base text-blue-200">(Mo-Fr, 9-18 Uhr)</span></span>
               </a>

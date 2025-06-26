@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import TypingEffect from "react-typing-effect";
+import TypeIt from "typeit-react";
 import { particlesConfig } from "../particles-config";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
@@ -113,12 +113,13 @@ export default function Index() {
               <div className="container mx-auto px-4 relative z-10">
                 <div className="pt-32 sm:pt-0 text-center pb-12">
                   <h2 className="hero-title font-semibold text-4xl sm:text-6xl text-white">
-                    <TypingEffect
-                      text={["Ihre digitale Zukunft sicher gestalten"]}
-                      speed={50}
-                      eraseDelay={1000000}
-                      cursor={"!"}
-                      cursorClassName="hidden-cursor"
+                    <TypeIt
+                      options={{
+                        strings: ["Ihre digitale Zukunft sicher gestalten"],
+                        speed: 50,
+                        waitUntilVisible: true,
+                        cursor: true
+                      }}
                     />
                   </h2>
                   <p className="mt-6 text-xl sm:text-2xl leading-relaxed text-gray-500 max-w-3xl mx-auto">
@@ -152,14 +153,7 @@ export default function Index() {
                         width={200}
                         height={70}
                       />
-                      {/* Platzhalter für weitere Logos */}
-                      {/* <PartnerLogo
-                        href="#"
-                        src="/img/partner2-logo.png"
-                        alt="Partner XYZ"
-                        width={180}
-                        height={70}
-                      /> */}
+                      
                     </div>
                   </div>
                 </div>

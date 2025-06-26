@@ -18,12 +18,15 @@ export default function Imprint() {
               Inhaber: Memo Güngör
             </p>
             <p className="mt-4">
-              <strong>Eingetragener Firmensitz:</strong><br />
-              Im Sandkamp 16, 32791 Lage
+              <strong>Anschrift:</strong><br />
+              Im Sandkamp 16<br />
+              32791 Lage<br />
+              Deutschland
             </p>
             <p className="mt-4">
               <strong>Kontaktinformationen:</strong><br />
-              E-Mail: info@ichwillsicherheit.de
+              E-Mail: info@ichwillsicherheit.de<br />
+              Telefon: {['+49',' 176',' 754',' 68985'].join(' ')}
             </p>
             <p className="mt-4">
               <strong>Umsatzsteuer-Nr.:</strong><br />
