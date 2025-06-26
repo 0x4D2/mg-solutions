@@ -13,8 +13,8 @@ export default async function handler(req, res) {
     port: 465,
     secure: true,
     auth: {
-      user: "info@ichwillsicherheit.de", // Deine Strato-Mailadresse
-      pass: process.env.STRATO_MAIL_PASS // Passwort aus Umgebungsvariable
+      user: "info@ichwillsicherheit.de", 
+      pass: process.env.STRATO_MAIL_PASS 
     }
   });
 
