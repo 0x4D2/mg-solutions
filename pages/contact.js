@@ -37,19 +37,34 @@ export default function ContactPage() {
       setRecaptchaError("reCAPTCHA konnte nicht geladen werden. Bitte versuchen Sie es später erneut.");
       return;
     }
-    const token = await window.grecaptcha.execute("RECAPTCHA_SITE_KEY", { action: "submit" });
+    const token = await window.grecaptcha.execute("6LeFzm4rAAAAAAVjzEG_0riyYW7dcMdJlOIDWfIJ", { action: "submit" });
     if (!token) {
       setRecaptchaError("reCAPTCHA-Überprüfung fehlgeschlagen. Bitte versuchen Sie es erneut.");
       return;
     }
-    // Hier sollte das Token an das Backend gesendet und geprüft werden!
-    setSent(true);
+    // Formulardaten an die API senden
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form)
+      });
+      if (response.ok) {
+        setSent(true);
+        setError("");
+      } else {
+        const data = await response.json();
+        setError(data.message || "Fehler beim Senden der Nachricht. Bitte versuchen Sie es später erneut.");
+      }
+    } catch (err) {
+      setError("Fehler beim Senden der Nachricht. Bitte versuchen Sie es später erneut.");
+    }
   };
 
   return (
     <>
       <Head>
-        <script src="https://www.google.com/recaptcha/api.js?render=RECAPTCHA_SITE_KEY"></script>
+        <script src="https://www.google.com/recaptcha/api.js?render=6LeFzm4rAAAAAAVjzEG_0riyYW7dcMdJlOIDWfIJ"></script>
       </Head>
       <IndexNavbar fixed />
       <main className="cyber-bg pt-20 bg-gray-900 text-white min-h-screen">
@@ -258,6 +273,12 @@ export default function ContactPage() {
                     </button>
                   </div>
                 </form>
+              )}
+              {error && (
+                <div className="text-red-500 font-semibold text-center mt-4">{error}</div>
+              )}
+              {sent && !error && (
+                <div className="text-green-400 font-semibold text-center mt-4">Nachricht erfolgreich übermittelt!</div>
               )}
               {/* Trust Badges */}
               <div className="flex justify-center gap-6 mt-8">
