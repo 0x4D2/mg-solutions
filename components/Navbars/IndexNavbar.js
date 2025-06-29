@@ -7,6 +7,9 @@ const NAVBAR_STYLES = {
   borderBottom: "0.5px solid #00FFFF"
 };
 
+const NAV_LINK_STYLES =
+  "glow-link font-semibold px-3 py-2 text-lg block cursor-pointer";
+
 const Logo = () => (
   <Link href="/" passHref legacyBehavior>
     <a className="flex items-center cursor-pointer" aria-label="Zur Startseite">
@@ -46,28 +49,23 @@ export default function Navbar() {
       className="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg"
       style={NAVBAR_STYLES}
     >
-      <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-        <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+      <div className="container px-4 mx-auto flex flex-row items-center justify-between">
+        {/* Logo immer ganz links */}
+        <div className="flex items-center flex-shrink-0 mr-4">
           <Logo />
+        </div>
+        {/* Desktop-Links immer ganz rechts */}
+        <div className="hidden lg:flex flex-1 justify-end items-center">
+          <IndexDropdown navLinkClassName={NAV_LINK_STYLES} alwaysShowAbout />
+        </div>
+        {/* Mobile Menu Button */}
+        <div className="lg:hidden flex items-center">
           <MobileMenuButton onClick={() => setNavbarOpen(!navbarOpen)} />
         </div>
-
-        <div
-          className={`lg:flex flex-grow items-center lg:bg-opacity-0 lg:shadow-none ${
-            navbarOpen ? "block" : "hidden"
-          }`}
-          id="navbar-content"
-        >
-          <ul className="flex flex-col lg:flex-row list-none lg:mr-auto">
-            <li className="flex items-center">
-              <div className="hidden lg:flex space-x-4 items-center relative">
-                <IndexDropdown />
-              </div>
-            </li>
-          </ul>
-
-          <NavLinksMobile isOpen={navbarOpen} />
-        </div>
+      </div>
+      {/* Mobile Nav (unterhalb der Navbar) */}
+      <div className={`lg:hidden w-full ${navbarOpen ? "block" : "hidden"}`}>
+        <NavLinksMobile isOpen={navbarOpen} navLinkClassName={NAV_LINK_STYLES} />
       </div>
     </nav>
   );

@@ -1,4 +1,21 @@
-/* Basis-Hintergrund (für den Fall, dass Particles geladen werden) */
+/* Stellt sicher, dass der Scroll-Reset funktioniert */
+html,
+body,
+#__next {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.main-container {
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+html {
+  scroll-behavior: auto !important;
+}
+
 html,
 body {
   margin: 0;
@@ -6,15 +23,15 @@ body {
   height: 100%;
   box-sizing: border-box;
   overflow-x: hidden;
-  background-color: #001f3f; /* Dunkelblau */
+  background-color: #001f3f;
+  /* Dunkelblau */
 }
 
-
-/* Navbar – Transparent mit Blur-Effekt */
 nav {
   background-color: rgba(0, 31, 63, 0.7) !important;
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px); /* Für Safari */
+  -webkit-backdrop-filter: blur(8px);
+  /* Für Safari */
   border-bottom: 0.5px solid #00FFFF;
   box-shadow: none !important;
 }
@@ -26,34 +43,42 @@ nav {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Hinter allem */
-  pointer-events: none;
+  z-index: -1;
+  /* Hinter allem */
 }
+
 #root,
 #__next {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
+
 /* Optional: App-Wrapper für Layout */
 .app-wrapper {
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Seite füllt Viewport, Footer rutscht ans Ende */
+  min-height: 100vh;
+  /* Seite füllt Viewport, Footer rutscht ans Ende */
 }
+
 /* Haupt-Content mit Abstand unter Navbar */
 .main-content {
   position: relative;
-  z-index: 10; /* Über den Particles */
-  padding-top: 80px; /* Höhe der Navbar */
+  z-index: 10;
+  /* Über den Particles */
+  padding-top: 80px;
+  /* Höhe der Navbar */
 }
 
 h1 {
-  color: #00FFFF; /* Cyan */
+  color: #00FFFF;
+  /* Cyan */
 }
+
 h2 {
-  color: #00FFFF; 
+  color: #00FFFF;
 }
 
 /* NEON CYAN/SCHWARZ THEME ELEMENTS */
@@ -81,7 +106,7 @@ h2 {
 /* Hintergrund-Effekte */
 .neon-bg-pattern {
   background-color: var(--neon-dark);
-  background-image: 
+  background-image:
     radial-gradient(circle at 10% 20%, rgba(0, 255, 255, 0.05) 0%, transparent 20%),
     linear-gradient(to bottom, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 100% 30px;
@@ -90,7 +115,7 @@ h2 {
 /* Border/Box-Effekte */
 .neon-border {
   border: 1px solid var(--neon-primary);
-  box-shadow: 
+  box-shadow:
     0 0 10px rgba(0, 255, 255, 0.5),
     inset 0 0 10px rgba(0, 255, 255, 0.3);
 }
@@ -133,12 +158,10 @@ h2 {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(
-    to bottom right,
-    transparent 45%,
-    rgba(0, 255, 255, 0.3) 50%,
-    transparent 55%
-  );
+  background: linear-gradient(to bottom right,
+      transparent 45%,
+      rgba(0, 255, 255, 0.3) 50%,
+      transparent 55%);
   transform: rotate(30deg);
   transition: all 0.5s ease;
 }
@@ -157,6 +180,7 @@ h2 {
     opacity: 0.7;
     text-shadow: 0 0 5px var(--neon-primary);
   }
+
   to {
     opacity: 1;
     text-shadow: 0 0 20px var(--neon-primary);
@@ -164,15 +188,26 @@ h2 {
 }
 
 /* Utility Klassen */
-.text-cyan-400 { color: var(--neon-primary); }
-.bg-cyan-900 { background-color: rgba(0, 50, 50, 0.9); }
-.border-cyan-400 { border-color: var(--neon-primary); }
-.dropdown-fixed {
-  transform: translate3d(0, 0, 0) !important;
-  background-color:#00b4b4;
+.text-cyan-400 {
+  color: var(--neon-primary);
 }
 
-html, body, #__next {
+.bg-cyan-900 {
+  background-color: rgba(0, 50, 50, 0.9);
+}
+
+.border-cyan-400 {
+  border-color: var(--neon-primary);
+}
+
+.dropdown-fixed {
+  transform: translate3d(0, 0, 0) !important;
+  background-color: #00b4b4;
+}
+
+html,
+body,
+#__next {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -180,4 +215,99 @@ html, body, #__next {
 
 #__next {
   flex: 1;
+}
+
+/* Glow-Laser-Effekt für Links: animierter Laser von links nach rechts beim Hover */
+.glow-link {
+  position: relative;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.2s;
+  overflow: visible;
+  display: inline-block;
+  /* Damit ::after nur so breit wie das Wort ist */
+}
+
+.glow-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #00ffff 50%, transparent 100%);
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.glow-link:hover,
+.glow-link:focus {
+  color: #00ffff;
+  text-shadow: 0 0 8px #00ffff, 0 0 16px #00ffff;
+  text-decoration: none;
+}
+
+.glow-link:hover::after,
+.glow-link:focus::after {
+  width: 100%;
+}
+
+/* Unterstreichung für alle Links global entfernen, auch im Hover/Active/Focus */
+a,
+a:visited,
+a:active,
+a:focus,
+a:hover {
+  text-decoration: none !important;
+}
+
+/* CSS Fake-Particle-Background für die Startseite */
+.particle-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle-bg span {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  background: #00ffff;
+  opacity: 0.18;
+  filter: blur(1px);
+  animation: particle-move 12s linear infinite;
+}
+
+@keyframes particle-move {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.18;
+  }
+
+  50% {
+    opacity: 0.32;
+  }
+
+  100% {
+    transform: translateY(-60vh) scale(1.2);
+    opacity: 0.18;
+  }
+}
+
+button,
+.neon-btn,
+button:focus,
+button:hover,
+a.neon-btn,
+a.button,
+a.btn,
+a:focus,
+a:hover {
+  text-decoration: none !important;
 }

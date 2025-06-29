@@ -93,12 +93,11 @@ export default function FAQPage() {
         />
       </Helmet>
       <IndexNavbar fixed />
-      <div className="cyber-bg">
-
+      <div className="cyber-bg min-h-screen">
         {/* Hero */}
         <div className="cyber-bg">
 
-        <section className="relative pt-20 items-center flex min-h-[80vh] ">
+        <section className="py-16 relative items-center flex min-h-[80vh] ">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-5xl font-bold">
               Cybersecurity - Häufige Fragen

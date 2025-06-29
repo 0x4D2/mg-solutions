@@ -67,7 +67,7 @@ export default function ContactPage() {
         <script src="https://www.google.com/recaptcha/api.js?render=6LeFzm4rAAAAAAVjzEG_0riyYW7dcMdJlOIDWfIJ"></script>
       </Head>
       <IndexNavbar fixed />
-      <main className="cyber-bg pt-20 bg-gray-900 text-white min-h-screen">
+      <main className="cyber-bg bg-gray-900 text-white min-h-screen">
         <section className="relative py-20 bg-gradient-to-br from-blue-900 via-gray-900 to-gray-900 text-center overflow-hidden">
           <div className="absolute inset-0 bg-[url('/img/grid-pattern.svg')] opacity-10"></div>
           <div className="container mx-auto px-4 relative z-10">

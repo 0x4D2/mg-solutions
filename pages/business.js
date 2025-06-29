@@ -3,31 +3,15 @@ import { motion } from "framer-motion";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 import Link from 'next/link';
-
-// Animationen wie auf der Privat-Seite
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 }
-  }
-};
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.5 } }
-};
-const hoverEffect = {
-  scale: 1.03,
-  transition: { type: "spring", stiffness: 400, damping: 10 }
-};
+import { containerVariants, itemVariants, hoverEffect } from "components/framerVariants";
 
 export default function BusinessPage() {
   return (
     <>
       <IndexNavbar fixed />
-      <div className="bg-gray-900 cyber-bg pt-20">
+      <div className="bg-gray-900 cyber-bg">
         {/* Hero Section */}
-        <section className="relative py-32 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-center overflow-hidden">
+        <section className="relative py-16 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-center overflow-hidden">
           <div className="absolute inset-0 bg-[url('/img/grid-pattern.svg')] opacity-10"></div>
           <div className="container mx-auto px-4 relative z-10">
             <motion.h1
@@ -435,68 +419,91 @@ function RechnerBox() {
   const [employees, setEmployees] = React.useState(100);
   const [salary, setSalary] = React.useState(45);
   const [days, setDays] = React.useState(3);
+  const [showInfo, setShowInfo] = React.useState(false);
   const totalLoss = employees * salary * 8 * days;
   return (
-    <div className="space-y-6 text-cyan-100">
-      <div>
-        <label className="block text-sm text-white font-medium mb-2">
-          Mitarbeiterzahl: <span className="text-cyan-300 font-bold">{employees}</span>
+    <div className="space-y-8 text-cyan-100">
+      <div className="flex items-center gap-2 mb-2">
+        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-cyan-700/80 text-white mr-2">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        </span>
+        <label className="block text-base text-white font-semibold">
+          Schritt 1: Mitarbeiterzahl wählen
         </label>
+        <button
+          type="button"
+          className="ml-1 text-cyan-400 hover:text-cyan-200 focus:outline-none"
+          onClick={() => setShowInfo((v) => !v)}
+          aria-label="Info zur Berechnung anzeigen"
+        >
+          <svg className="w-4 h-4 inline" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        </button>
+        {showInfo && (
+          <span className="ml-2 text-xs bg-cyan-900/80 text-cyan-200 px-2 py-1 rounded shadow-lg z-20">
+            Formel: Mitarbeiter × Gehalt × 8h × Ausfalltage
+          </span>
+        )}
+      </div>
+      <div className="relative mb-4">
         <input
           type="range"
           min="1"
           max="500"
           value={employees}
           onChange={e => setEmployees(Number(e.target.value))}
-          className="w-full h-1.5 bg-cyan-900 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+          className="w-full h-2 bg-cyan-900 rounded-lg appearance-none cursor-pointer accent-cyan-400"
         />
+        <div className="absolute left-1/2 -top-8 -translate-x-1/2 text-lg font-bold text-cyan-300 bg-gray-900 px-4 py-1 rounded shadow">
+          👥 {employees} Mitarbeiter
+        </div>
         <div className="flex justify-between text-xs text-cyan-400 mt-1">
           <span>1</span>
           <span>100</span>
           <span>500+</span>
         </div>
       </div>
-      <div>
-        <label className="block text-sm text-white font-medium mb-2">Durchschnittsgehalt (€/h)</label>
+      <div className="mb-4">
+        <label className="block text-base text-white font-semibold mb-2">Schritt 2: Durchschnittsgehalt wählen</label>
         <select
-          className="w-full bg-gray-900 border border-cyan-500/30 text-cyan-100 rounded-lg px-4 py-3 focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+          className="w-full bg-gray-900 border border-cyan-500/30 text-cyan-100 rounded-lg px-4 py-3 focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-lg"
           value={salary}
           onChange={e => setSalary(Number(e.target.value))}
         >
-          <option value="30">30 € (Einsteiger)</option>
-          <option value="45">45 € (Mittelstand)</option>
-          <option value="65">65 € (Experten)</option>
+          <option value="30">💶 30 € (Einsteiger)</option>
+          <option value="45">💶 45 € (Mittelstand)</option>
+          <option value="65">💶 65 € (Experten)</option>
         </select>
       </div>
-      <div>
-        <label className="block text-sm text-white font-medium mb-2">Mögliche Ausfallzeit</label>
-        <div className="grid grid-cols-3 gap-3">
+      <div className="mb-4">
+        <label className="block text-base text-white font-semibold mb-2">Schritt 3: Mögliche Ausfallzeit</label>
+        <div className="flex gap-4 justify-center">
           {[1, 3, 7].map(d => (
             <button
               key={d}
               type="button"
               onClick={() => setDays(d)}
-              className={`py-2 px-3 rounded-lg border transition-all font-bold
+              className={`flex flex-col items-center py-3 px-6 rounded-xl border-2 font-bold transition-all duration-100 focus:outline-none text-lg shadow-sm
                 ${days === d
-                  ? "bg-cyan-600 border-cyan-400 text-white shadow-lg"
-                  : "bg-gray-900 border-gray-700 text-cyan-200 hover:border-cyan-400"}`}
+                  ? "bg-red-500/90 border-red-400 text-white scale-105 ring-2 ring-red-300"
+                  : "bg-gray-900 border-cyan-700 text-cyan-200 hover:border-cyan-400 hover:bg-cyan-900/30"}`}
+              style={{ minWidth: 90 }}
             >
-              {d} Tag{d > 1 ? "e" : ""}
+              <span className="text-2xl mb-1">{d === 1 ? "⏱️" : d === 3 ? "⚡" : "🔥"}</span>
+              <span>{d} {d === 1 ? "Tag" : "Tage"}</span>
             </button>
           ))}
         </div>
       </div>
       <div className="mt-8 p-5 bg-gradient-to-r from-gray-900/80 to-cyan-900/20 border border-cyan-500/30 rounded-lg relative overflow-hidden">
-        <div className="relative z-10">
-          <div className="flex justify-between items-center">
-            <span className="text-white font-medium">Potentieller Verlust:</span>
-            <span className="text-2xl md:text-3xl font-bold text-red-500 underline">
-              {new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(totalLoss)}
-            </span>
-          </div>
-          <div className="text-xs italic text-white mt-2">
-            * Basierend auf Produktivitätsausfällen und durchschnittlichen Wiederherstellungskosten
-          </div>
+        <div className="relative z-10 flex flex-col items-center gap-2">
+          <span className="text-white font-semibold text-lg">Ihr geschätzter Verlust:</span>
+          <span className="text-4xl md:text-5xl font-extrabold text-red-500 underline">
+            {new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(totalLoss)}
+          </span>
+          <span className="text-xs italic text-cyan-100 mt-2 text-center">
+            * Basierend auf Produktivitätsausfällen und durchschnittlichen Wiederherstellungskosten<br/>
+            <span className="text-cyan-300">Tipp:</span> Jetzt handeln spart bares Geld!
+          </span>
         </div>
       </div>
     </div>

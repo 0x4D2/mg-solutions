@@ -84,19 +84,19 @@ export default function Index() {
   return (
     <div className="flex flex-col min-h-screen relative bg-[#001f3f]">
       <IndexNavbar fixed />
-      <main className="cyber-bg flex-grow relative z-10">
-        <section className="header relative pt-16 items-center text-center px-4 sm:px-0">
+      <main className="cyber-bg flex-grow relative z-10 ">
+        <section className="header relative pt-8 items-center text-center px-4 sm:px-0">
           <div className="pt-32 sm:pt-0 pb-12 max-w-5xl mx-auto">
-            <h2 className="hero-title font-semibold text-4xl sm:text-6xl text-white">
+            <h1 className="hero-title font-semibold text-4xl sm:text-6xl text-white">
               <TypeIt
                 options={{
-                  strings: ["Ihre digitale Zukunft sicher gestalten"],
+                  strings: ["Ihre digitale Zukunft sicher gestalten!"],
                   speed: 50,
                   waitUntilVisible: true,
-                  cursor: true,
+                  cursor: false,
                 }}
               />
-            </h2>
+            </h1>
             <p className="mt-6 text-xl sm:text-2xl leading-relaxed text-gray-500 max-w-3xl mx-auto">
               Wir bieten maßgeschneiderte Sicherheitslösungen, um Ihre
               wertvollen digitalen Assets zu schützen.
@@ -123,7 +123,7 @@ export default function Index() {
               <div className="flex flex-wrap justify-center gap-4 sm:gap-6 px-4">
                 <PartnerLogo
                   href="https://www.cyber-sicherheitsnetzwerk.de"
-                  src="/img/csn-logo.png"
+                  src="/img/CSN-LOGO1.png"
                   alt="Mitglied im Cyber-Sicherheitsnetzwerk"
                   width={200}
                   height={70}

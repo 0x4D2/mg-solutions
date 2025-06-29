@@ -12,19 +12,20 @@ const ALL_NAV_LINKS = [
   { name: "Datenschutz", path: "/privacy" }
 ];
 
-export const NavLinksDesktop = () => {
-  const maxVisible = 3;
+export const NavLinksDesktop = ({ navLinkClassName = "", alwaysShowAbout }) => {
+  // Immer die ersten 4 Links anzeigen, inkl. Über uns
+  const maxVisible = alwaysShowAbout ? 4 : 3;
   const visibleLinks = ALL_NAV_LINKS.slice(0, maxVisible);
   const extraLinks = ALL_NAV_LINKS.slice(maxVisible);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <div className="hidden lg:flex space-x-4 items-left relative">
+    <div className="hidden lg:flex space-x-4 items-center relative">
       {visibleLinks.map((link) => (
         <Link
           key={link.path}
           href={link.path}
-          className="text-white hover:text-cyan-400 px-3 py-2 text-lg font-bold transition-colors duration-200"
+          className={navLinkClassName + " px-3 py-2 text-lg font-bold"}
         >
           {link.name}
         </Link>
@@ -34,7 +35,7 @@ export const NavLinksDesktop = () => {
         <div className="relative">
           <button
             onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="text-white hover:text-cyan-400 px-3 py-2 text-lg font-bold"
+            className={navLinkClassName + " px-3 py-2 text-lg font-bold"}
           >
             Mehr ▾
           </button>
@@ -46,7 +47,7 @@ export const NavLinksDesktop = () => {
                   key={link.path}
                   href={link.path}
                   style={{ textAlign: "left" }}
-                  className="block px-4 py-2 text-white hover:text-cyan-400 transition-colors duration-150 hover:bg-gray-700"
+                  className={"block px-4 py-2 " + navLinkClassName + " transition-colors duration-150 hover:bg-gray-700"}
                   onClick={() => setDropdownOpen(false)}
                 >
                   {link.name}
@@ -60,7 +61,7 @@ export const NavLinksDesktop = () => {
   );
 };
 
-export const NavLinksMobile = ({ isOpen }) => {
+export const NavLinksMobile = ({ isOpen, navLinkClassName = "" }) => {
   if (!isOpen) return null;
 
   return (
@@ -69,7 +70,7 @@ export const NavLinksMobile = ({ isOpen }) => {
         <Link
           key={link.path}
           href={link.path}
-          className="text-white hover:text-cyan-400 py-3 text-lg font-medium transition-colors duration-200 border-b border-blue-700"
+          className={navLinkClassName + " py-3 text-lg font-medium border-b border-blue-700"}
         >
           {link.name}
         </Link>
@@ -78,6 +79,6 @@ export const NavLinksMobile = ({ isOpen }) => {
   );
 };
 
-const IndexDropdown = () => <NavLinksDesktop />;
+const IndexDropdown = (props) => <NavLinksDesktop {...props} />;
 
 export default IndexDropdown;

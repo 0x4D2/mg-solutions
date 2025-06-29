@@ -52,40 +52,39 @@ export default function AboutPage() {
               </p>
               <div className="space-y-2 mb-4">
                 <div className="flex items-center gap-3">
-                  {/* Zertifikate Icon */}
+                  {/* Zertifikate Icon: Academic Cap */}
                   <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-800">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 01-8 0V5a4 4 0 018 0v2z" />
-                      <circle cx="12" cy="17" r="4" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0v6" />
                     </svg>
                   </span>
                   <span className="text-blue-100">Zertifikate im Aufbau → Praxiswissen täglich erweitert</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  {/* User Icon */}
+                  {/* User Icon: Shield Check for Schutz */}
                   <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-800">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <circle cx="12" cy="8" r="4" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 20v-1a4 4 0 014-4h8a4 4 0 014 4v1" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4l7 4v4c0 5.25-3.5 9.74-7 12-3.5-2.26-7-6.75-7-12V8l7-4z" />
                     </svg>
                   </span>
                   <span className="text-blue-100">Privatpersonen geschützt → Echte Probleme gelöst</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  {/* Office/Business Icon */}
+                  {/* Office/Business Icon: Briefcase */}
                   <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-800">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <rect x="3" y="7" width="7" height="13" rx="2" />
-                      <rect x="14" y="3" width="7" height="17" rx="2" />
+                      <rect x="2" y="7" width="20" height="13" rx="2" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 3v4M8 3v4" />
                     </svg>
                   </span>
                   <span className="text-blue-100">KMU abgesichert → Lokale Wirtschaft gestärkt</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  {/* Behörden/Shield Icon */}
+                  {/* Behörden/Shield Icon: Government/Building */}
                   <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-800">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4l7 4v4c0 5.25-3.5 9.74-7 12-3.5-2.26-7-6.75-7-12V8l7-4z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21h18M6 21V9m12 12V9M4 9l8-6 8 6" />
                     </svg>
                   </span>
                   <span className="text-blue-100">Behörden beraten → Kritische Infrastrukturen verteidigt</span>
@@ -113,9 +112,9 @@ export default function AboutPage() {
                 <li className="flex items-center gap-2"><span className="text-green-400">✔</span>Ständige Weiterbildung durch:</li>
               </ul>
               <ul className="space-y-1 text-blue-200 ml-6 mb-4">
-                <li className="flex items-center gap-2"><span className="inline-block w-6 h-6"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6h13" /></svg></span>Cybersecurity-Podcasts</li>
-                <li className="flex items-center gap-2"><span className="inline-block w-6 h-6"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m4 4h-1v-4h-1" /></svg></span>HackTheBox-Challenges</li>
-                <li className="flex items-center gap-2"><span className="inline-block w-6 h-6"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 21h8M12 17v4m0-4a4 4 0 100-8 4 4 0 000 8z" /></svg></span>Digitale Ersthelfer-Zertifikate</li>
+                <li className="flex items-center gap-2"><span className="inline-block w-6 h-6"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 20v-6m0 0V4m0 10l3-3m-3 3l-3-3" /></svg></span>Cybersecurity-Podcasts</li>
+                <li className="flex items-center gap-2"><span className="inline-block w-6 h-6"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12l2 2 4-4" /></svg></span>HackTheBox-Challenges</li>
+                <li className="flex items-center gap-2"><span className="inline-block w-6 h-6"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="4" y="4" width="16" height="16" rx="2" /></svg></span>Digitale Ersthelfer-Zertifikate</li>
               </ul>
               <p className="text-blue-200">Jedes neue Wissen wende ich sofort bei Kunden an – für echte Lösungen.</p>
             </motion.div>
@@ -159,9 +158,34 @@ export default function AboutPage() {
               <h2 className="text-3xl font-bold mb-4 text-blue-400">Meine Vision: Sicherheit als Gemeinschaftsaufgabe</h2>
               <p className="text-gray-200 text-lg mb-4">Cybersicherheit ist wie ein Muskel – man muss ihn trainieren.</p>
               <ul className="space-y-2 text-blue-100 text-lg mb-4">
-                <li className="flex items-center gap-2"><span className="inline-block w-6 h-6"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4" /></svg></span>Krankenhäuser & kritische Infrastrukturen schützen</li>
-                <li className="flex items-center gap-2"><span className="inline-block w-6 h-6"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg></span>Cyberangriffe aufklären & vorbeugen</li>
-                <li className="flex items-center gap-2"><span className="inline-block w-6 h-6"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87M6.13 11a4 4 0 017.74 0" /></svg></span>Deutschland gemeinsam sicherer machen</li>
+                <li className="flex items-center gap-2">
+                  <span className="inline-block w-6 h-6">
+                    {/* Krankenhaus/Shield Heart Icon */}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 21C12 21 4 13.5 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12.91 3.81 14 5.08C15.09 3.81 16.76 3 18.5 3C21.58 3 24 5.42 24 8.5C24 13.5 16 21 16 21H12Z" />
+                    </svg>
+                  </span>
+                  Krankenhäuser & kritische Infrastrukturen schützen
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="inline-block w-6 h-6">
+                    {/* Search/Shield Icon */}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <circle cx="11" cy="11" r="8" />
+                      <line x1="21" y1="21" x2="16.65" y2="16.65" strokeWidth={2} stroke="currentColor" strokeLinecap="round" />
+                    </svg>
+                  </span>
+                  Cyberangriffe aufklären & vorbeugen
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="inline-block w-6 h-6">
+                    {/* People/Community Icon */}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87M6.13 11a4 4 0 017.74 0" />
+                    </svg>
+                  </span>
+                  Deutschland gemeinsam sicherer machen
+                </li>
               </ul>
             </motion.div>
           </div>
@@ -179,9 +203,34 @@ export default function AboutPage() {
             >
               <h2 className="text-3xl font-bold mb-4 text-blue-400">Warum Kunden mich schätzen</h2>
               <ul className="space-y-2 text-blue-100 text-lg mb-6">
-                <li className="flex items-center gap-2"><span className="inline-block w-6 h-6"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 17l4 4 4-4m0-5V3a1 1 0 00-1-1H7a1 1 0 00-1 1v9" /></svg></span>Ehrlich gesagt: Ich weiß nicht alles – aber ich finde jede Lösung</li>
-                <li className="flex items-center gap-2"><span className="inline-block w-6 h-6"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4" /></svg></span>Kein Technik-Kauderwelsch, nur klare Worte</li>
-                <li className="flex items-center gap-2"><span className="inline-block w-6 h-6"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg></span>DSGVO-konform – Ihre Daten sind sicher</li>
+                <li className="flex items-center gap-2">
+                  <span className="inline-block w-6 h-6">
+                    {/* Lightbulb/Idea Icon */}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-3-3v6m0-6a6 6 0 100 12 6 6 0 000-12z" />
+                    </svg>
+                  </span>
+                  Ehrlich gesagt: Ich weiß nicht alles – aber ich finde jede Lösung
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="inline-block w-6 h-6">
+                    {/* Chat/Message Icon */}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.77 9.77 0 01-4-.8l-4 1 1-4A8.96 8.96 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                  </span>
+                  Kein Technik-Kauderwelsch, nur klare Worte
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="inline-block w-6 h-6">
+                    {/* Lock/Shield Icon */}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <rect x="3" y="11" width="18" height="10" rx="2" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11V7a5 5 0 0110 0v4" />
+                    </svg>
+                  </span>
+                  DSGVO-konform – Ihre Daten sind sicher
+                </li>
               </ul>
               <div className="bg-blue-900/60 rounded-xl p-6 text-blue-100 text-lg italic shadow flex flex-col md:flex-row items-center gap-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21H5a2 2 0 01-2-2V7a2 2 0 012-2h2l2-2h6l2 2h2a2 2 0 012 2v12a2 2 0 01-2 2z" /></svg>

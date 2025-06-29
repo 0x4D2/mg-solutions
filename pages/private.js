@@ -3,41 +3,20 @@ import { motion } from "framer-motion";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 import Link from 'next/link';
-
-// Animationsvariablen
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5
-    }
-  }
-};
-
-const hoverEffect = {
-  scale: 1.03,
-  transition: { type: "spring", stiffness: 400, damping: 10 }
-};
+import { containerVariants, itemVariants, hoverEffect } from "components/framerVariants";
 
 export default function PrivatePage() {
   return (
     <>
       <IndexNavbar fixed />
-      <main className="pt-20 bg-gray-900 cyber-bg ">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="cyber-bg min-h-screen"
+      >
         {/* Hero Section */}
-        <section className="relative py-32 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-center overflow-hidden">
+        <section className="py-16 relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-center overflow-hidden">
           <div className="absolute inset-0 bg-[url('/img/grid-pattern.svg')] opacity-10"></div>
           <div className="container mx-auto px-4 relative z-10">
             <motion.h1
@@ -246,80 +225,6 @@ export default function PrivatePage() {
           </div>
         </section>
 
-        {/* Pricing */}
-        {/* <section className="py-20 bg-gradient-to-br from-gray-800 to-gray-900 text-white">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl font-bold mb-4 text-white">
-              Unsere Pakete im Vergleich
-            </h2>
-            <p className="text-xl text-blue-200 max-w-3xl mx-auto">
-              Günstiger als Ihr Handyvertrag – aber schützt Ihr ganzes digitales Leben
-            </p>
-          </motion.div>
-          <div className="overflow-x-auto">
-            <table className="min-w-full bg-gray-800 rounded-xl shadow-xl border border-gray-700">
-              <thead>
-                <tr>
-                  <th className="py-4 px-6 text-lg font-bold text-blue-400 bg-gray-900">Basis</th>
-                  <th className="py-4 px-6 text-lg font-bold text-blue-400 bg-gray-900">Premium</th>
-                  <th className="py-4 px-6 text-lg font-bold text-blue-400 bg-gray-900">Familie</th>
-                </tr>
-              </thead>
-              <tbody className="text-center text-white">
-                <tr>
-                  <td className="py-4 px-6">1 Gerät</td>
-                  <td className="py-4 px-6">3 Geräte</td>
-                  <td className="py-4 px-6">Bis zu 6 Geräte</td>
-                </tr>
-                <tr className="bg-gray-900/60">
-                  <td className="py-4 px-6">Sicheres WLAN & Banking</td>
-                  <td className="py-4 px-6">Alles aus Basis + Passwort-Check</td>
-                  <td className="py-4 px-6">Alles aus Premium + Familien-Notfallhilfe</td>
-                </tr>
-                <tr>
-                  <td className="py-4 px-6">Update-Erinnerungen</td>
-                  <td className="py-4 px-6">Backup-Service</td>
-                  <td className="py-4 px-6">Geräte für Kinder inklusive</td>
-                </tr>
-                <tr className="bg-gray-900/60">
-                  <td className="py-4 px-6">E-Mail Support</td>
-                  <td className="py-4 px-6">Soforthilfe 24/7</td>
-                  <td className="py-4 px-6">Soforthilfe 24/7</td>
-                </tr>
-                <tr>
-                  <td className="py-4 px-6 font-bold text-2xl text-blue-300">19€</td>
-                  <td className="py-4 px-6 font-bold text-2xl text-blue-300">29€</td>
-                  <td className="py-4 px-6 font-bold text-2xl text-blue-300">39€</td>
-                </tr>
-                <tr>
-                  <td className="py-4 px-6 text-xs text-blue-200">Monatlich kündbar</td>
-                  <td className="py-4 px-6 text-xs text-blue-200">Monatlich kündbar</td>
-                  <td className="py-4 px-6 text-xs text-blue-200">Monatlich kündbar</td>
-                </tr>
-                <tr>
-                  <td className="py-4 px-6">
-                    <button className="cyber-direct-btn bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2 rounded-full mt-2">Basis wählen</button>
-                  </td>
-                  <td className="py-4 px-6">
-                    <button className="cyber-direct-btn bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2 rounded-full mt-2">Premium wählen</button>
-                  </td>
-                  <td className="py-4 px-6">
-                    <button className="cyber-direct-btn bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2 rounded-full mt-2">Familie wählen</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section> */}
-
         {/* Testimonials */}
         <section className="py-20 bg-gray-900">
           <div className="container mx-auto px-4 max-w-5xl">
@@ -421,20 +326,22 @@ export default function PrivatePage() {
               {/* <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
               Jetzt Termin vereinbaren
             </button> */}
-              <button className="bg-transparent hover:bg-white hover:text-blue-800 text-white font-bold px-8 py-4 rounded-full border-2 border-white transition-all duration-300">
-                <span className="flex items-center justify-center">
-                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  +49 176 75468985
-                </span>
-              </button>
+              <a
+                href="tel:+4917675468985"
+                className="bg-transparent hover:bg-white hover:text-blue-800 text-white font-bold px-8 py-4 rounded-full border-2 border-white transition-all duration-300 flex items-center justify-center"
+                style={{ textDecoration: "none" }}
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                +49 176 75468985
+              </a>
             </motion.div>
           </div>
 
         </section>
 
-      </main >
+      </motion.div>
       <Footer />
       <style jsx global>{`
         @keyframes gradient-x {

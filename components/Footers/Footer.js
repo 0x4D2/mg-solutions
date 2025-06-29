@@ -1,4 +1,10 @@
 import React from "react";
+import Link from "next/link";
+
+const FOOTER_LINK_STYLES =
+  "glow-link font-semibold block pb-2 text-sm cursor-pointer";
+const SOCIAL_ICON_STYLES =
+  "bg-transparent text-white shadow-lg h-10 w-10 flex items-center justify-center rounded-full transition-colors duration-200 hover:text-cyan-400 focus:text-cyan-300 hover:bg-gray-800 focus:bg-gray-800";
 
 export default function Footer() {
   return (
@@ -36,7 +42,7 @@ export default function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-transparent text-white shadow-lg h-10 w-10 flex items-center justify-center rounded-full"
+                    className={SOCIAL_ICON_STYLES}
                   >
                     <i className={link.icon}></i>
                   </a>
@@ -59,12 +65,9 @@ export default function Footer() {
                       { text: "Impressum", href: "/imprint" },
                     ].map((link, idx) => (
                       <li key={idx}>
-                        <a
-                          href={link.href}
-                          className="text-white hover:text-gray-300 font-semibold block pb-2 text-sm"
-                        >
-                          {link.text}
-                        </a>
+                        <Link href={link.href} legacyBehavior>
+                          <a className={FOOTER_LINK_STYLES}>{link.text}</a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
