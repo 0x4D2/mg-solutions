@@ -58,6 +58,7 @@
   },
   "devDependencies": {
     "autoprefixer": "10.4.14",
+    "eslint": "^9.30.0",
     "postcss": "8.4.22",
     "prettier": "^3.5.3"
   }

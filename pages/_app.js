@@ -22,10 +22,7 @@ const ScrollToTop = () => {
         if (mainContainer) mainContainer.scrollTop = 0;
       };
 
-      // Immediate reset
       resetScroll();
-      
-      // Additional resets for safety
       setTimeout(resetScroll, 100);
       setTimeout(resetScroll, 500);
     };
@@ -45,7 +42,7 @@ let pageChangeRoot = null;
 const showPageChange = (url) => {
   const container = document.getElementById("page-transition");
   if (!container) return;
-  
+
   if (!pageChangeRoot) {
     pageChangeRoot = ReactDOM.createRoot(container);
   }
@@ -60,7 +57,6 @@ const hidePageChange = () => {
   }
 };
 
-// Router event handlers
 const handleRouteChangeStart = (url) => {
   console.log(`Loading: ${url}`);
   document.body.classList.add("body-page-transition");
@@ -77,21 +73,22 @@ const handleRouteChangeError = () => {
   document.body.classList.remove("body-page-transition");
 };
 
-Router.events.on("routeChangeStart", handleRouteChangeStart);
-Router.events.on("routeChangeComplete", handleRouteChangeComplete);
-Router.events.on("routeChangeError", handleRouteChangeError);
-
 // Lazy-loaded components
 const LazyParticles = React.lazy(() => import("../particles-config.js"));
 
 export default class MyApp extends App {
   componentDidMount() {
     this.addCopyrightComment();
-    this.cleanupRouterEvents();
+
+    Router.events.on("routeChangeStart", handleRouteChangeStart);
+    Router.events.on("routeChangeComplete", handleRouteChangeComplete);
+    Router.events.on("routeChangeError", handleRouteChangeError);
   }
 
   componentWillUnmount() {
-    this.cleanupRouterEvents();
+    Router.events.off("routeChangeStart", handleRouteChangeStart);
+    Router.events.off("routeChangeComplete", handleRouteChangeComplete);
+    Router.events.off("routeChangeError", handleRouteChangeError);
   }
 
   addCopyrightComment() {
@@ -110,22 +107,6 @@ export default class MyApp extends App {
 =========================================================
 `);
     document.insertBefore(comment, document.documentElement);
-  }
-
-  cleanupRouterEvents() {
-    Router.events.off("routeChangeStart", handleRouteChangeStart);
-    Router.events.off("routeChangeComplete", handleRouteChangeComplete);
-    Router.events.off("routeChangeError", handleRouteChangeError);
-  }
-
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    return { pageProps };
   }
 
   render() {
@@ -155,7 +136,7 @@ export default class MyApp extends App {
     ));
 
     return (
-      <React.Fragment>
+      <>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
           <title>MG Solutions - Ihre Sicherheitslösung</title>
@@ -172,7 +153,7 @@ export default class MyApp extends App {
           <ScrollToTop />
           <Component {...pageProps} />
         </Layout>
-      </React.Fragment>
+      </>
     );
   }
 }
