@@ -19,13 +19,6 @@ const Logo = () => (
         className="h-12 w-auto mr-2 drop-shadow-lg"
         style={{ maxHeight: 48 }}
       />
-      {/*
-      <span className="text-3xl font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase flex items-center">
-        <i className="fa fa-shield-alt text-cyan-400 neon-effect mr-2" />
-        <span className="text-white ml-2 mr-2">MG</span>
-        <span className="ml-1 text-cyan-400"> Solutions</span>
-      </span>
-      */}
     </a>
   </Link>
 );
