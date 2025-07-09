@@ -1,6 +1,7 @@
 import React from 'react';
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
+import ScrollToTop from "components/ScrollToTop.js";
 
 export default function RansomwareMonitor() {
   const [apiData, setApiData] = React.useState({
@@ -61,16 +62,25 @@ export default function RansomwareMonitor() {
 
   const handlePageChange = (dir) => {
     setCurrentPage((prev) => {
-      if (dir === 'prev') return Math.max(1, prev - 1);
-      if (dir === 'next') return Math.min(totalPages, prev + 1);
-      return prev;
+      let nextPage = prev;
+      if (dir === 'prev') nextPage = Math.max(1, prev - 1);
+      else if (dir === 'next') nextPage = Math.min(totalPages, prev + 1);
+      else if (dir === 'first') nextPage = 1;
+      else if (dir === 'last') nextPage = totalPages;
+      else if (typeof dir === 'number') nextPage = dir;
+      setTimeout(() => {
+        if (typeof window !== 'undefined') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 0);
+      return nextPage;
     });
   };
 
   return (
-    <div className="cyber-bg flex flex-col min-h-screen bg-gradient-to-br from-[#001f3f] via-[#002b55] to-[#001f3f] cyber-bg-tech">
+    <div className=" flex flex-col min-h-screen bg-gradient-to-br from-[#001f3f] via-[#002b55] to-[#001f3f] cyber-bg-tech">
       <IndexNavbar fixed />
-      <main className="flex-grow pt-24 pb-12 px-4">
+      <main className=" cyber-bg flex-grow pt-24 pb-12 px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="mb-10 text-center">
@@ -78,15 +88,15 @@ export default function RansomwareMonitor() {
               <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-cyan-700/30 shadow-lg mb-2 text-white">
                 <i className="fas fa-shield-virus text-cyan-400 text-3xl "></i>
               </span>
-              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-cyan-300 drop-shadow-glow">
+              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-cyan-300">
                 Ransomware Monitor
               </h1>
-              <span className="text-cyan-400 text-lg font-mono tracking-wide mt-2">
+              <span className="text-white text-lg font-mono tracking-wide mt-2">
                 Live-Überblick über aktuelle Angriffe auf Unternehmen
               </span>
               <div className="text-cyan-300 mt-2 text-base">
                 <i className="fas fa-info-circle mr-2"></i>
-                {apiData.total} Angriffe erfasst | Letztes Update: {apiData.lastUpdated}
+                <span className="text-white">{apiData.total} <span className="text-red-500 font-bold">Angriffe</span> erfasst</span> | <div className='text-white'>Letztes Update: {apiData.lastUpdated}</div>
               </div>
             </div>
           </div>
@@ -118,17 +128,19 @@ export default function RansomwareMonitor() {
                   className="bg-[#001a33]/90 border border-cyan-800 rounded-2xl shadow-xl p-5 flex flex-col gap-2 hover:shadow-cyan-700/40 hover:-translate-y-1 transition-all relative"
                 >
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-white font-extrabold text-xl md:text-2xl tracking-tight truncate drop-shadow-glow" title={entry.post_title}>{entry.post_title || '–'}</span>
-                    <span className={`ml-auto px-3 py-1 rounded-lg text-sm font-bold text-white shadow-glow ${getGroupColor(entry.group_name)}`}>{entry.group_name || 'Unbekannt'}</span>
+                    <h2 className="text-cyan-300 font-extrabold text-xl md:text-2xl tracking-tight truncate" title={entry.post_title}>
+                      {entry.post_title || '–'}
+                    </h2>
+                    <span className={`ml-auto px-3 py-1 rounded-lg text-xs font-bold text-white border border-cyan-400 bg-cyan-800/80`} style={{}}>{entry.group_name || 'Unbekannt'}</span>
                   </div>
-                  <div className="text-white text-xs mb-1">Land: <span className="font-mono">{entry.country || '–'}</span></div>
-                  <div className="text-white text-xs mb-1">Aktivität: <span className="font-mono">{entry.activity || '–'}</span></div>
-                  <div className="text-white text-xs mb-1">Entdeckt: <span className="font-mono">{renderCell(entry, 'discovered')}</span></div>
-                  <div className="text-white text-xs mb-1">Veröffentlicht: <span className="font-mono">{renderCell(entry, 'published')}</span></div>
-                  <div className="text-white text-xs mb-1">Doppelte: <span className="font-mono">{renderCell(entry, 'duplicates')}</span></div>
-                  <div className="text-white text-xs mb-1 truncate">Website: <span className="font-mono">{entry.website || '–'}</span></div>
-                  <div className="text-white text-xs mb-1 truncate">Post-URL: <span className="font-mono">{entry.post_url || '–'}</span></div>
-                  <div className="text-cyan-200 text-xs mt-2 line-clamp-3 min-h-[2.5em]">{entry.description || <span className="italic text-cyan-700">Keine Beschreibung</span>}</div>
+                  <div className="text-white text-xs mb-1">Land: <span className="font-mono text-white">{entry.country || '–'}</span></div>
+                  <div className="text-white text-xs mb-1">Aktivität: <span className="font-mono text-white">{entry.activity || '–'}</span></div>
+                  <div className="text-white text-xs mb-1">Entdeckt: <span className="font-mono text-white">{renderCell(entry, 'discovered')}</span></div>
+                  <div className="text-white text-xs mb-1">Veröffentlicht: <span className="font-mono text-white">{renderCell(entry, 'published')}</span></div>
+                  <div className="text-white text-xs mb-1">Doppelte: <span className="font-mono text-white">{renderCell(entry, 'duplicates')}</span></div>
+                  <div className="text-white text-xs mb-1 truncate">Website: <span className="font-mono text-white">{entry.website || '–'}</span></div>
+                  <div className="text-white text-xs mb-1 truncate">Post-URL: <span className="font-mono text-white">{entry.post_url || '–'}</span></div>
+                  <div className="text-white text-xs mt-2 line-clamp-3 min-h-[2.5em]">{entry.description || <span className="italic text-cyan-700">Keine Beschreibung</span>}</div>
                 </div>
               ))
             ) : (
@@ -142,17 +154,26 @@ export default function RansomwareMonitor() {
           {/* Pagination */}
           <div className="flex justify-center items-center gap-2 mt-8">
             <button
+              onClick={() => handlePageChange('first')}
+              disabled={currentPage === 1}
+              className="px-2 py-2 rounded-lg border border-cyan-700 bg-[#001f3f] text-cyan-400 hover:bg-cyan-700 hover:text-white transition disabled:opacity-50"
+              title="Erste Seite"
+            >
+              &laquo;
+            </button>
+            <button
               onClick={() => handlePageChange('prev')}
               disabled={currentPage === 1}
-              className="px-3 py-2 rounded-lg border border-cyan-700 bg-[#001f3f] text-cyan-400 hover:bg-cyan-700 hover:text-white transition disabled:opacity-50 shadow-glow"
+              className="px-3 py-2 rounded-lg border border-cyan-700 bg-[#001f3f] text-cyan-400 hover:bg-cyan-700 hover:text-white transition disabled:opacity-50"
+              title="Vorherige Seite"
             >
               <i className="fas fa-chevron-left"></i>
             </button>
             {Array.from({ length: totalPages }, (_, i) => (
               <button
                 key={i}
-                onClick={() => setCurrentPage(i + 1)}
-                className={`px-3 py-2 rounded-lg border ${currentPage === i + 1 ? 'bg-cyan-600 text-white shadow-glow' : 'border-cyan-700 bg-[#001f3f] text-cyan-400 hover:bg-cyan-700 hover:text-white'} transition`}
+                onClick={() => handlePageChange(i + 1)}
+                className={`px-3 py-2 rounded-lg border ${currentPage === i + 1 ? 'bg-cyan-600 text-white' : 'border-cyan-700 bg-[#001f3f] text-cyan-400 hover:bg-cyan-700 hover:text-white'} transition`}
               >
                 {i + 1}
               </button>
@@ -160,9 +181,18 @@ export default function RansomwareMonitor() {
             <button
               onClick={() => handlePageChange('next')}
               disabled={currentPage === totalPages}
-              className="px-3 py-2 rounded-lg border border-cyan-700 bg-[#001f3f] text-cyan-400 hover:bg-cyan-700 hover:text-white transition disabled:opacity-50 shadow-glow"
+              className="px-3 py-2 rounded-lg border border-cyan-700 bg-[#001f3f] text-cyan-400 hover:bg-cyan-700 hover:text-white transition disabled:opacity-50"
+              title="Nächste Seite"
             >
               <i className="fas fa-chevron-right"></i>
+            </button>
+            <button
+              onClick={() => handlePageChange('last')}
+              disabled={currentPage === totalPages}
+              className="px-2 py-2 rounded-lg border border-cyan-700 bg-[#001f3f] text-cyan-400 hover:bg-cyan-700 hover:text-white transition disabled:opacity-50"
+              title="Letzte Seite"
+            >
+              &raquo;
             </button>
           </div>
 
@@ -170,10 +200,10 @@ export default function RansomwareMonitor() {
           <div className="mt-10 bg-gradient-to-r from-[#002b55] to-[#001f3f] border border-cyan-800 rounded-2xl p-6 shadow-xl">
             <div className="md:flex justify-between items-center">
               <div className="mb-4 md:mb-0">
-                <h3 className="text-xl font-semibold text-cyan-100 mb-2">
+                <h2 className="text-xl font-semibold text-cyan-100 mb-2">
                   Ihr Unternehmen könnte als nächstes betroffen sein
-                </h3>
-                <p className="text-cyan-200">
+                </h2>
+                <p className="text-white">
                   {apiData.total > 0
                     ? `${Math.round((apiData.total / 100) * 80)} der erfassten Unternehmen hatten unzureichenden Schutz`
                     : 'Aktuell besonders aktive Angriffsgruppen in Ihrer Branche'}
@@ -181,9 +211,9 @@ export default function RansomwareMonitor() {
               </div>
               <a
                 href="/contact"
-                className="inline-block bg-cyan-600 hover:bg-cyan-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-lg shadow-glow"
+                className="cyber-direct-btn inline-block bg-cyan-600 hover:bg-cyan-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-lg"
               >
-                <i className="fas fa-shield-alt mr-2"></i>
+                <i className="fas fa-shield-alt mr-2 "></i>
                 Sofortmaßnahmen anfragen
               </a>
             </div>
