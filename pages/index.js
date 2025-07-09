@@ -123,7 +123,7 @@ export default function Index() {
               <div className="flex flex-wrap justify-center gap-4 sm:gap-6 px-4">
                 <PartnerLogo
                   href="https://www.cyber-sicherheitsnetzwerk.de"
-                  src="/img/CSN-LOGO1.png"
+                  src="/img/csn-logo.png"
                   alt="Mitglied im Cyber-Sicherheitsnetzwerk"
                   width={200}
                   height={70}
