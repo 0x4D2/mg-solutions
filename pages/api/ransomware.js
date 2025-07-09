@@ -2,9 +2,9 @@ import fs from 'fs';
 import path from 'path';
 
 export default function handler(req, res) {
-  const filePath = path.join(process.cwd(), 'public/data/ransomware_victims.json');
-  //const filePath = '/opt/ransomwatch/api_victims.json';
-  
+//  const filePath = path.join(process.cwd(), 'public/data/ransomware_victims.json');
+const filePath = '/etc/opt/ransomware/api_victims.json';
+
   try {
     // 1. Datei einlesen
     const rawData = fs.readFileSync(filePath, 'utf8');
