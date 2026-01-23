@@ -90,7 +90,7 @@ export default function Index() {
             <h1 className="hero-title font-semibold text-4xl sm:text-6xl text-white">
               <TypeIt
                 options={{
-                  strings: ["Ihre digitale Zukunft sicher gestalten!"],
+                  strings: ["Sicherheitsentwicklung sichtbar machen – bevor es teuer wird"],
                   speed: 50,
                   waitUntilVisible: true,
                   cursor: false,
@@ -98,8 +98,8 @@ export default function Index() {
               />
             </h1>
             <p className="mt-6 text-xl sm:text-2xl leading-relaxed text-gray-500 max-w-3xl mx-auto">
-              Wir bieten maßgeschneiderte Sicherheitslösungen, um Ihre
-              wertvollen digitalen Assets zu schützen.
+              Viele Tools zeigen nur Momentaufnahmen. Wir dokumentieren, wie sich Ihre öffentliche Angriffsfläche wirklich verändert – objektiv, risikofrei und messbar.
+
             </p>
             <div
               className="mt-16 grid gap-8 sm:gap-10 justify-center"
@@ -108,12 +108,12 @@ export default function Index() {
               <LinkCard
                 href="/business"
                 iconClass="fas fa-building"
-                title="Für Unternehmen"
+                title="Jetzt kostenlose \n Ersteinschätzung starten"
               />
               <LinkCard
                 href="/private"
                 iconClass="fas fa-user-shield"
-                title="Für Privatkunden"
+                title="Häufige Fragen lesen"
               />
             </div>
             <div className="mt-12 mb-8 sm:mb-12">

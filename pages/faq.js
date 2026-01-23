@@ -5,83 +5,272 @@ import Footer from "components/Footers/Footer.js";
 import Link from "next/link";
 
 export default function FAQPage() {
-  const unternehmenFAQs = [
+  const faqSections = [
     {
-      question: "Was ist Cybersicherheit und warum ist sie wichtig?",
-      answer:
-        "Cybersicherheit schützt Netzwerke, Geräte und Daten vor Bedrohungen wie Hacking oder Phishing. Unternehmen sind häufig Ziel solcher Angriffe - Schutzmaßnahmen verhindern Datenverlust, finanzielle Schäden und Imageschäden.",
+      title: "1. Produkt & Funktionsweise",
+      faqs: [
+        {
+          question: "Was genau macht dieses Produkt?",
+          answer: (
+            <p>
+              Es erstellt einen <strong>passiven Exposure-Report</strong> Ihrer externen Angriffsfläche. Basierend auf öffentlich
+              zugänglichen OSINT-Daten zeigen wir, welche Systeme, Dienste und Metadaten von außen sichtbar sind – genau wie ein
+              Angreifer es in der ersten Erkundungsphase sehen würde.
+            </p>
+          ),
+        },
+        {
+          question: "Werden meine Systeme gescannt oder angegriffen?",
+          answer: (
+            <p>
+              <strong>Nein.</strong> Es finden <strong>keine aktiven Scans</strong> statt. Wir werten ausschließlich bereits öffentlich indexierte
+              Informationen aus. Ihre Systeme bemerken nichts davon.
+            </p>
+          ),
+        },
+        {
+          question: "Ersetzt der Report einen Penetrationstest?",
+          answer: (
+            <p>
+              <strong>Nein.</strong> Ein Penetrationstest prüft aktiv, ob Systeme angreifbar sind. Unser Report zeigt nur die <strong>externe Sichtbarkeit</strong>.
+              Er ist die perfekte Vorbereitung für einen Pentest, aber kein Ersatz.
+            </p>
+          ),
+        },
+        {
+          question: "Warum werden CVEs aufgeführt, wenn nichts gescannt wird?",
+          answer: (
+            <div>
+              <p>
+                CVEs werden <strong>theoretisch zugeordnet</strong>, basierend auf öffentlich sichtbaren Softwareversionen.
+              </p>
+              <p className="mt-2"><strong>Wichtig:</strong></p>
+              <ul className="list-disc pl-5 space-y-1 text-gray-200">
+                <li>Keine Verifikation der Schwachstelle</li>
+                <li>Kein Nachweis der Ausnutzbarkeit</li>
+                <li>Nur Hinweis auf bekannte Schwachstellen zu dieser Version</li>
+              </ul>
+            </div>
+          ),
+        },
+      ],
     },
     {
-      question: "Welche Schutzpakete bietet MG Solutions an?",
-      answer: (
-        <ul className="list-disc pl-5 space-y-1 text-gray-200">
-          <li><strong>Basis:</strong> Support via E-Mail/Chat, Bedrohungserkennung, Sicherheitsberatung.</li>
-          <li><strong>Erweitert:</strong> Fernwartung, Systemchecks, Mitarbeiterschulungen.</li>
-          <li><strong>Premium:</strong> Krisenmanagement, monatliche Audits, individuelle Beratung.</li>
-        </ul>
-      ),
+      title: "2. Nutzen & Analyse",
+      faqs: [
+        {
+          question: "Was bringt die Trendanalyse?",
+          answer: (
+            <div>
+              <p>Bei wiederholten Reports zeigen wir objektiv:</p>
+              <ul className="list-disc pl-5 space-y-1 text-gray-200">
+                <li>Neue öffentlich sichtbare Dienste</li>
+                <li>Veränderungen Ihrer Angriffsfläche</li>
+                <li>Erfolge Ihrer Absicherungsmaßnahmen</li>
+              </ul>
+            </div>
+          ),
+        },
+        {
+          question: "Bedeutet ein besserer Trend mehr Sicherheit?",
+          answer: <p>Nicht unbedingt. Ein positiver Trend zeigt nur weniger Sichtbarkeit. Er ersetzt keine technischen Tests, ist aber ein gutes Signal.</p>,
+        },
+        {
+          question: "Ist das für Wix/Shopify/WordPress.com sinnvoll?",
+          answer: (
+            <div>
+              <p><strong>In der Regel nein.</strong> Bei Baukasten-Hosting kontrollieren Sie die Infrastruktur nicht selbst.</p>
+              <p className="mt-2"><strong>Faustregel:</strong> Können Sie Firewall-Regeln oder SSH-Einstellungen ändern?</p>
+              <p>→ <strong>Ja</strong> = sinnvoll &nbsp;&nbsp; → <strong>Nein</strong> = nicht geeignet</p>
+            </div>
+          ),
+        },
+        {
+          question: "Kann durch die Analyse Schaden entstehen?",
+          answer: <p>Nein. Da keine aktive Interaktion stattfindet, besteht kein Risiko für Ausfälle oder Überlastung.</p>,
+        },
+        {
+          question: "Wie aktuell sind die Daten?",
+          answer: <p>Die Aktualität hängt von den OSINT-Quellen ab. Änderungen werden mit Verzögerung von Stunden bis wenigen Tagen sichtbar.</p>,
+        },
+        {
+          question: "Wie schnell erhalte ich den Report?",
+          answer: <p>In der Regel <strong>innerhalb von 24 Stunden</strong> nach Auftragserteilung, oft schneller.</p>,
+        },
+        {
+          question: "Was bedeutet \u201enichts gefunden\u201c?",
+          answer: <p>Ein positives Signal, aber keine Garantie. Es bedeutet nur, dass aktuell keine öffentlich indexierten Dienste bekannt sind.</p>,
+        },
+      ],
     },
     {
-      question: "Was beinhaltet eine IT-Sicherheitsanalyse?",
-      answer:
-        "Wir analysieren Ihre IT-Infrastruktur auf Schwachstellen, erstellen einen Bericht und entwickeln passgenaue Schutzmaßnahmen für Ihr Unternehmen.",
+      title: "3. Compliance & Business",
+      faqs: [
+        {
+          question: "Kann ich den Report für Compliance nutzen?",
+          answer: (
+            <div>
+              <p><strong>Ja, als ergänzende Dokumentation</strong> für Standards wie ISO 27001 oder BSI-Grundschutz.</p>
+              <p><strong>Nein, als alleinigen Nachweis</strong> – dafür sind umfassendere Prüfungen nötig.</p>
+            </div>
+          ),
+        },
+        {
+          question: "Was unterscheidet Sie von kostenlosen Tools?",
+          answer: (
+            <div>
+              <ul className="list-disc pl-5 space-y-1 text-gray-200">
+                <li><strong>Strukturierte Aufbereitung</strong> statt Rohdaten</li>
+                <li><strong>Klare Priorisierung</strong> relevanter Exposures</li>
+                <li><strong>Business-Fokus</strong> für Entscheider</li>
+                <li><strong>Transparente Grenzen</strong> – kein Alarmismus</li>
+              </ul>
+            </div>
+          ),
+        },
+        {
+          question: "Welche Maßnahmen werden typisch empfohlen?",
+          answer: (
+            <ol className="list-decimal pl-5 space-y-1 text-gray-200">
+              <li>Öffentliche Datenbankzugriffe entfernen</li>
+              <li>Admin-Dienste via VPN/Whitelist absichern</li>
+              <li>HTTPS-only mit HSTS aktivieren</li>
+              <li>Unnötige Dienste abschalten</li>
+              <li>Server-Banner minimieren</li>
+            </ol>
+          ),
+        },
+        {
+          question: "Unterstützen Sie bei der Umsetzung?",
+          answer: <p><strong>Nein.</strong> Wir liefern Lagebild und Empfehlungen, aber keine Implementierung. Auf Wunsch vermitteln wir geeignete IT-Dienstleister.</p>,
+        },
+        {
+          question: "Gibt es Unternehmenslösungen?",
+          answer: (
+            <div>
+              <p><strong>Ja:</strong></p>
+              <ul className="list-disc pl-5 space-y-1 text-gray-200">
+                <li>Pakete für bis zu 50 Assets</li>
+                <li>Konsolidierte Standortberichte</li>
+                <li>Volume Discounts ab 10 Assets</li>
+                <li>White-Label für IT-Dienstleister</li>
+              </ul>
+            </div>
+          ),
+        },
+        {
+          question: "Gibt es Reports auf Englisch?",
+          answer: <p><strong>Ja, optional.</strong> Standard ist Deutsch, englische Version +49€. Ideal für internationale Teams.</p>,
+        },
+      ],
+    },
+    {
+      title: "4. Kosten & Wert",
+      faqs: [
+        {
+          question: "Warum 490€, wenn Shodan kostenlos ist?",
+          answer: (
+            <div>
+              <p>Sie bezahlen für <strong>Analyse, nicht für Daten</strong>:</p>
+              <ul className="list-disc pl-5 space-y-1 text-gray-200">
+                <li>Aus 107 CVEs die 3 relevanten Risiken filtern</li>
+                <li>Technische Befunde in Business-Risiken übersetzen</li>
+                <li>Konkrete Handlungsanleitungen liefern</li>
+                <li>8+ Stunden Arbeit in 24h geliefert</li>
+              </ul>
+            </div>
+          ),
+        },
+        {
+          question: "Bieten Sie Umsetzungs-Support?",
+          answer: <p><strong>Indirekt:</strong> Wir liefern klare Anleitungen und vermitteln auf Wunsch vertrauenswürdige IT-Partner für die Implementierung.</p>,
+        },
+      ],
+    },
+    {
+      title: "5. Qualität & Sicherheit",
+      faqs: [
+        {
+          question: "Wie sichern Sie die Datenqualität?",
+          answer: (
+            <div>
+              <ul className="list-disc pl-5 space-y-1 text-gray-200">
+                <li>Multi-Source-Korrelation (3+ Quellen)</li>
+                <li>Manuelle Plausibilitätsprüfung jedes Reports</li>
+                <li>Volle Transparenz der Quellen</li>
+                <li><strong>30-Tage-Geld-zurück-Garantie</strong> bei fehlendem Mehrwert</li>
+              </ul>
+            </div>
+          ),
+        },
+        {
+          question: "Was passiert nach dem Report?",
+          answer: (
+            <div>
+              <p><strong>Typischer Fahrplan:</strong></p>
+              <ol className="list-decimal pl-5 space-y-1 text-gray-200">
+                <li><strong>Woche 1:</strong> Kritische Risiken beheben</li>
+                <li><strong>Woche 2-4:</strong> Strukturelle Maßnahmen umsetzen</li>
+                <li><strong>Monat 2:</strong> Folgescan zur Dokumentation</li>
+                <li><strong>Monat 3:</strong> Entscheidung für Monitoring oder nächste Stufe</li>
+              </ol>
+            </div>
+          ),
+        },
+        {
+          question: "Was passiert mit meinen Daten?",
+          answer: <p>Nach <strong>30 Tagen</strong> werden IP/Domain und Report vollständig gelöscht. Wir verkaufen oder teilen Ihre Daten nicht.</p>,
+        },
+        {
+          question: "Wie handhaben Sie False Positives?",
+          answer: (
+            <div>
+              <ul className="list-disc pl-5 space-y-1 text-gray-200">
+                <li>Sofortige Korrektur innerhalb 24h</li>
+                <li>Volle Dokumentation der Quellen</li>
+                <li>Lernen aus Fehlzuordnungen</li>
+                <li>Persönliche Klärung im Review-Call</li>
+              </ul>
+            </div>
+          ),
+        },
+        {
+          question: "Unterschied zu Vulnerability Scannern?",
+          answer: (
+            <div>
+              <table className="w-full text-left text-gray-200">
+                <thead>
+                  <tr><th className="pr-6">Unser Service</th><th>Vulnerability Scanner</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Passiv, kein Risiko</td><td>Aktiv, kann stören</td></tr>
+                  <tr><td>Zeigt Sichtbarkeit</td><td>Testet Exploitierbarkeit</td></tr>
+                  <tr><td>Business-Fokus</td><td>Technischer Fokus</td></tr>
+                  <tr><td>24h Lieferung</td><td>Tage/Wochen für Scans</td></tr>
+                </tbody>
+              </table>
+            </div>
+          ),
+        },
+      ],
+    },
+    {
+      title: "6. Vertrauen & Transparenz",
+      faqs: [
+        {
+          question: "Kann ich Ihnen vertrauen, wenn Sie so transparent sind?",
+          answer: (
+            <div>
+              <p><strong>Ja – genau darum geht es.</strong></p>
+              <p>In einer Branche voller Blackbox-Lösungen ist unsere radikale Transparenz unser stärkstes Vertrauenssignal. Wir zeigen jeden Schritt, jede Grenze, jede Unsicherheit – weil Sicherheit mit Klarheit beginnt.</p>
+            </div>
+          ),
+        },
+      ],
     },
   ];
 
-  const privatFAQs = [
-    {
-      question: "Wie bin ich als Privatperson von Cyberangriffen betroffen?",
-      answer:
-        "Privatnutzer sind oft Ziel von Phishing, Identitätsdiebstahl oder Ransomware. Unsere Schutzlösungen helfen, Ihre Daten und Geräte abzusichern.",
-    },
-    {
-      question: "Was kostet der Rundum-Schutz für Privatkunden?",
-      answer: (
-        <span>
-          Unser <strong>Rundum-Schutz-Paket</strong> für Privatkunden kostet <strong>30&nbsp;Euro pro Monat</strong> und bietet umfassenden Schutz für Ihre digitale Sicherheit – ohne versteckte Kosten oder Zusatzpakete.
-        </span>
-      ),
-    },
-    {
-      question: "Welche Sicherheitsmaßnahmen sollte ich treffen?",
-      answer: (
-        <ul className="list-disc pl-5 space-y-1 text-gray-200">
-          <li>Antiviren-Programme</li>
-          <li>Starke, einzigartige Passwörter</li>
-          <li>Regelmäßige Systemupdates</li>
-          <li>Mehrfaktorauthentifizierung</li>
-        </ul>
-      ),
-    },
-    {
-      question: "Wie helfen Cybersecurity-Schulungen im Alltag?",
-      answer:
-        "Gut informierte Nutzer erkennen Gefahren frühzeitig und vermeiden typische Fallen wie Phishing, unsichere Netzwerke oder Social Engineering.",
-    },
-  ];
-
-  const allgemeinFAQs = [
-    {
-      question: "Was ist ein sicheres Passwort?",
-      answer:
-        "Ein sicheres Passwort besteht aus mindestens 12 Zeichen, enthält Buchstaben, Zahlen und Sonderzeichen und wird für jeden Dienst individuell gewählt.",
-    },
-    {
-      question: "Wie erkenne ich Phishing-Mails?",
-      answer:
-        "Phishing-Mails tarnen sich oft als seriöse Absender. Achten Sie auf ungewöhnliche Absenderadressen, Grammatikfehler und Links, die nicht zur offiziellen Domain führen.",
-    },
-    {
-      question: "Wie oft sollte ich meine Software aktualisieren?",
-      answer:
-        "Regelmäßige Updates schließen Sicherheitslücken. Aktivieren Sie automatische Updates für Betriebssystem, Browser, Antivirensoftware und Apps.",
-    },
-    {
-      question: "Warum genau sollte ich einen Servicevertrag abschließen?",
-      answer:
-        "Zusätzlich zur anfänglichen Einrichtung sollte die Cybersicherheit als fortlaufender Prozess betrachtet werden, der regelmäßige Audits und Anpassungen erfordert, um mit neuen Bedrohungen Schritt zu halten.",
-    },
-  ];
+  // (Search removed) render all sections from `faqSections`
 
   return (
     <>
@@ -93,52 +282,44 @@ export default function FAQPage() {
         />
       </Helmet>
       <IndexNavbar fixed />
-      <div className="cyber-bg min-h-screen">
-        {/* Hero */}
-        <div className="cyber-bg">
 
+      <main className="cyber-bg min-h-screen">
+        {/* Hero */}
         <section className="py-16 relative items-center flex min-h-[80vh] ">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-5xl font-bold">
-              Cybersecurity - Häufige Fragen
-            </h1>
-            <p className="mt-6 text-xl max-w-3xl mx-auto text-white ">
-              Antworten rund um digitale Sicherheit - für Unternehmen und Privatpersonen.
-            </p>
+            <h1 className="text-5xl font-bold">FAQ – Klare Antworten auf wichtige Fragen</h1>
+            <p className="mt-6 text-xl max-w-3xl mx-auto text-white ">Klare, präzise Antworten zu unserem Exposure-Report und Serviceumfang.</p>
           </div>
         </section>
-      
-      {/* FAQ Sektionen */}
-      <div className="py-10 ">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-12">
-            <FAQSection title="Allgemein" faqs={allgemeinFAQs} />
-            <FAQSection title="Für Unternehmen" faqs={unternehmenFAQs} />
-            <FAQSection title="Für Privatkunden" faqs={privatFAQs} />
+
+        {/* (Quick links and search removed) */}
+
+        {/* FAQ Sektionen */}
+        <div className="py-10">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 gap-8">
+              {faqSections.map((sec, i) => (
+                <div key={i} id={`section-${i}`} className="w-full">
+                  <FAQSection title={sec.title} faqs={sec.faqs} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
     
       {/* Call to Action */}
       <div className="py-20 text-center">
-        <h2 className="text-4xl font-bold ">Noch Fragen offen?</h2>
-        <p className="mt-4 text-lg text-white">
-          Wir beraten Sie gerne persönlich zu Ihrer Cybersicherheit.
-        </p>
-        <br></br>
-        <Link href="/contact" passHref legacyBehavior>
-          <a className="cyber-direct-btn  hover:bg-blue-700 text-white py-3 px-8 rounded-full font-medium transition duration-300 text-center inline-block ">
-            Jetzt Kontakt aufnehmen
-          </a>
-        </Link>
-
-        
-        
+        <h2 className="text-4xl font-bold">Noch Fragen offen?</h2>
+        <p className="mt-4 text-lg text-white">Wir beraten Sie gerne persönlich zu Ihrer Cybersicherheit.</p>
+        <div className="mt-6">
+          <Link href="/contact" passHref legacyBehavior>
+            <a className="cyber-direct-btn hover:bg-blue-700 text-white py-3 px-8 rounded-full font-medium transition duration-300 inline-block">Jetzt Kontakt aufnehmen</a>
+          </Link>
+        </div>
       </div>
 
-      </div>
+      </main>
       <Footer />
-      </div>
     </>
   );
 }
@@ -146,10 +327,8 @@ export default function FAQPage() {
 // Einzelne FAQ-Sektion
 function FAQSection({ title, faqs }) {
   return (
-    <div className="p-6 rounded-lg shadow-lg hover:shadow-xl transition bg-gray-800 border border-gray-700">
-      <h2 className="text-3xl font-semibold mb-6 text-center">
-        {title}
-      </h2>
+    <div className="p-6 rounded-lg shadow-md hover:shadow-lg transition bg-gray-800 border border-gray-700">
+      <h2 className="text-3xl font-semibold mb-6 text-center">{title}</h2>
       <div className="space-y-4">
         {faqs.map((faq, index) => (
           <FAQCard key={index} question={faq.question}>
@@ -166,13 +345,15 @@ function FAQCard({ question, children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-gray-700 rounded-md shadow-md hover:shadow-lg transition">
+    <div className="bg-gray-700 rounded-md shadow-md hover:shadow-md transition">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full text-left p-4 focus:outline-none flex justify-between items-center"
       >
         <h3 className="text-lg font-semibold text-white">{question}</h3>
-        <span className="text-cyan-300 text-2xl">{isOpen ? "−" : "+"}</span>
+        <span className={`text-cyan-300 text-2xl transform transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`}>
+          +
+        </span>
       </button>
       {isOpen && <div className="px-4 pb-4 text-white font-light">{children}</div>}
     </div>
