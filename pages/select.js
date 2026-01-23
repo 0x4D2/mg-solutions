@@ -10,14 +10,9 @@ export default function SelectPage() {
               Willkommen bei MG Solutions
             </h1>
             <p className="text-lg text-blueGray-500 mb-12">
-              Bitte wählen Sie aus, ob Sie als Privatperson oder Unternehmen fortfahren möchten.
+              Bitte wählen Sie aus, ob Sie als Unternehmen fortfahren möchten.
             </p>
-            <div className="flex justify-center space-x-6">
-              <Link href="/private">
-                <a className="bg-blueGray-700 text-white px-6 py-3 rounded-lg shadow hover:bg-blueGray-600 transition">
-                  Privatperson
-                </a>
-              </Link>
+            <div className="flex justify-center">
               <Link href="/business">
                 <a className="bg-blueGray-700 text-white px-6 py-3 rounded-lg shadow hover:bg-blueGray-600 transition">
                   Unternehmen
