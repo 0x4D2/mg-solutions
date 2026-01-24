@@ -327,19 +327,17 @@ export default function ContactPage() {
           border: none;
         }
         .cta-button::after {
-          content: "";
+          content: '';
           position: absolute;
-          left: -120%;
           top: 0;
-          height: 100%;
+          left: -120%;
           width: 120%;
-          background: linear-gradient(90deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.18) 100%);
-          transform: translateX(0);
-          transition: transform .6s ease;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+          transition: left .7s ease;
+          pointer-events: none;
         }
-        .cta-button:hover::after {
-          transform: translateX(220%);
-        }
+        .cta-button:hover::after { left: 100%; }
         .cta-button:hover {
           transform: translateY(-3px);
           box-shadow: 0 20px 40px rgba(2,6,23,0.6);
