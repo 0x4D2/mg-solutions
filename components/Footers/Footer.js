@@ -64,6 +64,7 @@ export default function Footer() {
                       { text: "Transparente Preise ansehen", href: "/pricing" },
                       { text: "Datenschutz", href: "/privacy" },
                       { text: "Impressum", href: "/imprint" },
+                      { text: "Roadmap", href: "/roadmap" },
                     ].map((link, idx) => (
                       <li key={idx}>
                         <Link href={link.href} legacyBehavior>

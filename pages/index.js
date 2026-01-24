@@ -106,7 +106,7 @@ export default function Index() {
 
             {/* CTAs (single primary) */}
             <div className="mt-10 flex justify-center px-4 sm:px-0">
-              <Link href="/contact" className="cta-button rounded-2xl inline-flex items-center justify-center font-semibold w-full sm:w-auto max-w-md mx-auto sm:mx-0 px-6 py-3" style={{ backgroundColor: '#00d4ff', color: '#001f3f' }}>
+              <Link href="/contact" className="cta-button transition-all duration-300 rounded-2xl inline-flex items-center justify-center font-semibold w-full sm:w-auto max-w-md mx-auto sm:mx-0 px-6 py-3" style={{ backgroundColor: '#00d4ff', color: '#001f3f' }}>
                 Kostenlose Ersteinschätzung anfordern
               </Link>
             </div>
@@ -130,7 +130,7 @@ export default function Index() {
 
               <div className="mt-6 grid sm:grid-cols-2 gap-4">
                 <div className="p-4 rounded-lg" style={{ backgroundColor: 'rgba(0,0,0,0.02)' }}>
-                  <h4 className="font-semibold text-white">Was passiert nach der kostenlosen Ersteinschätzung?</h4>
+                  <h4 className="font-semibold text-white ">Was passiert nach der kostenlosen Ersteinschätzung?</h4>
                   <ul className="mt-2 text-gray-200 text-sm list-disc list-inside">
                     <li>Wir werten öffentlich verfügbare Daten aus und identifizieren Top‑Risiken.</li>
                     <li>Wir liefern priorisierte, verständliche Handlungsempfehlungen.</li>
