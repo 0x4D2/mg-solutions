@@ -109,12 +109,12 @@ export default function BusinessPage() {
                   variants={itemVariants}
                   className="p-8 rounded-2xl transition-all duration-300 text-center card"
                   style={{ 
-                    backgroundColor: 'rgba(30,41,59,0.8)', 
+                    backgroundColor: 'rgba(30,41,59,0.72)', 
                     border: '1px solid rgba(0,212,255,0.12)',
                     backdropFilter: 'blur(10px)'
                   }}
                 >
-                  <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: 'rgba(0,212,255,0.1)' }}>
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: 'rgba(0,212,255,0.08)' }}>
                     <span className="text-[#00d4ff]" style={{ color: '#00d4ff' }}>
                       {item.icon}
                     </span>
@@ -161,7 +161,7 @@ export default function BusinessPage() {
                 variants={itemVariants}
                 className="p-8 rounded-2xl transition-all duration-300 card"
                 style={{ 
-                  backgroundColor: 'rgba(30,41,59,0.8)', 
+                  backgroundColor: 'rgba(30,41,59,0.72)', 
                   border: '1px solid rgba(0,212,255,0.12)',
                   backdropFilter: 'blur(6px)'
                 }}
@@ -211,7 +211,7 @@ export default function BusinessPage() {
                 variants={itemVariants}
                 className="p-8 rounded-2xl transition-all duration-300 relative card"
                 style={{ 
-                  backgroundColor: 'rgba(30,41,59,0.8)', 
+                  backgroundColor: 'rgba(30,41,59,0.72)', 
                   border: '2px solid rgba(0,212,255,0.3)',
                   backdropFilter: 'blur(6px)',
                   boxShadow: '0 20px 40px rgba(0,212,255,0.1)'
@@ -265,18 +265,18 @@ export default function BusinessPage() {
             </motion.div>
 
             {/* Zusatzoptionen */}
-            <div className="mt-12 max-w-3xl mx-auto p-8 rounded-2xl card" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.12)' }}>
+            <div className="mt-12 max-w-3xl mx-auto p-8 rounded-2xl card" style={{ backgroundColor: 'rgba(30,41,59,0.72)', border: '1px solid rgba(0,212,255,0.12)' }}>
               <h3 className="text-xl font-bold mb-4 text-white">Optionale Erweiterungen</h3>
               <div className="grid md:grid-cols-3 gap-4">
-                <div className="p-6 rounded-lg card" style={{ backgroundColor: 'rgba(0,212,255,0.05)' }}>
+                <div className="p-6 rounded-lg card" style={{ backgroundColor: 'rgba(0,212,255,0.03)' }}>
                   <div className="font-semibold text-white">Englischer Report</div>
                   <div className="text-[#00d4ff] mt-1">+49€</div>
                 </div>
-                <div className="p-6 rounded-lg card" style={{ backgroundColor: 'rgba(0,212,255,0.05)' }}>
+                <div className="p-6 rounded-lg card" style={{ backgroundColor: 'rgba(0,212,255,0.03)' }}>
                   <div className="font-semibold text-white">Detaillierte CVE-Analyse</div>
                   <div className="text-[#00d4ff] mt-1">+99€</div>
                 </div>
-                <div className="p-6 rounded-lg card" style={{ backgroundColor: 'rgba(0,212,255,0.05)' }}>
+                <div className="p-6 rounded-lg card" style={{ backgroundColor: 'rgba(0,212,255,0.03)' }}>
                   <div className="font-semibold text-white">Priority Support</div>
                   <div className="text-[#00d4ff] mt-1">+149€</div>
                 </div>
@@ -335,7 +335,7 @@ export default function BusinessPage() {
                 </div>
                 
                 <div>
-                  <div className="p-8 rounded-2xl card" style={{ backgroundColor: 'rgba(15,40,72,0.6)', border: '1px solid rgba(0,212,255,0.15)' }}>
+                  <div className="p-8 rounded-2xl card" style={{ backgroundColor: 'rgba(15,40,72,0.5)', border: '1px solid rgba(0,212,255,0.15)' }}>
                     <h3 className="text-xl font-bold mb-4 text-white">Typische Einsparungen</h3>
                     <ul className="space-y-3">
                       <li className="flex items-center">

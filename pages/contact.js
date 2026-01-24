@@ -10,7 +10,7 @@ const sectionVariants = {
 };
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "", privacy: false });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "", host: "", privacy: false });
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
   const [recaptchaError, setRecaptchaError] = useState("");
@@ -97,7 +97,7 @@ export default function ContactPage() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="bg-gray-800/60 backdrop-blur-md p-8 rounded-2xl shadow-2xl border border-gray-700"
+              className="card bg-gray-800/60 backdrop-blur-md p-8 rounded-2xl shadow-2xl border border-gray-700"
             >
               {sent ? (
                 <div className="text-center py-16">
@@ -117,6 +117,7 @@ export default function ContactPage() {
                         id="name"
                         name="name"
                         required
+                        placeholder="Max Mustermann"
                         value={form.name}
                         onChange={handleChange}
                         autoComplete="name"
@@ -126,20 +127,20 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <label className="block text-blue-200 font-semibold mb-1" htmlFor="phone">
-                        Telefonnummer <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-black focus:outline-none focus:border-blue-500 transition"
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        required
-                        value={form.phone}
-                        onChange={handleChange}
-                        autoComplete="tel"
-                        pattern="[0-9+ ]{6,20}"
-                        title="Bitte geben Sie nur Zahlen und ggf. + ein."
-                      />
+                          Telefonnummer
+                        </label>
+                        <input
+                          className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-black focus:outline-none focus:border-blue-500 transition"
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          placeholder="z. B. +49 170 1234567"
+                          value={form.phone}
+                          onChange={handleChange}
+                          autoComplete="tel"
+                          pattern="[0-9+ ]{6,20}"
+                          title="Bitte geben Sie nur Zahlen und ggf. + ein."
+                        />
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -153,6 +154,7 @@ export default function ContactPage() {
                         id="email"
                         name="email"
                         required
+                        placeholder="name@beispiel.de"
                         value={form.email}
                         onChange={handleChange}
                         autoComplete="email"
@@ -171,10 +173,12 @@ export default function ContactPage() {
                         onChange={handleChange}
                       >
                         <option value="">Bitte wählen…</option>
-                        <option value="Anfrage">Allgemeine Anfrage</option>
-                        <option value="Beratung">Beratung</option>
-                        <option value="Angebot">Angebot</option>
-                        <option value="Support">Support</option>
+                        <option value="general" title="Für alles, was nicht spezifisch passt">Allgemeine Anfrage</option>
+                        <option value="report" title="Für direkte Anforderung des kostenlosen Exposure-Reports">Kostenlose Ersteinschätzung / Exposure-Report</option>
+                        <option value="consulting" title="Für tiefergehende Analyse oder Sicherheitsstrategie">Beratung / Sicherheitsstrategie</option>
+                        <option value="pricing" title="Für Anfragen zu Preisen und Angeboten">Angebot / Preisinfos</option>
+                        <option value="support" title="Support-Anfragen oder Rückfragen zu Reports">Support / Rückfragen zu Report</option>
+                        <option value="other" title="Sonstiges">Sonstiges</option>
                       </select>
                     </div>
                   </div>
@@ -187,8 +191,25 @@ export default function ContactPage() {
                       id="message"
                       name="message"
                       required
+                      placeholder="Beschreiben Sie kurz Ihr Anliegen oder Vorfall"
                       value={form.message}
                       onChange={handleChange}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-blue-200 font-semibold mb-1" htmlFor="host">
+                      Hostname / Domain / IP (optional)
+                    </label>
+                    <input
+                      className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-black focus:outline-none focus:border-blue-500 transition"
+                      type="text"
+                      id="host"
+                      name="host"
+                      placeholder="z. B. example.com oder 92.113.23.59"
+                      value={form.host}
+                      onChange={handleChange}
+                      autoComplete="off"
                     />
                   </div>
 
@@ -215,9 +236,9 @@ export default function ContactPage() {
                   <div className="mt-4">
                     <button
                       type="submit"
-                      className="cyber-direct-btn w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-full shadow-lg transition-all duration-300 text-lg"
+                      className="cta-button w-full text-black font-bold py-3 rounded-2xl transition-all duration-300 text-lg"
                     >
-                      Nachricht senden
+                      Kostenlose Ersteinschätzung anfordern
                     </button>
                   </div>
                 </form>
@@ -290,6 +311,48 @@ export default function ContactPage() {
 
       </main>
       <Footer />
+      <style jsx>{`
+        .cta-button {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.75rem;
+          background: linear-gradient(90deg, #00d4ff 0%, #00bcd4 100%);
+          color: #052331;
+          padding: 0.75rem 1rem;
+          border-radius: 0.75rem;
+          box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+          overflow: hidden;
+          border: none;
+        }
+        .cta-button::after {
+          content: "";
+          position: absolute;
+          left: -120%;
+          top: 0;
+          height: 100%;
+          width: 120%;
+          background: linear-gradient(90deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.18) 100%);
+          transform: translateX(0);
+          transition: transform .6s ease;
+        }
+        .cta-button:hover::after {
+          transform: translateX(220%);
+        }
+        .cta-button:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 20px 40px rgba(2,6,23,0.6);
+        }
+
+        .card {
+          transition: transform .25s ease, box-shadow .25s ease;
+        }
+        .card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 20px 40px rgba(2,6,23,0.6);
+        }
+      `}</style>
     </>
   );
 }
