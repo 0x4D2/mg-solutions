@@ -30,29 +30,22 @@ const PartnerLogo = ({ href, src, alt, width = 220, height = 80 }) => (
   </a>
 );
 
-const LinkCard = ({ href, iconClass, title, className = "" }) => (
+const LinkCard = ({ href, iconClass, title, className = "", transparentIcon = false }) => (
   <Link
     href={href}
-    className={`flex flex-col items-center justify-center border-2 text-white \
-               hover:bg-transparent hover:text-white transition duration-300 \
-               rounded-2xl p-8 min-w-[280px] max-w-[360px] min-h-[260px] \
-               mx-auto ${className}`}
+    className={`flex flex-col items-center justify-center border-2 text-white rounded-2xl p-8 min-w-[280px] max-w-[380px] min-h-[240px] mx-auto transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,212,255,0.06)] ${className}`}
     style={{
       backgroundColor: "rgba(0, 31, 63, 0.85)",
       borderColor: "#00FFFF",
-      boxShadow: "0 0 15px rgba(0, 255, 255, 0.3)",
-      transform: "scale(1)",
     }}
-    onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-    onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
   >
     <div
-      className="mb-8 p-6 rounded-2xl bg-opacity-20"
-      style={{ backgroundColor: "rgba(0, 255, 255, 0.1)" }}
+      className={transparentIcon ? "mb-6" : "mb-8 p-6 rounded-2xl bg-opacity-20"}
+      style={{ backgroundColor: transparentIcon ? "transparent" : "rgba(0, 255, 255, 0.08)" }}
     >
-      <i className={`${iconClass} text-5xl text-cyan-400`}></i>
+      <i className={`${iconClass} text-4xl text-cyan-400`}></i>
     </div>
-    <span className="text-2xl font-semibold">{title}</span>
+    <span className="text-lg sm:text-xl font-semibold text-center leading-tight max-w-[260px] break-words">{title}</span>
   </Link>
 );
 
@@ -82,42 +75,128 @@ export default function Index() {
   if (!showContent) return null;
 
   return (
-    <div className="flex flex-col min-h-screen relative bg-[#001f3f]">
+    <div className="flex flex-col min-h-screen relative" style={{ backgroundColor: '#0a192f', fontFamily: 'Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif' }}>
       <IndexNavbar fixed />
-      <main className="cyber-bg flex-grow relative z-10 ">
+      <main className="cyber-bg flex-grow relative z-10">
         <section className="header relative pt-8 items-center text-center px-4 sm:px-0">
-          <div className="pt-32 sm:pt-0 pb-12 max-w-5xl mx-auto">
+          <div className="pt-24 sm:pt-32 pb-20 max-w-6xl mx-auto px-4 sm:px-8">
+            
+            {/* Hero */}
             <h1 className="hero-title font-semibold text-4xl sm:text-6xl text-white">
               <TypeIt
                 options={{
-                  strings: ["Sicherheitsentwicklung sichtbar machen – bevor es teuer wird"],
+                  strings: ["Sicherheit beginnt mit Transparenz – alles andere ist Illusion."],
                   speed: 50,
                   waitUntilVisible: true,
                   cursor: false,
                 }}
               />
             </h1>
-            <p className="mt-6 text-xl sm:text-2xl leading-relaxed text-gray-500 max-w-3xl mx-auto">
-              Viele Tools zeigen nur Momentaufnahmen. Wir dokumentieren, wie sich Ihre öffentliche Angriffsfläche wirklich verändert – objektiv, risikofrei und messbar.
-
+            <p className="mt-6 leading-relaxed max-w-3xl mx-auto" style={{ fontSize: '18px', color: '#eeeeee' }}>
+              <strong style={{ color: '#d8d8d8' }}>Viele Tools zeigen nur Momentaufnahmen. Wir dokumentieren, wie sich Ihre öffentliche Angriffsfläche wirklich verändert – objektiv, risikofrei und messbar.</strong>
             </p>
-            <div
-              className="mt-16 grid gap-8 sm:gap-10 justify-center"
-              style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}
-            >
-              <LinkCard
-                href="/business"
-                iconClass="fas fa-building"
-                title="Jetzt kostenlose \n Ersteinschätzung starten"
-              />
-              <LinkCard
-                href="/private"
-                iconClass="fas fa-user-shield"
-                title="Häufige Fragen lesen"
-              />
+            <p className="mt-4 text-gray-400 text-sm sm:text-base text-center">
+              <em>Für IT-Verantwortliche und Geschäftsführung</em>
+            </p>
+
+            {/* CTAs */}
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center px-4 sm:px-0">
+              <Link href="/business" className="cta-button rounded-2xl inline-flex items-center justify-center font-semibold w-full sm:w-auto max-w-md mx-auto sm:mx-0 px-6 py-3" style={{ backgroundColor: '#00d4ff', color: '#001f3f' }}>
+                Jetzt kostenlose Ersteinschätzung starten
+              </Link>
+              <Link href="/exposure-report" className="inline-block px-4 py-2" style={{ color: '#00d4ff' }}>
+                Wie es funktioniert →
+              </Link>
             </div>
+
+            {/* Exposure-Report */}
+            <section className="mt-20 rounded-2xl p-8 sm:p-10 text-white max-w-4xl mx-auto card" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.18)', backdropFilter: 'blur(10px)', boxShadow: '0 8px 28px rgba(0,212,255,0.04)' }}>
+              <h3 className="text-2xl font-semibold">Was ist ein Exposure-Report?</h3>
+              <p className="mt-3 text-gray-200"><strong>Ein passiver Blick auf Ihre öffentliche Sichtbarkeit</strong></p>
+              <ul className="mt-4 grid gap-2 text-gray-200">
+                <li>✓ <strong>Keine aktiven Scans</strong> – nur öffentliche Daten</li>
+                <li>✓ <strong>In 24 Stunden</strong> geliefert</li>
+                <li>✓ <strong>Top-3-Risiken</strong> priorisiert</li>
+                <li>✓ <strong>490€</strong> einmalig | 30-Tage-Geld-zurück</li>
+              </ul>
+              <div className="mt-4">
+                <Link href="/exposure-report" className="inline-block px-4 py-2 rounded-lg" style={{ border: '1px solid rgba(0,212,255,0.18)', color: '#00d4ff' }}>Mehr erfahren</Link>
+              </div>
+            </section>
+
+            {/* For whom */}
+            <section className="mt-20 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="p-8 rounded-2xl text-white card" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.12)', backdropFilter: 'blur(6px)' }}>
+                <h4 className="font-semibold text-lg">Für wen?</h4>
+                <h5 className="mt-3 font-semibold">IT-Verantwortliche</h5>
+                <ul className="mt-2 text-gray-200">
+                  <li>→ Externe Sichtbarkeit dokumentieren</li>
+                  <li>→ Maßnahmen priorisieren</li>
+                </ul>
+              </div>
+              <div className="p-8 rounded-2xl text-white card" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.12)', backdropFilter: 'blur(6px)' }}>
+                <h5 className="font-semibold">Geschäftsführung</h5>
+                <ul className="mt-2 text-gray-200">
+                  <li>→ Sicherheits-ROI sichtbar machen</li>
+                  <li>→ Investitionen rechtfertigen</li>
+                </ul>
+                <div className="mt-4">
+                  <Link href="/business" className="inline-block px-4 py-2 rounded-lg font-semibold" style={{ backgroundColor: '#00d4ff', color: '#001f3f', border: '1px solid rgba(0,212,255,0.14)' }}>Jetzt analysieren</Link>
+                </div>
+              </div>
+            </section>
+
+            {/* FAQ teaser */}
+            <section className="mt-20 max-w-4xl mx-auto text-white rounded-2xl p-8 sm:p-10 card" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.12)' }}>
+              <h4 className="font-semibold text-xl">Häufige Fragen</h4>
+              <div className="mt-4 grid gap-2 text-gray-200">
+                <div>
+                  <strong>Werden meine Systeme gescannt?</strong>
+                  <div className="text-gray-300">→ Nein, 100% passiv</div>
+                </div>
+                <div>
+                  <strong>Wie schnell bekomme ich Ergebnisse?</strong>
+                  <div className="text-gray-300">→ In 24 Stunden</div>
+                </div>
+              </div>
+              <div className="mt-4">
+                <Link href="/faq" className="text-cyan-200 hover:text-white" style={{ color: '#00d4ff' }}>Alle FAQs ansehen</Link>
+              </div>
+            </section>
+
+            <style jsx>{`
+              @keyframes subtlePulse {
+                0% { box-shadow: 0 8px 30px rgba(0,212,255,0.04); }
+                50% { box-shadow: 0 14px 40px rgba(0,212,255,0.06); }
+                100% { box-shadow: 0 8px 30px rgba(0,212,255,0.04); }
+              }
+              .cta-pulse {
+                animation: subtlePulse 4s ease-in-out infinite;
+              }
+              .cta-button {
+                position: relative;
+                overflow: hidden;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+              }
+              .cta-button::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -120%;
+                width: 120%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+                transition: left 0.7s ease;
+                pointer-events: none;
+              }
+              .cta-button:hover::after { left: 100%; }
+              .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+              .card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,212,255,0.06); }
+            `}</style>
+
+            {/* Partner Section */}
             <div className="mt-12 mb-8 sm:mb-12">
-              <h3 className="text-center text-lg sm:text-xl text-gray-500 mb-6">
+              <h3 className="text-center text-lg sm:text-xl text-gray-400 mb-8">
                 Unsere Partner & Mitgliedschaften
               </h3>
               <div className="flex flex-wrap justify-center gap-4 sm:gap-6 px-4">
@@ -130,6 +209,7 @@ export default function Index() {
                 />
               </div>
             </div>
+
           </div>
         </section>
       </main>

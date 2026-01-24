@@ -1,17 +1,203 @@
-// This page has been removed — redirect to the business page to keep the route safe.
-
-export async function getServerSideProps() {
-  return {
-    redirect: {
-      destination: "/business",
-      permanent: false,
-    },
-  };
-}
+import React from "react";
+import { motion } from "framer-motion";
+import IndexNavbar from "components/Navbars/IndexNavbar.js";
+import Footer from "components/Footers/Footer.js";
+import Link from 'next/link';
+import { containerVariants, itemVariants, hoverEffect } from "components/framerVariants";
 
 export default function PrivatePage() {
-  return null;
-}
+  return (
+    <>
+      <IndexNavbar fixed />
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="cyber-bg min-h-screen"
+      >
+        {/* Hero Section */}
+        <section className="py-16 relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-center overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/img/grid-pattern.svg')] opacity-10"></div>
+          <div className="container mx-auto px-4 relative z-10">
+            <motion.h1
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl md:text-6xl font-bold mb-6 leading-tight"
+            >
+              Schützen Sie, was Ihnen lieb ist – bevor es zu spät ist
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="text-xl text-white max-w-2xl mx-auto mb-8"
+            >
+              Fotos, Bankdaten & Privatsphäre – sicher vor Hackern, Viren & Datendieben
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="flex flex-col sm:flex-row justify-center gap-4"
+            >
+              <Link href="/contact" passHref legacyBehavior>
+                <a className="cyber-direct-btn hover:bg-blue-700 text-white py-3 px-8 rounded-full font-medium transition duration-300 text-center inline-block ">
+                  In 5 Minuten wissen Sie, wie gefährdet Sie sind – gratis Check starten
+                </a>
+              </Link>
+            </motion.div>
+            <div className="mt-8 text-blue-200 text-sm">Jede Minute wird ein Passwort gestohlen – ist Ihres dabei?</div>
+          </div>
+        </section>
+
+        {/* Why Security */}
+        <section className="py-20 bg-gray-800">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="flex flex-col md:flex-row items-center gap-12">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="md:w-1/2"
+              >
+                <div className="bg-blue-600 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                </div>
+                <h2 className="text-3xl font-bold mb-6">
+                  Warum digitale Sicherheit <span className="text-blue-400">unverzichtbar</span> ist
+                </h2>
+                <p className="text-lg text-white mb-8">
+                  Ihre Fotos, Bankdaten und privaten Nachrichten sind wertvoll – und täglich im Visier von Betrügern. Wir schützen, was Ihnen wichtig ist: Ihr WLAN, Ihre Online-Einkäufe, Ihr Banking und Ihre Familie. Ganz ohne Technik-Kauderwelsch.
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="md:w-1/2"
+              >
+                <div className="bg-gray-700 rounded-xl p-8 border border-gray-600">
+                  <h3 className="text-xl font-bold text-white mb-4">Aktuelle Bedrohungen</h3>
+                  <ul className="space-y-4 text-white">
+                    {[
+                      "✓ 68% der Cyberangriffe richten sich an Privatpersonen",
+                      "✓ Durchschnittlicher Schaden: 5.300€ pro Vorfall",
+                      "✓ 43% der Nutzer verwenden Passwörter mehrfach",
+                      "✓ Nur 11% haben Zwei-Faktor-Authentifizierung aktiviert"
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start">
+                        <span className="text-blue-400 mr-2">•</span>
+                        <span className="text-gray-300">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Services */}
+        <section className="py-20 bg-gray-900">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <h2 className="text-3xl font-bold mb-8">Leistungen für Privatkunden</h2>
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
+              {[
+                {
+                  icon: (
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  ),
+                  title: "Rundumschutz für Ihre Geräte",
+                  desc: "Schützt Ihre Handys, Tablets & Computer vor Viren, Betrug und Datenklau."
+                },
+                {
+                  icon: (
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                    </svg>
+                  ),
+                  title: "Sicheres WLAN & Online-Banking",
+                  desc: "Schützt Ihr WLAN vor Nachbarn & Hackern. Sicher einkaufen & Online-Banking nutzen."
+                },
+                {
+                  icon: (
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                  ),
+                  title: "Sichere Backups Ihrer Fotos & Dokumente",
+                  desc: "Wir sorgen dafür, dass Ihre Erinnerungen & Unterlagen nie verloren gehen."
+                },
+                {
+                  icon: (
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                  ),
+                  title: "Wir finden gestohlene Passwörter – bevor Diebe sie nutzen",
+                  desc: "Sofortige Warnung, wenn Ihre Zugangsdaten im Umlauf sind."
+                },
+                {
+                  icon: (
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                  ),
+                  title: "Soforthilfe bei Hackern & Viren – werktags schnell erreichbar",
+                  desc: "Wir sind für Sie da, wenn es darauf ankommt – schnelle Hilfe während der Geschäftszeiten."
+                }
+              ].map((item, i) => (
+                <div key={i} className="backdrop-blur-md p-8 rounded-2xl shadow-2xl border text-center flex flex-col items-center">
+                  <div className="text-white w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 via-blue-400 to-blue-600 flex items-center justify-center shadow-lg mb-4">
+                    {item.icon}
+                  </div>
+                  <h2 className="text-xl font-bold mb-2">{item.title}</h2>
+                  <p className="text-white mb-2">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="bg-gray-800 rounded-2xl shadow-xl border border-blue-700 p-8 text-center mb-8 max-w-lg mx-auto">
+              <div className="text-2xl font-bold mb-2"><h2>Rundum-Schutz-Paket</h2></div>
+              <div className="text-4xl font-extrabold text-white mb-2">30€ <span className="text-lg font-normal text-blue-200">/Monat</span></div>
+              <div className="text-white mb-4">Monatlich kündbar – keine versteckten Kosten</div>
+
+              <Link href="/contact" passHref legacyBehavior>
+                <a className="cyber-direct-btn hover:bg-blue-700 text-white py-3 px-8 rounded-full font-medium transition duration-300 text-center inline-block ">
+                  Jetzt Schutz starten
+                </a>
+              </Link>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Process */}
+        <section className="py-20 bg-gray-800">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <h2 className="text-3xl font-bold mb-8 ">So einfach funktioniert's</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  icon: (
+                    <svg className="w-10 h-10 text-blue-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" strokeWidth="2" />
+                      <text x="12" y="16" textAnchor="middle" fontSize="12" fill="currentColor">1</text>
+                    </svg>
+                  ),
+                  title: "Kostenlose Analyse",
+                  desc: "Wir besprechen Ihre Situation und identifizieren Risiken – einfach & verständlich."
+                },
+                {
+                  icon: (
+                    <svg className="w-10 h-10 text-blue-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" strokeWidth="2" />
                       <text x="12" y="16" textAnchor="middle" fontSize="12" fill="currentColor">2</text>
                     </svg>
                   ),

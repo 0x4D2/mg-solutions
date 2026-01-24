@@ -10,11 +10,10 @@ const sectionVariants = {
 };
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "", privacy: false, customerType: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "", privacy: false });
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
   const [recaptchaError, setRecaptchaError] = useState("");
-  const captchaWord = "sicher";
 
   const handleChange = e => {
     const { name, value, type, checked } = e.target;
@@ -32,7 +31,6 @@ export default function ContactPage() {
       setError("Bitte akzeptieren Sie die Datenschutzerklärung.");
       return;
     }
-    // reCAPTCHA v3 Token holen
     if (typeof window.grecaptcha === "undefined") {
       setRecaptchaError("reCAPTCHA konnte nicht geladen werden. Bitte versuchen Sie es später erneut.");
       return;
@@ -42,7 +40,6 @@ export default function ContactPage() {
       setRecaptchaError("reCAPTCHA-Überprüfung fehlgeschlagen. Bitte versuchen Sie es erneut.");
       return;
     }
-    // Formulardaten an die API senden
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -56,7 +53,7 @@ export default function ContactPage() {
         const data = await response.json();
         setError(data.message || "Fehler beim Senden der Nachricht. Bitte versuchen Sie es später erneut.");
       }
-    } catch (err) {
+    } catch {
       setError("Fehler beim Senden der Nachricht. Bitte versuchen Sie es später erneut.");
     }
   };
@@ -68,6 +65,8 @@ export default function ContactPage() {
       </Head>
       <IndexNavbar fixed />
       <main className="cyber-bg bg-gray-900 text-white min-h-screen">
+
+        {/* Header */}
         <section className="relative py-20 bg-gradient-to-br from-blue-900 via-gray-900 to-gray-900 text-center overflow-hidden">
           <div className="absolute inset-0 bg-[url('/img/grid-pattern.svg')] opacity-10"></div>
           <div className="container mx-auto px-4 relative z-10">
@@ -90,6 +89,7 @@ export default function ContactPage() {
           </div>
         </section>
 
+        {/* Kontaktformular */}
         <section className="py-16 bg-gray-900">
           <div className="container mx-auto px-4 max-w-2xl">
             <motion.div
@@ -102,45 +102,10 @@ export default function ContactPage() {
               {sent ? (
                 <div className="text-center py-16">
                   <h2 className="text-3xl font-bold mb-4 text-blue-400">Vielen Dank!</h2>
-                  <p className="text-blue-200 text-lg">Ihre Nachricht wurde erfolgreich übermittelt.<br />Ich melde mich zeitnah bei Ihnen.</p>
+                  <p className="text-blue-200 text-lg">Ihre Nachricht wurde erfolgreich übermittelt.<br />Wir melden uns zeitnah bei Ihnen.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Kundentyp Auswahl */}
-                  <div>
-                    <label className="block text-blue-200 font-semibold mb-1">
-                      Ich bin <span className="text-red-500">*</span>
-                    </label>
-                    <div className="flex gap-6">
-                      <label className="flex items-center cursor-pointer">
-                        <input
-                          type="radio"
-                          name="customerType"
-                          value="Privatkunde"
-                          checked={form.customerType === 'Privatkunde'}
-                          onChange={handleChange}
-                          required
-                          className="accent-blue-600 w-5 h-5 mr-2"
-                        />
-                        <span className="text-white">Privatkunde</span>
-                      </label>
-                      <label className="flex items-center cursor-pointer">
-                        <input
-                          type="radio"
-                          name="customerType"
-                          value="Unternehmen"
-                          checked={form.customerType === 'Unternehmen'}
-                          onChange={handleChange}
-                          required
-                          className="accent-blue-600 w-5 h-5 mr-2"
-                        />
-                        <span className="text-white">Unternehmen</span>
-                      </label>
-                    </div>
-                    {error && !form.customerType && (
-                      <div className="text-red-500 font-semibold mt-1">Bitte wählen Sie einen Kundentyp.</div>
-                    )}
-                  </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-blue-200 font-semibold mb-1" htmlFor="name">
@@ -158,9 +123,6 @@ export default function ContactPage() {
                         pattern="[A-Za-zÄÖÜäöüß\-\s]+"
                         title="Bitte geben Sie einen gültigen Namen ein."
                       />
-                      {error && !form.name && (
-                        <div className="text-red-500 font-semibold mt-1">Bitte geben Sie Ihren Namen ein.</div>
-                      )}
                     </div>
                     <div>
                       <label className="block text-blue-200 font-semibold mb-1" htmlFor="phone">
@@ -178,9 +140,6 @@ export default function ContactPage() {
                         pattern="[0-9+ ]{6,20}"
                         title="Bitte geben Sie nur Zahlen und ggf. + ein."
                       />
-                      {error && !form.phone && (
-                        <div className="text-red-500 font-semibold mt-1">Bitte geben Sie Ihre Telefonnummer ein.</div>
-                      )}
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -197,12 +156,7 @@ export default function ContactPage() {
                         value={form.email}
                         onChange={handleChange}
                         autoComplete="email"
-                        pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
-                        title="Bitte geben Sie eine gültige E-Mail-Adresse ein."
                       />
-                      {error && !form.email && (
-                        <div className="text-red-500 font-semibold mt-1">Bitte geben Sie Ihre E-Mail-Adresse ein.</div>
-                      )}
                     </div>
                     <div>
                       <label className="block text-blue-200 font-semibold mb-1" htmlFor="subject">
@@ -222,9 +176,6 @@ export default function ContactPage() {
                         <option value="Angebot">Angebot</option>
                         <option value="Support">Support</option>
                       </select>
-                      {error && !form.subject && (
-                        <div className="text-red-500 font-semibold mt-1">Bitte wählen Sie einen Betreff.</div>
-                      )}
                     </div>
                   </div>
                   <div>
@@ -239,10 +190,9 @@ export default function ContactPage() {
                       value={form.message}
                       onChange={handleChange}
                     />
-                    {error && !form.message && (
-                      <div className="text-red-500 font-semibold mt-1">Bitte geben Sie eine Nachricht ein.</div>
-                    )}
                   </div>
+
+                  {/* Datenschutzerklärung */}
                   <div className="flex items-center bg-gray-700 rounded-lg p-3 border border-green-500 mt-2">
                     <input
                       type="checkbox"
@@ -258,12 +208,10 @@ export default function ContactPage() {
                       Ja, ich möchte Antworten auf meine Frage erhalten und akzeptiere die <a href="/privacy" className="underline text-blue-400 hover:text-blue-300" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>.
                     </label>
                   </div>
-                  {error && !form.privacy && (
-                    <div className="text-red-500 font-semibold mt-1">Bitte akzeptieren Sie die Datenschutzerklärung.</div>
-                  )}
-                  {recaptchaError && (
-                    <div className="text-red-500 font-semibold text-center mt-2">{recaptchaError}</div>
-                  )}
+
+                  {error && <div className="text-red-500 font-semibold mt-1 text-center">{error}</div>}
+                  {recaptchaError && <div className="text-red-500 font-semibold text-center mt-2">{recaptchaError}</div>}
+
                   <div className="mt-4">
                     <button
                       type="submit"
@@ -274,58 +222,34 @@ export default function ContactPage() {
                   </div>
                 </form>
               )}
-              {error && (
-                <div className="text-red-500 font-semibold text-center mt-4">{error}</div>
-              )}
-              {sent && !error && (
-                <div className="text-green-400 font-semibold text-center mt-4">Nachricht erfolgreich übermittelt!</div>
-              )}
-              {/* Trust Badges */}
-              <div className="flex justify-center gap-6 mt-8">
-                <div className="flex flex-col items-center">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-800 mb-2">
-                    {/* Shield Icon */}
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
-                  </div>
-                  <span className="text-xs text-blue-200 mt-1">SSL-verschlüsselt</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-800 mb-2">
-                    {/* User Icon */}
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                  </div>
-                  <span className="text-xs text-blue-200 mt-1">Keine Weitergabe</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-800 mb-2">
-                    {/* CheckCircle Icon */}
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a10 10 0 11-20 0 10 10 0 0120 0z" /></svg>
-                  </div>
-                  <span className="text-xs text-blue-200 mt-1">DSGVO-konform</span>
-                </div>
-              </div>
             </motion.div>
-            {/* Alternative Kontaktwege als Buttons mit Icon-Kreis wie auf Business/Privatseite */}
-            <div className="text-center mt-12 flex flex-col md:flex-row gap-6 justify-center items-center">
-              <a href="mailto:info@ichwillsicherheit.de" className="flex items-center bg-blue-900/80 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-xl shadow transition-all duration-300 text-lg gap-3">
-                <span className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-700 mr-2">
-                  {/* Envelope Icon */}
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12l-4-4-4 4m8 0v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6m16 0V6a2 2 0 00-2-2H6a2 2 0 00-2 2v6" /></svg>
-                </span>
-                <span>E-Mail: info@ichwillsicherheit.de</span>
-              </a>
-              <a href="tel:+4917675468985" className="flex items-center bg-blue-900/80 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-xl shadow transition-all duration-300 text-lg gap-3">
-                <span className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-700 mr-2">
-                  {/* Phone Icon modern */}
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                </span>
-                <span>Telefon: +49 176 754 689 85 <span className="ml-2 text-base text-blue-200">(Mo-Fr, 9-18 Uhr)</span></span>
-              </a>
+
+            {/* Trust Badges */}
+            <div className="flex justify-center gap-6 mt-8">
+              <div className="flex flex-col items-center">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-800 mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                </div>
+                <span className="text-xs text-blue-200 mt-1">SSL-verschlüsselt</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-800 mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                </div>
+                <span className="text-xs text-blue-200 mt-1">Keine Weitergabe</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-800 mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a10 10 0 11-20 0 10 10 0 0120 0z" /></svg>
+                </div>
+                <span className="text-xs text-blue-200 mt-1">DSGVO-konform</span>
+              </div>
             </div>
+
           </div>
         </section>
 
-        {/* Schritt-für-Schritt Grafik: Was passiert nach dem Absenden? */}
+        {/* Schritt-für-Schritt Grafik */}
         <section className="py-12 bg-gray-900">
           <div className="container mx-auto px-4 max-w-3xl">
             <div className="bg-gray-900/80 p-8 rounded-2xl shadow-2xl border border-blue-800">
@@ -360,22 +284,12 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* Datenschutzerklärung nur verlinken */}
         <div className="text-center text-blue-300 text-sm mt-8">
           Mehr zum Umgang mit Ihren Daten finden Sie in unserer <a href="/privacy" className="underline hover:text-blue-400" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>.
         </div>
+
       </main>
       <Footer />
-      <style jsx global>{`
-        @keyframes gradient-x {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-        .animate-gradient-x {
-          background-size: 200% 200%;
-          animation: gradient-x 8s ease-in-out infinite;
-        }
-      `}</style>
     </>
   );
 }
