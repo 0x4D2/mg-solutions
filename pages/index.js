@@ -110,6 +110,11 @@ export default function Index() {
                 Kostenlose Ersteinschätzung anfordern
               </Link>
             </div>
+            <div className="mt-3 text-sm text-center">
+              <Link href="/pricing" className="text-cyan-200 hover:underline" aria-label="Transparente Preise ansehen">
+                Transparente Preise ansehen →
+              </Link>
+            </div>
 
             {/* Exposure-Report */}
             <section className="mt-20 rounded-2xl p-8 sm:p-10 text-white max-w-4xl mx-auto card" style={{ backgroundColor: 'rgba(30,41,59,0.72)', border: '1px solid rgba(0,212,255,0.18)', backdropFilter: 'blur(10px)', boxShadow: '0 8px 28px rgba(0,212,255,0.04)' }}>
@@ -146,9 +151,9 @@ export default function Index() {
 
               
                 <div className="mt-4">
-                  <Link href="/exposure-report" className="cta-button inline-flex items-center justify-center font-semibold px-4 py-2 rounded-2xl transition-all duration-300" style={{ backgroundColor: 'rgba(0,212,255,0.12)', color: '#00d4ff' }}>
+                  <a href="/beispiel-report.pdf" download aria-label="Beispiel-Report herunterladen" className="cta-button inline-flex items-center justify-center font-semibold px-4 py-2 rounded-2xl transition-all duration-300" style={{ backgroundColor: 'rgba(0,212,255,0.12)', color: '#00d4ff' }}>
                     Beispiel-Report ansehen
-                  </Link>
+                  </a>
                 </div>
             </section>
 

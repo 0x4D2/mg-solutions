@@ -61,12 +61,13 @@ export default function Footer() {
                     {[
                       { text: "Über uns", href: "/about" },
                       { text: "Kontakt", href: "/contact" },
+                      { text: "Transparente Preise ansehen", href: "/pricing" },
                       { text: "Datenschutz", href: "/privacy" },
                       { text: "Impressum", href: "/imprint" },
                     ].map((link, idx) => (
                       <li key={idx}>
                         <Link href={link.href} legacyBehavior>
-                          <a className={FOOTER_LINK_STYLES}>{link.text}</a>
+                          <a className={FOOTER_LINK_STYLES} aria-label={link.text}>{link.text}</a>
                         </Link>
                       </li>
                     ))}
