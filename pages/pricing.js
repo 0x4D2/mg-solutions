@@ -165,6 +165,7 @@ export default function Pricing() {
             {/* Usage note and de-emphasized one-off report */}
             <section className="mt-6 text-gray-300 text-sm text-center">
               <p>Basis: 99€/Monat inkl. 5 Assets — zusätzliches Asset: <strong>+15€/Monat</strong> (optional)</p>
+              <p className="mt-2">Monatlich kündbar — keine Mindestlaufzeit. Widerrufsrecht: 14 Tage bei Fernabsatzverträgen. Details: <a href="/agb" className="text-cyan-200 hover:underline">AGB</a> · <a href="/widerruf" className="text-cyan-200 hover:underline">Widerrufsbelehrung</a>.</p>
             </section>
 
             {/* Einmal-Report de-emphasized and moved down */}

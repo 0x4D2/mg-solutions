@@ -63,6 +63,8 @@ export default function Footer() {
                       { text: "Kontakt", href: "/contact" },
                       { text: "Datenschutz", href: "/privacy" },
                       { text: "Impressum", href: "/imprint" },
+                      { text: "AGB", href: "/agb" },
+                      { text: "Widerruf", href: "/widerruf" },
                       { text: "Roadmap", href: "/roadmap" },
                     ].map((link, idx) => (
                       <li key={idx}>
