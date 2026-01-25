@@ -3,7 +3,6 @@ import Link from "next/link";
 
 const ALL_NAV_LINKS = [
   { name: "Startseite", path: "/" },
-  { name: "Für Unternehmen", path: "/business" },
   { name: "Preise", path: "/pricing" },
   { name: "Über uns", path: "/about" },
   { name: "FAQ", path: "/faq" },
