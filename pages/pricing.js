@@ -21,12 +21,32 @@ export default function Pricing() {
               <div className="p-6 rounded-2xl card text-center" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}>
                 <h3 className="text-lg font-semibold mb-2 text-center">Kostenlose Ersteinschätzung (einmalig)</h3>
                 <div className="text-sm text-gray-300 mb-4 text-center">Limitierte Einführung (kein Abo)</div>
-                <ul className="text-gray-200 text-sm mb-6 space-y-2 text-left list-disc list-inside mx-auto max-w-[280px]">
-                  <li>• 1 Asset/IP</li>
-                  <li>• Exposure‑Level + Top 3 Risiken</li>
-                  <li>• 1‑seitige Management Summary</li>
-                  <li>• Keine historischen Daten</li>
-                </ul>
+                   <ul className="text-gray-200 text-sm mb-6 space-y-2 text-left list-disc list-inside mx-auto max-w-[280px]">
+                     <li className="flex items-start">
+                       <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                       </svg>
+                       <span className="text-white">1 Asset/IP</span>
+                     </li>
+                     <li className="flex items-start">
+                       <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                       </svg>
+                       <span className="text-white">Exposure‑Level + Top 3 Risiken</span>
+                     </li>
+                     <li className="flex items-start">
+                       <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                       </svg>
+                       <span className="text-white">1‑seitige Management Summary</span>
+                     </li>
+                     <li className="flex items-start">
+                       <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                       </svg>
+                       <span className="text-white">Keine historischen Daten</span>
+                     </li>
+                   </ul>
                 <Link href="/contact?assessment=free" className="cta-button inline-flex items-center justify-center px-4 py-2 rounded-2xl font-semibold cta-pulse" style={{ backgroundColor: '#00d4ff', color: '#001f3f' }} aria-label="Kostenlose Analyse starten">
                   Kostenlos testen
                 </Link>
@@ -37,12 +57,32 @@ export default function Pricing() {
                 <h3 className="text-lg font-semibold mb-2">Essential</h3>
                 <div className="text-2xl font-bold mb-2 text-center">99 € / Monat</div>
                 <div className="text-sm text-gray-300 mb-4 text-center">Bis zu 5 Assets — Für kleine Teams</div>
-                <ul className="text-gray-200 text-sm mb-6 space-y-2 text-left list-disc list-inside mx-auto max-w-[280px]">
-                  <li>• Vollständiger Exposure‑Report (~9 Seiten)</li>
-                  <li>• Monatliche Trendanalyse</li>
-                  <li>• E‑Mail‑Benachrichtigungen</li>
-                  <li>• 1×/Quartal Review‑Call (30min)</li>
-                </ul>
+                   <ul className="text-gray-200 text-sm mb-6 space-y-2 text-left list-disc list-inside mx-auto max-w-[280px]">
+                     <li className="flex items-start">
+                       <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                       </svg>
+                       <span className="text-white">Vollständiger Exposure‑Report (~9 Seiten)</span>
+                     </li>
+                     <li className="flex items-start">
+                       <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                       </svg>
+                       <span className="text-white">Monatliche Trendanalyse</span>
+                     </li>
+                     <li className="flex items-start">
+                       <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                       </svg>
+                       <span className="text-white">E‑Mail‑Benachrichtigungen</span>
+                     </li>
+                     <li className="flex items-start">
+                       <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                       </svg>
+                       <span className="text-white">1×/Quartal Review‑Call (30min)</span>
+                     </li>
+                   </ul>
                 <Link href="/contact?plan=essential" className="cta-button inline-flex items-center justify-center px-4 py-3 rounded-2xl font-semibold" style={{ backgroundColor: '#00d4ff', color: '#001f3f' }}>
                   Für kleine Teams
                 </Link>
@@ -54,12 +94,32 @@ export default function Pricing() {
                 <h3 className="text-lg font-semibold mb-2 text-center">Professional</h3>
                 <div className="text-2xl font-bold mb-2 text-center">199 € / Monat</div>
                 <div className="text-sm text-gray-300 mb-4 text-center">Bis zu 20 Assets — Empfohlen für KMU</div>
-                <ul className="text-gray-200 text-sm mb-6 space-y-2 text-left list-disc list-inside mx-auto max-w-[280px]">
-                  <li>• Vollständiger Exposure‑Report (~9 Seiten)</li>
-                  <li>• Monatliche Trendanalyse</li>
-                  <li>• E‑Mail‑Benachrichtigungen</li>
-                  <li>• Monatlicher Review‑Call (30min)</li>
-                </ul>
+                   <ul className="text-gray-200 text-sm mb-6 space-y-2 text-left list-disc list-inside mx-auto max-w-[280px]">
+                     <li className="flex items-start">
+                       <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                       </svg>
+                       <span className="text-white">Vollständiger Exposure‑Report (~9 Seiten)</span>
+                     </li>
+                     <li className="flex items-start">
+                       <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                       </svg>
+                       <span className="text-white">Monatliche Trendanalyse</span>
+                     </li>
+                     <li className="flex items-start">
+                       <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                       </svg>
+                       <span className="text-white">E‑Mail‑Benachrichtigungen</span>
+                     </li>
+                     <li className="flex items-start">
+                       <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                       </svg>
+                       <span className="text-white">Monatlicher Review‑Call (30min)</span>
+                     </li>
+                   </ul>
                 <Link href="/contact?plan=professional" className="cta-button inline-flex items-center justify-center px-4 py-3 rounded-2xl font-semibold" style={{ backgroundColor: '#00d4ff', color: '#001f3f' }}>
                   Professional wählen
                 </Link>
@@ -70,12 +130,32 @@ export default function Pricing() {
                 <h3 className="text-lg font-semibold mb-2 text-center">Corporate</h3>
                 <div className="text-2xl font-bold mb-2 text-center">349 € / Monat</div>
                 <div className="text-sm text-gray-300 mb-4 text-center">Bis zu 50 Assets — Für Compliance‑anforderungen</div>
-                <ul className="text-gray-200 text-sm mb-6 space-y-2 text-left list-disc list-inside mx-auto max-w-[280px]">
-                  <li>• Vollständiger Exposure‑Report (~9 Seiten)</li>
-                  <li>• Monatliche Trendanalyse</li>
-                  <li>• E‑Mail‑Benachrichtigungen</li>
-                  <li>• Monatlicher Review‑Call (30min)</li>
-                </ul>
+                   <ul className="text-gray-200 text-sm mb-6 space-y-2 text-left list-disc list-inside mx-auto max-w-[280px]">
+                     <li className="flex items-start">
+                       <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                       </svg>
+                       <span className="text-white">Vollständiger Exposure‑Report (~9 Seiten)</span>
+                     </li>
+                     <li className="flex items-start">
+                       <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                       </svg>
+                       <span className="text-white">Monatliche Trendanalyse</span>
+                     </li>
+                     <li className="flex items-start">
+                       <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                       </svg>
+                       <span className="text-white">E‑Mail‑Benachrichtigungen</span>
+                     </li>
+                     <li className="flex items-start">
+                       <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                       </svg>
+                       <span className="text-white">Monatlicher Review‑Call (30min)</span>
+                     </li>
+                   </ul>
                 <Link href="/contact?plan=corporate" className="cta-button inline-flex items-center justify-center px-4 py-2 rounded-2xl font-semibold" style={{ backgroundColor: '#00d4ff', color: '#001f3f' }}>
                   Für Unternehmen
                 </Link>

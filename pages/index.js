@@ -122,10 +122,25 @@ export default function Index() {
               <p className="mt-3 text-gray-200"><strong>Ein passiver Blick auf Ihre öffentliche Sichtbarkeit</strong></p>
               <p className="mt-2 text-gray-300">Unsere Ergebnisse werden zusätzlich manuell geprüft und eingeordnet — keine Blackbox-Automation.</p>
               <p className="mt-2 text-gray-300">Unsere Analysen basieren auf etablierten OSINT-Quellen und bewährten Sicherheitsframeworks.</p>
-              <ul className="mt-4 grid gap-2 text-gray-200">
-                <li>✓ <strong>Keine aktiven Scans</strong> – nur öffentliche Daten</li>
-                <li>✓ <strong>In 24 Stunden</strong> geliefert</li>
-                <li>✓ <strong>Top-3-Risiken</strong> priorisiert</li>
+              <ul className="mt-4 flex flex-col gap-2 items-center text-center text-gray-200">
+                <li className="inline-flex items-center">
+                  <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span><strong>Keine aktiven Scans</strong> – nur öffentliche Daten</span>
+                </li>
+                <li className="inline-flex items-center">
+                  <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span><strong>In 24 Stunden</strong> geliefert</span>
+                </li>
+                <li className="inline-flex items-center">
+                  <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span><strong>Top-3-Risiken</strong> priorisiert</span>
+                </li>
               </ul>
 
               <div className="mt-6 grid sm:grid-cols-2 gap-4">
