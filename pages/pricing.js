@@ -9,17 +9,17 @@ export default function Pricing() {
     <div className="flex flex-col min-h-screen relative" style={{ backgroundColor: '#0a192f', fontFamily: 'Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif' }}>
       <IndexNavbar fixed />
       <main className="cyber-bg flex-grow relative z-10 py-20">
-        <div className="container mx-auto px-4 max-w-5xl text-white">
+        <div className="container mx-auto px-4 max-w-7xl text-white">
           <section className="text-center mb-12">
-            <h1 className="text-4xl sm:text-5xl font-semibold mb-3">Preise</h1>
+            <h1 className="text-4xl sm:text-5xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-white gradient-text">Preise</h1>
             <p className="text-gray-300 max-w-2xl mx-auto">Klare, transparente Preise — ohne Abo‑Fallen. Wähle zwischen einmaligem Report oder unserem Abo.</p>
           </section>
 
 
-            <section className="grid gap-16 lg:gap-20 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
+           <section className="grid gap-y-24 gap-x-36 lg:gap-y-28 lg:gap-x-44 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1" style={{ columnGap: '3rem', rowGap: '3.5rem' }}>
               {/* Free Assessment - Lead Magnet (compact) */}
-              <div className="p-6 rounded-2xl card text-center" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}>
-                <h3 className="text-lg font-semibold mb-2 text-center">Kostenlose Ersteinschätzung (einmalig)</h3>
+              <div className="p-8 pt-12 rounded-2xl card text-center" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}>
+                <h3 className="text-lg font-semibold mb-2 text-center cyan-text">Kostenlose Ersteinschätzung (einmalig)</h3>
                 <div className="text-sm text-gray-300 mb-4 text-center">Limitierte Einführung (kein Abo)</div>
                    <ul className="text-gray-200 text-sm mb-6 space-y-2 text-left list-disc list-inside mx-auto max-w-[280px]">
                      <li className="flex items-start">
@@ -53,9 +53,9 @@ export default function Pricing() {
               </div>
 
               {/* Essential (5 Assets) - Entry */}
-              <div className="p-6 rounded-2xl card text-center" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}>
-                <h3 className="text-lg font-semibold mb-2">Essential</h3>
-                <div className="text-2xl font-bold mb-2 text-center">99 € / Monat</div>
+              <div className="p-8 pt-12 rounded-2xl card text-center" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}>
+                <h3 className="text-lg font-semibold mb-2 cyan-text">Essential</h3>
+                <div className="text-2xl font-bold mb-2 text-center py-3 px-4 inline-block">99 € / Monat</div>
                 <div className="text-sm text-gray-300 mb-4 text-center">Bis zu 5 Assets — Für kleine Teams</div>
                    <ul className="text-gray-200 text-sm mb-6 space-y-2 text-left list-disc list-inside mx-auto max-w-[280px]">
                      <li className="flex items-start">
@@ -89,10 +89,10 @@ export default function Pricing() {
               </div>
 
               {/* Professional - Most Popular (20 Assets) */}
-              <div className="p-6 rounded-2xl card text-center featured-card" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}>
+              <div className="p-8 pt-12 rounded-2xl card text-center featured-card" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}>
                 <div className="feature-badge">🔥 MEISTGEWÄHLT</div>
-                <h3 className="text-lg font-semibold mb-2 text-center">Professional</h3>
-                <div className="text-2xl font-bold mb-2 text-center">199 € / Monat</div>
+                <h3 className="text-lg font-semibold mb-2 text-center cyan-text">Professional</h3>
+                <div className="text-2xl font-bold mb-2 text-center py-3 px-4 inline-block">199 € / Monat</div>
                 <div className="text-sm text-gray-300 mb-4 text-center">Bis zu 20 Assets — Empfohlen für KMU</div>
                    <ul className="text-gray-200 text-sm mb-6 space-y-2 text-left list-disc list-inside mx-auto max-w-[280px]">
                      <li className="flex items-start">
@@ -126,9 +126,9 @@ export default function Pricing() {
               </div>
 
               {/* Corporate (50 Assets) */}
-              <div className="p-6 rounded-2xl card text-center" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}>
-                <h3 className="text-lg font-semibold mb-2 text-center">Corporate</h3>
-                <div className="text-2xl font-bold mb-2 text-center">349 € / Monat</div>
+              <div className="p-8 pt-12 rounded-2xl card text-center" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}>
+                <h3 className="text-lg font-semibold mb-2 text-center cyan-text">Corporate</h3>
+                <div className="text-2xl font-bold mb-2 text-center py-3 px-4 inline-block">349 € / Monat</div>
                 <div className="text-sm text-gray-300 mb-4 text-center">Bis zu 50 Assets — Für Compliance‑anforderungen</div>
                    <ul className="text-gray-200 text-sm mb-6 space-y-2 text-left list-disc list-inside mx-auto max-w-[280px]">
                      <li className="flex items-start">
@@ -169,9 +169,9 @@ export default function Pricing() {
 
             {/* Einmal-Report de-emphasized and moved down */}
             <section className="mt-8">
-              <div className="p-6 rounded-2xl card text-center max-w-3xl mx-auto" style={{ backgroundColor: 'rgba(20,28,43,0.65)', border: '1px solid rgba(0,212,255,0.04)' }}>
-                <h3 className="text-lg font-semibold mb-2">Einmaliger Report</h3>
-                <div className="text-2xl font-bold mb-2">490 €</div>
+              <div className="p-8 pt-12 rounded-2xl card text-center max-w-3xl mx-auto" style={{ backgroundColor: 'rgba(20,28,43,0.65)', border: '1px solid rgba(0,212,255,0.04)' }}>
+                <h3 className="text-lg font-semibold mb-2 cyan-text">Einmaliger Report</h3>
+                <div className="text-2xl font-bold mb-2 py-3 px-4 inline-block">490 €</div>
                 <div className="text-sm text-gray-300 mb-4">Für spezielle Anlässe – Audit & Compliance</div>
                 <ul className="text-gray-200 text-sm mb-6 space-y-2 text-left list-disc list-inside mx-auto max-w-[520px]">
                   <li>Einmalige, manuell geprüfte Analyse</li>
@@ -196,7 +196,7 @@ export default function Pricing() {
         .cta-button::after { content: ''; position: absolute; top: 0; left: -120%; width: 120%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent); transition: left 0.7s ease; pointer-events: none; }
         .cta-button:hover::after { left: 100%; }
         .cta-button:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.18); }
-        .card { transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
+        .card { transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; border: 2px dashed rgba(255,60,60,0.18); }
         .card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,212,255,0.06); }
         .featured-card { border-color: rgba(0,212,255,0.18); box-shadow: 0 28px 60px rgba(0,212,255,0.08); transform: translateY(-2px); background: linear-gradient(180deg, rgba(0,212,255,0.02), rgba(30,41,59,0.86)); padding-top: 1.25rem; }
         .featured-card .text-2xl { font-weight: 800; }

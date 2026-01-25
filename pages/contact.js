@@ -91,13 +91,14 @@ export default function ContactPage() {
 
         {/* Kontaktformular */}
         <section className="py-16 bg-gray-900">
-          <div className="container mx-auto px-4 max-w-2xl">
+          <div className="container mx-auto px-4 max-w-3xl text-white">
             <motion.div
               variants={sectionVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="card bg-gray-800/60 backdrop-blur-md p-8 rounded-2xl shadow-2xl border border-gray-700"
+              className="p-8 rounded-2xl transition text-white"
+              style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}
             >
               {sent ? (
                 <div className="text-center py-16">
@@ -108,11 +109,12 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-blue-200 font-semibold mb-1" htmlFor="name">
+                      <label className="block text-white font-semibold mb-1" htmlFor="name">
                         Name <span className="text-red-500">*</span>
                       </label>
                       <input
-                        className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-black focus:outline-none focus:border-blue-500 transition"
+                        className="w-full px-4 py-3 rounded-lg text-white focus:outline-none transition"
+                        style={{ backgroundColor: 'rgba(20,28,43,0.65)', border: '1px solid rgba(0,212,255,0.04)' }}
                         type="text"
                         id="name"
                         name="name"
@@ -126,11 +128,12 @@ export default function ContactPage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-blue-200 font-semibold mb-1" htmlFor="phone">
+                      <label className="block text-white font-semibold mb-1" htmlFor="phone">
                           Telefonnummer
                         </label>
                         <input
-                          className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-black focus:outline-none focus:border-blue-500 transition"
+                          className="w-full px-4 py-3 rounded-lg text-white focus:outline-none transition"
+                          style={{ backgroundColor: 'rgba(20,28,43,0.65)', border: '1px solid rgba(0,212,255,0.04)' }}
                           type="tel"
                           id="phone"
                           name="phone"
@@ -145,11 +148,12 @@ export default function ContactPage() {
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-blue-200 font-semibold mb-1" htmlFor="email">
+                      <label className="block text-white font-semibold mb-1" htmlFor="email">
                         E-Mail <span className="text-red-500">*</span>
                       </label>
                       <input
-                        className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-black focus:outline-none focus:border-blue-500 transition"
+                        className="w-full px-4 py-3 rounded-lg text-white focus:outline-none transition"
+                        style={{ backgroundColor: 'rgba(20,28,43,0.65)', border: '1px solid rgba(0,212,255,0.04)' }}
                         type="email"
                         id="email"
                         name="email"
@@ -161,11 +165,12 @@ export default function ContactPage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-blue-200 font-semibold mb-1" htmlFor="subject">
+                      <label className="block text-white font-semibold mb-1" htmlFor="subject">
                         Betreff <span className="text-red-500">*</span>
                       </label>
                       <select
-                        className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-black focus:outline-none focus:border-blue-500 transition"
+                        className="w-full px-4 py-3 rounded-lg text-white focus:outline-none transition"
+                        style={{ backgroundColor: 'rgba(20,28,43,0.65)', border: '1px solid rgba(0,212,255,0.04)' }}
                         id="subject"
                         name="subject"
                         required
@@ -183,11 +188,12 @@ export default function ContactPage() {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-blue-200 font-semibold mb-1" htmlFor="message">
+                    <label className="block text-white font-semibold mb-1" htmlFor="message">
                       Nachricht <span className="text-red-500">*</span>
                     </label>
                     <textarea
-                      className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-black focus:outline-none focus:border-blue-500 transition min-h-[120px]"
+                      className="w-full px-4 py-3 rounded-lg text-white focus:outline-none transition min-h-[120px]"
+                      style={{ backgroundColor: 'rgba(20,28,43,0.65)', border: '1px solid rgba(0,212,255,0.04)' }}
                       id="message"
                       name="message"
                       required
@@ -198,11 +204,12 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-blue-200 font-semibold mb-1" htmlFor="host">
+                    <label className="block text-white font-semibold mb-1" htmlFor="host">
                       Hostname / Domain / IP (optional)
                     </label>
                     <input
-                      className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-black focus:outline-none focus:border-blue-500 transition"
+                      className="w-full px-4 py-3 rounded-lg text-white focus:outline-none transition"
+                      style={{ backgroundColor: 'rgba(20,28,43,0.65)', border: '1px solid rgba(0,212,255,0.04)' }}
                       type="text"
                       id="host"
                       name="host"
@@ -214,19 +221,19 @@ export default function ContactPage() {
                   </div>
 
                   {/* Datenschutzerklärung */}
-                  <div className="flex items-center bg-gray-700 rounded-lg p-3 border border-green-500 mt-2">
+                  <div className="flex items-center rounded-lg p-3 mt-2" style={{ backgroundColor: 'rgba(20,28,43,0.65)', border: '1px solid rgba(0,212,255,0.04)' }}>
                     <input
                       type="checkbox"
                       id="privacy"
                       name="privacy"
                       checked={form.privacy}
                       onChange={handleChange}
-                      className="mr-3 accent-green-500 w-6 h-6"
+                      className="mr-3 accent-cyan-400 w-6 h-6"
                       required
                     />
-                    <span className="text-green-400 text-xl mr-2">✔</span>
-                    <label htmlFor="privacy" className="text-gray-200 text-base">
-                      Ja, ich möchte Antworten auf meine Frage erhalten und akzeptiere die <a href="/privacy" className="underline text-blue-400 hover:text-blue-300" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>.
+                    <span className="text-cyan-300 text-xl mr-2">✔</span>
+                    <label htmlFor="privacy" className="text-white text-base">
+                      Ja, ich möchte Antworten auf meine Frage erhalten und akzeptiere die <a href="/privacy" className="underline text-cyan-300 hover:text-cyan-200" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>.
                     </label>
                   </div>
 
@@ -246,24 +253,24 @@ export default function ContactPage() {
             </motion.div>
 
             {/* Trust Badges */}
-            <div className="flex justify-center gap-6 mt-8">
+            <div className="flex justify-center gap-6 mt-8 text-white">
               <div className="flex flex-col items-center">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-800 mb-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[rgba(20,28,43,0.65)] mb-2" style={{ border: '1px solid rgba(0,212,255,0.04)' }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-cyan-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
                 </div>
-                <span className="text-xs text-blue-200 mt-1">SSL-verschlüsselt</span>
+                <span className="text-xs text-cyan-200 mt-1">SSL-verschlüsselt</span>
               </div>
               <div className="flex flex-col items-center">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-800 mb-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[rgba(20,28,43,0.65)] mb-2" style={{ border: '1px solid rgba(0,212,255,0.04)' }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-cyan-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                 </div>
-                <span className="text-xs text-blue-200 mt-1">Keine Weitergabe</span>
+                <span className="text-xs text-cyan-200 mt-1">Keine Weitergabe</span>
               </div>
               <div className="flex flex-col items-center">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-800 mb-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a10 10 0 11-20 0 10 10 0 0120 0z" /></svg>
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[rgba(20,28,43,0.65)] mb-2" style={{ border: '1px solid rgba(0,212,255,0.04)' }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-cyan-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a10 10 0 11-20 0 10 10 0 0120 0z" /></svg>
                 </div>
-                <span className="text-xs text-blue-200 mt-1">DSGVO-konform</span>
+                <span className="text-xs text-cyan-200 mt-1">DSGVO-konform</span>
               </div>
             </div>
 
@@ -273,8 +280,8 @@ export default function ContactPage() {
         {/* Schritt-für-Schritt Grafik */}
         <section className="py-12 bg-gray-900">
           <div className="container mx-auto px-4 max-w-3xl">
-            <div className="bg-gray-900/80 p-8 rounded-2xl shadow-2xl border border-blue-800">
-              <h3 className="text-2xl font-bold mb-8 text-blue-400 text-center">Was passiert nach dem Absenden?</h3>
+            <div className="p-8 rounded-2xl" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}>
+              <h3 className="text-2xl font-bold mb-8 text-cyan-200 text-center">Was passiert nach dem Absenden?</h3>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
                 <div className="flex flex-col items-center">
                   <div className="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 via-blue-400 to-blue-600 mb-4 shadow-lg">

@@ -287,7 +287,7 @@ export default function FAQPage() {
         {/* Hero */}
         <section className="py-16 relative items-center flex min-h-[80vh] ">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-5xl font-bold">FAQ – Klare Antworten auf wichtige Fragen</h1>
+            <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-white gradient-text">FAQ – Klare Antworten auf wichtige Fragen</h1>
             <p className="mt-6 text-xl max-w-3xl mx-auto text-white ">Klare, präzise Antworten zu unserem Exposure-Report und Serviceumfang.</p>
           </div>
         </section>
@@ -296,8 +296,8 @@ export default function FAQPage() {
 
         {/* FAQ Sektionen */}
         <div className="py-10">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 gap-8">
+          <div className="container mx-auto px-4 max-w-7xl text-white">
+            <div className="grid grid-cols-1 gap-6">
               {faqSections.map((sec, i) => (
                 <div key={i} id={`section-${i}`} className="w-full">
                   <FAQSection title={sec.title} faqs={sec.faqs} />
@@ -327,7 +327,7 @@ export default function FAQPage() {
 // Einzelne FAQ-Sektion
 function FAQSection({ title, faqs }) {
   return (
-    <div className="p-6 rounded-lg shadow-md hover:shadow-lg transition bg-gray-800 border border-gray-700">
+    <div className="p-8 rounded-2xl transition text-white" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}>
       <h2 className="text-3xl font-semibold mb-6 text-center">{title}</h2>
       <div className="space-y-4">
         {faqs.map((faq, index) => (
@@ -345,12 +345,12 @@ function FAQCard({ question, children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-gray-700 rounded-md shadow-md hover:shadow-md transition">
+    <div className="rounded-md transition" style={{ backgroundColor: 'rgba(20,28,43,0.65)', border: '1px solid rgba(0,212,255,0.04)' }}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full text-left p-4 focus:outline-none flex justify-between items-center"
+        className="w-full text-left p-4 focus:outline-none flex justify-between items-center text-white"
       >
-        <h3 className="text-lg font-semibold text-white">{question}</h3>
+        <h3 className="text-lg font-semibold">{question}</h3>
         <span className={`text-cyan-300 text-2xl transform transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`}>
           +
         </span>

@@ -79,10 +79,10 @@ export default function Index() {
       <IndexNavbar fixed />
       <main className="cyber-bg flex-grow relative z-10">
         <section className="header relative pt-8 items-center text-center px-4 sm:px-0">
-          <div className="pt-24 sm:pt-32 pb-20 max-w-6xl mx-auto px-4 sm:px-8">
+            <div className="pt-24 sm:pt-32 pb-20 max-w-7xl mx-auto px-4 sm:px-8">
             
             {/* Hero */}
-            <h1 className="hero-title font-semibold text-4xl sm:text-6xl text-white">
+            <h1 className="hero-title font-semibold text-4xl sm:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-white gradient-text">
               <TypeIt
                 options={{
                   strings: ["Sicherheit beginnt mit Transparenz.", "Alles andere ist Hoffnung."],
@@ -118,7 +118,7 @@ export default function Index() {
 
             {/* Exposure-Report */}
             <section className="mt-20 rounded-2xl p-8 sm:p-10 text-white max-w-4xl mx-auto card" style={{ backgroundColor: 'rgba(30,41,59,0.72)', border: '1px solid rgba(0,212,255,0.18)', backdropFilter: 'blur(10px)', boxShadow: '0 8px 28px rgba(0,212,255,0.04)' }}>
-              <h3 className="text-2xl font-semibold">Was ist ein Exposure-Report?</h3>
+              <h3 className="text-2xl font-semibold cyan-text">Was ist ein Exposure-Report?</h3>
               <p className="mt-3 text-gray-200"><strong>Ein passiver Blick auf Ihre öffentliche Sichtbarkeit</strong></p>
               <p className="mt-2 text-gray-300">Unsere Ergebnisse werden zusätzlich manuell geprüft und eingeordnet — keine Blackbox-Automation.</p>
               <p className="mt-2 text-gray-300">Unsere Analysen basieren auf etablierten OSINT-Quellen und bewährten Sicherheitsframeworks.</p>
@@ -144,8 +144,8 @@ export default function Index() {
               </ul>
 
               <div className="mt-6 grid sm:grid-cols-2 gap-4">
-                <div className="p-4 rounded-lg" style={{ backgroundColor: 'rgba(0,0,0,0.02)' }}>
-                  <h4 className="font-semibold text-white ">Was passiert nach der kostenlosen Ersteinschätzung?</h4>
+                <div className="p-4 rounded-lg" style={{ backgroundColor: 'rgba(20,28,43,0.65)', border: '1px solid rgba(0,212,255,0.04)' }}>
+                  <h4 className="font-semibold cyan-text">Was passiert nach der kostenlosen Ersteinschätzung?</h4>
                   <ul className="mt-2 text-gray-200 text-sm list-disc list-inside">
                     <li>Wir werten öffentlich verfügbare Daten aus und identifizieren Top‑Risiken.</li>
                     <li>Wir liefern priorisierte, verständliche Handlungsempfehlungen.</li>
@@ -154,8 +154,8 @@ export default function Index() {
                   </ul>
                 </div>
 
-                <div className="p-4 rounded-lg" style={{ backgroundColor: 'rgba(0,0,0,0.02)' }}>
-                  <h4 className="font-semibold text-white">Was dieser Report nicht ist</h4>
+                <div className="p-4 rounded-lg" style={{ backgroundColor: 'rgba(20,28,43,0.65)', border: '1px solid rgba(0,212,255,0.04)' }}>
+                  <h4 className="font-semibold cyan-text">Was dieser Report nicht ist</h4>
                   <ul className="mt-2 text-gray-200 text-sm list-disc list-inside">
                     <li>Kein Pentest – keine exploitiven Tests.</li>
                     <li>Kein aktiver Scan oder Eingriff in Systeme.</li>
@@ -175,15 +175,15 @@ export default function Index() {
             {/* For whom */}
             <section className="mt-20 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="p-8 rounded-2xl text-white card" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.12)', backdropFilter: 'blur(6px)' }}>
-                <h4 className="font-semibold text-lg">Für wen?</h4>
-                <h5 className="mt-3 font-semibold">IT-Verantwortliche</h5>
+                <h4 className="font-semibold text-lg cyan-text">Für wen?</h4>
+                  <h5 className="mt-3 font-semibold cyan-text">IT-Verantwortliche</h5>
                 <ul className="mt-2 text-gray-200">
                   <li>→ Externe Sichtbarkeit dokumentieren</li>
                   <li>→ Maßnahmen priorisieren</li>
                 </ul>
               </div>
               <div className="p-8 rounded-2xl text-white card" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.12)', backdropFilter: 'blur(6px)' }}>
-                <h5 className="font-semibold">Geschäftsführung</h5>
+                <h5 className="font-semibold cyan-text">Geschäftsführung</h5>
                 <ul className="mt-2 text-gray-200">
                   <li>→ Sicherheits-ROI sichtbar machen</li>
                   <li>→ Investitionen rechtfertigen</li>
@@ -196,7 +196,7 @@ export default function Index() {
 
             {/* FAQ teaser */}
             <section className="mt-20 max-w-4xl mx-auto text-white rounded-2xl p-8 sm:p-10 card" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.12)' }}>
-              <h4 className="font-semibold text-xl">Häufige Fragen</h4>
+              <h4 className="font-semibold text-xl cyan-text">Häufige Fragen</h4>
               <div className="mt-4 grid gap-2 text-gray-200">
                 <div>
                   <strong>Werden meine Systeme gescannt?</strong>
@@ -247,7 +247,7 @@ export default function Index() {
 
             {/* Partner Section */}
             <div className="mt-12 mb-8 sm:mb-12">
-              <h3 className="text-center text-lg sm:text-xl text-gray-400 mb-8">
+                <h3 className="text-center text-lg sm:text-xl mb-8 cyan-text">
                 Unsere Partner & Mitgliedschaften
               </h3>
               <div className="flex flex-wrap justify-center gap-4 sm:gap-6 px-4">
