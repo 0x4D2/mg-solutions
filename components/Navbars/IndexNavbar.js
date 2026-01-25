@@ -50,6 +50,9 @@ export default function Navbar() {
         {/* Desktop-Links immer ganz rechts */}
         <div className="hidden lg:flex flex-1 justify-end items-center">
           <IndexDropdown navLinkClassName={NAV_LINK_STYLES} alwaysShowAbout />
+          <div className="ml-4">
+            <Link href="/contact" className="inline-flex items-center justify-center font-semibold px-4 py-2 rounded-2xl" style={{ backgroundColor: '#00d4ff', color: '#001f3f' }} aria-label="Kostenlose Ersteinschätzung anfordern">Kostenlose Ersteinschätzung</Link>
+          </div>
         </div>
         {/* Mobile Menu Button */}
         <div className="lg:hidden flex items-center">
