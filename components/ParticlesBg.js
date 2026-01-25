@@ -1,16 +1,9 @@
-import { useCallback } from "react";
 import Particles from "@tsparticles/react";
-import { loadSlim } from "tsparticles-slim";
 
 export default function ParticlesBg() {
-  const particlesInit = useCallback(async (engine) => {
-    await loadSlim(engine);
-  }, []);
-
   return (
     <Particles
       id="tsparticles"
-      init={particlesInit}
       options={{
         fullScreen: { enable: false },
         background: { color: "transparent" },
@@ -36,7 +29,7 @@ export default function ParticlesBg() {
         },
         detectRetina: true,
       }}
-      style={{ position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh", zIndex: -1 }}
+        style={{ position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh", zIndex: -1 }}
     />
   );
 }

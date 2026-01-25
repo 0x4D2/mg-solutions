@@ -1,4 +1,5 @@
-import React, { Suspense, useEffect } from "react";
+import React, { useEffect } from "react";
+import dynamic from "next/dynamic";
 import ReactDOM from "react-dom/client";
 import App from "next/app";
 import Head from "next/head";
@@ -73,8 +74,15 @@ const handleRouteChangeError = () => {
   document.body.classList.remove("body-page-transition");
 };
 
-// Lazy-loaded components
-const LazyParticles = React.lazy(() => import("../particles-config.js"));
+// Lazy-loaded components (client-only to avoid SSR/canvas hydration mismatch)
+const LazyParticles = dynamic(() => import("components/ParticlesBg"), {
+  ssr: false,
+  loading: () => (
+    <div className="absolute inset-0 flex items-center justify-center z-10">
+      <div className="w-12 h-12 border-4 border-blue-400 border-t-transparent rounded-full animate-spin" />
+    </div>
+  ),
+});
 
 export default class MyApp extends App {
   componentDidMount() {
@@ -118,14 +126,7 @@ export default class MyApp extends App {
         <div className="main-container">
           {Component.background && (
             <div className="fixed top-0 left-0 w-full h-full z-0">
-              <Suspense fallback={
-                <div className="absolute inset-0 flex items-center justify-center z-10">
-                  <div className="w-12 h-12 border-4 border-blue-400 border-t-transparent rounded-full animate-spin" />
-                </div>
-              }>
-                <LazyParticles />
-              </Suspense>
-              <Component.background />
+              <LazyParticles />
             </div>
           )}
           <main className="relative z-10 pt-20">

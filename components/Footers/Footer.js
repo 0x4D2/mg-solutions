@@ -61,7 +61,6 @@ export default function Footer() {
                     {[
                       { text: "Über uns", href: "/about" },
                       { text: "Kontakt", href: "/contact" },
-                      { text: "Transparente Preise ansehen", href: "/pricing" },
                       { text: "Datenschutz", href: "/privacy" },
                       { text: "Impressum", href: "/imprint" },
                       { text: "Roadmap", href: "/roadmap" },
