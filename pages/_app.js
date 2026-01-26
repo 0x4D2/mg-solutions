@@ -19,7 +19,7 @@ const ScrollToTop = () => {
     const handleRouteChange = () => {
       const resetScroll = () => {
         window.scrollTo({ top: 0, behavior: "auto" });
-        const mainContainer = document.querySelector('.main-container');
+        const mainContainer = document.querySelector(".main-container");
         if (mainContainer) mainContainer.scrollTop = 0;
       };
 
@@ -28,9 +28,9 @@ const ScrollToTop = () => {
       setTimeout(resetScroll, 500);
     };
 
-    Router.events.on('routeChangeComplete', handleRouteChange);
+    Router.events.on("routeChangeComplete", handleRouteChange);
     return () => {
-      Router.events.off('routeChangeComplete', handleRouteChange);
+      Router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, []);
 
@@ -120,31 +120,46 @@ export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
-    const Layout = Component.layout || (({ children }) => (
-      <>
-        <Navbar />
-        <div className="main-container">
-          {Component.background && (
-            <div className="fixed top-0 left-0 w-full h-full z-0">
-              <LazyParticles />
-            </div>
-          )}
-          <main className="relative z-10 pt-20">
-            {children}
-          </main>
-        </div>
-      </>
-    ));
+    const Layout =
+      Component.layout ||
+      (({ children }) => (
+        <>
+          <Navbar />
+          <div className="main-container">
+            {Component.background && (
+              <div className="fixed top-0 left-0 w-full h-full z-0">
+                <LazyParticles />
+              </div>
+            )}
+            <main className="relative z-10 pt-20">{children}</main>
+          </div>
+        </>
+      ));
 
     return (
       <>
         <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          />
           <title>MG Solutions - Ihre Sicherheitslösung</title>
-          <meta name="description" content="MG Solutions bietet maßgeschneiderte Cybersecurity-Lösungen für Unternehmen und Privatpersonen." />
-          <meta name="keywords" content="Cybersecurity, Sicherheitslösungen, Unternehmen, Privatpersonen, MG Solutions" />
-          <meta property="og:title" content="MG Solutions - Ihre Sicherheitslösung" />
-          <meta property="og:description" content="MG Solutions bietet maßgeschneiderte Cybersecurity-Lösungen für Unternehmen und Privatpersonen." />
+          <meta
+            name="description"
+            content="MG Solutions bietet maßgeschneiderte Cybersecurity-Lösungen für Unternehmen und Privatpersonen."
+          />
+          <meta
+            name="keywords"
+            content="Cybersecurity, Sicherheitslösungen, Unternehmen, Privatpersonen, MG Solutions"
+          />
+          <meta
+            property="og:title"
+            content="MG Solutions - Ihre Sicherheitslösung"
+          />
+          <meta
+            property="og:description"
+            content="MG Solutions bietet maßgeschneiderte Cybersecurity-Lösungen für Unternehmen und Privatpersonen."
+          />
           <meta property="og:image" content="/img/social-preview.png" />
           <meta property="og:url" content="https://www.ichwillsicherheit.de" />
           <meta property="og:type" content="website" />

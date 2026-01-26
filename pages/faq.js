@@ -13,9 +13,11 @@ export default function FAQPage() {
           question: "Was genau macht dieses Produkt?",
           answer: (
             <p>
-              Es erstellt einen <strong>passiven Exposure-Report</strong> Ihrer externen Angriffsfläche. Basierend auf öffentlich
-              zugänglichen OSINT-Daten zeigen wir, welche Systeme, Dienste und Metadaten von außen sichtbar sind – genau wie ein
-              Angreifer es in der ersten Erkundungsphase sehen würde.
+              Es erstellt einen <strong>passiven Exposure-Report</strong> Ihrer
+              externen Angriffsfläche. Basierend auf öffentlich zugänglichen
+              OSINT-Daten zeigen wir, welche Systeme, Dienste und Metadaten von
+              außen sichtbar sind – genau wie ein Angreifer es in der ersten
+              Erkundungsphase sehen würde.
             </p>
           ),
         },
@@ -23,8 +25,10 @@ export default function FAQPage() {
           question: "Werden meine Systeme gescannt oder angegriffen?",
           answer: (
             <p>
-              <strong>Nein.</strong> Es finden <strong>keine aktiven Scans</strong> statt. Wir werten ausschließlich bereits öffentlich indexierte
-              Informationen aus. Ihre Systeme bemerken nichts davon.
+              <strong>Nein.</strong> Es finden{" "}
+              <strong>keine aktiven Scans</strong> statt. Wir werten
+              ausschließlich bereits öffentlich indexierte Informationen aus.
+              Ihre Systeme bemerken nichts davon.
             </p>
           ),
         },
@@ -32,8 +36,10 @@ export default function FAQPage() {
           question: "Ersetzt der Report einen Penetrationstest?",
           answer: (
             <p>
-              <strong>Nein.</strong> Ein Penetrationstest prüft aktiv, ob Systeme angreifbar sind. Unser Report zeigt nur die <strong>externe Sichtbarkeit</strong>.
-              Er ist die perfekte Vorbereitung für einen Pentest, aber kein Ersatz.
+              <strong>Nein.</strong> Ein Penetrationstest prüft aktiv, ob
+              Systeme angreifbar sind. Unser Report zeigt nur die{" "}
+              <strong>externe Sichtbarkeit</strong>. Er ist die perfekte
+              Vorbereitung für einen Pentest, aber kein Ersatz.
             </p>
           ),
         },
@@ -42,13 +48,18 @@ export default function FAQPage() {
           answer: (
             <div>
               <p>
-                CVEs werden <strong>theoretisch zugeordnet</strong>, basierend auf öffentlich sichtbaren Softwareversionen.
+                CVEs werden <strong>theoretisch zugeordnet</strong>, basierend
+                auf öffentlich sichtbaren Softwareversionen.
               </p>
-              <p className="mt-2"><strong>Wichtig:</strong></p>
+              <p className="mt-2">
+                <strong>Wichtig:</strong>
+              </p>
               <ul className="list-disc pl-5 space-y-1 text-gray-200">
                 <li>Keine Verifikation der Schwachstelle</li>
                 <li>Kein Nachweis der Ausnutzbarkeit</li>
-                <li>Nur Hinweis auf bekannte Schwachstellen zu dieser Version</li>
+                <li>
+                  Nur Hinweis auf bekannte Schwachstellen zu dieser Version
+                </li>
               </ul>
             </div>
           ),
@@ -73,33 +84,68 @@ export default function FAQPage() {
         },
         {
           question: "Bedeutet ein besserer Trend mehr Sicherheit?",
-          answer: <p>Nicht unbedingt. Ein positiver Trend zeigt nur weniger Sichtbarkeit. Er ersetzt keine technischen Tests, ist aber ein gutes Signal.</p>,
+          answer: (
+            <p>
+              Nicht unbedingt. Ein positiver Trend zeigt nur weniger
+              Sichtbarkeit. Er ersetzt keine technischen Tests, ist aber ein
+              gutes Signal.
+            </p>
+          ),
         },
         {
           question: "Ist das für Wix/Shopify/WordPress.com sinnvoll?",
           answer: (
             <div>
-              <p><strong>In der Regel nein.</strong> Bei Baukasten-Hosting kontrollieren Sie die Infrastruktur nicht selbst.</p>
-              <p className="mt-2"><strong>Faustregel:</strong> Können Sie Firewall-Regeln oder SSH-Einstellungen ändern?</p>
-              <p>→ <strong>Ja</strong> = sinnvoll &nbsp;&nbsp; → <strong>Nein</strong> = nicht geeignet</p>
+              <p>
+                <strong>In der Regel nein.</strong> Bei Baukasten-Hosting
+                kontrollieren Sie die Infrastruktur nicht selbst.
+              </p>
+              <p className="mt-2">
+                <strong>Faustregel:</strong> Können Sie Firewall-Regeln oder
+                SSH-Einstellungen ändern?
+              </p>
+              <p>
+                → <strong>Ja</strong> = sinnvoll &nbsp;&nbsp; →{" "}
+                <strong>Nein</strong> = nicht geeignet
+              </p>
             </div>
           ),
         },
         {
           question: "Kann durch die Analyse Schaden entstehen?",
-          answer: <p>Nein. Da keine aktive Interaktion stattfindet, besteht kein Risiko für Ausfälle oder Überlastung.</p>,
+          answer: (
+            <p>
+              Nein. Da keine aktive Interaktion stattfindet, besteht kein Risiko
+              für Ausfälle oder Überlastung.
+            </p>
+          ),
         },
         {
           question: "Wie aktuell sind die Daten?",
-          answer: <p>Die Aktualität hängt von den OSINT-Quellen ab. Änderungen werden mit Verzögerung von Stunden bis wenigen Tagen sichtbar.</p>,
+          answer: (
+            <p>
+              Die Aktualität hängt von den OSINT-Quellen ab. Änderungen werden
+              mit Verzögerung von Stunden bis wenigen Tagen sichtbar.
+            </p>
+          ),
         },
         {
           question: "Wie schnell erhalte ich den Report?",
-          answer: <p>In der Regel <strong>innerhalb von 24 Stunden</strong> nach Auftragserteilung, oft schneller.</p>,
+          answer: (
+            <p>
+              In der Regel <strong>innerhalb von 24 Stunden</strong> nach
+              Auftragserteilung, oft schneller.
+            </p>
+          ),
         },
         {
           question: "Was bedeutet \u201enichts gefunden\u201c?",
-          answer: <p>Ein positives Signal, aber keine Garantie. Es bedeutet nur, dass aktuell keine öffentlich indexierten Dienste bekannt sind.</p>,
+          answer: (
+            <p>
+              Ein positives Signal, aber keine Garantie. Es bedeutet nur, dass
+              aktuell keine öffentlich indexierten Dienste bekannt sind.
+            </p>
+          ),
         },
       ],
     },
@@ -110,8 +156,14 @@ export default function FAQPage() {
           question: "Kann ich den Report für Compliance nutzen?",
           answer: (
             <div>
-              <p><strong>Ja, als ergänzende Dokumentation</strong> für Standards wie ISO 27001 oder BSI-Grundschutz.</p>
-              <p><strong>Nein, als alleinigen Nachweis</strong> – dafür sind umfassendere Prüfungen nötig.</p>
+              <p>
+                <strong>Ja, als ergänzende Dokumentation</strong> für Standards
+                wie ISO 27001 oder BSI-Grundschutz.
+              </p>
+              <p>
+                <strong>Nein, als alleinigen Nachweis</strong> – dafür sind
+                umfassendere Prüfungen nötig.
+              </p>
             </div>
           ),
         },
@@ -120,10 +172,18 @@ export default function FAQPage() {
           answer: (
             <div>
               <ul className="list-disc pl-5 space-y-1 text-gray-200">
-                <li><strong>Strukturierte Aufbereitung</strong> statt Rohdaten</li>
-                <li><strong>Klare Priorisierung</strong> relevanter Exposures</li>
-                <li><strong>Business-Fokus</strong> für Entscheider</li>
-                <li><strong>Transparente Grenzen</strong> – kein Alarmismus</li>
+                <li>
+                  <strong>Strukturierte Aufbereitung</strong> statt Rohdaten
+                </li>
+                <li>
+                  <strong>Klare Priorisierung</strong> relevanter Exposures
+                </li>
+                <li>
+                  <strong>Business-Fokus</strong> für Entscheider
+                </li>
+                <li>
+                  <strong>Transparente Grenzen</strong> – kein Alarmismus
+                </li>
               </ul>
             </div>
           ),
@@ -142,25 +202,52 @@ export default function FAQPage() {
         },
         {
           question: "Unterstützen Sie bei der Umsetzung?",
-          answer: <p><strong>Nein.</strong> Wir liefern Lagebild und Empfehlungen, aber keine Implementierung. Auf Wunsch vermitteln wir geeignete IT-Dienstleister.</p>,
+          answer: (
+            <p>
+              <strong>Nein.</strong> Wir liefern Lagebild und Empfehlungen, aber
+              keine Implementierung. Auf Wunsch vermitteln wir geeignete
+              IT-Dienstleister.
+            </p>
+          ),
         },
         {
           question: "Gibt es Unternehmenslösungen?",
           answer: (
             <div>
-              <p><strong>Ja:</strong></p>
+              <p>
+                <strong>Ja:</strong>
+              </p>
               <ul className="list-disc pl-5 space-y-1 text-gray-200">
                 <li>Pakete für bis zu 50 Assets</li>
                 <li>Konsolidierte Standortberichte</li>
                 <li>Volume Discounts ab 10 Assets</li>
-                <li>White-Label für IT-Dienstleister</li>
+                {/* <li>White-Label für IT-Dienstleister</li> */}
               </ul>
             </div>
           ),
         },
         {
           question: "Gibt es Reports auf Englisch?",
-          answer: <p><strong>Ja, optional.</strong> Standard ist Deutsch, englische Version +49€. Ideal für internationale Teams.</p>,
+          answer: (
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-900/30 text-blue-300 border border-blue-800/50">
+                  In Planung
+                </span>
+                <span className="text-sm text-gray-400">
+                  (voraussichtlich Q2 2026)
+                </span>
+              </div>
+              <p>
+                <strong>Derzeit nur auf Deutsch verfügbar.</strong> Englische
+                Reports sind für Mitte 2026 geplant.
+              </p>
+              <p className="text-sm text-gray-400">
+                Bei akutem Bedarf für internationale Teams kontaktieren Sie uns
+                bitte direkt – wir finden eine individuelle Lösung.
+              </p>
+            </div>
+          ),
         },
       ],
     },
@@ -168,22 +255,71 @@ export default function FAQPage() {
       title: "4. Kosten & Wert",
       faqs: [
         {
-          question: "Warum 490€, wenn Shodan kostenlos ist?",
+          question: "Warum kostet der Report 490€?",
           answer: (
-            <div>
-              <p>Sie bezahlen für <strong>Analyse, nicht für Daten</strong>:</p>
-              <ul className="list-disc pl-5 space-y-1 text-gray-200">
-                <li>Aus 107 CVEs die 3 relevanten Risiken filtern</li>
-                <li>Technische Befunde in Business-Risiken übersetzen</li>
-                <li>Konkrete Handlungsanleitungen liefern</li>
-                <li>8+ Stunden Arbeit in 24h geliefert</li>
-              </ul>
+            <div className="space-y-3">
+              <p>
+                <strong>
+                  Sie bezahlen für Expertenanalyse, nicht für Rohdaten.
+                </strong>
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="p-3 bg-gray-800/50 rounded border border-gray-700">
+                  <p className="font-medium text-cyan-300 mb-1">
+                    Das erhalten Sie:
+                  </p>
+                  <ul className="text-sm space-y-1 text-gray-200">
+                    <li>
+                      • Priorisierte Top-Risiken basierend auf öffentlich
+                      zugänglichen Daten (OSINT)
+                    </li>
+                    <li>
+                      • Konkrete Handlungsempfehlungen für Ihre IT- und
+                      Geschäftsleitung
+                    </li>
+                    <li>• Verständlicher Report für Entscheider</li>
+                    <li>
+                      • Lieferung innerhalb von 24h + optionaler Review-Call
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="p-3 bg-gray-800/50 rounded border border-gray-700">
+                  <p className="font-medium text-cyan-300 mb-1">
+                    Das sparen Sie:
+                  </p>
+                  <ul className="text-sm space-y-1 text-gray-200">
+                    <li>• 8+ Stunden Analysearbeit intern</li>
+                    <li>• Fehlpriorisierungen durch manuelle Bewertung</li>
+                    <li>
+                      • Technische Übersetzungsarbeit für die Geschäftsleitung
+                    </li>
+                    <li>• Zeitaufwendige False-Positive-Filterung</li>
+                  </ul>
+                </div>
+              </div>
+
+              <p className="text-sm text-gray-400">
+                <strong>Hinweis:</strong> Unser Report basiert auf öffentlich
+                zugänglichen Daten (OSINT). Er ersetzt keinen Penetrationstest
+                und deckt nicht alle möglichen Risiken ab. Ein typischer Pentest
+                kostet 5.000€+; wir liefern einen schnellen Überblick über Ihre
+                extern sichtbare Sicherheitslage zu einem Bruchteil der Kosten.
+              </p>
             </div>
           ),
         },
+
         {
           question: "Bieten Sie Umsetzungs-Support?",
-          answer: <p><strong>Indirekt:</strong> Wir liefern klare Anleitungen und vermitteln auf Wunsch vertrauenswürdige IT-Partner für die Implementierung.</p>,
+          answer: (
+            <p>
+              <strong>Indirekt:</strong> Wir liefern klare Anleitungen und
+              vermitteln auf Wunsch vertrauenswürdige IT-Partner für die
+              Implementierung.
+            </p>
+          ),
         },
       ],
     },
@@ -195,10 +331,27 @@ export default function FAQPage() {
           answer: (
             <div>
               <ul className="list-disc pl-5 space-y-1 text-gray-200">
-                <li>Multi-Source-Korrelation (3+ Quellen)</li>
-                <li>Manuelle Plausibilitätsprüfung jedes Reports</li>
-                <li>Volle Transparenz der Quellen</li>
-                <li><strong>30-Tage-Geld-zurück-Garantie</strong> bei fehlendem Mehrwert</li>
+                <li>
+                  Analyse auf Basis einer etablierten OSINT-Quelle (Shodan)
+                </li>
+                <li>
+                  Manuelle Plausibilitätsprüfung jedes Reports vor Auslieferung
+                </li>
+                <li>
+                  Klare Kennzeichnung von OSINT-Indizien ohne technische
+                  Verifikation
+                </li>
+                <li>
+                  Volle Transparenz über verwendete Quelle, Methodik und Grenzen
+                </li>
+                <li>
+                  <strong>30-Tage-Geld-zurück-Garantie</strong> bei fehlendem
+                  Mehrwert
+                </li>
+                <li className="text-gray-400 text-sm">
+                  <br></br>Geplant: Erweiterung um zusätzliche OSINT-Quellen zur
+                  Querverifikation
+                </li>
               </ul>
             </div>
           ),
@@ -207,19 +360,35 @@ export default function FAQPage() {
           question: "Was passiert nach dem Report?",
           answer: (
             <div>
-              <p><strong>Typischer Fahrplan:</strong></p>
+              <p>
+                <strong>Typischer Fahrplan:</strong>
+              </p>
               <ol className="list-decimal pl-5 space-y-1 text-gray-200">
-                <li><strong>Woche 1:</strong> Kritische Risiken beheben</li>
-                <li><strong>Woche 2-4:</strong> Strukturelle Maßnahmen umsetzen</li>
-                <li><strong>Monat 2:</strong> Folgescan zur Dokumentation</li>
-                <li><strong>Monat 3:</strong> Entscheidung für Monitoring oder nächste Stufe</li>
+                <li>
+                  <strong>Woche 1:</strong> Kritische Risiken beheben
+                </li>
+                <li>
+                  <strong>Woche 2-4:</strong> Strukturelle Maßnahmen umsetzen
+                </li>
+                <li>
+                  <strong>Monat 2:</strong> Folgescan zur Dokumentation
+                </li>
+                <li>
+                  <strong>Monat 3:</strong> Entscheidung für Monitoring oder
+                  nächste Stufe
+                </li>
               </ol>
             </div>
           ),
         },
         {
           question: "Was passiert mit meinen Daten?",
-          answer: <p>Nach <strong>30 Tagen</strong> werden IP/Domain und Report vollständig gelöscht. Wir verkaufen oder teilen Ihre Daten nicht.</p>,
+          answer: (
+            <p>
+              Nach <strong>30 Tagen</strong> werden IP/Domain und Report
+              vollständig gelöscht. Wir verkaufen oder teilen Ihre Daten nicht.
+            </p>
+          ),
         },
         {
           question: "Wie handhaben Sie False Positives?",
@@ -240,13 +409,28 @@ export default function FAQPage() {
             <div>
               <table className="w-full text-left text-gray-200">
                 <thead>
-                  <tr><th className="pr-6">Unser Service</th><th>Vulnerability Scanner</th></tr>
+                  <tr>
+                    <th className="pr-6">Unser Service</th>
+                    <th>Vulnerability Scanner</th>
+                  </tr>
                 </thead>
                 <tbody>
-                  <tr><td>Passiv, kein Risiko</td><td>Aktiv, kann stören</td></tr>
-                  <tr><td>Zeigt Sichtbarkeit</td><td>Testet Exploitierbarkeit</td></tr>
-                  <tr><td>Business-Fokus</td><td>Technischer Fokus</td></tr>
-                  <tr><td>24h Lieferung</td><td>Tage/Wochen für Scans</td></tr>
+                  <tr>
+                    <td>Passiv, kein Risiko</td>
+                    <td>Aktiv, kann stören</td>
+                  </tr>
+                  <tr>
+                    <td>Zeigt Sichtbarkeit</td>
+                    <td>Testet Exploitierbarkeit</td>
+                  </tr>
+                  <tr>
+                    <td>Business-Fokus</td>
+                    <td>Technischer Fokus</td>
+                  </tr>
+                  <tr>
+                    <td>24h Lieferung</td>
+                    <td>Tage/Wochen für Scans</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -261,8 +445,15 @@ export default function FAQPage() {
           question: "Kann ich Ihnen vertrauen, wenn Sie so transparent sind?",
           answer: (
             <div>
-              <p><strong>Ja – genau darum geht es.</strong></p>
-              <p>In einer Branche voller Blackbox-Lösungen ist unsere radikale Transparenz unser stärkstes Vertrauenssignal. Wir zeigen jeden Schritt, jede Grenze, jede Unsicherheit – weil Sicherheit mit Klarheit beginnt.</p>
+              <p>
+                <strong>Ja – genau darum geht es.</strong>
+              </p>
+              <p>
+                In einer Branche voller Blackbox-Lösungen ist unsere radikale
+                Transparenz unser stärkstes Vertrauenssignal. Wir zeigen jeden
+                Schritt, jede Grenze, jede Unsicherheit – weil Sicherheit mit
+                Klarheit beginnt.
+              </p>
             </div>
           ),
         },
@@ -287,8 +478,13 @@ export default function FAQPage() {
         {/* Hero */}
         <section className="py-16 relative items-center flex min-h-[80vh] ">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="site-title gradient-text">FAQ – Klare Antworten auf wichtige Fragen</h1>
-            <p className="mt-6 text-xl max-w-3xl mx-auto text-white ">Klare, präzise Antworten zu unserem Exposure-Report und Serviceumfang.</p>
+            <h1 className="site-title gradient-text">
+              FAQ – Klare Antworten auf wichtige Fragen
+            </h1>
+            <p className="mt-6 text-xl max-w-3xl mx-auto text-white ">
+              Klare, präzise Antworten zu unserem Exposure-Report und
+              Serviceumfang.
+            </p>
           </div>
         </section>
 
@@ -306,18 +502,21 @@ export default function FAQPage() {
             </div>
           </div>
         </div>
-    
-      {/* Call to Action */}
-      <div className="py-20 text-center">
-        <h2 className="text-4xl font-bold">Noch Fragen offen?</h2>
-        <p className="mt-4 text-lg text-white">Wir beraten Sie gerne persönlich zu Ihrer Cybersicherheit.</p>
-        <div className="mt-6">
-          <Link href="/contact" passHref legacyBehavior>
-            <a className="cyber-direct-btn hover:bg-blue-700 text-white py-3 px-8 rounded-full font-medium transition duration-300 inline-block">Jetzt Kontakt aufnehmen</a>
-          </Link>
-        </div>
-      </div>
 
+        {/* Call to Action */}
+        <div className="py-20 text-center">
+          <h2 className="text-4xl font-bold">Noch Fragen offen?</h2>
+          <p className="mt-4 text-lg text-white">
+            Wir beraten Sie gerne persönlich zu Ihrer Cybersicherheit.
+          </p>
+          <div className="mt-6">
+            <Link href="/contact" passHref legacyBehavior>
+              <a className="cyber-direct-btn hover:bg-blue-700 text-white py-3 px-8 rounded-full font-medium transition duration-300 inline-block">
+                Jetzt Kontakt aufnehmen
+              </a>
+            </Link>
+          </div>
+        </div>
       </main>
       <Footer />
     </>
@@ -327,7 +526,13 @@ export default function FAQPage() {
 // Einzelne FAQ-Sektion
 function FAQSection({ title, faqs }) {
   return (
-    <div className="p-8 rounded-2xl transition text-white" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}>
+    <div
+      className="p-8 rounded-2xl transition text-white"
+      style={{
+        backgroundColor: "rgba(30,41,59,0.8)",
+        border: "1px solid rgba(0,212,255,0.06)",
+      }}
+    >
       <h2 className="text-3xl font-semibold mb-6 text-center">{title}</h2>
       <div className="space-y-4">
         {faqs.map((faq, index) => (
@@ -345,18 +550,29 @@ function FAQCard({ question, children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="rounded-md transition" style={{ backgroundColor: 'rgba(20,28,43,0.65)', border: '1px solid rgba(0,212,255,0.04)' }}>
+    <div
+      className="rounded-md transition"
+      style={{
+        backgroundColor: "rgba(20,28,43,0.65)",
+        border: "1px solid rgba(0,212,255,0.04)",
+      }}
+    >
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         className="w-full text-left p-4 focus:outline-none flex justify-between items-center text-white"
       >
         <h3 className="text-lg font-semibold">{question}</h3>
-        <span className="text-cyan-300 text-2xl transition-colors duration-200" aria-hidden>
-          {isOpen ? '−' : '+'}
+        <span
+          className="text-cyan-300 text-2xl transition-colors duration-200"
+          aria-hidden
+        >
+          {isOpen ? "−" : "+"}
         </span>
       </button>
-      {isOpen && <div className="px-4 pb-4 text-white font-light">{children}</div>}
+      {isOpen && (
+        <div className="px-4 pb-4 text-white font-light">{children}</div>
+      )}
     </div>
   );
 }

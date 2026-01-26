@@ -14,14 +14,18 @@
   opacity: 1;
   visibility: visible;
   /* Sichtbarkeit erst nach Opazität-Transition umschalten */
-  transition: opacity 0.8s ease-in-out, visibility 0s ease 0.8s;
+  transition:
+    opacity 0.8s ease-in-out,
+    visibility 0s ease 0.8s;
 }
 
 .preloader.fadeout {
   opacity: 0;
   visibility: hidden;
   /* visibility wird erst nach 1.2s sofort umgeschaltet */
-  transition: opacity 1.2s ease, visibility 0s ease 1.2s;
+  transition:
+    opacity 1.2s ease,
+    visibility 0s ease 1.2s;
 }
 
 .lock-animation {
@@ -41,7 +45,7 @@
 
 .lock-shackle {
   width: 4.375rem; /* 70px */
-  height: 2.5rem;  /* 40px */
+  height: 2.5rem; /* 40px */
   border: 0.625rem solid var(--accent-color); /* 10px */
   border-bottom: none;
   border-radius: 40px 40px 0 0;
@@ -59,7 +63,9 @@
   position: absolute;
   bottom: 0;
   left: 1.25rem; /* 20px */
-  animation: glow 2s ease-in-out infinite alternate, pulse 1.5s ease-in-out infinite;
+  animation:
+    glow 2s ease-in-out infinite alternate,
+    pulse 1.5s ease-in-out infinite;
   backface-visibility: hidden;
 }
 
@@ -99,7 +105,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {

@@ -9,13 +9,15 @@ const ALL_NAV_LINKS = [
   { name: "Kontakt", path: "/contact" },
   { name: "Impressum", path: "/imprint" },
   { name: "Roadmap", path: "/roadmap" },
-  { name: "Datenschutz", path: "/privacy" }
+  { name: "Datenschutz", path: "/privacy" },
 ];
 
 // Links that should appear in the desktop nav (and match mobile)
 const DESKTOP_NAV_PATHS = ["/", "/pricing", "/about", "/roadmap", "/faq"];
 
-const DESKTOP_NAV_LINKS = ALL_NAV_LINKS.filter((l) => DESKTOP_NAV_PATHS.includes(l.path));
+const DESKTOP_NAV_LINKS = ALL_NAV_LINKS.filter((l) =>
+  DESKTOP_NAV_PATHS.includes(l.path),
+);
 
 export const NavLinksDesktop = ({ navLinkClassName = "", alwaysShowAbout }) => {
   // Immer die ersten 4 Links anzeigen, inkl. Über uns
@@ -52,7 +54,11 @@ export const NavLinksDesktop = ({ navLinkClassName = "", alwaysShowAbout }) => {
                   key={link.path}
                   href={link.path}
                   style={{ textAlign: "left" }}
-                  className={"block px-4 py-2 " + navLinkClassName + " transition-colors duration-150 hover:bg-gray-700"}
+                  className={
+                    "block px-4 py-2 " +
+                    navLinkClassName +
+                    " transition-colors duration-150 hover:bg-gray-700"
+                  }
                   onClick={() => setDropdownOpen(false)}
                 >
                   {link.name}
@@ -75,14 +81,20 @@ export const NavLinksMobile = ({ isOpen, navLinkClassName = "" }) => {
         <Link
           key={link.path}
           href={link.path}
-          className={navLinkClassName + " py-3 text-lg font-medium border-b border-blue-700"}
+          className={
+            navLinkClassName +
+            " py-3 text-lg font-medium border-b border-blue-700"
+          }
         >
           {link.name}
         </Link>
       ))}
 
       {/* Kontakt-CTA sichtbar in Mobile */}
-      <Link href="/contact" className="mt-2 inline-flex items-center justify-center font-semibold px-4 py-2 rounded-2xl bg-cyan-400 text-[#001f3f]">
+      <Link
+        href="/contact"
+        className="mt-2 inline-flex items-center justify-center font-semibold px-4 py-2 rounded-2xl bg-cyan-400 text-[#001f3f]"
+      >
         Kostenlose Ersteinschätzung
       </Link>
     </div>

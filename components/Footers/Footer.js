@@ -31,9 +31,18 @@ export default function Footer() {
               </h5>
               <div className="mt-6 flex justify-center lg:justify-start space-x-2">
                 {[
-                  { href: "https://twitter.com/willsicherheit", icon: "fab fa-twitter" },
-                  { href: "https://instagram.com/ichwillsicherheit", icon: "fab fa-instagram" },
-                  { href: "https://linkedin.com/company/ichwillsicherheit", icon: "fab fa-linkedin" },
+                  {
+                    href: "https://twitter.com/willsicherheit",
+                    icon: "fab fa-twitter",
+                  },
+                  {
+                    href: "https://instagram.com/ichwillsicherheit",
+                    icon: "fab fa-instagram",
+                  },
+                  {
+                    href: "https://linkedin.com/company/ichwillsicherheit",
+                    icon: "fab fa-linkedin",
+                  },
                 ].map((link, idx) => (
                   <a
                     key={idx}
@@ -53,24 +62,50 @@ export default function Footer() {
               <div className="flex flex-wrap justify-center lg:justify-end">
                 <div className="w-full lg:w-6/12 flex">
                   <div className="w-1/2">
-                    <span className="block uppercase text-white text-sm font-semibold mb-2">Navigation</span>
+                    <span className="block uppercase text-white text-sm font-semibold mb-2">
+                      Navigation
+                    </span>
                     <ul className="list-none">
-                      {[{ text: "Startseite", href: "/" }, { text: "Preise", href: "/pricing" }, { text: "Über uns", href: "/about" }, { text: "Roadmap", href: "/roadmap" }, { text: "FAQ", href: "/faq" }].map((link, idx) => (
+                      {[
+                        { text: "Startseite", href: "/" },
+                        { text: "Preise", href: "/pricing" },
+                        { text: "Über uns", href: "/about" },
+                        { text: "Roadmap", href: "/roadmap" },
+                        { text: "FAQ", href: "/faq" },
+                      ].map((link, idx) => (
                         <li key={idx}>
                           <Link href={link.href} legacyBehavior>
-                            <a className={FOOTER_LINK_STYLES} aria-label={link.text}>{link.text}</a>
+                            <a
+                              className={FOOTER_LINK_STYLES}
+                              aria-label={link.text}
+                            >
+                              {link.text}
+                            </a>
                           </Link>
                         </li>
                       ))}
                     </ul>
                   </div>
                   <div className="w-1/2">
-                    <span className="block uppercase text-white text-sm font-semibold mb-2">Rechtliches</span>
+                    <span className="block uppercase text-white text-sm font-semibold mb-2">
+                      Rechtliches
+                    </span>
                     <ul className="list-none">
-                      {[{ text: "Kontakt", href: "/contact" }, { text: "Datenschutz", href: "/privacy" }, { text: "Impressum", href: "/imprint" }, { text: "AGB", href: "/agb" }, { text: "Widerruf", href: "/widerruf" }].map((link, idx) => (
+                      {[
+                        { text: "Kontakt", href: "/contact" },
+                        { text: "Datenschutz", href: "/privacy" },
+                        { text: "Impressum", href: "/imprint" },
+                        { text: "AGB", href: "/agb" },
+                        { text: "Widerruf", href: "/widerruf" },
+                      ].map((link, idx) => (
                         <li key={idx}>
                           <Link href={link.href} legacyBehavior>
-                            <a className={FOOTER_LINK_STYLES} aria-label={link.text}>{link.text}</a>
+                            <a
+                              className={FOOTER_LINK_STYLES}
+                              aria-label={link.text}
+                            >
+                              {link.text}
+                            </a>
                           </Link>
                         </li>
                       ))}
@@ -93,7 +128,8 @@ export default function Footer() {
           <div className="flex flex-wrap items-center justify-center">
             <div className="w-full md:w-4/12 px-4 text-center">
               <p className="text-sm text-white font-semibold py-1">
-                © {new Date().getFullYear()} MG Solutions. Alle Rechte vorbehalten.
+                © {new Date().getFullYear()} MG Solutions. Alle Rechte
+                vorbehalten.
               </p>
             </div>
           </div>

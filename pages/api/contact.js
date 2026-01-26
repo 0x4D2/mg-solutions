@@ -13,9 +13,9 @@ export default async function handler(req, res) {
     port: 465,
     secure: true,
     auth: {
-      user: "info@ichwillsicherheit.de", 
-      pass: process.env.STRATO_MAIL_PASS 
-    }
+      user: "info@ichwillsicherheit.de",
+      pass: process.env.STRATO_MAIL_PASS,
+    },
   });
 
   try {
@@ -23,10 +23,12 @@ export default async function handler(req, res) {
       from: `Kontaktformular <info@ichwillsicherheit.de>`,
       to: "info@ichwillsicherheit.de",
       subject: `[Kontaktformular] ${subject}`,
-      text: `Kundentyp: ${customerType}\nName: ${name}\nE-Mail: ${email}\nTelefon: ${phone}\nNachricht:\n${message}`
+      text: `Kundentyp: ${customerType}\nName: ${name}\nE-Mail: ${email}\nTelefon: ${phone}\nNachricht:\n${message}`,
     });
     res.status(200).json({ message: "E-Mail gesendet" });
   } catch (error) {
-    res.status(500).json({ message: "Fehler beim Senden der E-Mail", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Fehler beim Senden der E-Mail", error: error.message });
   }
 }

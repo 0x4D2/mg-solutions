@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 export default function VictimsList() {
   const [apiData, setApiData] = React.useState({
     victims: [],
-    lastUpdated: '',
-    stats: { total: 0, filtered: 0 }
+    lastUpdated: "",
+    stats: { total: 0, filtered: 0 },
   });
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
@@ -12,20 +12,20 @@ export default function VictimsList() {
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('/api/victims');
+        const res = await fetch("/api/victims");
         if (!res.ok) throw new Error(`API-Fehler (Status: ${res.status})`);
-        
+
         const data = await res.json();
         setApiData({
           victims: data.data || [],
           lastUpdated: data.lastUpdated || new Date().toISOString(),
           stats: {
             total: data.stats?.total || 0,
-            filtered: data.stats?.filtered || 0
-          }
+            filtered: data.stats?.filtered || 0,
+          },
         });
       } catch (err) {
-        console.error('Fetch error:', err);
+        console.error("Fetch error:", err);
         setError(err.message);
       } finally {
         setLoading(false);
@@ -33,7 +33,7 @@ export default function VictimsList() {
     };
 
     fetchData();
-    
+
     // Auto-Refresh alle 5 Minuten
     const interval = setInterval(fetchData, 300000);
     return () => clearInterval(interval);
@@ -58,9 +58,9 @@ export default function VictimsList() {
   );
 
   const renderVictimItem = (victim, index) => {
-    const companyName = victim.company || victim.victim || 'Unbekannte Firma';
-    const isNameRedacted = companyName.includes('*');
-    const isActive = victim.status === 'Aktiv';
+    const companyName = victim.company || victim.victim || "Unbekannte Firma";
+    const isNameRedacted = companyName.includes("*");
+    const isActive = victim.status === "Aktiv";
 
     return (
       <li key={index} className="py-3 border-b border-gray-700 last:border-0">
@@ -74,28 +74,34 @@ export default function VictimsList() {
               )}
             </h3>
             <div className="flex items-center mt-1">
-              <span className={`inline-block w-2 h-2 rounded-full mr-2 ${
-                isActive ? 'bg-red-500' : 'bg-gray-500'
-              }`}></span>
+              <span
+                className={`inline-block w-2 h-2 rounded-full mr-2 ${
+                  isActive ? "bg-red-500" : "bg-gray-500"
+                }`}
+              ></span>
               <span className="text-sm text-cyan-400">
-                {victim.group || 'Unbekannte Gruppe'}
+                {victim.group || "Unbekannte Gruppe"}
               </span>
             </div>
           </div>
-          
+
           <div className="flex flex-col sm:flex-row sm:items-center gap-3 text-sm">
-            <div className={`px-2 py-1 rounded text-xs ${
-              isActive ? 'bg-red-900/50 text-red-200' : 'bg-gray-800 text-gray-400'
-            }`}>
-              {victim.status || 'Status unbekannt'}
+            <div
+              className={`px-2 py-1 rounded text-xs ${
+                isActive
+                  ? "bg-red-900/50 text-red-200"
+                  : "bg-gray-800 text-gray-400"
+              }`}
+            >
+              {victim.status || "Status unbekannt"}
             </div>
             <div className="text-gray-400">
               <i className="far fa-calendar-alt mr-1"></i>
-              {victim.discovered || 'Datum unbekannt'}
+              {victim.discovered || "Datum unbekannt"}
             </div>
           </div>
         </div>
-        
+
         {victim.data_size && (
           <div className="mt-2 text-xs bg-gray-800/50 inline-block px-2 py-1 rounded">
             <i className="fas fa-database mr-1"></i>
@@ -115,18 +121,23 @@ export default function VictimsList() {
         </h2>
         <div className="text-sm text-gray-400">
           <i className="fas fa-clock mr-1"></i>
-          {apiData.lastUpdated 
-            ? `Aktualisiert: ${new Date(apiData.lastUpdated).toLocaleString('de-DE')}`
-            : 'Aktualisierung läuft...'}
+          {apiData.lastUpdated
+            ? `Aktualisiert: ${new Date(apiData.lastUpdated).toLocaleString("de-DE")}`
+            : "Aktualisierung läuft..."}
         </div>
       </div>
 
-      {loading ? renderLoading() : error ? renderError() : (
+      {loading ? (
+        renderLoading()
+      ) : error ? (
+        renderError()
+      ) : (
         <>
           <div className="mb-4 text-sm text-gray-400">
-            <span className="text-cyan-400">{apiData.stats.filtered}</span> von {apiData.stats.total} Angriffen
+            <span className="text-cyan-400">{apiData.stats.filtered}</span> von{" "}
+            {apiData.stats.total} Angriffen
           </div>
-          
+
           {apiData.victims.length > 0 ? (
             <ul className="divide-y divide-gray-700/50">
               {apiData.victims.map(renderVictimItem)}
@@ -143,7 +154,8 @@ export default function VictimsList() {
       <div className="mt-6 pt-4 border-t border-gray-700/30 text-xs text-gray-500">
         <p>
           <i className="fas fa-info-circle mr-1"></i>
-          Datenquelle: ransomware.live API | Angezeigt werden nur Angriffe auf deutsche Unternehmen
+          Datenquelle: ransomware.live API | Angezeigt werden nur Angriffe auf
+          deutsche Unternehmen
         </p>
       </div>
     </div>

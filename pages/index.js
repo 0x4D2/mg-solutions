@@ -28,7 +28,13 @@ const PartnerLogo = ({ href, src, alt, width = 220, height = 80 }) => (
   </a>
 );
 
-const LinkCard = ({ href, iconClass, title, className = "", transparentIcon = false }) => (
+const LinkCard = ({
+  href,
+  iconClass,
+  title,
+  className = "",
+  transparentIcon = false,
+}) => (
   <Link
     href={href}
     className={`flex flex-col items-center justify-center border-2 text-white rounded-2xl p-8 min-w-[280px] max-w-[380px] min-h-[240px] mx-auto transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,212,255,0.06)] ${className}`}
@@ -38,34 +44,59 @@ const LinkCard = ({ href, iconClass, title, className = "", transparentIcon = fa
     }}
   >
     <div
-      className={transparentIcon ? "mb-6" : "mb-8 p-6 rounded-2xl bg-opacity-20"}
-      style={{ backgroundColor: transparentIcon ? "transparent" : "rgba(0, 255, 255, 0.06)" }}
+      className={
+        transparentIcon ? "mb-6" : "mb-8 p-6 rounded-2xl bg-opacity-20"
+      }
+      style={{
+        backgroundColor: transparentIcon
+          ? "transparent"
+          : "rgba(0, 255, 255, 0.06)",
+      }}
     >
       <i className={`${iconClass} text-4xl text-cyan-400`}></i>
     </div>
-    <span className="text-lg sm:text-xl font-semibold text-center leading-tight max-w-[260px] break-words">{title}</span>
+    <span className="text-lg sm:text-xl font-semibold text-center leading-tight max-w-[260px] break-words">
+      {title}
+    </span>
   </Link>
 );
 
 export default function Index() {
   return (
-    <div className="flex flex-col min-h-screen relative" style={{ backgroundColor: '#0a192f', fontFamily: 'Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif' }}>
+    <div
+      className="flex flex-col min-h-screen relative"
+      style={{
+        backgroundColor: "#0a192f",
+        fontFamily:
+          'Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif',
+      }}
+    >
       <IndexNavbar fixed />
       <main className="cyber-bg flex-grow relative z-10">
         <section className="header relative pt-8 items-center text-center px-4 sm:px-0">
-            <div className="pt-24 sm:pt-32 pb-20 max-w-7xl mx-auto px-4 sm:px-8">
-            
+          <div className="pt-24 sm:pt-32 pb-20 max-w-7xl mx-auto px-4 sm:px-8">
             {/* Hero */}
             <h1 className="site-title gradient-text hero-title">
               Sicherheit beginnt mit Transparenz.
               <br />
               <span className="gradient-text">Alles andere ist Hoffnung.</span>
             </h1>
-            <p className="mt-6 leading-relaxed max-w-3xl mx-auto" style={{ fontSize: '18px', color: '#eeeeee' }}>
-              <strong style={{ color: '#d8d8d8' }}>Viele Sicherheitslösungen zeigen nur Momentaufnahmen. Wir dokumentieren, wie sich Ihre öffentliche Angriffsfläche über Zeit verändert – objektiv, passiv und nachvollziehbar.</strong>
+            <p
+              className="mt-6 leading-relaxed max-w-3xl mx-auto"
+              style={{ fontSize: "18px", color: "#eeeeee" }}
+            >
+              <strong style={{ color: "#d8d8d8" }}>
+                Viele Sicherheitslösungen zeigen nur Momentaufnahmen. Wir
+                dokumentieren, wie sich Ihre öffentliche Angriffsfläche über
+                Zeit verändert – objektiv, passiv und nachvollziehbar.
+              </strong>
             </p>
-            <p className="mt-3 text-gray-300 max-w-3xl mx-auto" style={{ fontSize: '16px' }}>
-              Angreifer arbeiten ausschließlich mit öffentlich sichtbaren Informationen.
+            <p
+              className="mt-3 text-gray-300 max-w-3xl mx-auto"
+              style={{ fontSize: "16px" }}
+            >
+              Angreifer arbeiten ausschließlich mit öffentlich sichtbaren
+              Informationen.
             </p>
             <p className="mt-4 text-gray-400 text-sm sm:text-base text-center">
               <em>Für IT-Verantwortliche und Geschäftsführung</em>
@@ -73,93 +104,219 @@ export default function Index() {
 
             {/* CTAs (single primary) */}
             <div className="mt-10 flex justify-center px-4 sm:px-0">
-              <Link href="/contact" className="cta-button inline-flex items-center justify-center px-8 py-3 rounded-2xl font-semibold w-full sm:w-auto max-w-md mx-auto" style={{ backgroundColor: '#00d4ff', color: '#001f3f' }}>
+              <Link
+                href="/contact"
+                className="cta-button inline-flex items-center justify-center px-8 py-3 rounded-2xl font-semibold w-full sm:w-auto max-w-md mx-auto"
+                style={{ backgroundColor: "#00d4ff", color: "#001f3f" }}
+              >
                 Kostenlose Ersteinschätzung anfordern
               </Link>
             </div>
             <div className="mt-3 text-sm text-center">
-              <Link href="/pricing" className="text-cyan-200 hover:underline" aria-label="Transparente Preise ansehen">
+              <Link
+                href="/pricing"
+                className="text-cyan-200 hover:underline"
+                aria-label="Transparente Preise ansehen"
+              >
                 Transparente Preise ansehen →
               </Link>
             </div>
 
             {/* Exposure-Report */}
-            <section className="mt-20 rounded-2xl p-8 sm:p-10 text-white max-w-4xl mx-auto card" style={{ backgroundColor: 'rgba(30,41,59,0.72)', border: '1px solid rgba(0,212,255,0.18)', backdropFilter: 'blur(10px)', boxShadow: '0 8px 28px rgba(0,212,255,0.04)' }}>
-              <h3 className="text-2xl font-semibold cyan-text">Was ist ein Exposure-Report?</h3>
-              <p className="mt-3 text-gray-200"><strong>Ein passiver Blick auf Ihre öffentliche Sichtbarkeit</strong></p>
-              <p className="mt-2 text-gray-300">Unsere Ergebnisse werden zusätzlich manuell geprüft und eingeordnet — keine Blackbox-Automation.</p>
-              <p className="mt-2 text-gray-300">Unsere Analysen basieren auf etablierten OSINT-Quellen und bewährten Sicherheitsframeworks.</p>
+            <section
+              className="mt-20 rounded-2xl p-8 sm:p-10 text-white max-w-4xl mx-auto card"
+              style={{
+                backgroundColor: "rgba(30,41,59,0.72)",
+                border: "1px solid rgba(0,212,255,0.18)",
+                backdropFilter: "blur(10px)",
+                boxShadow: "0 8px 28px rgba(0,212,255,0.04)",
+              }}
+            >
+              <h3 className="text-2xl font-semibold cyan-text">
+                Was ist ein Exposure-Report?
+              </h3>
+              <p className="mt-3 text-gray-200">
+                <strong>
+                  Ein passiver Blick auf Ihre öffentliche Sichtbarkeit
+                </strong>
+              </p>
+              <p className="mt-2 text-gray-300">
+                Unsere Ergebnisse werden zusätzlich manuell geprüft und
+                eingeordnet — keine Blackbox-Automation.
+              </p>
+              <p className="mt-2 text-gray-300">
+                Unsere Analysen basieren auf etablierten OSINT-Quellen und
+                bewährten Sicherheitsframeworks.
+              </p>
               <ul className="mt-4 flex flex-col gap-2 items-center text-center text-gray-200">
                 <li className="inline-flex items-center">
-                  <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  <svg
+                    className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0"
+                    style={{ color: "#00d4ff" }}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    />
                   </svg>
-                  <span><strong>Keine aktiven Scans</strong> – nur öffentliche Daten</span>
+                  <span>
+                    <strong>Keine aktiven Scans</strong> – nur öffentliche Daten
+                  </span>
                 </li>
                 <li className="inline-flex items-center">
-                  <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  <svg
+                    className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0"
+                    style={{ color: "#00d4ff" }}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    />
                   </svg>
-                  <span><strong>In 24 Stunden</strong> geliefert</span>
+                  <span>
+                    <strong>In 24 Stunden</strong> geliefert
+                  </span>
                 </li>
                 <li className="inline-flex items-center">
-                  <svg className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0" style={{ color: '#00d4ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  <svg
+                    className="w-5 h-5 mt-0.5 mr-3 flex-shrink-0"
+                    style={{ color: "#00d4ff" }}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    />
                   </svg>
-                  <span><strong>Top-3-Risiken</strong> priorisiert</span>
+                  <span>
+                    <strong>Top-3-Risiken</strong> priorisiert
+                  </span>
                 </li>
               </ul>
 
               <div className="mt-6 grid sm:grid-cols-2 gap-4">
-                <div className="p-4 rounded-lg" style={{ backgroundColor: 'rgba(20,28,43,0.65)', border: '1px solid rgba(0,212,255,0.04)' }}>
-                  <h4 className="font-semibold cyan-text">Was passiert nach der kostenlosen Ersteinschätzung?</h4>
+                <div
+                  className="p-4 rounded-lg"
+                  style={{
+                    backgroundColor: "rgba(20,28,43,0.65)",
+                    border: "1px solid rgba(0,212,255,0.04)",
+                  }}
+                >
+                  <h4 className="font-semibold cyan-text">
+                    Was passiert nach der kostenlosen Ersteinschätzung?
+                  </h4>
                   <ul className="mt-2 text-gray-200 text-sm list-disc list-inside">
-                    <li>Wir werten öffentlich verfügbare Daten aus und identifizieren Top‑Risiken.</li>
-                    <li>Wir liefern priorisierte, verständliche Handlungsempfehlungen.</li>
-                    <li>Optional: kostenfreies 30‑min Review‑Call zur Besprechung.</li>
-                    <li className="mt-2 text-sm text-gray-400">Falls sinnvoll, bieten wir einen einmaligen Exposure‑Report (490 €) an — ohne Abo, ohne Verpflichtung.</li>
+                    <li>
+                      Wir werten öffentlich verfügbare Daten aus und
+                      identifizieren Top‑Risiken.
+                    </li>
+                    <li>
+                      Wir liefern priorisierte, verständliche
+                      Handlungsempfehlungen.
+                    </li>
+                    <li>
+                      Optional: kostenfreies 30‑min Review‑Call zur Besprechung.
+                    </li>
+                    <li className="mt-2 text-sm text-gray-400">
+                      Falls sinnvoll, bieten wir einen einmaligen
+                      Exposure‑Report (490 €) an — ohne Abo, ohne Verpflichtung.
+                    </li>
                   </ul>
                 </div>
 
-                <div className="p-4 rounded-lg" style={{ backgroundColor: 'rgba(20,28,43,0.65)', border: '1px solid rgba(0,212,255,0.04)' }}>
-                  <h4 className="font-semibold cyan-text">Was dieser Report nicht ist</h4>
+                <div
+                  className="p-4 rounded-lg"
+                  style={{
+                    backgroundColor: "rgba(20,28,43,0.65)",
+                    border: "1px solid rgba(0,212,255,0.04)",
+                  }}
+                >
+                  <h4 className="font-semibold cyan-text">
+                    Was dieser Report nicht ist
+                  </h4>
                   <ul className="mt-2 text-gray-200 text-sm list-disc list-inside">
                     <li>Kein Pentest – keine exploitiven Tests.</li>
                     <li>Kein aktiver Scan oder Eingriff in Systeme.</li>
-                    <li>Kein dauerhaftes Monitoring (periodische Bestandsaufnahme).</li>
+                    <li>
+                      Kein dauerhaftes Monitoring (periodische
+                      Bestandsaufnahme).
+                    </li>
                   </ul>
                 </div>
               </div>
 
-              
-                {/* Beispiel-Report entfernt (auf Anforderung) */}
+              {/* Beispiel-Report entfernt (auf Anforderung) */}
             </section>
 
             {/* For whom */}
             <section className="mt-20 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="p-8 rounded-2xl text-white card" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.12)', backdropFilter: 'blur(6px)' }}>
+              <div
+                className="p-8 rounded-2xl text-white card"
+                style={{
+                  backgroundColor: "rgba(30,41,59,0.8)",
+                  border: "1px solid rgba(0,212,255,0.12)",
+                  backdropFilter: "blur(6px)",
+                }}
+              >
                 <h4 className="font-semibold text-lg cyan-text">Für wen?</h4>
-                  <h5 className="mt-3 font-semibold text-white">IT-Verantwortliche</h5>
+                <h5 className="mt-3 font-semibold text-white">
+                  IT-Verantwortliche
+                </h5>
                 <ul className="mt-2 text-gray-200">
                   <li>→ Externe Sichtbarkeit dokumentieren</li>
                   <li>→ Maßnahmen priorisieren</li>
                 </ul>
               </div>
-              <div className="p-8 rounded-2xl text-white card" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.12)', backdropFilter: 'blur(6px)' }}>
+              <div
+                className="p-8 rounded-2xl text-white card"
+                style={{
+                  backgroundColor: "rgba(30,41,59,0.8)",
+                  border: "1px solid rgba(0,212,255,0.12)",
+                  backdropFilter: "blur(6px)",
+                }}
+              >
                 <h5 className="font-semibold cyan-text">Geschäftsführung</h5>
                 <ul className="mt-2 text-gray-200">
                   <li>→ Sicherheits-ROI sichtbar machen</li>
                   <li>→ Investitionen rechtfertigen</li>
                 </ul>
                 <div className="mt-4 text-sm">
-                  <Link href="/contact" className="cta-button inline-flex items-center justify-center px-6 py-2 rounded-2xl font-semibold" style={{ backgroundColor: '#00d4ff', color: '#001f3f' }}>Kostenlose Ersteinschätzung anfordern</Link>
+                  <Link
+                    href="/contact"
+                    className="cta-button inline-flex items-center justify-center px-6 py-2 rounded-2xl font-semibold"
+                    style={{ backgroundColor: "#00d4ff", color: "#001f3f" }}
+                  >
+                    Kostenlose Ersteinschätzung anfordern
+                  </Link>
                 </div>
               </div>
             </section>
 
             {/* FAQ teaser */}
-            <section className="mt-20 max-w-4xl mx-auto text-white rounded-2xl p-8 sm:p-10 card" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.12)' }}>
-              <h4 className="font-semibold text-xl cyan-text">Häufige Fragen</h4>
+            <section
+              className="mt-20 max-w-4xl mx-auto text-white rounded-2xl p-8 sm:p-10 card"
+              style={{
+                backgroundColor: "rgba(30,41,59,0.8)",
+                border: "1px solid rgba(0,212,255,0.12)",
+              }}
+            >
+              <h4 className="font-semibold text-xl cyan-text">
+                Häufige Fragen
+              </h4>
               <div className="mt-4 grid gap-2 text-gray-200">
                 <div>
                   <strong>Werden meine Systeme gescannt?</strong>
@@ -173,16 +330,28 @@ export default function Index() {
               {/* <div className="mt-4">
                 <Link href="/faq" className="text-cyan-200 hover:text-white" style={{ color: '#00d4ff' }}>Alle FAQs ansehen</Link>
               </div> */}
-                <div className="mt-4">
-                  <Link href="/faq" className="cta-button inline-flex items-center justify-center px-6 py-2 rounded-2xl font-semibold" style={{ backgroundColor: '#00d4ff', color: '#001f3f' }}>Alle FAQs ansehen</Link>
-                </div>
+              <div className="mt-4">
+                <Link
+                  href="/faq"
+                  className="cta-button inline-flex items-center justify-center px-6 py-2 rounded-2xl font-semibold"
+                  style={{ backgroundColor: "#00d4ff", color: "#001f3f" }}
+                >
+                  Alle FAQs ansehen
+                </Link>
+              </div>
             </section>
 
             <style jsx>{`
               @keyframes subtlePulse {
-                0% { box-shadow: 0 8px 30px rgba(0,212,255,0.04); }
-                50% { box-shadow: 0 14px 40px rgba(0,212,255,0.06); }
-                100% { box-shadow: 0 8px 30px rgba(0,212,255,0.04); }
+                0% {
+                  box-shadow: 0 8px 30px rgba(0, 212, 255, 0.04);
+                }
+                50% {
+                  box-shadow: 0 14px 40px rgba(0, 212, 255, 0.06);
+                }
+                100% {
+                  box-shadow: 0 8px 30px rgba(0, 212, 255, 0.04);
+                }
               }
               .cta-pulse {
                 animation: subtlePulse 4s ease-in-out infinite;
@@ -193,24 +362,38 @@ export default function Index() {
                 transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
               }
               .cta-button::after {
-                content: '';
+                content: "";
                 position: absolute;
                 top: 0;
                 left: -120%;
                 width: 120%;
                 height: 100%;
-                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+                background: linear-gradient(
+                  90deg,
+                  transparent,
+                  rgba(255, 255, 255, 0.18),
+                  transparent
+                );
                 transition: left 0.7s ease;
                 pointer-events: none;
               }
-              .cta-button:hover::after { left: 100%; }
-              .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-              .card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,212,255,0.06); }
+              .cta-button:hover::after {
+                left: 100%;
+              }
+              .card {
+                transition:
+                  transform 0.3s ease,
+                  box-shadow 0.3s ease;
+              }
+              .card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 20px 40px rgba(0, 212, 255, 0.06);
+              }
             `}</style>
 
             {/* Partner Section */}
             <div className="mt-12 mb-8 sm:mb-12">
-                <h3 className="text-center text-lg sm:text-xl mb-8 cyan-text">
+              <h3 className="text-center text-lg sm:text-xl mb-8 cyan-text">
                 Unsere Partner & Mitgliedschaften
               </h3>
               <div className="flex flex-wrap justify-center gap-4 sm:gap-6 px-4">
@@ -223,7 +406,6 @@ export default function Index() {
                 />
               </div>
             </div>
-
           </div>
         </section>
       </main>

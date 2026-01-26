@@ -32,7 +32,7 @@ nav {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   /* Für Safari */
-  border-bottom: 0.5px solid #00FFFF;
+  border-bottom: 0.5px solid #00ffff;
   box-shadow: none !important;
 }
 
@@ -73,12 +73,12 @@ nav {
 }
 
 h1 {
-  color: #00FFFF;
+  color: #00ffff;
   /* Cyan */
 }
 
 h2 {
-  color: #00FFFF;
+  color: #00ffff;
 }
 
 /* NEON CYAN/SCHWARZ THEME ELEMENTS */
@@ -97,7 +97,7 @@ h2 {
 }
 
 .neon-heading {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: "Rajdhani", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -123,7 +123,11 @@ h2 {
 .neon-bg-pattern {
   background-color: var(--neon-dark);
   background-image:
-    radial-gradient(circle at 10% 20%, rgba(0, 255, 255, 0.05) 0%, transparent 20%),
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(0, 255, 255, 0.05) 0%,
+      transparent 20%
+    ),
     linear-gradient(to bottom, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 100% 30px;
 }
@@ -168,16 +172,18 @@ h2 {
 }
 
 .neon-btn::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(to bottom right,
-      transparent 45%,
-      rgba(0, 255, 255, 0.3) 50%,
-      transparent 55%);
+  background: linear-gradient(
+    to bottom right,
+    transparent 45%,
+    rgba(0, 255, 255, 0.3) 50%,
+    transparent 55%
+  );
   transform: rotate(30deg);
   transition: all 0.5s ease;
 }
@@ -258,7 +264,12 @@ body,
   bottom: 0;
   width: 0%;
   height: 2px;
-  background: linear-gradient(90deg, transparent 0%, #00ffff 50%, transparent 100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #00ffff 50%,
+    transparent 100%
+  );
   transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
 }
@@ -266,7 +277,9 @@ body,
 .glow-link:hover,
 .glow-link:focus {
   color: #00ffff;
-  text-shadow: 0 0 8px #00ffff, 0 0 16px #00ffff;
+  text-shadow:
+    0 0 8px #00ffff,
+    0 0 16px #00ffff;
   text-decoration: none;
 }
 
@@ -336,7 +349,7 @@ a:hover {
 
 /* Grid pattern background class (use a static file to allow caching/lazy-loading) */
 .bg-grid-pattern {
-  background-image: url('/img/grid-pattern.svg');
+  background-image: url("/img/grid-pattern.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -344,8 +357,13 @@ a:hover {
 
 /* Gradient-x animation moved from component to globals for reuse */
 @keyframes gradient-x {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 .animate-gradient-x {
   background-size: 200% 200%;
@@ -361,5 +379,7 @@ a:hover {
 }
 
 @media (min-width: 768px) {
-  .site-title { font-size: 2.5rem; }
+  .site-title {
+    font-size: 2.5rem;
+  }
 }

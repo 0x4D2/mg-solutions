@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import IndexDropdown, { NavLinksMobile } from "components/Dropdowns/IndexDropdown.js";
+import IndexDropdown, {
+  NavLinksMobile,
+} from "components/Dropdowns/IndexDropdown.js";
 
 const NAVBAR_STYLES = {
   backgroundColor: "rgba(0, 31, 63, 0.8)",
-  borderBottom: "0.5px solid #00FFFF"
+  borderBottom: "0.5px solid #00FFFF",
 };
 
 const NAV_LINK_STYLES =
@@ -57,13 +59,19 @@ export default function Navbar() {
             { text: "FAQ", href: "/faq" },
           ].map((link) => (
             <Link key={link.href} href={link.href} legacyBehavior>
-              <a className={NAV_LINK_STYLES} aria-label={link.text}>{link.text}</a>
+              <a className={NAV_LINK_STYLES} aria-label={link.text}>
+                {link.text}
+              </a>
             </Link>
           ))}
 
           <div className="ml-4">
             <Link href="/contact" legacyBehavior>
-              <a className="inline-flex items-center justify-center font-semibold px-4 py-2 rounded-2xl" style={{ backgroundColor: '#00d4ff', color: '#001f3f' }} aria-label="Kostenlose Ersteinschätzung anfordern">
+              <a
+                className="inline-flex items-center justify-center font-semibold px-4 py-2 rounded-2xl"
+                style={{ backgroundColor: "#00d4ff", color: "#001f3f" }}
+                aria-label="Kostenlose Ersteinschätzung anfordern"
+              >
                 Kostenlose <span className="ml-2">Ersteinschätzung</span>
               </a>
             </Link>
@@ -76,7 +84,10 @@ export default function Navbar() {
       </div>
       {/* Mobile Nav (unterhalb der Navbar) */}
       <div className={`lg:hidden w-full ${navbarOpen ? "block" : "hidden"}`}>
-        <NavLinksMobile isOpen={navbarOpen} navLinkClassName={NAV_LINK_STYLES} />
+        <NavLinksMobile
+          isOpen={navbarOpen}
+          navLinkClassName={NAV_LINK_STYLES}
+        />
       </div>
     </nav>
   );
