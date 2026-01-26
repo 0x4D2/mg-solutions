@@ -348,11 +348,12 @@ function FAQCard({ question, children }) {
     <div className="rounded-md transition" style={{ backgroundColor: 'rgba(20,28,43,0.65)', border: '1px solid rgba(0,212,255,0.04)' }}>
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
         className="w-full text-left p-4 focus:outline-none flex justify-between items-center text-white"
       >
         <h3 className="text-lg font-semibold">{question}</h3>
-        <span className={`text-cyan-300 text-2xl transform transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`}>
-          +
+        <span className="text-cyan-300 text-2xl transition-colors duration-200" aria-hidden>
+          {isOpen ? '−' : '+'}
         </span>
       </button>
       {isOpen && <div className="px-4 pb-4 text-white font-light">{children}</div>}
