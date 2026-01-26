@@ -9,7 +9,7 @@ export default function WiderrufPage() {
       <main className="py-20 flex-grow">
         <div className="container mx-auto px-4 max-w-4xl text-white">
           <section className="rounded-2xl p-8" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}>
-            <h1 className="text-3xl font-bold mb-4">Widerrufsbelehrung</h1>
+            <h1 className="site-title gradient-text text-center">Widerrufsbelehrung</h1>
 
             <p className="text-gray-300">Verbrauchern steht grundsätzlich ein Widerrufsrecht zu. Nachfolgend informieren wir Sie über Ihr Widerrufsrecht und die Folgen des Widerrufs.</p>
 

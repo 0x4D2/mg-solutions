@@ -10,7 +10,7 @@ export default function AGBPage() {
       <main className="py-20 flex-grow">
         <div className="container mx-auto px-4 max-w-4xl text-white">
           <section className="rounded-2xl p-8" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}>
-            <h1 className="text-3xl font-bold mb-4">Allgemeine Geschäftsbedingungen (AGB)</h1>
+            <h1 className="site-title gradient-text text-center">Allgemeine Geschäftsbedingungen (AGB)</h1>
             <p className="text-gray-300 mb-4">Nachfolgend finden Sie unsere standardmäßigen Vertragsbedingungen. Diese regeln das Vertragsverhältnis zwischen Ihnen und der MG Solutions (nachfolgend „Anbieter“).</p>
 
             <h2 className="text-xl font-semibold mt-4">1. Geltungsbereich</h2>

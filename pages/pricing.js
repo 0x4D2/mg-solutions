@@ -11,7 +11,7 @@ export default function Pricing() {
       <main className="cyber-bg flex-grow relative z-10 py-20">
         <div className="container mx-auto px-4 max-w-7xl text-white">
           <section className="text-center mb-12">
-            <h1 className="text-4xl sm:text-5xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-white gradient-text">Preise</h1>
+            <h1 className="site-title gradient-text text-center">Preise</h1>
             <p className="text-gray-300 max-w-2xl mx-auto">Klare, transparente Preise — ohne Abo‑Fallen. Wähle zwischen einmaligem Report oder unserem Abo.</p>
           </section>
 
@@ -19,7 +19,8 @@ export default function Pricing() {
            <section className="grid gap-y-24 gap-x-36 lg:gap-y-28 lg:gap-x-44 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1" style={{ columnGap: '3rem', rowGap: '3.5rem' }}>
               {/* Free Assessment - Lead Magnet (compact) */}
               <div className="p-8 pt-12 rounded-2xl card text-center" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}>
-                <h3 className="text-lg font-semibold mb-2 text-center cyan-text">Kostenlose Ersteinschätzung (einmalig)</h3>
+                <h3 className="text-lg font-semibold mb-2 cyan-text">Kostenlos</h3>
+                <div className="text-2xl font-bold mb-2 text-center py-3 px-4 inline-block"> Ersteinschätzung (einmalig)</div>
                 <div className="text-sm text-gray-300 mb-4 text-center">Limitierte Einführung (kein Abo)</div>
                    <ul className="text-gray-200 text-sm mb-6 space-y-2 text-left list-disc list-inside mx-auto max-w-[280px]">
                      <li className="flex items-start">

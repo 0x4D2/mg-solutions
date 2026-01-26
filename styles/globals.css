@@ -333,3 +333,33 @@ a:focus,
 a:hover {
   text-decoration: none !important;
 }
+
+/* Grid pattern background class (use a static file to allow caching/lazy-loading) */
+.bg-grid-pattern {
+  background-image: url('/img/grid-pattern.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Gradient-x animation moved from component to globals for reuse */
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 8s ease-in-out infinite;
+}
+
+/* Global page title used across pages to ensure consistent size and weight */
+.site-title {
+  font-size: 2.25rem; /* approx Tailwind text-4xl */
+  font-weight: 600;
+  line-height: 1.12;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .site-title { font-size: 2.5rem; }
+}

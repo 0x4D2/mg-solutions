@@ -9,7 +9,7 @@ export default function Imprint() {
       <div className="cyber-bg min-h-screen">
         <section className="py-16">
           <div className="container mx-auto px-4 pb-40">
-            <h1 className="text-4xl font-bold text-center mt-12">
+            <h1 className="site-title gradient-text text-center">
               Impressum
             </h1>
             <div className="mt-8 text-white text-lg leading-relaxed">

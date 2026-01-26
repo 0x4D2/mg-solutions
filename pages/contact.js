@@ -67,14 +67,14 @@ export default function ContactPage() {
       <main className="cyber-bg bg-gray-900 text-white min-h-screen">
 
         {/* Header */}
-        <section className="relative py-20 bg-gradient-to-br from-blue-900 via-gray-900 to-gray-900 text-center overflow-hidden">
+        <section className="relative py-15 bg-gradient-to-br from-blue-900 via-gray-900 to-gray-900 text-center overflow-hidden">
           <div className="absolute inset-0 bg-[url('/img/grid-pattern.svg')] opacity-10"></div>
           <div className="container mx-auto px-4 relative z-10">
             <motion.h1
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-5xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-white"
+              className="site-title gradient-text"
             >
               Sichere Hilfe – direkt & unkompliziert
             </motion.h1>
@@ -101,9 +101,24 @@ export default function ContactPage() {
               style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}
             >
               {sent ? (
-                <div className="text-center py-16">
-                  <h2 className="text-3xl font-bold mb-4 text-blue-400">Vielen Dank!</h2>
-                  <p className="text-blue-200 text-lg">Ihre Nachricht wurde erfolgreich übermittelt.<br />Wir melden uns zeitnah bei Ihnen.</p>
+                <div className="text-center py-8">
+                  <h2 className="site-title gradient-text text-2xl sm:text-3xl mb-2">Vielen Dank — wir haben Ihre Anfrage erhalten</h2>
+
+                  <div className="mt-3">
+                    <div className="mx-auto px-2 sm:px-0 flex flex-wrap items-center justify-center gap-2 text-sm text-gray-200">
+                      <span>Sie senden Ihre Anfrage</span>
+                      <span className="text-cyan-300">→</span>
+                      <span>Wir antworten innerhalb von 24h</span>
+                      <span className="text-cyan-300">→</span>
+                      <span>Analyse Ihrer Situation</span>
+                      <span className="text-cyan-300">→</span>
+                      <span>Maßgeschneidertes Report</span>
+                    </div>
+
+                    <div className="mt-5 flex justify-center">
+                      <a href="/" className="inline-flex items-center justify-center px-4 py-2 rounded-md font-medium bg-cyan-500/10 text-cyan-300 hover:bg-cyan-500/20">Zur Startseite</a>
+                    </div>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -276,41 +291,60 @@ export default function ContactPage() {
 
           </div>
         </section>
+        
 
-        {/* Schritt-für-Schritt Grafik */}
-        <section className="py-12 bg-gray-900">
+        {/* Kompakter Prozess-Überblick (harmonisiert) */}
+        <section className="py-6 bg-gray-900">
           <div className="container mx-auto px-4 max-w-3xl">
-            <div className="p-8 rounded-2xl" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}>
-              <h3 className="text-2xl font-bold mb-8 text-cyan-200 text-center">Was passiert nach dem Absenden?</h3>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-                <div className="flex flex-col items-center">
-                  <div className="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 via-blue-400 to-blue-600 mb-4 shadow-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 10l9-6 9 6-9 6-9-6zm0 0v6a9 9 0 009 9 9 9 0 009-9v-6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <div className="p-8 rounded-2xl text-center" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.06)' }}>
+              <h3 className="text-xl sm:text-2xl font-bold text-cyan-300 mb-4">Ablauf nach Ihrer Anfrage</h3>
+
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <div className="flex flex-col items-center min-w-[72px]">
+                  <div className="w-9 h-9 aspect-square rounded-full bg-cyan-700 flex-shrink-0 flex items-center justify-center mb-1 border border-cyan-600">
+                    <span className="text-white font-semibold">1</span>
                   </div>
-                  <span className="font-semibold text-blue-100">Sie senden Ihre Anfrage</span>
+                  <div className="text-sm text-white">Anfrage</div>
                 </div>
-                <div className="flex flex-col items-center">
-                  <div className="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 via-blue-400 to-blue-600 mb-4 shadow-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 6v6l4 2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="12" cy="12" r="10" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  </div>
-                  <span className="font-semibold text-blue-100">Wir antworten innerhalb von 24h</span>
+
+                <div className="text-cyan-300 flex items-center" aria-hidden>
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
                 </div>
-                <div className="flex flex-col items-center">
-                  <div className="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 via-blue-400 to-blue-600 mb-4 shadow-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="11" cy="11" r="8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M21 21l-4.35-4.35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+
+                <div className="flex flex-col items-center min-w-[72px]">
+                  <div className="w-9 h-9 aspect-square rounded-full bg-cyan-700 flex-shrink-0 flex items-center justify-center mb-1 border border-cyan-600">
+                    <span className="text-white font-semibold">2</span>
                   </div>
-                  <span className="font-semibold text-blue-100">Kostenlose Analyse Ihrer Situation</span>
+                  <div className="text-sm text-white">Antwort (24h)</div>
                 </div>
-                <div className="flex flex-col items-center">
-                  <div className="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 via-blue-400 to-blue-600 mb-4 shadow-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M9 12l2 2 4-4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+
+                <div className="text-cyan-300 flex items-center" aria-hidden>
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+                </div>
+
+                <div className="flex flex-col items-center min-w-[72px]">
+                  <div className="w-9 h-9 aspect-square rounded-full bg-cyan-700 flex-shrink-0 flex items-center justify-center mb-1 border border-cyan-600">
+                    <span className="text-white font-semibold">3</span>
                   </div>
-                  <span className="font-semibold text-blue-100">Maßgeschneiderte Lösung</span>
+                  <div className="text-sm text-white">Analyse</div>
+                </div>
+
+                <div className="text-cyan-300 flex items-center" aria-hidden>
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+                </div>
+
+                <div className="flex flex-col items-center min-w-[72px]">
+                  <div className="w-9 h-9 aspect-square rounded-full bg-cyan-700 flex-shrink-0 flex items-center justify-center mb-1 border border-cyan-600">
+                    <span className="text-white font-semibold">4</span>
+                  </div>
+                  <div className="text-sm text-white">Report</div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+
+        
 
         <div className="text-center text-blue-300 text-sm mt-8">
           Mehr zum Umgang mit Ihren Daten finden Sie in unserer <a href="/privacy" className="underline hover:text-blue-400" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>.

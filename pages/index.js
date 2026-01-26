@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import React from "react";
 import Link from "next/link";
-import TypeIt from "typeit-react";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
@@ -50,30 +48,6 @@ const LinkCard = ({ href, iconClass, title, className = "", transparentIcon = fa
 );
 
 export default function Index() {
-  const [showContent, setShowContent] = useState(false);
-  const [isInitialLoad, setIsInitialLoad] = useState(true);
-  const router = useRouter();
-
-  // Preloader-Logik, zeigt Intro nur einmal pro Browser-Session
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const hasVisited = localStorage.getItem("hasVisited");
-      if (hasVisited || router.asPath !== "/") {
-        setIsInitialLoad(false);
-        setShowContent(true);
-        return;
-      }
-      localStorage.setItem("hasVisited", "true");
-      const timer = setTimeout(() => {
-        setIsInitialLoad(false);
-        setShowContent(true);
-      }, 2200);
-      return () => clearTimeout(timer);
-    }
-  }, [router.asPath]);
-
-  if (!showContent) return null;
-
   return (
     <div className="flex flex-col min-h-screen relative" style={{ backgroundColor: '#0a192f', fontFamily: 'Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif' }}>
       <IndexNavbar fixed />
@@ -82,17 +56,10 @@ export default function Index() {
             <div className="pt-24 sm:pt-32 pb-20 max-w-7xl mx-auto px-4 sm:px-8">
             
             {/* Hero */}
-            <h1 className="hero-title font-semibold text-4xl sm:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-white gradient-text">
-              <TypeIt
-                options={{
-                  strings: ["Sicherheit beginnt mit Transparenz.", "Alles andere ist Hoffnung."],
-                  speed: 50,
-                  deleteSpeed: 30,
-                  breakLines: true,
-                  waitUntilVisible: true,
-                  cursor: false,
-                }}
-              />
+            <h1 className="site-title gradient-text hero-title">
+              Sicherheit beginnt mit Transparenz.
+              <br />
+              <span className="gradient-text">Alles andere ist Hoffnung.</span>
             </h1>
             <p className="mt-6 leading-relaxed max-w-3xl mx-auto" style={{ fontSize: '18px', color: '#eeeeee' }}>
               <strong style={{ color: '#d8d8d8' }}>Viele Sicherheitslösungen zeigen nur Momentaufnahmen. Wir dokumentieren, wie sich Ihre öffentliche Angriffsfläche über Zeit verändert – objektiv, passiv und nachvollziehbar.</strong>
@@ -106,7 +73,7 @@ export default function Index() {
 
             {/* CTAs (single primary) */}
             <div className="mt-10 flex justify-center px-4 sm:px-0">
-              <Link href="/contact" className="cta-button transition-all duration-300 rounded-2xl inline-flex items-center justify-center font-semibold w-full sm:w-auto max-w-md mx-auto sm:mx-0 px-6 py-3" style={{ backgroundColor: '#00d4ff', color: '#001f3f' }}>
+              <Link href="/contact" className="cta-button inline-flex items-center justify-center px-8 py-3 rounded-2xl font-semibold w-full sm:w-auto max-w-md mx-auto" style={{ backgroundColor: '#00d4ff', color: '#001f3f' }}>
                 Kostenlose Ersteinschätzung anfordern
               </Link>
             </div>
@@ -165,18 +132,14 @@ export default function Index() {
               </div>
 
               
-                <div className="mt-4">
-                  <a href="/beispiel-report.pdf" download aria-label="Beispiel-Report herunterladen" className="cta-button inline-flex items-center justify-center font-semibold px-4 py-2 rounded-2xl transition-all duration-300" style={{ backgroundColor: 'rgba(0,212,255,0.12)', color: '#00d4ff' }}>
-                    Beispiel-Report ansehen
-                  </a>
-                </div>
+                {/* Beispiel-Report entfernt (auf Anforderung) */}
             </section>
 
             {/* For whom */}
             <section className="mt-20 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="p-8 rounded-2xl text-white card" style={{ backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(0,212,255,0.12)', backdropFilter: 'blur(6px)' }}>
                 <h4 className="font-semibold text-lg cyan-text">Für wen?</h4>
-                  <h5 className="mt-3 font-semibold cyan-text">IT-Verantwortliche</h5>
+                  <h5 className="mt-3 font-semibold text-white">IT-Verantwortliche</h5>
                 <ul className="mt-2 text-gray-200">
                   <li>→ Externe Sichtbarkeit dokumentieren</li>
                   <li>→ Maßnahmen priorisieren</li>
@@ -189,7 +152,7 @@ export default function Index() {
                   <li>→ Investitionen rechtfertigen</li>
                 </ul>
                 <div className="mt-4 text-sm">
-                  <Link href="/contact" className="cta-button inline-flex items-center justify-center font-semibold px-4 py-2 rounded-2xl transition-all duration-300" style={{ backgroundColor: 'rgba(0,212,255,0.12)', color: '#00d4ff' }}>Kostenlose Ersteinschätzung anfordern</Link>
+                  <Link href="/contact" className="cta-button inline-flex items-center justify-center px-6 py-2 rounded-2xl font-semibold" style={{ backgroundColor: '#00d4ff', color: '#001f3f' }}>Kostenlose Ersteinschätzung anfordern</Link>
                 </div>
               </div>
             </section>
@@ -211,7 +174,7 @@ export default function Index() {
                 <Link href="/faq" className="text-cyan-200 hover:text-white" style={{ color: '#00d4ff' }}>Alle FAQs ansehen</Link>
               </div> */}
                 <div className="mt-4">
-                  <Link href="/faq" className="cta-button inline-flex items-center justify-center font-semibold px-4 py-2 rounded-2xl transition-all duration-300" style={{ backgroundColor: 'rgba(0,212,255,0.12)', color: '#00d4ff' }}>Alle FAQs ansehen</Link>
+                  <Link href="/faq" className="cta-button inline-flex items-center justify-center px-6 py-2 rounded-2xl font-semibold" style={{ backgroundColor: '#00d4ff', color: '#001f3f' }}>Alle FAQs ansehen</Link>
                 </div>
             </section>
 

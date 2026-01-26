@@ -287,7 +287,7 @@ export default function FAQPage() {
         {/* Hero */}
         <section className="py-16 relative items-center flex min-h-[80vh] ">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-white gradient-text">FAQ – Klare Antworten auf wichtige Fragen</h1>
+            <h1 className="site-title gradient-text">FAQ – Klare Antworten auf wichtige Fragen</h1>
             <p className="mt-6 text-xl max-w-3xl mx-auto text-white ">Klare, präzise Antworten zu unserem Exposure-Report und Serviceumfang.</p>
           </div>
         </section>
