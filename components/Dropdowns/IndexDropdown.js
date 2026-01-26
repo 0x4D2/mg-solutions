@@ -12,6 +12,11 @@ const ALL_NAV_LINKS = [
   { name: "Datenschutz", path: "/privacy" }
 ];
 
+// Links that should appear in the desktop nav (and match mobile)
+const DESKTOP_NAV_PATHS = ["/", "/pricing", "/about", "/roadmap", "/faq"];
+
+const DESKTOP_NAV_LINKS = ALL_NAV_LINKS.filter((l) => DESKTOP_NAV_PATHS.includes(l.path));
+
 export const NavLinksDesktop = ({ navLinkClassName = "", alwaysShowAbout }) => {
   // Immer die ersten 4 Links anzeigen, inkl. Über uns
   const maxVisible = alwaysShowAbout ? 4 : 3;
@@ -66,7 +71,7 @@ export const NavLinksMobile = ({ isOpen, navLinkClassName = "" }) => {
 
   return (
     <div className="lg:hidden flex flex-col space-y-3 mt-4 pl-4 bg-blue-900">
-      {ALL_NAV_LINKS.map((link) => (
+      {DESKTOP_NAV_LINKS.map((link) => (
         <Link
           key={link.path}
           href={link.path}
@@ -75,6 +80,11 @@ export const NavLinksMobile = ({ isOpen, navLinkClassName = "" }) => {
           {link.name}
         </Link>
       ))}
+
+      {/* Kontakt-CTA sichtbar in Mobile */}
+      <Link href="/contact" className="mt-2 inline-flex items-center justify-center font-semibold px-4 py-2 rounded-2xl bg-cyan-400 text-[#001f3f]">
+        Kostenlose Ersteinschätzung
+      </Link>
     </div>
   );
 };

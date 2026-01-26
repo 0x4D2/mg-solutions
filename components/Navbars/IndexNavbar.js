@@ -48,10 +48,25 @@ export default function Navbar() {
           <Logo />
         </div>
         {/* Desktop-Links immer ganz rechts */}
-        <div className="hidden lg:flex flex-1 justify-end items-center">
-          <IndexDropdown navLinkClassName={NAV_LINK_STYLES} alwaysShowAbout />
+        <div className="hidden lg:flex flex-1 justify-end items-center space-x-4">
+          {[
+            { text: "Startseite", href: "/" },
+            { text: "Preise", href: "/pricing" },
+            { text: "Über uns", href: "/about" },
+            { text: "Roadmap", href: "/roadmap" },
+            { text: "FAQ", href: "/faq" },
+          ].map((link) => (
+            <Link key={link.href} href={link.href} legacyBehavior>
+              <a className={NAV_LINK_STYLES} aria-label={link.text}>{link.text}</a>
+            </Link>
+          ))}
+
           <div className="ml-4">
-            <Link href="/contact" className="inline-flex items-center justify-center font-semibold px-4 py-2 rounded-2xl" style={{ backgroundColor: '#00d4ff', color: '#001f3f' }} aria-label="Kostenlose Ersteinschätzung anfordern">Kostenlose Ersteinschätzung</Link>
+            <Link href="/contact" legacyBehavior>
+              <a className="inline-flex items-center justify-center font-semibold px-4 py-2 rounded-2xl" style={{ backgroundColor: '#00d4ff', color: '#001f3f' }} aria-label="Kostenlose Ersteinschätzung anfordern">
+                Kostenlose <span className="ml-2">Ersteinschätzung</span>
+              </a>
+            </Link>
           </div>
         </div>
         {/* Mobile Menu Button */}

@@ -33,9 +33,7 @@ export default function Footer() {
                 {[
                   { href: "https://twitter.com/willsicherheit", icon: "fab fa-twitter" },
                   { href: "https://instagram.com/ichwillsicherheit", icon: "fab fa-instagram" },
-                  { href: "https://www.tiktok.com/@ichwillsicherheit", icon: "fab fa-tiktok" },
                   { href: "https://linkedin.com/company/ichwillsicherheit", icon: "fab fa-linkedin" },
-                  { href: "https://www.youtube.com/@ichwillsicherheit", icon: "fab fa-youtube" },
                 ].map((link, idx) => (
                   <a
                     key={idx}
@@ -53,27 +51,31 @@ export default function Footer() {
             {/* Rechte Seite */}
             <div className="w-full lg:w-6/12 px-4 mt-10 lg:mt-0">
               <div className="flex flex-wrap justify-center lg:justify-end">
-                <div className="w-full lg:w-4/12">
-                  <span className="block uppercase text-white text-sm font-semibold mb-2">
-                    Nützliche Links
-                  </span>
-                  <ul className="list-none">
-                    {[
-                      { text: "Über uns", href: "/about" },
-                      { text: "Kontakt", href: "/contact" },
-                      { text: "Datenschutz", href: "/privacy" },
-                      { text: "Impressum", href: "/imprint" },
-                      { text: "AGB", href: "/agb" },
-                      { text: "Widerruf", href: "/widerruf" },
-                      { text: "Roadmap", href: "/roadmap" },
-                    ].map((link, idx) => (
-                      <li key={idx}>
-                        <Link href={link.href} legacyBehavior>
-                          <a className={FOOTER_LINK_STYLES} aria-label={link.text}>{link.text}</a>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="w-full lg:w-6/12 flex">
+                  <div className="w-1/2">
+                    <span className="block uppercase text-white text-sm font-semibold mb-2">Navigation</span>
+                    <ul className="list-none">
+                      {[{ text: "Startseite", href: "/" }, { text: "Preise", href: "/pricing" }, { text: "Über uns", href: "/about" }, { text: "Roadmap", href: "/roadmap" }, { text: "FAQ", href: "/faq" }].map((link, idx) => (
+                        <li key={idx}>
+                          <Link href={link.href} legacyBehavior>
+                            <a className={FOOTER_LINK_STYLES} aria-label={link.text}>{link.text}</a>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="w-1/2">
+                    <span className="block uppercase text-white text-sm font-semibold mb-2">Rechtliches</span>
+                    <ul className="list-none">
+                      {[{ text: "Kontakt", href: "/contact" }, { text: "Datenschutz", href: "/privacy" }, { text: "Impressum", href: "/imprint" }, { text: "AGB", href: "/agb" }, { text: "Widerruf", href: "/widerruf" }].map((link, idx) => (
+                        <li key={idx}>
+                          <Link href={link.href} legacyBehavior>
+                            <a className={FOOTER_LINK_STYLES} aria-label={link.text}>{link.text}</a>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
