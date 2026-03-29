@@ -4,7 +4,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Footer from "components/Footers/Footer.js";
 
-const RECAPTCHA_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+const RECAPTCHA_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6Lfd0JwsAAAAAP33lyyT_y0STHCSCfWESjbM_sev";
 
 // ─── Success State ────────────────────────────────────────────────────────────
 
