@@ -1,7 +1,6 @@
 ﻿import React from "react";
 import Head from "next/head";
 import Link from "next/link";
-import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
 // SVG Icons
@@ -102,8 +101,7 @@ export default function ExposurePage() {
         <meta name="description" content="Was ist ein Exposure-Report? Wie funktioniert er, was enthält er und für wen ist er geeignet?" />
       </Head>
 
-      <div className="iws-page">
-        <IndexNavbar fixed />
+      <div className="iws-page cyber-bg">
 
         <div className="wrap">
 

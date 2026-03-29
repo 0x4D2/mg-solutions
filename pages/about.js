@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import Head from "next/head";
 import Link from "next/link";
-import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
 // SVG Icons
@@ -55,21 +54,16 @@ export default function AboutPage() {
         <meta name="description" content="Wer wir sind, was uns antreibt und warum wir genau eine Sache wirklich gut machen." />
       </Head>
 
-      <div className="iws-page">
-        <IndexNavbar fixed />
+      <div className="iws-page cyber-bg">
 
         <div className="wrap">
 
           {/* HERO */}
           <div className="hero">
             <div className="slabel">Uber uns</div>
-            <motion.h1
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <h1>
               Wir machen genau <span className="grad">eine Sache wirklich gut.</span>
-            </motion.h1>
+            </h1>
             <p className="hero-sub">
               Die externe Sichtbarkeit Ihrer Systeme objektiv sichtbar machen -
               so, wie ein Angreifer sie sieht, bevor er handelt.

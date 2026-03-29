@@ -1,12 +1,10 @@
 ﻿import React from "react";
 import Link from "next/link";
-import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
 export default function Pricing() {
   return (
-    <div className="prc-page">
-      <IndexNavbar fixed />
+    <div className="prc-page cyber-bg">
       <div className="wrap">
 
         {/* Hero */}

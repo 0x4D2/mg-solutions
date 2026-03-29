@@ -1,7 +1,6 @@
 ﻿import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
 // SVG Icons
@@ -406,8 +405,7 @@ export default function FAQPage() {
         <meta name="description" content="Häufige Fragen zum Exposure-Report: Funktionsweise, Kosten, Compliance und Qualität." />
       </Head>
 
-      <div className="iws-page">
-        <IndexNavbar fixed />
+      <div className="iws-page cyber-bg">
 
         <div className="wrap">
 

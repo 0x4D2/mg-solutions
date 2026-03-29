@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import Head from "next/head";
 import Link from "next/link";
-import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
 const RECAPTCHA_KEY = "6LeFzm4rAAAAAAVjzEG_0riyYW7dcMdJlOIDWfIJ";
@@ -109,8 +108,7 @@ export default function ContactPage() {
         <script src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_KEY}`} />
       </Head>
 
-      <div className="iws-page">
-        <IndexNavbar fixed />
+      <div className="iws-page cyber-bg">
 
         <div className="wrap">
 

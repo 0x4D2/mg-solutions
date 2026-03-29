@@ -1,5 +1,18 @@
-﻿import React from "react";
+﻿import React, { useEffect, useState } from "react";
 import LegalLayout, { LegalSection, LegalLink } from "components/LegalLayout.js";
+
+function ProtectedEmail() {
+  const [link, setLink] = useState(null);
+  useEffect(() => {
+    const u = "info";
+    const d = "ichwillsicherheit";
+    const t = "de";
+    const addr = `${u}@${d}.${t}`;
+    setLink(addr);
+  }, []);
+  if (!link) return <span>E-Mail wird geladen…</span>;
+  return <a href={`mailto:${link}`} className="legal-link">{link}</a>;
+}
 
 export default function Imprint() {
   return (
@@ -14,7 +27,7 @@ export default function Imprint() {
       </LegalSection>
 
       <LegalSection title="Kontakt">
-        <p>E-Mail: <LegalLink href="mailto:info@ichwillsicherheit.de">info@ichwillsicherheit.de</LegalLink></p>
+        <p>E-Mail: <ProtectedEmail /></p>
         <p>Telefon: {["+49", " 176", " 754", " 68985"].join(" ")}</p>
       </LegalSection>
 

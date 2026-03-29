@@ -1,7 +1,6 @@
 ﻿import React from "react";
 import Head from "next/head";
 import Link from "next/link";
-import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
 export function LegalSection({ title, children }) {
@@ -26,8 +25,7 @@ export default function LegalLayout({ title, subtitle, children }) {
         <title>{title} - ichwillsicherheit.de</title>
       </Head>
 
-      <div className="iws-page">
-        <IndexNavbar fixed />
+      <div className="iws-page cyber-bg">
 
         <div className="legal-wrap">
           <div className="legal-header">

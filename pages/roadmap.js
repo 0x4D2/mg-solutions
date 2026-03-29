@@ -1,7 +1,6 @@
 ﻿import React from "react";
 import Head from "next/head";
 import Link from "next/link";
-import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
 const STATUS = {
@@ -89,8 +88,7 @@ export default function Roadmap() {
         <meta name="description" content="Was wir bereits liefern, woran wir arbeiten und was als nachstes kommt." />
       </Head>
 
-      <div className="iws-page">
-        <IndexNavbar fixed />
+      <div className="iws-page cyber-bg">
 
         <div className="wrap">
 
