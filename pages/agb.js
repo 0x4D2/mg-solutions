@@ -1,234 +1,107 @@
-import React from "react";
-import Link from "next/link";
-import Footer from "components/Footers/Footer.js";
+﻿import React from "react";
+import LegalLayout, { LegalSection, LegalLink } from "components/LegalLayout.js";
 
 export default function AGBPage() {
   return (
-    <div className="cyber-bg bg-gray-900 text-white min-h-screen">
-      <main className="py-16 flex-grow">
-        <div className="container mx-auto px-4 max-w-4xl text-white">
-          <section
-            className="rounded-2xl p-8"
-            style={{
-              backgroundColor: "rgba(30,41,59,0.8)",
-              border: "1px solid rgba(0,212,255,0.06)",
-            }}
-          >
-            <h1 className="site-title gradient-text text-center">
-              Allgemeine Geschäftsbedingungen (AGB) für MG Solutions
-            </h1>
-            <p className="text-gray-400 text-center mt-2">Stand: Januar 2026</p>
-            <hr className="my-6 border-gray-700" />
+    <LegalLayout title="Allgemeine Geschäftsbedingungen" subtitle="Stand: Januar 2026">
 
-            <h2 className="text-xl font-semibold mt-4">§ 1 Geltungsbereich</h2>
-            <p className="text-gray-300">
-              Diese AGB gelten für alle Verträge zwischen der{" "}
-              <strong>MG Solutions, Inhaber Memo Güngör</strong> (nachfolgend
-              "Anbieter") und seinen Kunden über Exposure-Reports und
-              Sicherheitsanalysedienstleistungen. Der Anbieter ist
-              Kleinunternehmer gemäß § 19 UStG und weist keine Umsatzsteuer aus.
-            </p>
+      <LegalSection title="§ 1 Geltungsbereich">
+        Diese AGB gelten für alle Verträge zwischen <strong style={{ color: "#e2e8f0" }}>MG Solutions,
+        Inhaber Memo Güngör</strong> und seinen Kunden über Exposure-Reports und
+        Sicherheitsanalysedienstleistungen. Der Anbieter ist Kleinunternehmer gemäß § 19 UStG
+        und weist keine Umsatzsteuer aus.
+      </LegalSection>
 
-            <h2 className="text-xl font-semibold mt-4">
-              § 2 Vertragsgegenstand &amp; Besonderheit der Dienstleistung
-            </h2>
-            <p className="text-gray-300">
-              (1) Der Anbieter erbringt{" "}
-              <strong>passive Sicherheitsanalysen</strong> auf Basis öffentlich
-              zugänglicher Informationen (OSINT).
-              <br />
-              (2) <strong>Wichtig:</strong> Dies ist{" "}
-              <strong>kein aktiver Security-Scan</strong>,{" "}
-              <strong>kein Penetrationstest</strong> und{" "}
-              <strong>keine Sicherheitsgarantie</strong>. Wir zeigen nur, was
-              öffentlich sichtbar ist.
-              <br />
-              (3) Die konkreten Leistungen ergeben sich aus der gebuchten
-              Dienstleistung (Einzelreport oder Abonnement).
-            </p>
+      <LegalSection title="§ 2 Vertragsgegenstand & Besonderheit der Dienstleistung">
+        <p>(1) Der Anbieter erbringt <strong style={{ color: "#e2e8f0" }}>passive Sicherheitsanalysen</strong> auf
+        Basis öffentlich zugänglicher Informationen (OSINT).</p>
+        <p style={{ marginTop: 8 }}>(2) <strong style={{ color: "#e2e8f0" }}>Wichtig:</strong> Dies ist kein aktiver
+        Security-Scan, kein Penetrationstest und keine Sicherheitsgarantie. Wir zeigen nur, was
+        öffentlich sichtbar ist.</p>
+        <p style={{ marginTop: 8 }}>(3) Die konkreten Leistungen ergeben sich aus der gebuchten
+        Dienstleistung (Einzelreport oder Abonnement).</p>
+      </LegalSection>
 
-            <h2 className="text-xl font-semibold mt-4">
-              § 3 Vertragsschluss &amp; Preise
-            </h2>
-            <p className="text-gray-300">
-              (1) Der Vertrag kommt durch Online-Bestellung und unsere
-              Bestätigung per E-Mail zustande.
-              <br />
-              (2) <strong>Alle Preise sind Endpreise.</strong> Da wir
-              Kleinunternehmer sind, wird keine Umsatzsteuer ausgewiesen (§ 19
-              UStG).
-              <br />
-              (3) Einmal-Reports: Vorabzahlung. Abonnements: Monatliche
-              Vorabzahlung per Lastschrift/Überweisung.
-            </p>
+      <LegalSection title="§ 3 Vertragsschluss & Preise">
+        <p>(1) Der Vertrag kommt durch Online-Bestellung und unsere Bestätigung per E-Mail zustande.</p>
+        <p style={{ marginTop: 8 }}>(2) <strong style={{ color: "#e2e8f0" }}>Alle Preise sind Endpreise.</strong> Da wir
+        Kleinunternehmer sind, wird keine Umsatzsteuer ausgewiesen (§ 19 UStG).</p>
+        <p style={{ marginTop: 8 }}>(3) Einmal-Reports: Vorabzahlung. Abonnements: Monatliche Vorabzahlung
+        per Lastschrift/Überweisung.</p>
+      </LegalSection>
 
-            <h2 className="text-xl font-semibold mt-4">
-              § 4 Laufzeit &amp; Kündigung – einfach &amp; fair
-            </h2>
-            <p className="text-gray-300">
-              (1) Abonnements laufen <strong>monatlich</strong> und verlängern
-              sich automatisch.
-              <br />
-              (2) <strong>Kündigung:</strong> Jederzeit per E-Mail an{" "}
-              <a
-                href="mailto:info@ichwillsicherheit.de"
-                className="text-cyan-200 underline"
-              >
-                info@ichwillsicherheit.de
-              </a>{" "}
-              mit 14 Tagen Frist zum Monatsende.
-              <br />
-              (3) Nach Kündigung erstellen wir noch den bereits bezahlten Report
-              für den laufenden Monat.
-            </p>
+      <LegalSection title="§ 4 Laufzeit & Kündigung">
+        <p>(1) Abonnements laufen <strong style={{ color: "#e2e8f0" }}>monatlich</strong> und verlängern sich automatisch.</p>
+        <p style={{ marginTop: 8 }}>(2) Kündigung: Jederzeit per E-Mail an{" "}
+        <LegalLink href="mailto:info@ichwillsicherheit.de">info@ichwillsicherheit.de</LegalLink>{" "}
+        mit 14 Tagen Frist zum Monatsende.</p>
+        <p style={{ marginTop: 8 }}>(3) Nach Kündigung erstellen wir noch den bereits bezahlten Report
+        für den laufenden Monat.</p>
+      </LegalSection>
 
-            <h2 className="text-xl font-semibold mt-4">
-              § 5 Was wir leisten – und was nicht
-            </h2>
-            <h3 className="text-lg font-semibold mt-3">5.1 Unsere Leistung:</h3>
-            <ul className="list-disc list-inside text-gray-300">
-              <li>
-                Wir sammeln <strong>öffentlich verfügbare Informationen</strong>{" "}
-                über Ihre Systeme
-              </li>
-              <li>Wir werten diese aus und priorisieren Risiken</li>
-              <li>
-                Wir liefern einen verständlichen Report mit
-                Handlungsempfehlungen
-              </li>
-            </ul>
-            <h3 className="text-lg font-semibold mt-3">
-              5.2 Was wir NICHT leisten (wichtig!)
-            </h3>
-            <ul className="list-disc list-inside text-gray-300">
-              <li>
-                <strong>Keine aktiven Scans</strong> Ihrer Systeme
-              </li>
-              <li>
-                <strong>Keine Penetrationstests</strong> (wir testen nichts aus)
-              </li>
-              <li>
-                <strong>Keine Live-Überwachung</strong> (periodische
-                Momentaufnahmen)
-              </li>
-              <li>
-                <strong>Keine Garantie</strong>, dass alle Risiken erkannt
-                werden
-              </li>
-              <li>
-                <strong>Keine Implementierung</strong> von Maßnahmen
-              </li>
-            </ul>
+      <LegalSection title="§ 5 Was wir leisten — und was nicht">
+        <p style={{ marginBottom: 8 }}><strong style={{ color: "#e2e8f0" }}>5.1 Unsere Leistung:</strong></p>
+        <ul style={{ paddingLeft: 16, listStyle: "disc", marginBottom: 12 }}>
+          <li>Wir sammeln öffentlich verfügbare Informationen über Ihre Systeme</li>
+          <li>Wir werten diese aus und priorisieren Risiken</li>
+          <li>Wir liefern einen verständlichen Report mit Handlungsempfehlungen</li>
+        </ul>
+        <p style={{ marginBottom: 8 }}><strong style={{ color: "#e2e8f0" }}>5.2 Was wir nicht leisten:</strong></p>
+        <ul style={{ paddingLeft: 16, listStyle: "disc" }}>
+          <li>Keine aktiven Scans Ihrer Systeme</li>
+          <li>Keine Penetrationstests</li>
+          <li>Keine Live-Überwachung (periodische Momentaufnahmen)</li>
+          <li>Keine Garantie, dass alle Risiken erkannt werden</li>
+          <li>Keine Implementierung von Maßnahmen</li>
+        </ul>
+      </LegalSection>
 
-            <h2 className="text-xl font-semibold mt-4">
-              § 6 Haftung – klar &amp; fair begrenzt
-            </h2>
-            <p className="text-gray-300">
-              (1) Wir haften nur für{" "}
-              <strong>Vorsatz und grobe Fahrlässigkeit</strong>. Bei einfacher
-              Fahrlässigkeit nur bei Verletzung wesentlicher Vertragspflichten,
-              maximal bis zur Höhe des letzten Monatsbeitrags.
-            </p>
-            <p className="text-gray-300">
-              (2) Ein Exposure-Report ist{" "}
-              <strong>eine Analyse, keine Versicherung</strong>. Wir übernehmen
-              keine Haftung für Angriffe, übersehene Schwachstellen, Ausfälle
-              oder Schäden oder falsche Entscheidungen basierend auf unseren
-              Reports.
-            </p>
-            <p className="text-gray-300">
-              (3) Trotz Haftungsbegrenzung stehen wir für qualitativ hochwertige
-              Arbeit und transparente Kommunikation.
-            </p>
+      <LegalSection title="§ 6 Haftung">
+        <p>(1) Wir haften nur für Vorsatz und grobe Fahrlässigkeit. Bei einfacher Fahrlässigkeit
+        nur bei Verletzung wesentlicher Vertragspflichten, maximal bis zur Höhe des letzten
+        Monatsbeitrags.</p>
+        <p style={{ marginTop: 8 }}>(2) Ein Exposure-Report ist eine Analyse, keine Versicherung.
+        Wir übernehmen keine Haftung für Angriffe, übersehene Schwachstellen oder Schäden
+        basierend auf unseren Reports.</p>
+      </LegalSection>
 
-            <h2 className="text-xl font-semibold mt-4">
-              § 7 Ihre Pflichten – kurz &amp; wichtig
-            </h2>
-            <p className="text-gray-300">
-              (1) Sie dürfen <strong>nur eigene Systeme</strong> analysieren
-              lassen.
-              <br />
-              (2) Scannen fremder Systeme ist <strong>verboten</strong> und
-              führt zur sofortigen Kündigung.
-              <br />
-              (3) Sie stellen uns von Ansprüchen Dritter frei, falls Sie gegen
-              (1) oder (2) verstoßen.
-            </p>
+      <LegalSection title="§ 7 Ihre Pflichten">
+        <p>(1) Sie dürfen <strong style={{ color: "#e2e8f0" }}>nur eigene Systeme</strong> analysieren lassen.</p>
+        <p style={{ marginTop: 8 }}>(2) Das Analysieren fremder Systeme ist verboten und führt zur sofortigen Kündigung.</p>
+        <p style={{ marginTop: 8 }}>(3) Sie stellen uns von Ansprüchen Dritter frei, falls Sie gegen (1) oder (2) verstoßen.</p>
+      </LegalSection>
 
-            <h2 className="text-xl font-semibold mt-4">
-              § 8 Umgang mit Ihren Daten
-            </h2>
-            <p className="text-gray-300">
-              (1) Wir behandeln Ihre Daten vertraulich. Details in unserer{" "}
-              <Link href="/privacy" className="text-cyan-200">
-                Datenschutzerklärung
-              </Link>
-              .<br />
-              (2) Für die Analyse benötigen wir: Domain/IP-Adresse, Ihren Namen
-              &amp; E-Mail für die Kommunikation.
-              <br />
-              (3) <strong>Nach Vertragsende</strong> löschen wir Ihre Daten nach
-              30 Tagen.
-            </p>
+      <LegalSection title="§ 8 Umgang mit Ihren Daten">
+        <p>(1) Wir behandeln Ihre Daten vertraulich. Details in unserer{" "}
+        <LegalLink href="/privacy">Datenschutzerklärung</LegalLink>.</p>
+        <p style={{ marginTop: 8 }}>(2) Für die Analyse benötigen wir: Domain/IP-Adresse, Name & E-Mail
+        für die Kommunikation.</p>
+        <p style={{ marginTop: 8 }}>(3) Nach Vertragsende löschen wir Ihre Daten nach 30 Tagen.</p>
+      </LegalSection>
 
-            <h2 className="text-xl font-semibold mt-4">
-              § 9 Feedback &amp; Verbesserung
-            </h2>
-            <p className="text-gray-300">
-              (1) Wir entwickeln unseren Service kontinuierlich weiter.
-              <br />
-              (2) Bei Problemen: <strong>Schreiben Sie uns direkt</strong> – wir
-              lösen es persönlich.
-              <br />
-              (3) Feature-Wünsche? <strong>Teilen Sie sie mit</strong> – wir
-              priorisieren nach Kundenfeedback.
-            </p>
+      <LegalSection title="§ 9 Feedback & Verbesserung">
+        <p>(1) Wir entwickeln unseren Service kontinuierlich weiter.</p>
+        <p style={{ marginTop: 8 }}>(2) Bei Problemen: Schreiben Sie uns direkt — wir lösen es persönlich.</p>
+        <p style={{ marginTop: 8 }}>(3) Feature-Wünsche? Teilen Sie sie mit — wir priorisieren nach Kundenfeedback.</p>
+      </LegalSection>
 
-            <h2 className="text-xl font-semibold mt-4">
-              § 10 Schlussbestimmungen
-            </h2>
-            <p className="text-gray-300">
-              (1) Es gilt <strong>deutsches Recht</strong>. Gerichtsstand ist{" "}
-              <strong>32791 Lage, Lippe</strong>.<br />
-              (2) Sollte eine Klausel unwirksam sein, bleibt der Rest gültig.
-              <br />
-              (3) Änderungen dieser AGB teilen wir{" "}
-              <strong>4 Wochen vorher</strong> per E-Mail mit.
-            </p>
+      <LegalSection title="§ 10 Schlussbestimmungen">
+        <p>(1) Es gilt <strong style={{ color: "#e2e8f0" }}>deutsches Recht</strong>. Gerichtsstand ist 32791 Lage, Lippe.</p>
+        <p style={{ marginTop: 8 }}>(2) Sollte eine Klausel unwirksam sein, bleibt der Rest gültig.</p>
+        <p style={{ marginTop: 8 }}>(3) Änderungen dieser AGB teilen wir 4 Wochen vorher per E-Mail mit.</p>
+      </LegalSection>
 
-            <hr className="my-6 border-gray-700" />
-            <h3 className="text-lg font-semibold">
-              Ihr direkter Kontakt bei Fragen
-            </h3>
-            <p className="text-gray-300">
-              MG Solutions
-              <br />
-              Memo Güngör
-              <br />
-              Im Sandkamp 16, 32791 Lage, Lippe
-              <br />
-              <a
-                href="mailto:info@ichwillsicherheit.de"
-                className="text-cyan-200 underline"
-              >
-                info@ichwillsicherheit.de
-              </a>
-            </p>
-            <p className="text-gray-300 mt-2">
-              Geschäftszeiten: Mo–Fr, 9–17 Uhr
-              <br />
-              Antwortzeit: Innerhalb von 24h an Werktagen
-            </p>
+      <LegalSection title="Direkter Kontakt">
+        <p>MG Solutions · Memo Güngör</p>
+        <p>Im Sandkamp 16, 32791 Lage</p>
+        <p><LegalLink href="mailto:info@ichwillsicherheit.de">info@ichwillsicherheit.de</LegalLink></p>
+        <p style={{ marginTop: 8 }}>Geschäftszeiten: Mo–Fr, 9–17 Uhr · Antwortzeit: innerhalb von 24h an Werktagen</p>
+        <p style={{ marginTop: 12, fontSize: "0.8rem", color: "#475569" }}>
+          Hinweis: Diese AGB ersetzen keine rechtliche Beratung. Bitte lassen Sie die AGB
+          final von einem Rechtsanwalt prüfen.
+        </p>
+      </LegalSection>
 
-            <p className="mt-6 text-sm text-gray-400">
-              Hinweis: Diese AGB stellen eine Vorlage dar und ersetzen keine
-              rechtliche Beratung. Bitte lassen Sie die AGB final von einem
-              Rechtsanwalt prüfen.
-            </p>
-          </section>
-        </div>
-      </main>
-      <Footer />
-    </div>
+    </LegalLayout>
   );
 }

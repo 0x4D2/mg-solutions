@@ -1,6 +1,7 @@
 ﻿import React from "react";
 import Link from "next/link";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
+import Footer from "components/Footers/Footer.js";
 
 export default function Index() {
   return (
@@ -96,11 +97,13 @@ export default function Index() {
             </div>
             <div>
               <div style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#64748b", marginBottom: "12px" }}>Beispiel-Report (anonymisiert)</div>
-              <div className="placeholder">
+              <div style={{ position: "relative" }}>
                 <div className="ph-badge">PASSIV · OSINT</div>
-                <svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                <div className="ph-label" style={{ color: "#475569", fontSize: "13px", fontWeight: 500, marginBottom: "4px" }}>Report-Screenshot folgt</div>
-                <div className="ph-label">/img/report-preview.png</div>
+                <img
+                  src="/img/report-preview.png"
+                  alt="Anonymisierter Beispiel-Report"
+                  style={{ width: "100%", borderRadius: "12px", border: "1px solid rgba(0,212,255,0.15)", display: "block" }}
+                />
                 <div className="ph-badge2">Anonymisiertes Beispiel</div>
               </div>
               <div style={{ fontSize: "11px", color: "#334155", textAlign: "center", marginTop: "10px" }}>9 Abschnitte · Executive Summary · CVE-Übersicht</div>
@@ -160,7 +163,7 @@ export default function Index() {
             <div className="price-badge">Beliebt</div>
             <div className="free-note">✓ Starten Sie kostenlos — <span>wir schicken Ihnen eine erste Einschätzung ohne Verpflichtung.</span></div>
             <div className="price-num">490 €</div>
-            <div className="price-meta">einmalig · zzgl. MwSt.</div>
+            <div className="price-meta">einmalig · inkl. aller Kosten</div>
             <ul className="checklist" style={{ marginBottom: "24px" }}>
               <li><svg className="chk" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" /></svg> Vollständige Analyse der öffentlichen Angriffsfläche</li>
               <li><svg className="chk" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" /></svg> Priorisierte Risiken nach realer Ausnutzbarkeit (CVE-Scores)</li>
@@ -214,32 +217,9 @@ export default function Index() {
           <p style={{ fontSize: "12px", color: "#334155", marginTop: "14px" }}>Keine Verpflichtung · Antwort innerhalb eines Werktags · 100% passiv</p>
         </div>
 
-        {/* FOOTER */}
-        <div className="footer-bar">
-          <div style={{ fontWeight: 700, fontSize: "13px", color: "#fff" }}>ich<span style={{ color: "#00d4ff" }}>will</span>sicherheit<span style={{ color: "#00d4ff" }}>.</span></div>
-          <div style={{ display: "flex", gap: "20px" }}>
-            <Link href="/imprint" legacyBehavior><a style={{ color: "#334155", textDecoration: "none", fontSize: "12px" }}>Impressum</a></Link>
-            <Link href="/privacy" legacyBehavior><a style={{ color: "#334155", textDecoration: "none", fontSize: "12px" }}>Datenschutz</a></Link>
-            <Link href="/contact" legacyBehavior><a style={{ color: "#334155", textDecoration: "none", fontSize: "12px" }}>Kontakt</a></Link>
-          </div>
-          <div className="footer-social">
-            <a href="https://www.youtube.com/@ichwillsicherheit" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
-            </a>
-            <a href="https://www.instagram.com/ichwillsicherheit/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
-            </a>
-            <a href="https://www.tiktok.com/@ichwillsicherheit" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
-            </a>
-            <a href="https://www.linkedin.com/company/ichwillsicherheit/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            </a>
-          </div>
-          <div style={{ color: "#334155" }}>© 2026 MG Solutions</div>
-        </div>
+</div>
 
-      </div>
+      <Footer />
 
       <style jsx global>{`
         .iws-page {
@@ -324,10 +304,6 @@ export default function Index() {
         .iws-page .partner-logo-link { display: inline-block; transition: opacity 0.2s; }
         .iws-page .partner-logo-link:hover { opacity: 0.75; }
         .iws-page .partner-logo-img { height: 70px; width: auto; display: block; }
-        .iws-page .footer-bar { border-top: 1px solid rgba(0,212,255,0.1); padding: 20px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12px; color: #334155; }
-        .iws-page .footer-social { display: flex; gap: 16px; align-items: center; }
-        .iws-page .footer-social a { color: #475569; transition: color 0.2s; }
-        .iws-page .footer-social a:hover { color: #00d4ff; }
         @media (max-width: 640px) {
           .iws-page .grid3 { grid-template-columns: 1fr; }
           .iws-page .grid2 { grid-template-columns: 1fr; }

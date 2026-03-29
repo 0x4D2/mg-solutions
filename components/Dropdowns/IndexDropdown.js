@@ -5,6 +5,7 @@ const ALL_NAV_LINKS = [
   { name: "Startseite", path: "/" },
   { name: "Preise", path: "/pricing" },
   { name: "Über uns", path: "/about" },
+  { name: "Exposure-Report", path: "/exposure" },
   { name: "FAQ", path: "/faq" },
   { name: "Kontakt", path: "/contact" },
   { name: "Impressum", path: "/imprint" },
@@ -13,7 +14,7 @@ const ALL_NAV_LINKS = [
 ];
 
 // Links that should appear in the desktop nav (and match mobile)
-const DESKTOP_NAV_PATHS = ["/", "/pricing", "/about", "/roadmap", "/faq"];
+const DESKTOP_NAV_PATHS = ["/", "/pricing", "/about", "/exposure", "/roadmap", "/faq"];
 
 const DESKTOP_NAV_LINKS = ALL_NAV_LINKS.filter((l) =>
   DESKTOP_NAV_PATHS.includes(l.path),

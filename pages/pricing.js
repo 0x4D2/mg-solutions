@@ -1,6 +1,7 @@
 ﻿import React from "react";
 import Link from "next/link";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
+import Footer from "components/Footers/Footer.js";
 
 export default function Pricing() {
   return (
@@ -55,7 +56,7 @@ export default function Pricing() {
             <div className="plan-name">Essential</div>
             <div className="plan-tag">Für kleine Teams — bis 5 Assets</div>
             <div className="plan-price">99 €</div>
-            <div className="plan-period">/ Monat · zzgl. MwSt.</div>
+            <div className="plan-period">/ Monat · inkl. aller Kosten</div>
             <ul className="feat-list">
               <li className="feat-item active"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>Monatlicher Exposure-Report (PDF)</span></li>
               <li className="feat-item active"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>Bis zu 5 Assets / IPs</span></li>
@@ -76,7 +77,7 @@ export default function Pricing() {
             <div className="plan-name">Professional</div>
             <div className="plan-tag">Empfohlen für KMU — bis 20 Assets</div>
             <div className="plan-price">199 €</div>
-            <div className="plan-period">/ Monat · zzgl. MwSt.</div>
+            <div className="plan-period">/ Monat · inkl. aller Kosten</div>
             <ul className="feat-list">
               <li className="feat-item active"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>Monatlicher Exposure-Report (PDF)</span></li>
               <li className="feat-item active"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>Bis zu 20 Assets / IPs</span></li>
@@ -95,7 +96,7 @@ export default function Pricing() {
             <div className="plan-name">Corporate</div>
             <div className="plan-tag">Für Compliance — bis 50 Assets</div>
             <div className="plan-price">349 €</div>
-            <div className="plan-period">/ Monat · zzgl. MwSt.</div>
+            <div className="plan-period">/ Monat · inkl. aller Kosten</div>
             <ul className="feat-list">
               <li className="feat-item active"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>Monatlicher Exposure-Report (PDF)</span></li>
               <li className="feat-item active"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>Bis zu 50 Assets / IPs</span></li>
@@ -141,18 +142,9 @@ export default function Pricing() {
           </div>
         </div>
 
-        {/* Footer bar */}
-        <div className="footer-bar">
-          <span>© 2025 ichwillsicherheit.de — MG Solutions</span>
-          <span>
-            <Link href="/imprint" legacyBehavior><a>Impressum</a></Link>
-            {" · "}
-            <Link href="/privacy" legacyBehavior><a>Datenschutz</a></Link>
-            {" · "}
-            <Link href="/agb" legacyBehavior><a>AGB</a></Link>
-          </span>
-        </div>
       </div>
+
+      <Footer />
 
       <style jsx global>{`
         .prc-page { background: #0a192f; min-height: 100vh; font-family: 'Segoe UI', system-ui, sans-serif; color: #e2e8f0; }
@@ -173,12 +165,16 @@ export default function Pricing() {
         .prc-page .oo-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #475569; margin-bottom: 4px; }
         .prc-page .oo-title { font-size: 15px; font-weight: 700; color: #e2e8f0; margin-bottom: 4px; }
         .prc-page .oo-sub { font-size: 12px; color: #64748b; }
-        .prc-page .oo-btn { border: 1px solid rgba(0,212,255,0.25); color: #00d4ff; padding: 10px 20px; border-radius: 12px; font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
+        .prc-page .oo-btn { border: 1px solid rgba(0,212,255,0.25); color: #00d4ff; padding: 10px 20px; border-radius: 12px; font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: all 0.2s; }
+        .prc-page .oo-btn:hover { border-color: rgba(0,212,255,0.5); background: rgba(0,212,255,0.05); transform: translateY(-1px); }
+        .prc-page .oneoff:hover { border-color: rgba(0,212,255,0.18); background: rgba(15,23,42,0.9); }
         .prc-page .arrow-note { text-align: center; font-size: 12px; color: #334155; margin-bottom: 28px; }
         .prc-page .plans { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 32px; }
         .prc-page .plan { border-radius: 16px; padding: 24px; display: flex; flex-direction: column; position: relative; overflow: hidden; }
-        .prc-page .plan.normal { background: rgba(20,30,48,0.75); border: 1px solid rgba(0,212,255,0.1); }
-        .prc-page .plan.featured { background: rgba(30,41,59,0.95); border: 2px solid rgba(0,212,255,0.35); box-shadow: 0 0 40px rgba(0,212,255,0.06); }
+        .prc-page .plan.normal { background: rgba(20,30,48,0.75); border: 1px solid rgba(0,212,255,0.1); transition: all 0.2s; }
+        .prc-page .plan.normal:hover { border-color: rgba(0,212,255,0.25); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+        .prc-page .plan.featured { background: rgba(30,41,59,0.95); border: 2px solid rgba(0,212,255,0.35); box-shadow: 0 0 40px rgba(0,212,255,0.06); transition: all 0.2s; }
+        .prc-page .plan.featured:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(0,212,255,0.12), 0 8px 24px rgba(0,0,0,0.3); }
         .prc-page .plan-accent { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg,#00d4ff,#0077ff); }
         .prc-page .plan-badge { display: inline-block; background: linear-gradient(90deg,#ffb84d,#ff9f1a); color: #001f3f; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 100px; margin-bottom: 12px; }
         .prc-page .plan-name { font-size: 17px; font-weight: 800; color: #e2e8f0; margin-bottom: 4px; }
@@ -210,10 +206,10 @@ export default function Pricing() {
         .prc-page .final h2 { font-size: clamp(22px,3vw,32px) !important; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 10px; }
         .prc-page .final p { color: #64748b; font-size: 14px; margin-bottom: 24px; }
         .prc-page .btn-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-        .prc-page .btn-primary { background: #00d4ff; color: #001f3f; padding: 14px 28px; border-radius: 12px; font-weight: 800; font-size: 14px; text-decoration: none; }
-        .prc-page .btn-ghost { border: 1px solid rgba(0,212,255,0.2); color: #00d4ff; padding: 14px 24px; border-radius: 12px; font-size: 13px; text-decoration: none; }
-        .prc-page .footer-bar { border-top: 1px solid rgba(0,212,255,0.08); padding: 20px 0; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #334155; flex-wrap: wrap; gap: 8px; }
-        .prc-page .footer-bar a { color: #475569; text-decoration: none; }
+        .prc-page .btn-primary { background: #00d4ff; color: #001f3f; padding: 14px 28px; border-radius: 12px; font-weight: 800; font-size: 14px; text-decoration: none; transition: all 0.2s; display: inline-block; }
+        .prc-page .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+        .prc-page .btn-ghost { border: 1px solid rgba(0,212,255,0.2); color: #00d4ff; padding: 14px 24px; border-radius: 12px; font-size: 13px; text-decoration: none; transition: all 0.2s; display: inline-block; }
+        .prc-page .btn-ghost:hover { border-color: rgba(0,212,255,0.5); background: rgba(0,212,255,0.05); transform: translateY(-1px); }
         @media (max-width: 640px) {
           .prc-page .why-grid { grid-template-columns: 1fr; }
           .prc-page .plans { grid-template-columns: 1fr; }

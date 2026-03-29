@@ -1,134 +1,84 @@
-import React from "react";
-import Footer from "components/Footers/Footer.js";
+﻿import React from "react";
+import LegalLayout, { LegalSection, LegalLink } from "components/LegalLayout.js";
 
 export default function WiderrufPage() {
   return (
-    <div className="cyber-bg bg-gray-900 text-white min-h-screen">
-      <main className="py-16">
-        <div className="container mx-auto px-4 max-w-3xl text-white">
-          <section
-            className="rounded-2xl p-8"
-            style={{
-              backgroundColor: "rgba(30,41,59,0.8)",
-              border: "1px solid rgba(0,212,255,0.06)",
-            }}
-          >
-            <h1 className="site-title gradient-text text-center">
-              Widerrufsbelehrung für MG Solutions
-            </h1>
-            <p className="text-gray-400 text-center mt-2">Stand: Januar 2026</p>
-            <hr className="my-6 border-gray-700" />
+    <LegalLayout title="Widerrufsbelehrung" subtitle="Stand: Januar 2026">
 
-            <h2 className="text-xl font-semibold mt-4">Ihr Widerrufsrecht</h2>
-            <p className="text-gray-300">
-              Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen
-              Ihren Vertrag mit uns zu widerrufen. Die Widerrufsfrist beträgt
-              vierzehn Tage ab dem Tag des Vertragsabschlusses.
-            </p>
+      <LegalSection title="Ihr Widerrufsrecht">
+        Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen Ihren Vertrag mit uns
+        zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsabschlusses.
+      </LegalSection>
 
-            <h2 className="text-xl font-semibold mt-4">Widerruf ausüben</h2>
-            <p className="text-gray-300">
-              Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (MG Solutions,
-              Inhaber: Memo Güngör, Im Sandkamp 16, 32791 Lage; E-Mail:{" "}
-              <a
-                href="mailto:info@ichwillsicherheit.de"
-                className="text-cyan-200 underline"
-              >
-                info@ichwillsicherheit.de
-              </a>
-              ) mittels einer eindeutigen Erklärung (z. B. Brief, Fax oder
-              E‑Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen,
-              informieren.
-            </p>
-
-            <h2 className="text-xl font-semibold mt-4">
-              Besonderheit bei Exposure-Reports – bitte beachten!
-            </h2>
-            <p className="text-gray-300">
-              (1) Für Einmal-Reports (z. B. 490 €): Mit Ihrer Bestellung
-              erklären Sie: „Ich bin damit einverstanden, dass die Erstellung
-              des Exposure-Reports vor Ablauf der Widerrufsfrist beginnt und
-              bestätige, dass ich damit mein Widerrufsrecht verliere, sobald der
-              Report vollständig geliefert wurde.“ Da wir Analysen in der Regel
-              innerhalb von 24 Stunden erstellen, ist die Dienstleistung meist
-              schon vor Ablauf der Widerrufsfrist vollständig erbracht.
-            </p>
-            <p className="text-gray-300">
-              (2) Für Abonnements (z. B. 99 €/Monat): Ihr Widerrufsrecht gilt
-              für die erste Zahlungsperiode. Nach Beginn der zweiten Periode
-              kann das Abonnement monatlich gekündigt werden (siehe AGB §4).
-            </p>
-
-            <h2 className="text-xl font-semibold mt-4">Folgen des Widerrufs</h2>
-            <p className="text-gray-300">
-              Wenn Sie diesen Vertrag widerrufen, erstatten wir Ihnen alle
-              Zahlungen, die wir von Ihnen erhalten haben, unverzüglich und
-              spätestens binnen vierzehn Tagen nachdem die Mitteilung über Ihren
-              Widerruf bei uns eingegangen ist. Für die Rückzahlung verwenden
-              wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen
-              Transaktion eingesetzt haben, es sei denn, es wurde etwas anderes
-              vereinbart.
-            </p>
-
-            <h2 className="text-xl font-semibold mt-4">
-              Muster‑Widerrufsformular
-            </h2>
-            <p className="text-gray-300">
-              (Wenn Sie den Vertrag widerrufen wollen, füllen Sie bitte dieses
-              Formular aus und senden Sie es zurück.)
-            </p>
-            <div className="bg-gray-900 p-4 rounded text-sm text-gray-200 mt-2 whitespace-pre-wrap break-words">
-              An: MG Solutions Im Sandkamp 16 32791 Lage
-              info@ichwillsicherheit.de Hiermit widerrufe(n) ich/wir den von
-              mir/uns abgeschlossenen Vertrag über die Erbringung der folgenden
-              Dienstleistung: • Exposure-Report Einmalanalyse • Exposure-Report
-              Abonnement (Essential/Professional/Corporate) Bestellt am:
-              _______________ Name des/der Verbraucher(s): _______________
-              Anschrift: _______________ Datum: _______________ Unterschrift
-              (nur bei Mitteilung auf Papier): _______________
-            </div>
-
-            <h2 className="text-xl font-semibold mt-4">
-              Wichtiger Hinweis zur Klarheit
-            </h2>
-            <ol className="list-decimal list-inside text-gray-300">
-              <li>
-                Für Einmal-Reports: Die Dienstleistung wird so schnell erbracht
-                (z. B. 24 h), dass Sie praktisch auf Ihr Widerrufsrecht
-                verzichten müssen, wenn Sie den Report erhalten möchten.
-              </li>
-              <li>
-                Für Abonnements: Sie können die erste Monatszahlung innerhalb
-                von 14 Tagen widerrufen. Danach gilt die monatliche
-                Kündigungsfrist.
-              </li>
-              <li>
-                Fairness-Prinzip: Sollten Sie widerrufen, nachdem Sie bereits
-                einen Report erhalten haben, kontaktieren Sie uns bitte
-                persönlich – wir finden eine faire Lösung.
-              </li>
-            </ol>
-
-            <p className="text-gray-300 mt-4">
-              Bei Fragen zum Widerruf kontaktieren Sie uns bitte direkt per
-              E‑Mail:{" "}
-              <a
-                href="mailto:info@ichwillsicherheit.de"
-                className="text-cyan-200 underline"
-              >
-                info@ichwillsicherheit.de
-              </a>
-            </p>
-
-            <p className="mt-6 text-sm text-gray-400">
-              Hinweis: Diese Widerrufsbelehrung dient der Klarheit und ersetzt
-              keine rechtliche Beratung. Für verbindliche Formulierungen
-              empfehlen wir die Prüfung durch einen Rechtsanwalt.
-            </p>
-          </section>
+      <LegalSection title="Widerruf ausüben">
+        Um Ihr Widerrufsrecht auszuüben, müssen Sie uns mittels einer eindeutigen Erklärung
+        (z. B. Brief oder E-Mail) über Ihren Entschluss informieren:
+        <div style={{ marginTop: 12, padding: "12px 16px", background: "rgba(15,23,42,0.6)", borderRadius: 8, border: "1px solid rgba(0,212,255,0.08)" }}>
+          <p>MG Solutions · Memo Güngör</p>
+          <p>Im Sandkamp 16, 32791 Lage</p>
+          <p><LegalLink href="mailto:info@ichwillsicherheit.de">info@ichwillsicherheit.de</LegalLink></p>
         </div>
-      </main>
-      <Footer />
-    </div>
+      </LegalSection>
+
+      <LegalSection title="Besonderheit bei Exposure-Reports — bitte beachten">
+        <p><strong style={{ color: "#e2e8f0" }}>(1) Einmal-Reports (z. B. 490 €):</strong> Mit Ihrer Bestellung
+        erklären Sie Ihr Einverständnis, dass die Erstellung des Reports vor Ablauf der
+        Widerrufsfrist beginnt. Sie bestätigen damit, dass Sie Ihr Widerrufsrecht verlieren,
+        sobald der Report vollständig geliefert wurde. Da wir Analysen in der Regel innerhalb
+        von 24 Stunden erstellen, ist die Dienstleistung meist vor Ablauf der Widerrufsfrist
+        erbracht.</p>
+        <p style={{ marginTop: 8 }}><strong style={{ color: "#e2e8f0" }}>(2) Abonnements:</strong> Ihr Widerrufsrecht
+        gilt für die erste Zahlungsperiode. Nach Beginn der zweiten Periode kann das Abonnement
+        monatlich gekündigt werden (siehe AGB § 4).</p>
+      </LegalSection>
+
+      <LegalSection title="Folgen des Widerrufs">
+        Wenn Sie diesen Vertrag widerrufen, erstatten wir Ihnen alle Zahlungen unverzüglich
+        und spätestens binnen vierzehn Tagen nach Eingang Ihrer Widerrufsmitteilung. Für die
+        Rückzahlung verwenden wir dasselbe Zahlungsmittel wie bei der ursprünglichen Transaktion.
+      </LegalSection>
+
+      <LegalSection title="Muster-Widerrufsformular">
+        <p style={{ marginBottom: 10 }}>Wenn Sie den Vertrag widerrufen wollen, füllen Sie bitte dieses Formular aus:</p>
+        <div style={{ background: "rgba(15,23,42,0.6)", border: "1px solid rgba(0,212,255,0.08)", borderRadius: 8, padding: "16px 20px", fontSize: "0.8rem", lineHeight: 2, color: "#64748b" }}>
+          <p>An: MG Solutions, Im Sandkamp 16, 32791 Lage · info@ichwillsicherheit.de</p>
+          <p>Hiermit widerrufe(n) ich/wir den von mir/uns abgeschlossenen Vertrag über:</p>
+          <p>☐ Exposure-Report Einmalanalyse</p>
+          <p>☐ Exposure-Report Abonnement (Essential / Professional / Corporate)</p>
+          <p>Bestellt am: _______________</p>
+          <p>Name: _______________</p>
+          <p>Anschrift: _______________</p>
+          <p>Datum: _______________</p>
+          <p>Unterschrift (nur bei Mitteilung auf Papier): _______________</p>
+        </div>
+      </LegalSection>
+
+      <LegalSection title="Wichtige Hinweise zur Klarheit">
+        <ol style={{ paddingLeft: 16, listStyle: "decimal" }}>
+          <li style={{ marginBottom: 8 }}>
+            <strong style={{ color: "#e2e8f0" }}>Einmal-Reports:</strong> Die Dienstleistung wird so schnell erbracht
+            (24h), dass Sie praktisch auf Ihr Widerrufsrecht verzichten müssen, wenn Sie den
+            Report erhalten möchten.
+          </li>
+          <li style={{ marginBottom: 8 }}>
+            <strong style={{ color: "#e2e8f0" }}>Abonnements:</strong> Sie können die erste Monatszahlung innerhalb
+            von 14 Tagen widerrufen. Danach gilt die monatliche Kündigungsfrist.
+          </li>
+          <li>
+            <strong style={{ color: "#e2e8f0" }}>Fairness-Prinzip:</strong> Sollten Sie widerrufen, nachdem Sie bereits
+            einen Report erhalten haben, kontaktieren Sie uns bitte persönlich — wir finden eine
+            faire Lösung.
+          </li>
+        </ol>
+      </LegalSection>
+
+      <LegalSection title="Kontakt bei Fragen">
+        <LegalLink href="mailto:info@ichwillsicherheit.de">info@ichwillsicherheit.de</LegalLink>
+        <p style={{ marginTop: 12, fontSize: "0.8rem", color: "#475569" }}>
+          Diese Widerrufsbelehrung dient der Klarheit und ersetzt keine rechtliche Beratung.
+        </p>
+      </LegalSection>
+
+    </LegalLayout>
   );
 }

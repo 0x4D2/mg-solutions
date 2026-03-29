@@ -55,6 +55,7 @@ export default function Navbar() {
             { text: "Startseite", href: "/" },
             { text: "Preise", href: "/pricing" },
             { text: "Über uns", href: "/about" },
+            { text: "Exposure-Report", href: "/exposure" },
             { text: "Roadmap", href: "/roadmap" },
             { text: "FAQ", href: "/faq" },
           ].map((link) => (
