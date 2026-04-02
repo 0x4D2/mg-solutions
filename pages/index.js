@@ -4,9 +4,15 @@ import Footer from "components/Footers/Footer.js";
 import SichtVergleich from "components/SichtVergleich";
 
 const SLIDES = [
-  { src: "/img/report-preview-1.png",   label: "Management Zusammnefassung" },
-  { src: "/img/report-preview-2.png", label: "CVE Übersicht" },
-  { src: "/img/report-preview-3.png", label: "Attack Surface" },
+  { src: "/img/report-seite-01.png", label: "Management-Zusammenfassung" },
+  { src: "/img/report-seite-02.png", label: "Handlungsempfehlungen" },
+  { src: "/img/report-seite-03.png", label: "Attack Surface Discovery" },
+  { src: "/img/report-seite-04.png", label: "Technischer Anhang" },
+  { src: "/img/report-seite-05.png", label: "CVE-Übersicht" },
+  { src: "/img/report-seite-06.png", label: "Trend- & Vergleichsanalyse" },
+  { src: "/img/report-seite-07.png", label: "Fazit & Nächste Schritte" },
+  { src: "/img/report-seite-08.png", label: "Einordnung & Bewertungslogik" },
+  { src: "/img/report-seite-09.png", label: "Disclaimer & SHA256" },
 ];
 
 const ReportSlideshow = forwardRef(function ReportSlideshow(props, ref) {

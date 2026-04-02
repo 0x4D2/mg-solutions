@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Footer from "components/Footers/Footer.js";
@@ -93,7 +93,74 @@ const suitability = [
   },
 ];
 
+const EXPOSURE_SLIDES = [
+  { src: "/img/report-seite-01.png", label: "Management-Zusammenfassung" },
+  { src: "/img/report-seite-02.png", label: "Handlungsempfehlungen" },
+  { src: "/img/report-seite-03.png", label: "Attack Surface Discovery" },
+  { src: "/img/report-seite-04.png", label: "Technischer Anhang" },
+  { src: "/img/report-seite-05.png", label: "CVE-Übersicht" },
+  { src: "/img/report-seite-06.png", label: "Trend- & Vergleichsanalyse" },
+  { src: "/img/report-seite-07.png", label: "Fazit & Nächste Schritte" },
+  { src: "/img/report-seite-08.png", label: "Einordnung & Bewertungslogik" },
+  { src: "/img/report-seite-09.png", label: "Disclaimer & SHA256" },
+];
+
+const ExposureSlideshow = forwardRef(function ExposureSlideshow(props, ref) {
+  const [active, setActive] = useState(0);
+  const [lightbox, setLightbox] = useState(false);
+  const prev = () => setActive(i => (i - 1 + EXPOSURE_SLIDES.length) % EXPOSURE_SLIDES.length);
+  const next = () => setActive(i => (i + 1) % EXPOSURE_SLIDES.length);
+  useImperativeHandle(ref, () => ({ open: () => setLightbox(true) }));
+
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setLightbox(false);
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightbox]);
+
+  return (
+    <>
+      <div className="slideshow">
+        {EXPOSURE_SLIDES.map((s, i) => (
+          <img key={i} src={s.src} alt={s.label}
+            className={`slide-img${i === active ? " slide-active" : ""}`}
+          />
+        ))}
+        <button className="slide-arrow slide-prev" onClick={prev} aria-label="Vorheriges Bild">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+        </button>
+        <button className="slide-arrow slide-next" onClick={next} aria-label="Nächstes Bild">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+        </button>
+        <div className="slide-label">{EXPOSURE_SLIDES[active].label} {active + 1}/{EXPOSURE_SLIDES.length}</div>
+      </div>
+
+      {lightbox && (
+        <div className="lightbox-overlay" onClick={() => setLightbox(false)}>
+          <button className="lightbox-close" onClick={() => setLightbox(false)} aria-label="Schließen">✕</button>
+          <button className="lightbox-arrow lightbox-prev" onClick={(e) => { e.stopPropagation(); prev(); }} aria-label="Vorheriges Bild">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+          </button>
+          <img src={EXPOSURE_SLIDES[active].src} alt={EXPOSURE_SLIDES[active].label}
+            className="lightbox-img" onClick={(e) => e.stopPropagation()}
+          />
+          <button className="lightbox-arrow lightbox-next" onClick={(e) => { e.stopPropagation(); next(); }} aria-label="Nächstes Bild">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+          </button>
+          <div className="lightbox-label">{EXPOSURE_SLIDES[active].label} {active + 1}/{EXPOSURE_SLIDES.length}</div>
+        </div>
+      )}
+    </>
+  );
+});
+
 export default function ExposurePage() {
+  const slideshowRef = useRef(null);
   return (
     <>
       <Head>
@@ -250,14 +317,16 @@ export default function ExposurePage() {
 
               <div>
                 <div className="section-label">Beispiel-Report (anonymisiert)</div>
-                <div style={{ position: "relative" }}>
-                  <div className="preview-badge-top">PASSIV · OSINT</div>
-                  <img
-                    src="/img/report-preview.png"
-                    alt="Anonymisierter Beispiel-Report"
-                    style={{ width: "100%", borderRadius: "12px", border: "1px solid #e2e8f0", display: "block" }}
-                  />
-                  <div className="preview-badge-bottom">Anonymisiertes Beispiel</div>
+                <div className="paper-frame">
+                  <div className="paper-bar">
+                    <span className="paper-dots"><i /><i /><i /></span>
+                    <span className="paper-title">Exposure Report (Beispiel)</span>
+                    <span className="paper-anon">Anonymisiert</span>
+                    <button className="paper-expand" onClick={() => slideshowRef.current?.open()} aria-label="Vergrößern">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                    </button>
+                  </div>
+                  <ExposureSlideshow ref={slideshowRef} />
                 </div>
                 <p className="preview-note">9 Abschnitte · SHA256-gesichert · versioniert archiviert</p>
                 <ul className="check-list">
@@ -410,6 +479,35 @@ export default function ExposurePage() {
             .iws-page .sources-grid { grid-template-columns: 1fr; }
             .iws-page .asd-grid { grid-template-columns: 1fr; }
           }
+
+          /* Paper frame & slideshow (shared with index.js) */
+          .iws-page .paper-frame { background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 8px 32px rgba(0,0,0,0.1), 0 1px 4px rgba(0,0,0,0.05); overflow: hidden; }
+          .iws-page .paper-bar { background: #f8fafc; border-bottom: 1px solid #e2e8f0; padding: 9px 14px; display: flex; align-items: center; gap: 8px; }
+          .iws-page .paper-dots { display: flex; gap: 5px; flex-shrink: 0; }
+          .iws-page .paper-dots i { width: 8px; height: 8px; border-radius: 50%; background: #e2e8f0; display: block; }
+          .iws-page .paper-title { font-size: 11px; color: #94a3b8; font-weight: 500; flex: 1; }
+          .iws-page .paper-anon { font-size: 10px; font-weight: 700; color: #64748b; background: rgba(71,85,105,0.08); border: 1px solid rgba(71,85,105,0.15); padding: 2px 8px; border-radius: 100px; white-space: nowrap; }
+          .iws-page .paper-expand { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 5px; border: 1px solid rgba(71,85,105,0.2); background: rgba(71,85,105,0.06); color: #64748b; cursor: pointer; flex-shrink: 0; margin-left: 4px; }
+          .iws-page .paper-expand:hover { background: rgba(71,85,105,0.14); color: #334155; }
+          .iws-page .slideshow { position: relative; overflow: hidden; border-radius: 0 0 12px 12px; }
+          .iws-page .slide-img { width: 100%; display: block; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.7s ease; }
+          .iws-page .slide-img:first-child { position: relative; }
+          .iws-page .slide-img.slide-active { opacity: 1; position: relative; }
+          .iws-page .slide-img:not(.slide-active) { position: absolute; }
+          .iws-page .slide-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.85); border: 1px solid #e2e8f0; color: #475569; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 3; padding: 0; }
+          .iws-page .slide-arrow:hover { background: #ffffff; color: #1e293b; }
+          .iws-page .slide-prev { left: 8px; }
+          .iws-page .slide-next { right: 8px; }
+          .iws-page .slide-label { position: absolute; bottom: 10px; right: 12px; font-size: 10px; color: #94a3b8; background: rgba(248,250,252,0.9); padding: 2px 8px; border-radius: 100px; border: 1px solid #e2e8f0; }
+          .lightbox-overlay { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.82); display: flex; align-items: center; justify-content: center; cursor: zoom-out; }
+          .lightbox-img { max-width: 92vw; max-height: 88vh; border-radius: 10px; box-shadow: 0 8px 48px rgba(0,0,0,0.5); cursor: default; }
+          .lightbox-close { position: absolute; top: 20px; right: 24px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 18px; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+          .lightbox-close:hover { background: rgba(255,255,255,0.22); }
+          .lightbox-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: #fff; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; }
+          .lightbox-arrow:hover { background: rgba(255,255,255,0.22); }
+          .lightbox-prev { left: 20px; }
+          .lightbox-next { right: 20px; }
+          .lightbox-label { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 0.05em; }
         `}</style>
       </div>
     </>
