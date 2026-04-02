@@ -232,8 +232,8 @@ export default function Roadmap() {
           }
           .iws-page .hero { text-align: center; padding: 80px 0 40px; }
           .iws-page .slabel { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #94a3b8; margin-bottom: 14px; }
-          .page-headline .grad { font-weight: 800; }
-          .iws-page .grad { font-weight: 800; }
+          .page-headline .grad { font-weight: 800; background: linear-gradient(90deg, #0f172a 0%, #475569 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+          .iws-page .grad { font-weight: 800; background: linear-gradient(90deg, #0f172a 0%, #475569 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
           .iws-page .hero-sub { font-size: 15px; color: #475569; max-width: 480px; margin: 0 auto; line-height: 1.65; }
           .iws-page .legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; padding: 12px 24px; border-radius: 14px; background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 1px 4px rgba(0,0,0,0.04); margin-bottom: 40px; }
           .iws-page .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; }

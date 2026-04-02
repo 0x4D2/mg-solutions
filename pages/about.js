@@ -77,12 +77,12 @@ export default function AboutPage() {
               <p className="about-big">Wir sind kein grosses Security-Unternehmen mit Hunderten Mitarbeitern.</p>
               <p className="about-p">
                 Wir sind ein kleines, fokussiertes Team das genau weiss, was wir
-                konnen - und was nicht. Kein Hype, keine endlosen Feature-Listen,
+                konnen, und was nicht. Kein Hype, keine endlosen Feature-Listen,
                 kein Security-Theater.
               </p>
               <p className="about-p">
                 Stattdessen: Ein klar definiertes Produkt, das einen blinden Fleck
-                schliesst, den die meisten Unternehmen haben - die Aussenperspektive
+                schliesst, den die meisten Unternehmen haben: die Aussenperspektive
                 auf die eigene Infrastruktur.
               </p>
             </div>
@@ -91,7 +91,7 @@ export default function AboutPage() {
               {[
                 { num: "24h",    label: "Report-Lieferzeit" },
                 { num: "9",      label: "Abschnitte pro Report" },
-                { num: "100%",   label: "Passiv - kein Eingriff" },
+                { num: "100%",   label: "Passiv, kein Eingriff" },
                 { num: "SHA256", label: "Revisionssichere Archivierung" },
               ].map(({ num, label }) => (
                 <div key={label} className="stat-card">
@@ -113,11 +113,11 @@ export default function AboutPage() {
                 Einmalige Scans oder Tools liefern Momentaufnahmen. Was fehlt:
                 eine kontinuierliche, nachvollziehbare Dokumentation der
                 Entwicklung. Etwas das IT und Geschaftsfuhrung gemeinsam lesen
-                konnen - ohne Ubersetzungsaufwand.
+                konnen, ohne Ubersetzungsaufwand.
               </p>
               <p className="about-p">
                 Deshalb gibt es uns: Damit Sie nicht nur hoffen, dass es besser
-                wird - sondern es{" "}
+                wird, sondern es{" "}
                 <em className="em-muted">sehen</em>{" "}
                 konnen.
               </p>
@@ -131,17 +131,17 @@ export default function AboutPage() {
               <ValueCard
                 icon={<IconSearch />}
                 title="Radikale Transparenz"
-                body="Wir erklaren jede Grenze unserer Analyse offen und ehrlich. Was wir nicht konnen, sagen wir - bevor Sie fragen."
+                body="Wir erklaren jede Grenze unserer Analyse offen und ehrlich. Was wir nicht konnen, sagen wir, bevor Sie fragen."
               />
               <ValueCard
                 icon={<IconShield />}
                 title="Passiv & risikofrei"
-                body="Keine aktiven Scans, keine Simulationen, keine Angriffe. Ausschliesslich offentliche Datenquellen - rechtlich und technisch sauber."
+                body="Keine aktiven Scans, keine Simulationen, keine Angriffe. Ausschliesslich offentliche Datenquellen, rechtlich und technisch sauber."
               />
               <ValueCard
                 icon={<IconTarget />}
                 title="Fokus statt Alleskönnerei"
-                body="Wir ersetzen keinen Pentest, keine EDR, keine SIEM. Wir liefern die externe Sicht, die sonst fehlt - und das wirklich gut."
+                body="Wir ersetzen keinen Pentest, keine EDR, keine SIEM. Wir liefern die externe Sicht, die sonst fehlt, und das wirklich gut."
               />
               <ValueCard
                 icon={<IconUser />}
@@ -156,7 +156,7 @@ export default function AboutPage() {
               <ValueCard
                 icon={<IconTrendingUp />}
                 title="Kontinuitat schlagt Momentaufnahme"
-                body="Einmal hinschauen reicht nicht. Wir dokumentieren monatlich - weil sich Angriffsflachen laufend verandern."
+                body="Einmal hinschauen reicht nicht. Wir dokumentieren monatlich, weil sich Angriffsflachen laufend verandern."
               />
             </div>
           </div>
@@ -168,7 +168,7 @@ export default function AboutPage() {
               <p className="quote-sub">
                 Wir glauben nicht an Blackbox-Tools oder endlose Feature-Listen.
                 Wir glauben daran, dass ein Unternehmen Fortschritte braucht,
-                die es wirklich nachweisen kann - fur den Vorstand, fur Auditoren,
+                die es wirklich nachweisen kann, fur den Vorstand, fur Auditoren,
                 fur sich selbst.
               </p>
             </div>
@@ -211,7 +211,7 @@ export default function AboutPage() {
           }
           .iws-page .hero { text-align: center; padding: 80px 0 48px; }
           .iws-page .slabel { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #334155; margin-bottom: 14px; }
-          .page-headline .grad { font-weight: 800; }
+          .page-headline .grad { font-weight: 800; background: linear-gradient(90deg, #0f172a 0%, #475569 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
           .iws-page .hero-sub { font-size: 15px; color: #475569; max-width: 500px; margin: 0 auto; line-height: 1.65; }
           .iws-page .about-section { margin-bottom: 48px; }
           .iws-page .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #94a3b8; margin-bottom: 16px; }

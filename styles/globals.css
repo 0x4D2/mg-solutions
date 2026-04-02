@@ -238,6 +238,7 @@ body,
   position: relative;
   color: #0f172a;
   font-weight: bold;
+  font-family: 'Inter', 'DM Sans', sans-serif;
   text-decoration: none;
   transition: color 0.2s;
   overflow: visible;
@@ -296,19 +297,21 @@ p {
 .iws-page li a,
 .iws-page span a,
 .iws-page td a {
-  color: #1d4ed8 !important;
-  text-decoration: underline !important;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
+  color: #334155 !important;
+  text-decoration: none !important;
   font-weight: 500;
-  transition: color 0.15s;
+  background-image: linear-gradient(#334155, #334155);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 0.25s ease, color 0.2s;
 }
 .iws-page p a:hover,
 .iws-page li a:hover,
 .iws-page span a:hover,
 .iws-page td a:hover {
-  color: #1e40af !important;
-  text-decoration-thickness: 2px;
+  color: #0f172a !important;
+  background-size: 100% 1px;
 }
 
 /* Unterstreichung für alle Links global entfernen, auch im Hover/Active/Focus */
@@ -422,7 +425,7 @@ a:hover {
 }
 
 /* ─── Hero ─────────────────────────────────────────────── */
-.pricing-hero { text-align: center; padding: 5rem 0 3rem; }
+.pricing-hero { text-align: center; padding: 7rem 1.5rem 3rem; }
 .pricing-eyebrow {
   font-family: 'Syne', sans-serif;
   font-size: 0.75rem;
@@ -430,6 +433,7 @@ a:hover {
   text-transform: uppercase;
   color: #94a3b8;
   margin: 0 0 1rem;
+  text-align: center;
 }
 .page-headline {
   font-family: 'Inter', 'DM Sans', sans-serif;

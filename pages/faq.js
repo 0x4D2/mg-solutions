@@ -462,6 +462,12 @@ const faqSections = [
           <p>Ja — wir sind Mitglied im <strong>Cyber-Sicherheitsnetzwerk Deutschland</strong> des BSI.</p>
         ),
       },
+      {
+        question: "Ist das Report-Tool selbst einsehbar?",
+        answer: (
+          <p>Ja. Das Analyse-Tool, auf dem unsere Reports basieren, haben wir selbst entwickelt und als Open Source auf GitHub veröffentlicht. Wer verstehen möchte, wie Daten erhoben und verarbeitet werden, kann den Code direkt einsehen: <a href="https://github.com/0x4D2/shodan-report" target="_blank" rel="noopener noreferrer">github.com/0x4D2/shodan-report</a></p>
+        ),
+      },
     ],
   },
 ];
@@ -543,8 +549,8 @@ export default function FAQPage() {
           }
           .iws-page .hero { text-align: center; padding: 80px 0 40px; }
           .iws-page .slabel { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #94a3b8; margin-bottom: 12px; }
-          .page-headline .grad { font-weight: 800; }
-          .iws-page .grad { font-weight: 800; }
+          .page-headline .grad { font-weight: 800; background: linear-gradient(90deg, #0f172a 0%, #475569 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+          .iws-page .grad { font-weight: 800; background: linear-gradient(90deg, #0f172a 0%, #475569 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
           .iws-page .hero-sub { color: #475569; font-size: 15px; max-width: 460px; margin: 0 auto; line-height: 1.65; }
 
           /* Nav pills */

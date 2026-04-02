@@ -6,7 +6,7 @@ export default function SichtVergleich() {
   return (
     <div className="section">
       <div className="slabel">Perspektive</div>
-      <h2 style={{ marginBottom: "10px" }}>Was Sie sehen —<br />was Angreifer sehen.</h2>
+      <h2 style={{ marginBottom: "10px" }}>Was Sie sehen,<br />was Angreifer sehen.</h2>
       <p style={{ fontSize: "14px", color: "#64748b", marginBottom: "36px" }}>
         Dieselbe Infrastruktur. Zwei völlig verschiedene Blickwinkel.
       </p>
@@ -30,7 +30,7 @@ export default function SichtVergleich() {
                 </svg>
               ),
               label: "Website",
-              val: "ihredomain.de — live, funktioniert",
+              val: "ihredomain.de, live, funktioniert",
             },
             {
               icon: (
@@ -57,7 +57,7 @@ export default function SichtVergleich() {
                 </svg>
               ),
               label: "Sichtbarkeit",
-              val: "1 Domain, 1 IP — überschaubar",
+              val: "1 Domain, 1 IP, überschaubar",
             },
           ].map(({ icon, label, val }) => (
             <div className="sv-row" key={label}>
@@ -98,7 +98,7 @@ export default function SichtVergleich() {
                 </svg>
               ),
               label: "11 exponierte IPs entdeckt",
-              val: "shop, mail, awareness, firewall, Nameserver — alle öffentlich",
+              val: "shop, mail, awareness, firewall, Nameserver, alle öffentlich",
               danger: true,
             },
             {
@@ -109,7 +109,7 @@ export default function SichtVergleich() {
                 </svg>
               ),
               label: "SSH Port 22 öffentlich erreichbar",
-              val: "Direkter Admin-Zugang — kein VPN, kein IP-Filter",
+              val: "Direkter Admin-Zugang, kein VPN, kein IP-Filter",
               danger: true,
             },
             {
@@ -154,7 +154,7 @@ export default function SichtVergleich() {
       {/* CTA strip */}
       <div className="sv-cta">
         <p className="sv-cta-text">
-          <strong>Das ist kein Worst-Case-Szenario.</strong> Das sind echte Befunde aus einem unserer Reports — anonymisiert.
+          <strong>Das ist kein Worst-Case-Szenario.</strong> Das sind echte Befunde aus einem unserer Reports, anonymisiert.
         </p>
         <a href="/contact" className="btn-primary" style={{ fontSize: "13px", padding: "10px 20px", borderRadius: "12px", display: "inline-flex", whiteSpace: "nowrap" }}>
           Mein Risiko prüfen lassen →

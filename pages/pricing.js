@@ -29,7 +29,7 @@ const plans = [
     ips: "bis 20 IPs",
     price: "199",
     highlight: true,
-    badge: "Meistgewählt",
+    badge: "Unsere Empfehlung",
     cta: "Professional starten",
     ctaHref: "/contact",
     features: [
@@ -100,7 +100,7 @@ export default function Pricing() {
       <main className="pricing-page iws-pricing">
         {/* Hero */}
         <section className="pricing-hero">
-          <p className="pricing-eyebrow">Preise</p>
+          <div className="slabel">Preise</div>
           <h1 className="page-headline">Monatlich kündbar.<br /><span className="grad">Keine Fallen.</span></h1>
           <p className="pricing-sub">
             Kein Jahresvertrag, kein Lock-in. Kontinuierliche Sicherheitsanalyse —<br className="br-desk" />
@@ -248,6 +248,11 @@ export default function Pricing() {
         .iws-pricing .page-headline .grad {
           font-style: normal;
           text-decoration: none;
+          font-weight: 800;
+          background: linear-gradient(90deg, #0f172a 0%, #475569 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
         }
         .iws-pricing .pricing-sub { color: #64748b; }
         .iws-pricing .why-card { background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
