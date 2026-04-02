@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import Link from "next/link";
 import IndexDropdown, {
   NavLinksMobile,
 } from "components/Dropdowns/IndexDropdown.js";
 
 const NAVBAR_STYLES = {
-  backgroundColor: "rgba(0, 31, 63, 0.8)",
-  borderBottom: "0.5px solid #00FFFF",
+  backgroundColor: "rgba(255,255,255, 0.85)",
+  borderBottom: "0.5px solid rgba(71,85,105,0.3)",
+  backdropFilter: "blur(12px)",
 };
 
 const NAV_LINK_STYLES =
@@ -32,7 +33,7 @@ const MobileMenuButton = ({ onClick }) => (
     onClick={onClick}
     aria-label="Toggle menu"
   >
-    <i className="fas fa-bars text-white" />
+    <i className="fas fa-bars text-gray-800" />
   </button>
 );
 
@@ -70,7 +71,7 @@ export default function Navbar() {
             <Link href="/contact" legacyBehavior>
               <a
                 className="inline-flex items-center justify-center font-semibold px-4 py-2 rounded-2xl"
-                style={{ backgroundColor: "#00d4ff", color: "#001f3f" }}
+                style={{ backgroundColor: "#334155", color: "#f8fafc" }}
                 aria-label="Kostenlose Ersteinschätzung anfordern"
               >
                 Kostenlose <span className="ml-2">Ersteinschätzung</span>
@@ -93,3 +94,5 @@ export default function Navbar() {
     </nav>
   );
 }
+
+

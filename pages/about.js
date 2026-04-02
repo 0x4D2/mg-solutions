@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import Link from "next/link";
@@ -61,7 +61,7 @@ export default function AboutPage() {
           {/* HERO */}
           <div className="hero">
             <div className="slabel">Uber uns</div>
-            <h1>
+            <h1 className="page-headline">
               Wir machen genau <span className="grad">eine Sache wirklich gut.</span>
             </h1>
             <p className="hero-sub">
@@ -199,10 +199,10 @@ export default function AboutPage() {
 
         <style jsx global>{`
           .iws-page {
-            background: #0a192f;
+            background: transparent;
             min-height: 100vh;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            color: #e2e8f0;
+            font-family: 'DM Sans', 'Inter', sans-serif;
+            color: #1e293b;
           }
           .iws-page .wrap {
             max-width: 900px;
@@ -210,39 +210,39 @@ export default function AboutPage() {
             padding: 0 24px 80px;
           }
           .iws-page .hero { text-align: center; padding: 80px 0 48px; }
-          .iws-page .slabel { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #00d4ff; margin-bottom: 14px; }
-          .iws-page .hero h1 { font-size: clamp(26px,4vw,42px) !important; font-weight: 800 !important; line-height: 1.1 !important; letter-spacing: -0.03em !important; color: #fff !important; margin-bottom: 18px !important; -webkit-text-fill-color: unset !important; background: none !important; }
-          .iws-page .grad { background: linear-gradient(90deg, #00d4ff, #4fa3ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-          .iws-page .hero-sub { font-size: 15px; color: #64748b; max-width: 500px; margin: 0 auto; line-height: 1.65; }
+          .iws-page .slabel { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #334155; margin-bottom: 14px; }
+          .page-headline .grad { font-weight: 800; }
+          .iws-page .hero-sub { font-size: 15px; color: #475569; max-width: 500px; margin: 0 auto; line-height: 1.65; }
           .iws-page .about-section { margin-bottom: 48px; }
-          .iws-page .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #475569; margin-bottom: 16px; }
+          .iws-page .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #94a3b8; margin-bottom: 16px; }
           .iws-page .about-split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 48px; }
-          .iws-page .about-big { font-size: 16px; font-weight: 600; color: #e2e8f0; line-height: 1.5; margin-bottom: 14px; letter-spacing: -0.01em; }
-          .iws-page .about-big-muted { color: #cbd5e1; }
-          .iws-page .about-p { font-size: 13px; color: #94a3b8; line-height: 1.7; margin-bottom: 12px; }
-          .iws-page .em-muted { color: #94a3b8; font-style: italic; }
+          .iws-page .about-big { font-size: 16px; font-weight: 600; color: #0f172a; line-height: 1.5; margin-bottom: 14px; letter-spacing: -0.01em; }
+          .iws-page .about-big-muted { color: #1e293b; }
+          .iws-page .about-p { font-size: 13px; color: #475569; line-height: 1.7; margin-bottom: 12px; }
+          .iws-page .em-muted { color: #64748b; font-style: italic; }
           .iws-page .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-          .iws-page .stat-card { background: rgba(15,23,42,0.8); border: 1px solid rgba(0,212,255,0.1); border-radius: 14px; padding: 18px; text-align: center; }
-          .iws-page .stat-num { font-size: 22px; font-weight: 800; color: #00d4ff; letter-spacing: -0.03em; margin-bottom: 4px; }
+          .iws-page .stat-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 18px; text-align: center; box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
+          .iws-page .stat-num { font-size: 22px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em; margin-bottom: 4px; }
           .iws-page .stat-label { font-size: 11px; color: #64748b; }
-          .iws-page .motivation-box { background: rgba(0,212,255,0.04); border: 1px solid rgba(0,212,255,0.1); border-radius: 16px; padding: 32px; }
+          .iws-page .motivation-box { background: rgba(71,85,105,0.04); border: 1px solid #e2e8f0; border-radius: 16px; padding: 32px; }
           .iws-page .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-          .iws-page .val-card { background: rgba(20,30,48,0.75); border: 1px solid rgba(0,212,255,0.1); border-radius: 14px; padding: 20px; }
-          .iws-page .val-icon { color: #00d4ff; margin-bottom: 12px; }
-          .iws-page .val-title { font-size: 13px; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; }
+          .iws-page .val-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+          .iws-page .val-icon { color: #334155; margin-bottom: 12px; }
+          .iws-page .val-title { font-family: 'Inter', 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
           .iws-page .val-body { font-size: 12px; color: #64748b; line-height: 1.55; }
-          .iws-page .quote-box { background: rgba(15,23,42,0.7); border: 1px solid rgba(0,212,255,0.08); border-radius: 16px; padding: 40px; text-align: center; }
-          .iws-page .quote-text { font-size: 18px; font-weight: 600; color: #e2e8f0; letter-spacing: -0.02em; margin-bottom: 12px; }
+          .iws-page .quote-box { background: rgba(71,85,105,0.04); border: 1px solid #e2e8f0; border-radius: 16px; padding: 40px; text-align: center; }
+          .iws-page .quote-text { font-family: 'Inter', 'DM Sans', sans-serif; font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.02em; margin-bottom: 12px; }
           .iws-page .quote-sub { font-size: 13px; color: #64748b; line-height: 1.65; }
           .iws-page .partner-section { text-align: center; }
           .iws-page .partner-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 24px; padding: 0 16px; margin-top: 8px; }
           .iws-page .partner-logo-link { display: inline-block; transition: opacity 0.2s; }
           .iws-page .partner-logo-link:hover { opacity: 0.75; }
           .iws-page .partner-logo-img { height: 70px; width: auto; display: block; }
-          .iws-page .final-cta { background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(0,119,255,0.04)); border: 1px solid rgba(0,212,255,0.14); border-radius: 18px; padding: 48px 32px; text-align: center; }
-          .iws-page .final-cta h2 { font-size: clamp(20px,3vw,28px) !important; font-weight: 800 !important; letter-spacing: -0.03em !important; color: #fff !important; margin-bottom: 10px !important; -webkit-text-fill-color: unset !important; background: none !important; }
+          .iws-page .final-cta { background: linear-gradient(135deg, rgba(71,85,105,0.05), rgba(71,85,105,0.03)); border: 1px solid #e2e8f0; border-radius: 18px; padding: 48px 32px; text-align: center; }
+          .iws-page .final-cta h2 { font-family: 'Inter', 'DM Sans', sans-serif; font-size: clamp(20px,3vw,28px) !important; font-weight: 800 !important; letter-spacing: -0.03em !important; color: #0f172a !important; margin-bottom: 10px !important; -webkit-text-fill-color: unset !important; background: none !important; }
           .iws-page .cta-sub { color: #64748b; font-size: 14px; margin-bottom: 24px; }
-          .iws-page .btn-primary { display: inline-flex; align-items: center; padding: 14px 28px; border-radius: 12px; font-weight: 800; font-size: 14px; background: #00d4ff; color: #001f3f; text-decoration: none; }
+          .iws-page .btn-primary { display: inline-flex; align-items: center; padding: 14px 28px; border-radius: 8px; font-weight: 700; font-size: 14px; background: #1e293b; color: #f8fafc; text-decoration: none; transition: background 0.2s; }
+          .iws-page .btn-primary:hover { background: #334155; }
           @media (max-width: 768px) {
             .iws-page .about-split { grid-template-columns: 1fr; }
             .iws-page .values-grid { grid-template-columns: 1fr 1fr; }

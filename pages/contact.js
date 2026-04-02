@@ -17,7 +17,7 @@ function SuccessState() {
       className="success-state"
     >
       <div className="success-icon">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#047857" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M5 13l4 4L19 7" />
         </svg>
       </div>
@@ -115,7 +115,7 @@ export default function ContactPage() {
           {/* ── HERO ────────────────────────────────────────────────────── */}
           <div className="hero">
             <div className="slabel">Kontakt</div>
-            <h1>Kostenlos starten.</h1>
+            <h1 className="page-headline">Kostenlos starten.</h1>
             <p className="hero-sub">
               Wir prüfen Ihren Scope und schicken Ihnen eine erste Einschätzung —
               innerhalb eines Werktags, ohne Verpflichtung.
@@ -188,8 +188,8 @@ export default function ContactPage() {
                         <input type="text" name="name" required placeholder="Max Mustermann"
                           value={form.name} onChange={handleChange} autoComplete="name"
                           className="field-input"
-                          onFocus={e => e.target.style.borderColor = "rgba(0,212,255,0.5)"}
-                          onBlur={e  => e.target.style.borderColor = "rgba(0,212,255,0.18)"}
+                          onFocus={e => e.target.style.borderColor = "#334155"}
+                          onBlur={e  => e.target.style.borderColor = "#e2e8f0"}
                         />
                       </div>
                       <div>
@@ -197,8 +197,8 @@ export default function ContactPage() {
                         <input type="email" name="email" required placeholder="name@firma.de"
                           value={form.email} onChange={handleChange} autoComplete="email"
                           className="field-input"
-                          onFocus={e => e.target.style.borderColor = "rgba(0,212,255,0.5)"}
-                          onBlur={e  => e.target.style.borderColor = "rgba(0,212,255,0.18)"}
+                          onFocus={e => e.target.style.borderColor = "#334155"}
+                          onBlur={e  => e.target.style.borderColor = "#e2e8f0"}
                         />
                       </div>
                     </div>
@@ -210,16 +210,16 @@ export default function ContactPage() {
                         <input type="tel" name="phone" placeholder="+49 170 1234567"
                           value={form.phone} onChange={handleChange} autoComplete="tel"
                           className="field-input"
-                          onFocus={e => e.target.style.borderColor = "rgba(0,212,255,0.5)"}
-                          onBlur={e  => e.target.style.borderColor = "rgba(0,212,255,0.18)"}
+                          onFocus={e => e.target.style.borderColor = "#334155"}
+                          onBlur={e  => e.target.style.borderColor = "#e2e8f0"}
                         />
                       </div>
                       <div>
                         <label className="field-label">Betreff<span className="req">*</span></label>
                         <select name="subject" required value={form.subject} onChange={handleChange}
                           className="field-input"
-                          onFocus={e => e.target.style.borderColor = "rgba(0,212,255,0.5)"}
-                          onBlur={e  => e.target.style.borderColor = "rgba(0,212,255,0.18)"}
+                          onFocus={e => e.target.style.borderColor = "#334155"}
+                          onBlur={e  => e.target.style.borderColor = "#e2e8f0"}
                         >
                           <option value="">Bitte wählen…</option>
                           <option value="report">Kostenlose Ersteinschätzung</option>
@@ -238,8 +238,8 @@ export default function ContactPage() {
                       <input type="text" name="host" placeholder="z. B. example.com oder 92.113.23.59"
                         value={form.host} onChange={handleChange} autoComplete="off"
                         className="field-input"
-                        onFocus={e => e.target.style.borderColor = "rgba(0,212,255,0.5)"}
-                        onBlur={e  => e.target.style.borderColor = "rgba(0,212,255,0.18)"}
+                        onFocus={e => e.target.style.borderColor = "#334155"}
+                        onBlur={e  => e.target.style.borderColor = "#e2e8f0"}
                       />
                     </div>
 
@@ -249,8 +249,8 @@ export default function ContactPage() {
                       <textarea name="message" required placeholder="Beschreiben Sie kurz Ihr Anliegen…"
                         value={form.message} onChange={handleChange}
                         className="field-input field-textarea"
-                        onFocus={e => e.target.style.borderColor = "rgba(0,212,255,0.5)"}
-                        onBlur={e  => e.target.style.borderColor = "rgba(0,212,255,0.18)"}
+                        onFocus={e => e.target.style.borderColor = "#334155"}
+                        onBlur={e  => e.target.style.borderColor = "#e2e8f0"}
                       />
                     </div>
 
@@ -300,10 +300,10 @@ export default function ContactPage() {
 
         <style jsx global>{`
           .iws-page {
-            background: #0a192f;
+            background: transparent;
             min-height: 100vh;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            color: #e2e8f0;
+            font-family: 'DM Sans', 'Inter', sans-serif;
+            color: #1e293b;
           }
           .iws-page .wrap {
             max-width: 900px;
@@ -311,21 +311,21 @@ export default function ContactPage() {
             padding: 64px 24px 64px;
           }
           .iws-page .hero { text-align: center; padding: 56px 0 40px; }
-          .iws-page .slabel { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #00d4ff; margin-bottom: 14px; }
-          .iws-page .hero h1 { font-size: clamp(26px,4vw,42px) !important; font-weight: 800 !important; line-height: 1.1 !important; letter-spacing: -0.03em !important; color: #fff !important; margin-bottom: 20px !important; -webkit-text-fill-color: unset !important; background: none !important; }
-          .iws-page .hero-sub { font-size: 15px; color: #cbd5e1; max-width: 440px; margin: 0 auto; line-height: 1.65; }
+          .iws-page .slabel { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #94a3b8; margin-bottom: 14px; }
+
+          .iws-page .hero-sub { font-size: 15px; color: #475569; max-width: 440px; margin: 0 auto; line-height: 1.65; }
 
           /* Layout */
           .iws-page .contact-layout { display: grid; grid-template-columns: 2fr 3fr; gap: 40px; align-items: start; }
 
           /* Process steps */
-          .iws-page .process-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #475569; margin-bottom: 20px; }
+          .iws-page .process-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #94a3b8; margin-bottom: 20px; }
           .iws-page .step-row { display: flex; gap: 14px; }
           .iws-page .step-line-wrap { display: flex; flex-direction: column; align-items: center; }
-          .iws-page .step-circle { width: 32px; height: 32px; border-radius: 50%; background: rgba(15,23,42,0.9); border: 1px solid rgba(0,212,255,0.2); color: #00d4ff; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-          .iws-page .step-connector { width: 1px; flex: 1; min-height: 24px; background: rgba(0,212,255,0.1); margin: 4px 0; }
+          .iws-page .step-circle { width: 32px; height: 32px; border-radius: 50%; background: #ffffff; border: 1px solid #e2e8f0; color: #334155; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+          .iws-page .step-connector { width: 1px; flex: 1; min-height: 24px; background: #e2e8f0; margin: 4px 0; }
           .iws-page .step-content { padding-bottom: 22px; }
-          .iws-page .step-title { font-size: 13px; font-weight: 600; color: #e2e8f0; margin-bottom: 3px; }
+          .iws-page .step-title { font-size: 13px; font-weight: 600; color: #0f172a; margin-bottom: 3px; }
           .iws-page .step-body { font-size: 12px; color: #64748b; line-height: 1.5; }
 
           /* Trust */
@@ -333,41 +333,41 @@ export default function ContactPage() {
           .iws-page .trust-row { display: flex; align-items: center; gap: 10px; font-size: 12px; color: #64748b; }
 
           /* Form card */
-          .iws-page .form-card { background: rgba(20,30,48,0.8); border: 1px solid rgba(0,212,255,0.15); border-radius: 18px; padding: 32px; position: relative; overflow: hidden; }
-          .iws-page .form-accent { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg,#00d4ff,#0077ff); }
+          .iws-page .form-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 32px; position: relative; overflow: hidden; box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+          .iws-page .form-accent { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg,#334155,#64748b); }
           .iws-page .form-inner { display: flex; flex-direction: column; gap: 14px; }
           .iws-page .field-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
           .iws-page .field-grid1 {}
-          .iws-page .field-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #94a3b8; margin-bottom: 8px; }
-          .iws-page .req { color: #ff6b35; margin-left: 3px; }
-          .iws-page .field-input { width: 100%; padding: 12px 16px; border-radius: 10px; background: rgba(15,23,42,0.8); border: 1px solid rgba(0,212,255,0.18); color: #e2e8f0; font-size: 14px; font-family: inherit; outline: none; transition: border-color 0.2s; }
-          .iws-page .field-input::placeholder { color: #334155; }
-          .iws-page select.field-input option { background: #0a192f; }
+          .iws-page .field-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #64748b; margin-bottom: 8px; }
+          .iws-page .req { color: #dc2626; margin-left: 3px; }
+          .iws-page .field-input { width: 100%; padding: 12px 16px; border-radius: 10px; background: #f8fafc; border: 1px solid #e2e8f0; color: #0f172a; font-size: 14px; font-family: inherit; outline: none; transition: border-color 0.2s; }
+          .iws-page .field-input::placeholder { color: #94a3b8; }
+          .iws-page select.field-input option { background: #ffffff; color: #0f172a; }
           .iws-page .field-textarea { min-height: 110px; resize: vertical; }
-          .iws-page .privacy-box { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 12px; background: rgba(15,23,42,0.6); border: 1px solid rgba(0,212,255,0.08); }
-          .iws-page .privacy-check { width: 18px; height: 18px; margin-top: 2px; accent-color: #00d4ff; flex-shrink: 0; cursor: pointer; }
-          .iws-page .privacy-label { font-size: 12px; color: #94a3b8; line-height: 1.55; cursor: pointer; }
-          .iws-page .privacy-link { color: #00d4ff; text-decoration: none; }
-          .iws-page .form-error { font-size: 13px; text-align: center; padding: 12px; border-radius: 10px; background: rgba(255,77,77,0.08); border: 1px solid rgba(255,77,77,0.2); color: #ff4d4d; }
-          .iws-page .submit-btn { width: 100%; padding: 16px; border-radius: 14px; background: #00d4ff; color: #001f3f; font-size: 15px; font-weight: 800; border: none; cursor: pointer; position: relative; overflow: hidden; transition: all 0.2s; }
-          .iws-page .submit-btn:disabled { background: rgba(0,212,255,0.45); cursor: not-allowed; }
-          .iws-page .submit-btn:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,212,255,0.2); }
-          .iws-page .submit-btn::after { content: ""; position: absolute; top: 0; left: -120%; width: 120%; height: 100%; background: linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent); transition: left 0.7s ease; pointer-events: none; }
+          .iws-page .privacy-box { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 12px; background: rgba(71,85,105,0.04); border: 1px solid #e2e8f0; }
+          .iws-page .privacy-check { width: 18px; height: 18px; margin-top: 2px; accent-color: #334155; flex-shrink: 0; cursor: pointer; }
+          .iws-page .privacy-label { font-size: 12px; color: #64748b; line-height: 1.55; cursor: pointer; }
+          .iws-page .privacy-link { color: #1d4ed8; text-decoration: underline; }
+          .iws-page .form-error { font-size: 13px; text-align: center; padding: 12px; border-radius: 10px; background: rgba(220,38,38,0.06); border: 1px solid rgba(220,38,38,0.2); color: #dc2626; }
+          .iws-page .submit-btn { width: 100%; padding: 16px; border-radius: 10px; background: #1e293b; color: #f8fafc; font-size: 15px; font-weight: 700; border: none; cursor: pointer; position: relative; overflow: hidden; transition: all 0.2s; }
+          .iws-page .submit-btn:disabled { background: #94a3b8; cursor: not-allowed; }
+          .iws-page .submit-btn:not(:disabled):hover { background: #334155; transform: translateY(-1px); }
+          .iws-page .submit-btn::after { content: ""; position: absolute; top: 0; left: -120%; width: 120%; height: 100%; background: linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent); transition: left 0.7s ease; pointer-events: none; }
           .iws-page .submit-btn:not(:disabled):hover::after { left: 100%; }
-          .iws-page .recaptcha-note { font-size: 11px; color: #334155; text-align: center; }
-          .iws-page .recaptcha-link { color: #475569; text-decoration: none; }
+          .iws-page .recaptcha-note { font-size: 11px; color: #94a3b8; text-align: center; }
+          .iws-page .recaptcha-link { color: #64748b; text-decoration: none; }
 
           /* Success state */
           .iws-page .success-state { text-align: center; padding: 48px 0; }
-          .iws-page .success-icon { width: 64px; height: 64px; border-radius: 50%; background: rgba(0,212,255,0.1); border: 2px solid rgba(0,212,255,0.3); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; }
-          .iws-page .success-title { font-size: 22px; font-weight: 800; color: #e2e8f0; letter-spacing: -0.02em; margin-bottom: 10px; }
+          .iws-page .success-icon { width: 64px; height: 64px; border-radius: 50%; background: rgba(16,185,129,0.08); border: 2px solid rgba(16,185,129,0.3); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; }
+          .iws-page .success-title { font-size: 22px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em; margin-bottom: 10px; }
           .iws-page .success-sub { font-size: 14px; color: #64748b; margin-bottom: 28px; }
           .iws-page .success-steps { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; font-size: 12px; margin-bottom: 32px; }
           .iws-page .s-step { display: inline-flex; align-items: center; gap: 5px; padding: 6px 12px; border-radius: 100px; }
-          .iws-page .s-step.done { background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.25); color: #00d4ff; }
-          .iws-page .s-step.pending { background: rgba(15,23,42,0.6); border: 1px solid rgba(0,212,255,0.08); color: #475569; }
-          .iws-page .s-arrow { color: #334155; }
-          .iws-page .back-btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 12px; font-size: 13px; font-weight: 600; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); color: #00d4ff; text-decoration: none; }
+          .iws-page .s-step.done { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.25); color: #047857; }
+          .iws-page .s-step.pending { background: rgba(71,85,105,0.06); border: 1px solid #e2e8f0; color: #64748b; }
+          .iws-page .s-arrow { color: #94a3b8; }
+          .iws-page .back-btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 10px; font-size: 13px; font-weight: 600; background: rgba(71,85,105,0.07); border: 1px solid #e2e8f0; color: #334155; text-decoration: none; }
 
           @media (max-width: 640px) {
             .iws-page .contact-layout { grid-template-columns: 1fr; }

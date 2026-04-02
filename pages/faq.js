@@ -46,14 +46,14 @@ function FAQItem({ question, children }) {
   return (
     <div className="faq-item">
       <button className="faq-btn" onClick={() => setOpen(!open)} aria-expanded={open}>
-        <span className="faq-q" style={{ color: open ? "#00d4ff" : "#e2e8f0" }}>
+        <span className="faq-q" style={{ color: open ? "#0f172a" : "#1e293b" }}>
           {question}
         </span>
         <span
           className="faq-toggle"
           style={{
-            background: open ? "rgba(0,212,255,0.12)" : "rgba(255,255,255,0.04)",
-            color: open ? "#00d4ff" : "#64748b",
+            background: open ? "rgba(71,85,105,0.1)" : "rgba(71,85,105,0.04)",
+            color: open ? "#0f172a" : "#64748b",
           }}
         >
           {open ? "−" : "+"}
@@ -82,7 +82,7 @@ const Ul = ({ items }) => (
   <ul className="arrow-list">
     {items.map((item, i) => (
       <li key={i}>
-        <span style={{ color: "#00d4ff", flexShrink: 0 }}>→</span>
+        <span style={{ color: "#334155", flexShrink: 0 }}>→</span>
         <span>{item}</span>
       </li>
     ))}
@@ -94,7 +94,7 @@ const CompareTable = ({ rows }) => (
     <table className="compare-table">
       <thead>
         <tr>
-          <th style={{ color: "#00d4ff" }}>Unser Service</th>
+          <th style={{ color: "#0f172a" }}>Unser Service</th>
           <th style={{ color: "#64748b", paddingLeft: 20 }}>Vulnerability Scanner</th>
         </tr>
       </thead>
@@ -153,7 +153,76 @@ const faqSections = [
           <>
             <p>In der Regel <strong>nein</strong>. Bei Baukasten-Hosting kontrollieren Sie die Infrastruktur nicht selbst.</p>
             <p style={{ marginTop: 8 }}><strong>Faustregel:</strong> Können Sie Firewall-Regeln oder SSH-Einstellungen ändern?</p>
-            <p style={{ marginTop: 4 }}>→ <strong style={{ color: "#00d4ff" }}>Ja</strong> = sinnvoll &nbsp;&nbsp;→ <strong style={{ color: "#64748b" }}>Nein</strong> = nicht geeignet</p>
+            <p style={{ marginTop: 4 }}>→ <strong style={{ color: "#047857" }}>Ja</strong> &nbsp;&nbsp;→ <strong style={{ color: "#64748b" }}>Nein</strong> = nicht geeignet</p>
+          </>
+        ),
+      },
+      {
+        question: "Was ist ein Asset — und was ist der Unterschied zur Domain?",
+        answer: (
+          <>
+            <p>Ein <strong>Asset = eine öffentlich erreichbare IPv4-Adresse</strong>. Jede IP erhält einen eigenen Report.</p>
+            <p style={{ marginTop: 8 }}>Geben Sie eine Domain an, analysieren wir die primäre IP dieser Domain (via DNS A-Record). Weitere IPs — z.&nbsp;B. Mailserver, Nameserver — werden in Abschnitt 3 des Reports aufgelistet, aber nicht separat bewertet.</p>
+            <p style={{ marginTop: 8, color: "#64748b" }}>Wer mehrere IPs bewertet haben möchte, bucht sie als eigenständige Assets — ab 15&nbsp;€/Monat pro zusätzlichem Asset.</p>
+          </>
+        ),
+      },
+      {
+        question: "Was passiert, wenn meine Domain hinter Cloudflare oder einem CDN liegt?",
+        answer: (
+          <>
+            <p>CDN-IPs (Cloudflare, Akamai, Fastly, AWS CloudFront) werden automatisch erkannt und <strong>aus der Hauptanalyse herausgefiltert</strong> — der eigentliche Server dahinter ist passiv nicht erreichbar.</p>
+            <Ul items={[
+              "Die CDN-IP selbst wird nicht als Asset bewertet",
+              "Mailserver, Nameserver und weitere DNS-Einträge bleiben sichtbar und werden in Abschnitt 3 aufgeführt",
+              "Falls Ihr Origin-Server direkt erreichbar ist (z. B. über eine andere Subdomain), kann er trotzdem erscheinen",
+            ]} />
+            <p style={{ marginTop: 8, color: "#64748b" }}>Bei vollständigem CDN-Schutz fällt die Analyse entsprechend kleiner aus — das ist ein Sicherheitsvorteil, kein Fehler.</p>
+          </>
+        ),
+      },
+      {
+        question: "Warum tauchen so viele IPs auf — ich habe doch nur eine Domain angegeben?",
+        answer: (
+          <>
+            <p>Eine Domain zieht automatisch ein ganzes Netzwerk an öffentlichen Einträgen nach sich. Wir ermitteln passiv alle zugehörigen IPs aus:</p>
+            <Ul items={[
+              "A-Records: die primäre IP der Domain und www-Subdomain",
+              "MX-Records: Mailserver-IPs — oft direkt exponiert, selten geprüft",
+              "NS-Records: Nameserver Ihres Hostinganbieters",
+              "HackerTarget API: passiver Subdomain-Lookup aus öffentlichen DNS-Datenbanken",
+              "crt.sh: Zertifikats-Historie — enthüllt vergessene Subdomains wie shop., awareness., firewall.",
+            ]} />
+            <p style={{ marginTop: 8, color: "#64748b" }}>Bewertet (via Shodan) wird nur die primäre Analyse-IP. Alle weiteren IPs erscheinen in Abschnitt 3 als Übersicht — ohne eigenen Shodan-Report.</p>
+          </>
+        ),
+      },
+      {
+        question: "Was bedeutet es, wenn eine Subdomain wie 'firewall' oder 'shop' öffentlich sichtbar ist?",
+        answer: (
+          <>
+            <p>Subdomains verraten interne Infrastruktur — auch wenn die Dienste selbst abgesichert sind. Ein Angreifer erfährt dadurch:</p>
+            <Ul items={[
+              "Welche Systeme existieren (Shop, Firewall, Awareness-Tool, Mailserver)",
+              "Welche Hosting-Anbieter genutzt werden (z. B. Hetzner, KAS-Server)",
+              "Ob Systeme direkt exponiert oder hinter einem Proxy liegen",
+              "Potenzielle Angriffsziele abseits der Hauptdomain",
+            ]} />
+            <p style={{ marginTop: 8, color: "#64748b" }}>Das ist kein akuter Notfall — aber wertvolle Aufklärung für einen gezielten Angriff. Nicht benötigte Subdomains sollten aus dem DNS entfernt werden.</p>
+          </>
+        ),
+      },
+      {
+        question: "Werden Mailserver (Microsoft 365, Google Workspace) auch analysiert?",
+        answer: (
+          <>
+            <p>Mailserver-IPs aus MX-Records werden in Abschnitt 3 aufgeführt. Bei großen Cloud-Anbietern wie Microsoft 365 oder Google Workspace gilt:</p>
+            <Ul items={[
+              "Die IPs gehören Microsoft / Google — keine eigene Infrastruktur",
+              "Shodan-Analyse dieser IPs wäre nicht aussagekräftig für Sie",
+              "Sie werden daher gelistet aber nicht separat bewertet",
+              "Relevant bleibt: Ist Ihr eigener Mailserver (falls vorhanden) direkt exponiert?",
+            ]} />
           </>
         ),
       },
@@ -412,7 +481,7 @@ export default function FAQPage() {
           {/* HERO */}
           <div className="hero">
             <div className="slabel">FAQ</div>
-            <h1>Klare Antworten.<br /><span className="grad">Keine Floskeln.</span></h1>
+            <h1 className="page-headline">Klare Antworten.<br /><span className="grad">Keine Floskeln.</span></h1>
             <p className="hero-sub">
               Alles was Sie über den Exposure-Report wissen sollten —
               inklusive der Dinge, die wir bewusst nicht können oder tun.
@@ -462,44 +531,44 @@ export default function FAQPage() {
 
         <style jsx global>{`
           .iws-page {
-            background: #0a192f;
+            background: transparent;
             min-height: 100vh;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            color: #e2e8f0;
+            font-family: 'DM Sans', 'Inter', sans-serif;
+            color: #1e293b;
           }
           .iws-page .wrap {
-            max-width: 860px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 24px 80px;
           }
           .iws-page .hero { text-align: center; padding: 80px 0 40px; }
-          .iws-page .slabel { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #00d4ff; margin-bottom: 12px; }
-          .iws-page .hero h1 { font-size: clamp(26px,4vw,40px) !important; font-weight: 800 !important; letter-spacing: -0.03em !important; line-height: 1.1 !important; color: #fff !important; margin-bottom: 14px !important; -webkit-text-fill-color: unset !important; background: none !important; }
-          .iws-page .grad { background: linear-gradient(90deg,#00d4ff,#4fa3ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-          .iws-page .hero-sub { color: #64748b; font-size: 15px; max-width: 460px; margin: 0 auto; line-height: 1.65; }
+          .iws-page .slabel { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #94a3b8; margin-bottom: 12px; }
+          .page-headline .grad { font-weight: 800; }
+          .iws-page .grad { font-weight: 800; }
+          .iws-page .hero-sub { color: #475569; font-size: 15px; max-width: 460px; margin: 0 auto; line-height: 1.65; }
 
           /* Nav pills */
           .iws-page .nav-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 40px; }
-          .iws-page .pill { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 12px; font-size: 12px; font-weight: 600; background: rgba(15,23,42,0.7); border: 1px solid rgba(0,212,255,0.1); color: #64748b; text-decoration: none; transition: all 0.2s; }
-          .iws-page .pill:hover { color: #00d4ff; border-color: rgba(0,212,255,0.25); }
-          .iws-page .pill-icon { color: #475569; display: flex; align-items: center; transition: color 0.2s; }
-          .iws-page .pill:hover .pill-icon { color: #00d4ff; }
+          .iws-page .pill { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 12px; font-size: 12px; font-weight: 600; background: #ffffff; border: 1px solid #e2e8f0; color: #475569; text-decoration: none; transition: all 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+          .iws-page .pill:hover { color: #0f172a; border-color: #334155; }
+          .iws-page .pill-icon { color: #64748b; display: flex; align-items: center; transition: color 0.2s; }
+          .iws-page .pill:hover .pill-icon { color: #334155; }
 
           /* Sections */
           .iws-page .faq-sections { display: flex; flex-direction: column; gap: 14px; margin-bottom: 48px; }
-          .iws-page .section-card { background: rgba(20,30,48,0.75); border: 1px solid rgba(0,212,255,0.1); border-radius: 16px; overflow: hidden; }
-          .iws-page .sec-header { display: flex; align-items: center; gap: 10px; padding: 20px 24px; border-bottom: 1px solid rgba(0,212,255,0.06); }
-          .iws-page .sec-icon { color: #00d4ff; display: flex; align-items: center; }
-          .iws-page .sec-title { font-size: 14px; font-weight: 700; color: #e2e8f0; }
+          .iws-page .section-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
+          .iws-page .sec-header { display: flex; align-items: center; gap: 10px; padding: 20px 24px; border-bottom: 1px solid #f1f5f9; }
+          .iws-page .sec-icon { color: #334155; display: flex; align-items: center; }
+          .iws-page .sec-title { font-size: 14px; font-weight: 700; color: #0f172a; }
 
           /* Accordion */
-          .iws-page .faq-item { border-bottom: 1px solid rgba(0,212,255,0.06); }
+          .iws-page .faq-item { border-bottom: 1px solid #f1f5f9; }
           .iws-page .faq-item:last-child { border-bottom: none; }
           .iws-page .faq-btn { width: 100%; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding: 16px 24px; background: none; border: none; cursor: pointer; text-align: left; }
           .iws-page .faq-q { font-size: 13px; font-weight: 600; line-height: 1.4; flex: 1; transition: color 0.2s; }
           .iws-page .faq-toggle { width: 20px; height: 20px; border-radius: 4px; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; transition: all 0.2s; }
-          .iws-page .faq-a { padding: 0 24px 16px; font-size: 13px; color: #94a3b8; line-height: 1.65; }
-          .iws-page .faq-a strong { color: #e2e8f0; }
+          .iws-page .faq-a { padding: 0 24px 16px; font-size: 13px; color: #475569; line-height: 1.65; }
+          .iws-page .faq-a strong { color: #1e293b; }
 
           /* Arrow list */
           .iws-page .arrow-list { list-style: none; padding: 0; margin-top: 8px; }
@@ -508,33 +577,33 @@ export default function FAQPage() {
           /* Compare table */
           .iws-page .compare-wrap { overflow-x: auto; margin-top: 12px; }
           .iws-page .compare-table { width: 100%; font-size: 12px; border-collapse: collapse; }
-          .iws-page .compare-table th { text-align: left; padding-bottom: 6px; font-weight: 600; }
-          .iws-page .compare-table td { padding: 6px 0; border-top: 1px solid rgba(0,212,255,0.06); }
+          .iws-page .compare-table th { text-align: left; padding-bottom: 6px; font-weight: 600; color: #0f172a; }
+          .iws-page .compare-table td { padding: 6px 0; border-top: 1px solid #f1f5f9; color: #475569; }
 
           /* Value grid */
           .iws-page .value-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; font-size: 12px; }
           .iws-page .value-box { padding: 12px; border-radius: 8px; }
-          .iws-page .value-box.cyan { background: rgba(0,212,255,0.04); border: 1px solid rgba(0,212,255,0.1); }
-          .iws-page .value-box.dark { background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.04); }
-          .iws-page .value-box-title { font-weight: 600; margin-bottom: 8px; }
-          .iws-page .value-box.cyan .value-box-title { color: #00d4ff; }
-          .iws-page .value-box.dark .value-box-title { color: #64748b; }
+          .iws-page .value-box.cyan { background: rgba(71,85,105,0.04); border: 1px solid #e2e8f0; }
+          .iws-page .value-box.dark { background: rgba(71,85,105,0.04); border: 1px solid #e2e8f0; }
+          .iws-page .value-box-title { font-weight: 600; margin-bottom: 8px; color: #0f172a; }
+          .iws-page .value-box.cyan .value-box-title { color: #0f172a; }
+          .iws-page .value-box.dark .value-box-title { color: #475569; }
           .iws-page .value-box ul { list-style: none; padding: 0; }
-          .iws-page .value-box li { display: flex; gap: 6px; padding: 2px 0; color: #94a3b8; }
+          .iws-page .value-box li { display: flex; gap: 6px; padding: 2px 0; color: #475569; }
           .iws-page .value-box.dark li { color: #64748b; }
 
           /* Plan pill */
-          .iws-page .plan-pill { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 100px; background: rgba(0,119,255,0.1); border: 1px solid rgba(0,119,255,0.2); color: #60a5fa; margin-bottom: 8px; }
+          .iws-page .plan-pill { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 100px; background: rgba(71,85,105,0.08); border: 1px solid rgba(71,85,105,0.2); color: #475569; margin-bottom: 8px; }
 
           /* Final CTA */
-          .iws-page .final-cta { background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(0,119,255,0.04)); border: 1px solid rgba(0,212,255,0.14); border-radius: 18px; padding: 48px 32px; text-align: center; }
-          .iws-page .final-cta h2 { font-size: clamp(22px,3vw,30px) !important; font-weight: 800 !important; letter-spacing: -0.03em !important; color: #fff !important; margin-bottom: 10px !important; -webkit-text-fill-color: unset !important; background: none !important; }
+          .iws-page .final-cta { background: linear-gradient(135deg, rgba(71,85,105,0.05), rgba(71,85,105,0.03)); border: 1px solid #e2e8f0; border-radius: 18px; padding: 48px 32px; text-align: center; }
+          .iws-page .final-cta h2 { font-family: 'Inter','DM Sans',sans-serif; font-size: clamp(22px,3vw,30px) !important; font-weight: 800 !important; letter-spacing: -0.03em !important; color: #0f172a !important; margin-bottom: 10px !important; -webkit-text-fill-color: unset !important; background: none !important; }
           .iws-page .final-cta p { color: #64748b; font-size: 14px; margin-bottom: 24px; }
           .iws-page .btn-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-          .iws-page .btn-primary { display: inline-flex; align-items: center; padding: 14px 28px; border-radius: 12px; font-weight: 800; font-size: 14px; background: #00d4ff; color: #001f3f; text-decoration: none; position: relative; overflow: hidden; transition: all 0.2s; }
-          .iws-page .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,212,255,0.2); }
-          .iws-page .btn-ghost { display: inline-flex; align-items: center; padding: 14px 24px; border-radius: 12px; font-size: 13px; border: 1px solid rgba(0,212,255,0.2); color: #00d4ff; text-decoration: none; background: transparent; transition: all 0.2s; }
-          .iws-page .btn-ghost:hover { background: rgba(0,212,255,0.06); }
+          .iws-page .btn-primary { display: inline-flex; align-items: center; padding: 14px 28px; border-radius: 8px; font-weight: 700; font-size: 14px; background: #1e293b; color: #f8fafc; text-decoration: none; transition: all 0.2s; }
+          .iws-page .btn-primary:hover { background: #334155; transform: translateY(-1px); }
+          .iws-page .btn-ghost { display: inline-flex; align-items: center; padding: 14px 24px; border-radius: 8px; font-size: 13px; border: 1px solid rgba(71,85,105,0.3); color: #334155; text-decoration: none; background: transparent; transition: all 0.2s; }
+          .iws-page .btn-ghost:hover { border-color: #334155; background: rgba(71,85,105,0.05); }
 
           @media (max-width: 560px) {
             .iws-page .value-grid { grid-template-columns: 1fr; }

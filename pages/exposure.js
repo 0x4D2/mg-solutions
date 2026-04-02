@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Footer from "components/Footers/Footer.js";
@@ -56,9 +56,9 @@ const suitability = [
   {
     icon: <IconCheckCircle />,
     title: "Geeignet für",
-    iconColor: "#00d4ff",
-    bg: "rgba(0,212,255,0.04)",
-    border: "rgba(0,212,255,0.12)",
+    iconColor: "#334155",
+    bg: "rgba(71,85,105,0.04)",
+    border: "rgba(71,85,105,0.14)",
     items: [
       "Unternehmen mit eigener Infrastruktur",
       "IT-Verantwortliche die externe Sicht brauchen",
@@ -70,9 +70,9 @@ const suitability = [
   {
     icon: <IconAlertTriangle />,
     title: "Eingeschränkt geeignet",
-    iconColor: "#ffb74d",
-    bg: "rgba(255,183,77,0.04)",
-    border: "rgba(255,183,77,0.12)",
+    iconColor: "#92400e",
+    bg: "rgba(146,64,14,0.05)",
+    border: "rgba(146,64,14,0.15)",
     items: [
       "Sehr kleine Infrastruktur (1 Domain, keine Server)",
       "Keine öffentlich sichtbaren Dienste vorhanden",
@@ -82,9 +82,9 @@ const suitability = [
   {
     icon: <IconXCircle />,
     title: "Nicht geeignet",
-    iconColor: "#ff4d4d",
-    bg: "rgba(255,77,77,0.04)",
-    border: "rgba(255,77,77,0.12)",
+    iconColor: "#dc2626",
+    bg: "rgba(220,38,38,0.04)",
+    border: "rgba(220,38,38,0.14)",
     items: [
       "Wix / Shopify / WordPress.com (kein Infrastruktur-Zugriff)",
       "Als Ersatz für einen Penetrationstest",
@@ -111,7 +111,7 @@ export default function ExposurePage() {
               <span className="live-dot" />
               Passiv · OSINT · 24h Lieferung
             </div>
-            <h1>Der Exposure-Report</h1>
+            <h1 className="page-headline">Der Exposure-Report</h1>
             <p className="hero-sub">
               Ein strukturierter Blick auf das, was über Ihr Unternehmen öffentlich
               sichtbar ist — aus der Perspektive eines Angreifers, bevor er handelt.
@@ -148,8 +148,8 @@ export default function ExposurePage() {
                 <table className="compare-table">
                   <thead>
                     <tr>
-                      <th style={{ color: "#00d4ff" }}>Exposure-Report</th>
-                      <th style={{ color: "#475569", paddingLeft: 16 }}>Pentest</th>
+                      <th style={{ color: "#0f172a" }}>Exposure-Report</th>
+                      <th style={{ color: "#94a3b8", paddingLeft: 16 }}>Pentest</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -162,8 +162,8 @@ export default function ExposurePage() {
                       ["Business-Fokus", "Technischer Fokus"],
                     ].map(([l, r], i) => (
                       <tr key={i}>
-                        <td style={{ color: "#cbd5e1" }}>{l}</td>
-                        <td style={{ color: "#475569", paddingLeft: 16 }}>{r}</td>
+                        <td style={{ color: "#1e293b" }}>{l}</td>
+                        <td style={{ color: "#94a3b8", paddingLeft: 16 }}>{r}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -181,12 +181,48 @@ export default function ExposurePage() {
                 { name: "NVD", desc: "National Vulnerability Database — CVE-Scores und Schwachstellenbeschreibungen" },
                 { name: "CISA KEV", desc: "Known Exploited Vulnerabilities — aktiv in der Praxis ausgenutzte Schwachstellen" },
                 { name: "DNS / TLS", desc: "Subdomains, Zertifikate, Konfigurationen, ablaufende Zertifikate" },
+                { name: "crt.sh", desc: "Zertifikats-Historie — enthüllt vergessene Subdomains und historische Infrastruktur" },
+                { name: "HackerTarget", desc: "Passiver Subdomain-Lookup aus öffentlichen DNS-Datenbanken" },
               ].map(({ name, desc }) => (
                 <div key={name} className="source-card">
                   <p className="source-name">{name}</p>
                   <p className="source-desc">{desc}</p>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* ATTACK SURFACE DISCOVERY */}
+          <div className="section">
+            <div className="section-label">Attack Surface Discovery</div>
+            <h2 style={{ fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 800, color: "#0f172a", letterSpacing: "-0.02em", marginBottom: 16 }}>
+              Eine Domain. Viele Angriffsflächen.
+            </h2>
+            <p className="body-text" style={{ maxWidth: 640, marginBottom: 28 }}>
+              Wenn Sie eine Domain angeben, ermitteln wir automatisch alle öffentlich erreichbaren
+              IP-Adressen — passiv, ohne aktiven Scan. Das Ergebnis überrascht die meisten Kunden.
+            </p>
+
+            <div className="asd-grid">
+              {[
+                { source: "A-Record", label: "Hauptdomain & www", desc: "Direkte IP der Domain und www-Subdomain — das analysierte Asset." },
+                { source: "MX-Record", label: "Mailserver", desc: "Häufig direkt exponiert und selten in Sicherheitsanalysen berücksichtigt." },
+                { source: "NS-Record", label: "Nameserver", desc: "Zeigt Hosting-Anbieter und DNS-Infrastruktur — Fingerprint für Angreifer." },
+                { source: "HackerTarget API", label: "Subdomain-Lookup", desc: "Passiver Abruf aus öffentlichen DNS-Datenbanken — enthüllt shop., mail., awareness., firewall. u.v.m." },
+                { source: "crt.sh", label: "Zertifikats-Historie", desc: "Alle jemals ausgestellten TLS-Zertifikate der Domain — vergessene Subdomains werden sichtbar." },
+                { source: "CDN-Filter", label: "Cloudflare / Akamai", desc: "IPs hinter bekannten CDNs werden automatisch erkannt und herausgefiltert — der Origin-Server bleibt verborgen." },
+              ].map(({ source, label, desc }) => (
+                <div key={source} className="asd-card">
+                  <div className="asd-source">{source}</div>
+                  <div className="asd-label">{label}</div>
+                  <p className="asd-desc">{desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="asd-note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span>Bewertet via Shodan wird nur die primäre Analyse-IP. Alle weiteren IPs erscheinen in Abschnitt 3 des Reports als Übersicht — ohne eigenen Shodan-Report.</span>
             </div>
           </div>
 
@@ -213,13 +249,13 @@ export default function ExposurePage() {
               </div>
 
               <div>
-                <div className="section-label" style={{ color: "#64748b" }}>Beispiel-Report (anonymisiert)</div>
+                <div className="section-label">Beispiel-Report (anonymisiert)</div>
                 <div style={{ position: "relative" }}>
                   <div className="preview-badge-top">PASSIV · OSINT</div>
                   <img
                     src="/img/report-preview.png"
                     alt="Anonymisierter Beispiel-Report"
-                    style={{ width: "100%", borderRadius: "12px", border: "1px solid rgba(0,212,255,0.15)", display: "block" }}
+                    style={{ width: "100%", borderRadius: "12px", border: "1px solid #e2e8f0", display: "block" }}
                   />
                   <div className="preview-badge-bottom">Anonymisiertes Beispiel</div>
                 </div>
@@ -273,74 +309,82 @@ export default function ExposurePage() {
 
         <style jsx global>{`
           .iws-page {
-            background: #0a192f;
+            background: transparent;
             min-height: 100vh;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            color: #e2e8f0;
+            font-family: 'DM Sans', 'Inter', sans-serif;
+            color: #1e293b;
           }
           .iws-page .wrap {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 24px 80px;
           }
 
           /* Hero */
           .iws-page .hero { text-align: center; padding: 80px 0 56px; }
-          .iws-page .live-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); color: #00d4ff; margin-bottom: 28px; }
-          .iws-page .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #00d4ff; animation: pulse 2s infinite; display: inline-block; }
+          .iws-page .live-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(71,85,105,0.08); border: 1px solid rgba(71,85,105,0.22); color: #334155; margin-bottom: 28px; }
+          .iws-page .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #334155; animation: pulse 2s infinite; display: inline-block; }
           @keyframes pulse { 0%,100%{ opacity:1 } 50%{ opacity:0.4 } }
-          .iws-page .hero h1 { font-size: clamp(28px,5vw,48px) !important; font-weight: 800 !important; letter-spacing: -0.03em !important; color: #fff !important; margin-bottom: 20px !important; -webkit-text-fill-color: unset !important; background: none !important; line-height: 1.1 !important; }
-          .iws-page .hero-sub { font-size: 16px; color: #64748b; max-width: 540px; margin: 0 auto 36px; line-height: 1.7; }
+
+          .iws-page .hero-sub { font-size: 16px; color: #475569; max-width: 540px; margin: 0 auto 36px; line-height: 1.7; }
           .iws-page .hero-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
 
           /* Buttons */
-          .iws-page .btn-primary { display: inline-flex; align-items: center; padding: 14px 28px; border-radius: 12px; font-weight: 800; font-size: 14px; background: #00d4ff; color: #001f3f; text-decoration: none; position: relative; overflow: hidden; transition: all 0.2s; }
-          .iws-page .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,212,255,0.2); }
-          .iws-page .btn-shine::after { content: ""; position: absolute; top: 0; left: -120%; width: 120%; height: 100%; background: linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent); transition: left 0.7s ease; pointer-events: none; }
+          .iws-page .btn-primary { display: inline-flex; align-items: center; padding: 14px 28px; border-radius: 8px; font-weight: 700; font-size: 14px; background: #1e293b; color: #f8fafc; text-decoration: none; position: relative; overflow: hidden; transition: all 0.2s; }
+          .iws-page .btn-primary:hover { background: #334155; transform: translateY(-1px); }
+          .iws-page .btn-shine::after { content: ""; position: absolute; top: 0; left: -120%; width: 120%; height: 100%; background: linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent); transition: left 0.7s ease; pointer-events: none; }
           .iws-page .btn-shine:hover::after { left: 100%; }
-          .iws-page .btn-ghost { display: inline-flex; align-items: center; padding: 14px 24px; border-radius: 12px; font-size: 13px; font-weight: 600; border: 1px solid rgba(0,212,255,0.2); color: #00d4ff; text-decoration: none; background: transparent; transition: all 0.2s; }
-          .iws-page .btn-ghost:hover { background: rgba(0,212,255,0.06); }
+          .iws-page .btn-ghost { display: inline-flex; align-items: center; padding: 14px 24px; border-radius: 8px; font-size: 13px; font-weight: 600; border: 1px solid rgba(71,85,105,0.35); color: #334155; text-decoration: none; background: transparent; transition: all 0.2s; }
+          .iws-page .btn-ghost:hover { border-color: #334155; background: rgba(71,85,105,0.05); }
           .iws-page .btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
 
           /* Sections */
           .iws-page .section { margin-bottom: 64px; }
-          .iws-page .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #475569; margin-bottom: 16px; }
+          .iws-page .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #94a3b8; margin-bottom: 16px; }
           .iws-page .split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-          .iws-page .split h2 { font-size: clamp(20px,2.5vw,28px) !important; font-weight: 800 !important; color: #e2e8f0 !important; letter-spacing: -0.02em !important; line-height: 1.2 !important; margin-bottom: 20px !important; -webkit-text-fill-color: unset !important; background: none !important; }
-          .iws-page .body-text { font-size: 13px; color: #94a3b8; line-height: 1.7; margin-bottom: 14px; }
+          .iws-page .split h2 { font-family: 'Inter','DM Sans',sans-serif; font-size: clamp(20px,2.5vw,28px) !important; font-weight: 800 !important; color: #0f172a !important; letter-spacing: -0.02em !important; line-height: 1.2 !important; margin-bottom: 20px !important; -webkit-text-fill-color: unset !important; background: none !important; }
+          .iws-page .body-text { font-size: 13px; color: #475569; line-height: 1.7; margin-bottom: 14px; }
 
           /* Compare table */
-          .iws-page .compare-card { background: rgba(15,23,42,0.8); border: 1px solid rgba(0,212,255,0.12); border-radius: 16px; padding: 24px; }
+          .iws-page .compare-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
           .iws-page .compare-table { width: 100%; font-size: 12px; border-collapse: collapse; }
           .iws-page .compare-table th { text-align: left; padding-bottom: 10px; font-weight: 700; }
-          .iws-page .compare-table td { padding: 8px 0; border-top: 1px solid rgba(0,212,255,0.06); }
+          .iws-page .compare-table td { padding: 8px 0; border-top: 1px solid #f1f5f9; }
 
           /* Sources */
+          /* Attack Surface Discovery */
+          .iws-page .asd-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 16px; }
+          .iws-page .asd-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+          .iws-page .asd-source { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #334155; margin-bottom: 6px; }
+          .iws-page .asd-label { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+          .iws-page .asd-desc { font-size: 11px; color: #64748b; line-height: 1.55; margin: 0; }
+          .iws-page .asd-note { display: flex; align-items: flex-start; gap: 8px; padding: 12px 16px; background: rgba(71,85,105,0.04); border: 1px solid #e2e8f0; border-radius: 10px; font-size: 12px; color: #64748b; line-height: 1.55; }
+
           .iws-page .sources-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
-          .iws-page .source-card { background: rgba(20,30,48,0.75); border: 1px solid rgba(0,212,255,0.1); border-radius: 12px; padding: 20px; }
-          .iws-page .source-name { font-size: 13px; font-weight: 700; color: #00d4ff; margin-bottom: 8px; }
+          .iws-page .source-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+          .iws-page .source-name { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
           .iws-page .source-desc { font-size: 11px; color: #64748b; line-height: 1.55; }
 
           /* Report sections */
           .iws-page .report-sections { display: flex; flex-direction: column; }
-          .iws-page .report-row { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid rgba(0,212,255,0.06); }
-          .iws-page .report-num { flex-shrink: 0; font-size: 11px; font-weight: 800; width: 24px; height: 24px; border-radius: 6px; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.15); color: #00d4ff; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
-          .iws-page .report-title { font-size: 13px; font-weight: 600; color: #e2e8f0; margin-bottom: 3px; }
+          .iws-page .report-row { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid #f1f5f9; }
+          .iws-page .report-num { flex-shrink: 0; font-size: 11px; font-weight: 800; width: 24px; height: 24px; border-radius: 6px; background: rgba(71,85,105,0.08); border: 1px solid rgba(71,85,105,0.18); color: #334155; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+          .iws-page .report-title { font-size: 13px; font-weight: 600; color: #0f172a; margin-bottom: 3px; }
           .iws-page .report-desc { font-size: 11px; color: #64748b; line-height: 1.55; }
 
           /* Check list */
           .iws-page .check-list { list-style: none; padding: 0; margin-top: 16px; }
-          .iws-page .check-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(0,212,255,0.06); font-size: 13px; color: #cbd5e1; line-height: 1.6; }
-          .iws-page .check-icon { color: #00d4ff; flex-shrink: 0; margin-top: 1px; }
+          .iws-page .check-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-size: 13px; color: #475569; line-height: 1.6; }
+          .iws-page .check-icon { color: #334155; flex-shrink: 0; margin-top: 1px; }
 
           /* Report preview */
           .iws-page .report-preview { background: rgba(15,23,42,0.8); border: 1px solid rgba(0,212,255,0.15); border-radius: 16px; min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; position: relative; }
           .iws-page .preview-label { font-size: 13px; font-weight: 600; color: #475569; margin: 18px 0 6px; }
           .iws-page .preview-sub { font-size: 11px; color: #334155; margin-bottom: 4px; }
           .iws-page .preview-code { font-size: 11px; color: #334155; font-family: monospace; }
-          .iws-page .preview-badge-top { position: absolute; top: 14px; left: 14px; padding: 4px 10px; border-radius: 100px; font-size: 10px; font-weight: 700; background: rgba(0,212,255,0.1); color: #00d4ff; border: 1px solid rgba(0,212,255,0.2); }
-          .iws-page .preview-badge-bottom { position: absolute; bottom: 14px; right: 14px; padding: 4px 10px; border-radius: 100px; font-size: 10px; background: rgba(15,23,42,0.9); color: #475569; border: 1px solid rgba(100,116,139,0.15); }
-          .iws-page .preview-note { font-size: 11px; color: #334155; text-align: center; margin-top: 10px; }
+          .iws-page .preview-badge-top { position: absolute; top: 14px; left: 14px; padding: 4px 10px; border-radius: 100px; font-size: 10px; font-weight: 700; background: rgba(71,85,105,0.08); color: #334155; border: 1px solid rgba(71,85,105,0.18); }
+          .iws-page .preview-badge-bottom { position: absolute; bottom: 14px; right: 14px; padding: 4px 10px; border-radius: 100px; font-size: 10px; background: rgba(248,250,252,0.95); color: #64748b; border: 1px solid #e2e8f0; }
+          .iws-page .preview-note { font-size: 11px; color: #94a3b8; text-align: center; margin-top: 10px; }
 
           /* Suitability */
           .iws-page .suitability-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
@@ -348,20 +392,23 @@ export default function ExposurePage() {
           .iws-page .suit-icon { margin-bottom: 12px; }
           .iws-page .suit-title { font-size: 13px; font-weight: 700; margin-bottom: 14px; }
           .iws-page .suit-items { list-style: none; padding: 0; }
-          .iws-page .suit-items li { font-size: 11px; color: #64748b; line-height: 1.55; padding: 3px 0; }
+          .iws-page .suit-items li { font-size: 11px; color: #475569; line-height: 1.55; padding: 3px 0; }
+          .iws-page .suit-title { font-family: 'Inter','DM Sans',sans-serif; }
 
           /* Final CTA */
-          .iws-page .final-cta { background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(0,119,255,0.04)); border: 1px solid rgba(0,212,255,0.14); border-radius: 18px; padding: 56px 32px; text-align: center; }
-          .iws-page .final-cta h2 { font-size: clamp(22px,3vw,32px) !important; font-weight: 800 !important; letter-spacing: -0.03em !important; color: #fff !important; margin-bottom: 10px !important; -webkit-text-fill-color: unset !important; background: none !important; }
+          .iws-page .final-cta { background: linear-gradient(135deg, rgba(71,85,105,0.05), rgba(71,85,105,0.03)); border: 1px solid #e2e8f0; border-radius: 18px; padding: 56px 32px; text-align: center; }
+          .iws-page .final-cta h2 { font-family: 'Inter','DM Sans',sans-serif; font-size: clamp(22px,3vw,32px) !important; font-weight: 800 !important; letter-spacing: -0.03em !important; color: #0f172a !important; margin-bottom: 10px !important; -webkit-text-fill-color: unset !important; background: none !important; }
           .iws-page .final-cta p { color: #64748b; font-size: 15px; margin-bottom: 28px; }
 
           @media (max-width: 768px) {
             .iws-page .split { grid-template-columns: 1fr; }
             .iws-page .sources-grid { grid-template-columns: 1fr 1fr; }
             .iws-page .suitability-grid { grid-template-columns: 1fr; }
+            .iws-page .asd-grid { grid-template-columns: 1fr 1fr; }
           }
           @media (max-width: 480px) {
             .iws-page .sources-grid { grid-template-columns: 1fr; }
+            .iws-page .asd-grid { grid-template-columns: 1fr; }
           }
         `}</style>
       </div>

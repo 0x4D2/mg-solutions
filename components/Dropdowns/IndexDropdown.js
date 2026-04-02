@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import Link from "next/link";
 
 const ALL_NAV_LINKS = [
@@ -77,14 +77,14 @@ export const NavLinksMobile = ({ isOpen, navLinkClassName = "" }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="lg:hidden flex flex-col space-y-3 mt-4 pl-4 bg-blue-900">
+    <div className="lg:hidden flex flex-col space-y-3 mt-4 pl-4" style={{ background: "rgba(255,255,255,0.97)", borderTop: "1px solid rgba(71,85,105,0.15)" }}>
       {DESKTOP_NAV_LINKS.map((link) => (
         <Link
           key={link.path}
           href={link.path}
           className={
             navLinkClassName +
-            " py-3 text-lg font-medium border-b border-blue-700"
+            " py-3 text-lg font-medium border-b border-[#1e293b]"
           }
         >
           {link.name}
@@ -94,7 +94,8 @@ export const NavLinksMobile = ({ isOpen, navLinkClassName = "" }) => {
       {/* Kontakt-CTA sichtbar in Mobile */}
       <Link
         href="/contact"
-        className="mt-2 inline-flex items-center justify-center font-semibold px-4 py-2 rounded-2xl bg-cyan-400 text-[#001f3f]"
+        className="mt-2 inline-flex items-center justify-center font-semibold px-4 py-2 rounded-2xl"
+        style={{ backgroundColor: "#334155", color: "#f8fafc" }}
       >
         Kostenlose Ersteinschätzung
       </Link>
@@ -105,3 +106,5 @@ export const NavLinksMobile = ({ isOpen, navLinkClassName = "" }) => {
 const IndexDropdown = (props) => <NavLinksDesktop {...props} />;
 
 export default IndexDropdown;
+
+

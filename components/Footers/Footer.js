@@ -133,16 +133,16 @@ export default function Footer() {
 
       <style jsx global>{`
         .iws-footer {
-          background: #060f1e;
-          border-top: 1px solid rgba(0,212,255,0.1);
-          font-family: 'Segoe UI', system-ui, sans-serif;
+          background: #f0f4f8;
+          border-top: 1px solid rgba(71,85,105,0.12);
+          font-family: 'DM Sans', sans-serif;
         }
         .iws-footer-accent {
           height: 2px;
-          background: linear-gradient(90deg, #000d1a, #00d4ff, #0077ff, #000d1a);
+          background: linear-gradient(90deg, #f0f4f8, #334155, #475569, #f0f4f8);
         }
         .iws-footer-inner {
-          max-width: 960px;
+          max-width: 1100px;
           margin: 0 auto;
           padding: 52px 24px 40px;
           display: grid;
@@ -152,14 +152,14 @@ export default function Footer() {
         .iws-footer-logo {
           font-size: 16px;
           font-weight: 800;
-          color: #fff;
+          color: #0f172a;
           margin-bottom: 12px;
           letter-spacing: -0.02em;
         }
-        .iws-footer-logo span { color: #00d4ff; }
+        .iws-footer-logo span { color: #334155; }
         .iws-footer-tagline {
           font-size: 12px;
-          color: #475569;
+          color: #94a3b8;
           line-height: 1.65;
           margin-bottom: 20px;
         }
@@ -169,19 +169,19 @@ export default function Footer() {
           align-items: center;
         }
         .iws-footer-social-link {
-          color: #334155;
+          color: #94a3b8;
           transition: color 0.2s;
           display: flex;
           align-items: center;
         }
-        .iws-footer-social-link:hover { color: #00d4ff; }
+        .iws-footer-social-link:hover { color: #334155; }
         .iws-footer-col-title {
           display: block;
           font-size: 11px;
           font-weight: 700;
           letter-spacing: 0.1em;
           text-transform: uppercase;
-          color: #475569;
+          color: #64748b;
           margin-bottom: 16px;
         }
         .iws-footer-list {
@@ -196,19 +196,19 @@ export default function Footer() {
           text-decoration: none;
           transition: color 0.2s;
         }
-        .iws-footer-link:hover { color: #e2e8f0; }
+        .iws-footer-link:hover { color: #334155; }
         .iws-footer-bottom {
-          max-width: 960px;
+          max-width: 1100px;
           margin: 0 auto;
           padding: 18px 24px;
-          border-top: 1px solid rgba(255,255,255,0.04);
+          border-top: 1px solid rgba(71,85,105,0.06);
           display: flex;
           justify-content: space-between;
           align-items: center;
           flex-wrap: wrap;
           gap: 8px;
           font-size: 11px;
-          color: #334155;
+          color: #94a3b8;
         }
         @media (max-width: 680px) {
           .iws-footer-inner {
@@ -228,3 +228,5 @@ export default function Footer() {
     </>
   );
 }
+
+

@@ -1,6 +1,38 @@
-﻿import React from "react";
+﻿import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Footer from "components/Footers/Footer.js";
+import SichtVergleich from "components/SichtVergleich";
+
+const SLIDES = [
+  { src: "/img/report-preview.jpg",   label: "Handlungsempfehlungen" },
+  { src: "/img/report-preview-2.jpg", label: "Technischer Anhang" },
+  { src: "/img/report-preview-3.jpg", label: "CVE-Übersicht" },
+];
+
+function ReportSlideshow() {
+  const [active, setActive] = useState(0);
+  const prev = () => setActive(i => (i - 1 + SLIDES.length) % SLIDES.length);
+  const next = () => setActive(i => (i + 1) % SLIDES.length);
+  return (
+    <div className="slideshow">
+      {SLIDES.map((s, i) => (
+        <img
+          key={i}
+          src={s.src}
+          alt={s.label}
+          className={`slide-img${i === active ? " slide-active" : ""}`}
+        />
+      ))}
+      <button className="slide-arrow slide-prev" onClick={prev} aria-label="Vorheriges Bild">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+      </button>
+      <button className="slide-arrow slide-next" onClick={next} aria-label="Nächstes Bild">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+      </button>
+      <div className="slide-label">{SLIDES[active].label} · {active + 1}/{SLIDES.length}</div>
+    </div>
+  );
+}
 
 export default function Index() {
   return (
@@ -10,27 +42,42 @@ export default function Index() {
 
         {/* HERO */}
         <div className="hero">
-          <div className="badge"><span className="dot"></span> OSINT · Passiv · 24h Lieferung</div>
-          <h1>
-            Ihr Unternehmen hat wahrscheinlich<br />
-            mehr öffentliche Angriffsfläche,<br />
-            <span className="grad">als Sie glauben.</span>
-          </h1>
-          <p className="hero-sub">Wir analysieren, welche Systeme, Daten und Informationen über Ihr Unternehmen öffentlich erreichbar sind — und was davon ein Angreifer sofort nutzen könnte.</p>
-          <p className="micro muted">Keine Installation · Kein Zugriff auf interne Systeme · Nur öffentliche Datenquellen</p>
-          <div className="cta-row">
-            <Link href="/contact" legacyBehavior><a className="btn-primary">Kostenlos Risiko prüfen lassen</a></Link>
-            <Link href="/pricing" legacyBehavior><a className="btn-ghost">490 € Einmal-Report ansehen →</a></Link>
+          <div className="hero-box">
+            <div className="hero-split">
+              <div className="hero-text">
+                <div className="badge"><span className="dot"></span> Keine Scans · Keine Installation · Report in 24h</div>
+                <h1 className="page-headline">
+                  Die Angriffsfläche<br />
+                  <span style={{ whiteSpace: "nowrap" }}>Ihres Unternehmens</span><br />
+                  <span className="grad"> wirklich verstehen.</span>
+                </h1>
+                <p className="hero-sub">Wir analysieren, welche Systeme, Daten und Informationen über Ihr Unternehmen öffentlich erreichbar sind und was davon ein Angreifer sofort nutzen könnte.</p>
+                <div className="cta-row">
+                  <Link href="/contact" legacyBehavior><a className="btn-primary">Kostenlos Risiko prüfen lassen</a></Link>
+                </div>
+              </div>
+              <div className="hero-report">
+                <div className="paper-frame">
+                  <div className="paper-bar">
+                    <span className="paper-dots"><i /><i /><i /></span>
+                    <span className="paper-title">Exposure Report (Beispiel)</span>
+                    <span className="paper-anon">Anonymisiert</span>
+                  </div>
+                  <ReportSlideshow />
+                </div>
+                <p className="hero-report-note">9 Abschnitte · Executive Summary · CVE-Übersicht</p>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* TRUST BAR */}
         <div className="trust">
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>100% passiv — keine Scans</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Report in 24 Stunden</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Manuell geprüft — keine Blackbox</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>Kein Abo, keine Verpflichtung</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Shodan · NVD · CISA KEV</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Manuell geprüft, kein Automatismus</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>SHA256-gesichert &amp; revisionssicher</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Manuell geprüft — keine Blackbox</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>Kein Abo, keine Verpflichtung</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Shodan · NVD · CISA KEV</span>
         </div>
 
         {/* PAIN */}
@@ -40,25 +87,27 @@ export default function Index() {
           <p className="section-sub">Diese Informationen sind nicht versteckt. Sie sind nur selten aktiv überprüft.</p>
           <div className="grid3">
             <div className="card">
-              <span className="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></span>
+              <span className="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></span>
               <h3>Öffentlich erreichbare Systeme</h3>
               <p>Alte Subdomains, Staging-Umgebungen, offene Ports — sichtbar für jeden der sucht.</p>
               <span className="tag">Häufig übersehen</span>
             </div>
             <div className="card">
-              <span className="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+              <span className="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
               <h3>Daten aus Leaks &amp; Breaches</h3>
               <p>Firmen-E-Mails und Credentials aus Datenpannen werden aktiv für Angriffe genutzt.</p>
               <span className="tag">Unterschätztes Risiko</span>
             </div>
             <div className="card">
-              <span className="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+              <span className="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
               <h3>Rückschlüsse auf interne Struktur</h3>
               <p>Technologie-Stack, Versionsstände, Dienste — alles öffentlich, alles verwertbar.</p>
               <span className="tag">Angreifer-Perspektive</span>
             </div>
           </div>
         </div>
+
+        <SichtVergleich />
 
         {/* VALUE BRIDGE */}
         <div className="section">
@@ -86,7 +135,7 @@ export default function Index() {
                 ].map(({ title, desc }) => (
                   <li key={title}>
                     <div className="fi-icon">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="2"><path d="M5 13l4 4L19 7" /></svg>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2"><path d="M5 13l4 4L19 7" /></svg>
                     </div>
                     <div><div className="fi-title">{title}</div><div className="fi-desc">{desc}</div></div>
                   </li>
@@ -115,8 +164,8 @@ export default function Index() {
           <h2 style={{ marginBottom: "32px" }}>Ein Dokument. Zwei Zielgruppen.</h2>
           <div className="grid2">
             <div className="card">
-              <div className="zt-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-              <h3 style={{ fontSize: "16px", fontWeight: 700, color: "#e2e8f0", marginBottom: "10px" }}>IT-Verantwortliche</h3>
+              <div className="zt-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+              <h3 style={{ fontSize: "16px", fontWeight: 700, color: "#0f172a", marginBottom: "10px" }}>IT-Verantwortliche</h3>
               <p style={{ fontSize: "13px", color: "#64748b", marginBottom: "16px", lineHeight: 1.6 }}>Endlich ein externes Bild Ihrer Infrastruktur — ohne aktiven Scan, ohne rechtliche Grauzone.</p>
               <ul className="checklist">
                 <li><svg className="chk" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" /></svg> Externe Angriffsfläche dokumentieren</li>
@@ -125,8 +174,8 @@ export default function Index() {
               </ul>
             </div>
             <div className="card">
-              <div className="zt-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="4" height="14" rx="1"/><rect x="9" y="3" width="4" height="18" rx="1"/><rect x="16" y="10" width="4" height="11" rx="1"/></svg></div>
-              <h3 style={{ fontSize: "16px", fontWeight: 700, color: "#e2e8f0", marginBottom: "10px" }}>Geschäftsführung</h3>
+              <div className="zt-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="4" height="14" rx="1"/><rect x="9" y="3" width="4" height="18" rx="1"/><rect x="16" y="10" width="4" height="11" rx="1"/></svg></div>
+              <h3 style={{ fontSize: "16px", fontWeight: 700, color: "#0f172a", marginBottom: "10px" }}>Geschäftsführung</h3>
               <p style={{ fontSize: "13px", color: "#64748b", marginBottom: "16px", lineHeight: 1.6 }}>Sicherheitsinvestitionen brauchen ein Fundament. Dieser Report liefert es — verständlich, ohne IT-Vorkenntnisse.</p>
               <ul className="checklist">
                 <li><svg className="chk" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" /></svg> Sicherheits-ROI sichtbar und kommunizierbar machen</li>
@@ -172,7 +221,7 @@ export default function Index() {
             </ul>
             <Link href="/contact" legacyBehavior><a className="btn-primary" style={{ display: "flex", justifyContent: "center", fontSize: "15px", padding: "16px" }}>Jetzt Analyse starten →</a></Link>
             <p style={{ fontSize: "12px", textAlign: "center", marginTop: "14px", color: "#334155" }}>
-              Kein Abo · <Link href="/pricing" legacyBehavior><a style={{ color: "#00d4ff" }}>Alle Preise ansehen</a></Link>
+              Kein Abo · <Link href="/pricing" legacyBehavior><a>Alle Preise ansehen</a></Link>
             </p>
           </div>
         </div>
@@ -194,7 +243,7 @@ export default function Index() {
               </div>
             ))}
           </div>
-          <Link href="/faq" legacyBehavior><a style={{ color: "#00d4ff", fontSize: "13px", display: "inline-block", marginTop: "20px" }}>Alle FAQs ansehen →</a></Link>
+          <Link href="/faq" legacyBehavior><a style={{ color: "#334155", fontSize: "13px", display: "inline-block", marginTop: "20px" }}>Alle FAQs ansehen →</a></Link>
         </div>
 
         {/* PARTNER */}
@@ -221,94 +270,125 @@ export default function Index() {
 
       <style jsx global>{`
         .iws-page {
-          background: #0a192f;
+          background: transparent;
           min-height: 100vh;
-          font-family: 'Segoe UI', system-ui, sans-serif;
-          color: #e2e8f0;
+          font-family: 'DM Sans', sans-serif;
+          color: #1e293b;
         }
         .iws-page .wrap {
-          max-width: 900px;
+          max-width: 1100px;
           margin: 0 auto;
           padding: 64px 24px 0;
         }
-        .iws-page .hero { text-align: center; padding: 64px 0 48px; }
-        .iws-page .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); color: #00d4ff; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; margin-bottom: 28px; }
-        .iws-page .dot { width: 6px; height: 6px; border-radius: 50%; background: #00d4ff; display: inline-block; animation: iwsDot 2s infinite; }
+        .iws-page .hero { padding: 48px 0 40px; }
+        .iws-page .hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+        .iws-page .hero-text { text-align: left; }
+        .iws-page .hero-report { }
+        .iws-page .paper-frame { background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 8px 32px rgba(0,0,0,0.1), 0 1px 4px rgba(0,0,0,0.05); overflow: hidden; transform: rotate(0.8deg); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .iws-page .paper-frame:hover { transform: rotate(0deg); box-shadow: 0 12px 40px rgba(0,0,0,0.13); }
+        .iws-page .paper-bar { background: #f8fafc; border-bottom: 1px solid #e2e8f0; padding: 9px 14px; display: flex; align-items: center; gap: 8px; }
+        .iws-page .paper-dots { display: flex; gap: 5px; flex-shrink: 0; }
+        .iws-page .paper-dots i { width: 8px; height: 8px; border-radius: 50%; background: #e2e8f0; display: block; }
+        .iws-page .paper-title { font-size: 11px; color: #94a3b8; font-weight: 500; flex: 1; }
+        .iws-page .paper-anon { font-size: 10px; font-weight: 700; color: #64748b; background: rgba(71,85,105,0.08); border: 1px solid rgba(71,85,105,0.15); padding: 2px 8px; border-radius: 100px; white-space: nowrap; }
+        .iws-page .hero-report-note { font-size: 11px; color: #94a3b8; text-align: center; margin-top: 10px; }
+        .iws-page .slideshow { position: relative; overflow: hidden; border-radius: 0 0 12px 12px; }
+        .iws-page .slide-img { width: 100%; display: block; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.7s ease; }
+        .iws-page .slide-img:first-child { position: relative; }
+        .iws-page .slide-img.slide-active { opacity: 1; position: relative; }
+        .iws-page .slide-img:not(.slide-active) { position: absolute; }
+        .iws-page .slide-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.85); border: 1px solid #e2e8f0; color: #475569; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 3; transition: background 0.15s, color 0.15s; padding: 0; }
+        .iws-page .slide-arrow:hover { background: #ffffff; color: #1e293b; }
+        .iws-page .slide-prev { left: 8px; }
+        .iws-page .slide-next { right: 8px; }
+        .iws-page .slide-label { position: absolute; bottom: 10px; right: 12px; font-size: 10px; color: #94a3b8; background: rgba(248,250,252,0.9); padding: 2px 8px; border-radius: 100px; border: 1px solid #e2e8f0; }
+        .iws-page .hero-box { position: relative; overflow: hidden; border: 1px solid rgba(71,85,105,0.25); border-radius: 32px; padding: 48px 32px; background: rgba(255,255,255,0.85); box-shadow: 0 2px 20px rgba(0,0,0,0.06); transition: box-shadow 0.3s ease; animation: borderBreath 7s ease-in-out 1.5s backwards infinite; }
+        .iws-page .hero-box:hover { box-shadow: 0 4px 32px rgba(71,85,105,0.12); }
+        .iws-page .hero-box::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: linear-gradient(to bottom, transparent 0%, rgba(71,85,105,0.9) 20%, rgba(71,85,105,0.9) 80%, transparent 100%); box-shadow: 0 0 10px 4px rgba(71,85,105,0.15); transform: translateX(-10px); animation: scanLine 1.2s ease-in-out 0.3s forwards; pointer-events: none; }
+        @keyframes scanLine { 0% { transform: translateX(-10px); opacity: 1; } 85% { opacity: 1; } 100% { transform: translateX(1200px); opacity: 0; } }
+        @keyframes borderBreath { 0%,100% { border-color: rgba(71,85,105,0.15); } 50% { border-color: rgba(71,85,105,0.4); } }
+        .iws-page .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(71,85,105,0.08); border: 1px solid rgba(71,85,105,0.22); color: #334155; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; margin-bottom: 28px; }
+        .iws-page .dot { width: 6px; height: 6px; border-radius: 50%; background: #334155; display: inline-block; animation: iwsDot 2s infinite; }
         @keyframes iwsDot { 0%,100%{opacity:1} 50%{opacity:0.3} }
-        .iws-page h1 { font-size: clamp(26px,4vw,42px) !important; font-weight: 800 !important; line-height: 1.1 !important; letter-spacing: -0.03em !important; color: #fff !important; margin-bottom: 20px !important; -webkit-text-fill-color: unset !important; background: none !important; }
-        .iws-page h1 .grad { background: linear-gradient(90deg,#00d4ff,#4fa3ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .iws-page .hero-sub { font-size: 17px; color: #cbd5e1; max-width: 580px; margin: 0 auto 12px; line-height: 1.65; }
+        .page-headline .grad { font-weight: 800; }
+        .iws-page .hero-sub { font-size: 17px; color: #475569; max-width: 580px; margin: 0 0 12px; line-height: 1.65; text-align: justify; overflow-wrap: break-word; word-break: break-word; hyphens: none; }
         .iws-page .micro { font-size: 13px; margin-bottom: 36px; }
         .iws-page .muted { color: #64748b; }
-        .iws-page .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-        .iws-page .btn-primary { background: #00d4ff; color: #001f3f; padding: 14px 28px; border-radius: 14px; font-weight: 800; font-size: 15px; text-decoration: none; transition: all 0.2s; display: inline-block; }
-        .iws-page .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
-        .iws-page .btn-ghost { border: 1px solid rgba(0,212,255,0.3); color: #00d4ff; padding: 14px 28px; border-radius: 14px; font-size: 15px; text-decoration: none; display: inline-block; }
-        .iws-page .trust { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px; padding: 14px 20px; margin: 32px 0 56px; border-radius: 14px; background: rgba(0,212,255,0.04); border: 1px solid rgba(0,212,255,0.08); font-size: 13px; color: #94a3b8; }
+        .iws-page .cta-row { display: flex; gap: 14px; justify-content: flex-start; flex-wrap: wrap; }
+        .iws-page .btn-primary { background: #1e293b; color: #f8fafc; padding: 14px 28px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; transition: all 0.2s; display: inline-block; font-family: 'DM Sans', sans-serif; }
+        .iws-page .btn-primary:hover { background: #334155; transform: translateY(-1px); }
+        .iws-page .btn-ghost { border: 1px solid rgba(71,85,105,0.4); color: #334155; padding: 14px 28px; border-radius: 8px; font-size: 15px; text-decoration: none; display: inline-block; }
+        .iws-page .trust { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px; padding: 16px 24px; margin: 32px 0 56px; border-radius: 12px; background: #ffffff; border: 1px solid #cbd5e1; box-shadow: 0 1px 4px rgba(0,0,0,0.06); font-size: 13px; color: #1e293b; font-weight: 500; }
         .iws-page .trust span { display: inline-flex; align-items: center; gap: 7px; }
         .iws-page .section { margin-bottom: 64px; }
-        .iws-page .slabel { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #00d4ff; margin-bottom: 14px; }
-        .iws-page h2 { font-size: clamp(22px,3vw,34px) !important; font-weight: 800 !important; letter-spacing: -0.02em !important; color: #e2e8f0 !important; line-height: 1.15 !important; margin-bottom: 10px !important; -webkit-text-fill-color: unset !important; background: none !important; }
+        .iws-page .slabel { font-family: 'Inter', 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #334155; margin-bottom: 14px; }
+        .iws-page h2 { font-family: 'Inter', 'DM Sans', sans-serif; font-size: clamp(22px,3vw,34px) !important; font-weight: 700 !important; letter-spacing: -0.02em !important; color: #0f172a !important; line-height: 1.15 !important; margin-bottom: 10px !important; -webkit-text-fill-color: unset !important; background: none !important; }
         .iws-page .section-sub { font-size: 14px; color: #64748b; margin-bottom: 36px; }
         .iws-page .grid3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
-        .iws-page .card { background: rgba(30,41,59,0.75); border: 1px solid rgba(0,212,255,0.12); border-radius: 16px; padding: 24px; }
+        .iws-page .card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px; box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
         .iws-page .card-icon { font-size: 24px; margin-bottom: 16px; display: block; }
-        .iws-page .card h3 { font-size: 15px !important; font-weight: 700 !important; color: #e2e8f0 !important; margin-bottom: 10px !important; -webkit-text-fill-color: unset !important; background: none !important; }
-        .iws-page .card p { font-size: 13px; color: #94a3b8; line-height: 1.6; margin-bottom: 14px; }
-        .iws-page .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.22); color: #ff6b35; }
-        .iws-page .bridge { background: rgba(0,212,255,0.04); border: 1px solid rgba(0,212,255,0.12); border-radius: 16px; padding: 28px; text-align: center; }
-        .iws-page .bridge p { font-size: 16px; color: #cbd5e1; line-height: 1.65; }
+        .iws-page .card h3 { font-family: 'Inter', 'DM Sans', sans-serif; font-size: 15px !important; font-weight: 700 !important; color: #0f172a !important; margin-bottom: 10px !important; -webkit-text-fill-color: unset !important; background: none !important; }
+        .iws-page .card p { font-size: 13px; color: #64748b; line-height: 1.6; margin-bottom: 14px; }
+        .iws-page .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; background: rgba(180,83,9,0.08); border: 1px solid rgba(180,83,9,0.22); color: #b45309; }
+        .iws-page .bridge { background: rgba(71,85,105,0.04); border: 1px solid #e2e8f0; border-radius: 14px; padding: 28px; text-align: center; }
+        .iws-page .bridge p { font-size: 16px; color: #334155; line-height: 1.65; }
         .iws-page .bridge .bridge-sub { color: #64748b; font-size: 14px; display: block; margin-top: 6px; }
         .iws-page .split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
         .iws-page .feature-list { list-style: none; margin-top: 8px; padding: 0; }
-        .iws-page .feature-list li { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(0,212,255,0.06); }
+        .iws-page .feature-list li { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid #e2e8f0; }
         .iws-page .feature-list li:last-child { border-bottom: none; }
-        .iws-page .fi-icon { width: 30px; height: 30px; border-radius: 8px; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.16); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
-        .iws-page .fi-title { font-size: 13px; font-weight: 700; color: #e2e8f0; margin-bottom: 3px; }
+        .iws-page .fi-icon { width: 30px; height: 30px; border-radius: 8px; background: rgba(71,85,105,0.07); border: 1px solid rgba(71,85,105,0.16); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+        .iws-page .fi-title { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 3px; }
         .iws-page .fi-desc { font-size: 12px; color: #64748b; line-height: 1.5; }
-        .iws-page .placeholder { background: rgba(15,23,42,0.8); border: 1px solid rgba(0,212,255,0.15); border-radius: 16px; min-height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; padding: 24px; }
-        .iws-page .placeholder svg { width: 40px; height: 40px; stroke: #334155; stroke-width: 1.5; fill: none; margin-bottom: 12px; }
-        .iws-page .ph-label { font-size: 12px; color: #334155; }
-        .iws-page .ph-badge { position: absolute; top: 12px; left: 12px; background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.2); color: #00d4ff; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 100px; }
-        .iws-page .ph-badge2 { position: absolute; bottom: 12px; right: 12px; background: rgba(15,23,42,0.9); border: 1px solid rgba(100,116,139,0.2); color: #64748b; font-size: 10px; padding: 3px 10px; border-radius: 100px; }
+        .iws-page .placeholder { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; min-height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; padding: 24px; }
+        .iws-page .placeholder svg { width: 40px; height: 40px; stroke: #cbd5e1; stroke-width: 1.5; fill: none; margin-bottom: 12px; }
+        .iws-page .ph-label { font-size: 12px; color: #94a3b8; }
+        .iws-page .ph-badge { position: absolute; top: 12px; left: 12px; background: rgba(71,85,105,0.08); border: 1px solid rgba(71,85,105,0.18); color: #334155; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 100px; }
+        .iws-page .ph-badge2 { position: absolute; bottom: 12px; right: 12px; background: rgba(248,250,252,0.95); border: 1px solid #e2e8f0; color: #64748b; font-size: 10px; padding: 3px 10px; border-radius: 100px; }
         .iws-page .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-        .iws-page .zt-icon { width: 38px; height: 38px; border-radius: 10px; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 18px; }
+        .iws-page .zt-icon { width: 38px; height: 38px; border-radius: 10px; background: rgba(71,85,105,0.07); border: 1px solid rgba(71,85,105,0.15); display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 18px; }
         .iws-page .checklist { list-style: none; margin-top: 0; padding: 0; }
-        .iws-page .checklist li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #cbd5e1; padding: 7px 0; border-bottom: 1px solid rgba(0,212,255,0.06); }
+        .iws-page .checklist li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #475569; padding: 7px 0; border-bottom: 1px solid #e2e8f0; }
         .iws-page .checklist li:last-child { border-bottom: none; }
-        .iws-page .chk { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; stroke: #00d4ff; fill: none; stroke-width: 2; }
+        .iws-page .chk { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; stroke: #334155; fill: none; stroke-width: 2; }
         .iws-page .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; text-align: center; }
-        .iws-page .step-num { width: 52px; height: 52px; border-radius: 50%; background: rgba(15,23,42,0.9); border: 2px solid rgba(0,212,255,0.2); color: #00d4ff; font-size: 18px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
-        .iws-page .step h4 { font-size: 13px; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; }
+        .iws-page .step-num { width: 52px; height: 52px; border-radius: 50%; background: #f1f5f9; border: 2px solid #cbd5e1; color: #334155; font-family: 'Inter', 'DM Sans', sans-serif; font-size: 18px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+        .iws-page .step h4 { font-family: 'Inter', 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
         .iws-page .step p { font-size: 12px; color: #64748b; line-height: 1.5; }
-        .iws-page .price-card { background: linear-gradient(160deg, rgba(0,212,255,0.06) 0%, rgba(30,41,59,0.9) 40%); border: 1px solid rgba(0,212,255,0.45); border-radius: 18px; padding: 36px; max-width: 480px; position: relative; overflow: hidden; box-shadow: 0 0 0 1px rgba(0,212,255,0.08), 0 0 40px rgba(0,212,255,0.14), 0 16px 48px rgba(0,0,0,0.5); }
-        .iws-page .price-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg,#00d4ff,#0077ff,#00d4ff); background-size: 200% 100%; animation: shimmer 3s linear infinite; }
+        .iws-page .price-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 36px; max-width: 480px; position: relative; overflow: hidden; box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+        .iws-page .price-card::before { display: none; }
         @keyframes shimmer { 0%{background-position:0% 0%} 100%{background-position:200% 0%} }
-        .iws-page .price-badge { display: inline-block; background: linear-gradient(90deg,#00d4ff,#0077ff); color: #000; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 20px; padding: 4px 12px; margin-bottom: 20px; }
-        .iws-page .free-note { background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.14); border-radius: 10px; padding: 12px 16px; font-size: 13px; color: #00d4ff; margin-bottom: 20px; }
+        .iws-page .price-badge { display: inline-block; background: #1e293b; color: #f8fafc; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 20px; padding: 4px 14px; margin-bottom: 20px; }
+        .iws-page .free-note { background: rgba(71,85,105,0.06); border: 1px solid rgba(71,85,105,0.16); border-radius: 10px; padding: 12px 16px; font-size: 13px; color: #334155; margin-bottom: 20px; }
         .iws-page .free-note span { color: #64748b; font-weight: 400; }
-        .iws-page .price-num { font-size: 56px; font-weight: 800; color: #00d4ff; letter-spacing: -0.04em; line-height: 1; text-shadow: 0 0 30px rgba(0,212,255,0.4); }
+        .iws-page .price-num { font-family: 'Inter', 'DM Sans', sans-serif; font-size: 56px; font-weight: 800; color: #0f172a; letter-spacing: -0.04em; line-height: 1; }
         .iws-page .price-meta { font-size: 13px; color: #64748b; margin-top: 4px; margin-bottom: 24px; }
         .iws-page .faq-list { max-width: 640px; }
-        .iws-page .faq-item { padding: 18px 0; border-bottom: 1px solid rgba(0,212,255,0.08); }
-        .iws-page .faq-q { font-size: 14px; font-weight: 700; color: #e2e8f0; display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
-        .iws-page .q-badge { background: rgba(0,212,255,0.1); color: #00d4ff; font-size: 10px; font-weight: 800; width: 20px; height: 20px; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+        .iws-page .faq-item { padding: 18px 0; border-bottom: 1px solid #e2e8f0; }
+        .iws-page .faq-q { font-size: 14px; font-weight: 700; color: #0f172a; display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+        .iws-page .q-badge { background: rgba(71,85,105,0.1); color: #334155; font-size: 10px; font-weight: 800; width: 20px; height: 20px; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
         .iws-page .faq-a { font-size: 13px; color: #64748b; line-height: 1.65; padding-left: 30px; }
-        .iws-page .final { background: linear-gradient(135deg,rgba(0,212,255,0.06),rgba(0,119,255,0.04)); border: 1px solid rgba(0,212,255,0.14); border-radius: 20px; padding: 56px 40px; text-align: center; margin-bottom: 48px; }
-        .iws-page .final h2 { font-size: clamp(22px,3.5vw,36px) !important; font-weight: 800 !important; letter-spacing: -0.03em !important; color: #fff !important; margin-bottom: 12px !important; line-height: 1.15 !important; }
+        .iws-page .final { background: linear-gradient(135deg, rgba(71,85,105,0.05), rgba(71,85,105,0.03)); border: 1px solid #e2e8f0; border-radius: 14px; padding: 56px 40px; text-align: center; margin-bottom: 48px; }
+        .iws-page .final h2 { font-family: 'Inter', 'DM Sans', sans-serif; font-size: clamp(22px,3.5vw,36px) !important; font-weight: 800 !important; letter-spacing: -0.03em !important; color: #0f172a !important; margin-bottom: 12px !important; line-height: 1.15 !important; }
         .iws-page .partner { text-align: center; margin: 48px 0 56px; }
         .iws-page .partner-label { font-size: 18px; font-weight: 400; color: #64748b; margin-bottom: 24px; }
         .iws-page .partner-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 24px; padding: 0 16px; }
         .iws-page .partner-logo-link { display: inline-block; transition: opacity 0.2s; }
         .iws-page .partner-logo-link:hover { opacity: 0.75; }
-        .iws-page .partner-logo-img { height: 70px; width: auto; display: block; }
+        .iws-page .partner-logo-img { height: 100px; width: auto; display: block; }
         @media (max-width: 640px) {
           .iws-page .grid3 { grid-template-columns: 1fr; }
           .iws-page .grid2 { grid-template-columns: 1fr; }
           .iws-page .split { grid-template-columns: 1fr; gap: 32px; }
           .iws-page .steps { grid-template-columns: 1fr 1fr; }
+          .iws-page .hero-box { padding: 24px 18px; border-radius: 20px; }
+          .iws-page .hero-split { grid-template-columns: 1fr; gap: 28px; }
+          .iws-page .hero-text { text-align: center; }
+          .iws-page .cta-row { justify-content: center; }
+          .iws-page .paper-frame { transform: none; }
         }
       `}</style>
     </div>
   );
 }
+
