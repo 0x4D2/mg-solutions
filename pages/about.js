@@ -50,7 +50,7 @@ export default function AboutPage() {
   return (
     <>
       <Head>
-        <title>Uber uns - ichwillsicherheit.de</title>
+        <title>Über uns - ichwillsicherheit.de</title>
         <meta name="description" content="Wer wir sind, was uns antreibt und warum wir genau eine Sache wirklich gut machen." />
       </Head>
 
@@ -60,7 +60,7 @@ export default function AboutPage() {
 
           {/* HERO */}
           <div className="hero">
-            <div className="slabel">Uber uns</div>
+            <div className="slabel">Über uns</div>
             <h1 className="page-headline">
               Wir machen genau <span className="grad">eine Sache wirklich gut.</span>
             </h1>
@@ -74,15 +74,15 @@ export default function AboutPage() {
           <div className="about-split">
             <div className="about-intro">
               <div className="section-label">Wer wir sind</div>
-              <p className="about-big">Wir sind kein grosses Security-Unternehmen mit Hunderten Mitarbeitern.</p>
+              <p className="about-big">Wir sind kein großes Security-Unternehmen mit Hunderten Mitarbeitern.</p>
               <p className="about-p">
                 Wir sind ein kleines, fokussiertes Team das genau weiss, was wir
-                konnen, und was nicht. Kein Hype, keine endlosen Feature-Listen,
+                können, und was nicht. Kein Hype, keine endlosen Feature-Listen,
                 kein Security-Theater.
               </p>
               <p className="about-p">
                 Stattdessen: Ein klar definiertes Produkt, das einen blinden Fleck
-                schliesst, den die meisten Unternehmen haben: die Aussenperspektive
+                schließt, den die meisten Unternehmen haben: die Außenperspektive
                 auf die eigene Infrastruktur.
               </p>
             </div>
@@ -107,19 +107,19 @@ export default function AboutPage() {
             <div className="section-label">Unsere Motivation</div>
             <div className="motivation-box">
               <p className="about-big about-big-muted">
-                Viele Unternehmen wissen nicht, ob ihre Sicherheitsmassnahmen wirklich greifen.
+                Viele Unternehmen wissen nicht, ob ihre Sicherheitsmaßnahmen wirklich greifen.
               </p>
               <p className="about-p">
                 Einmalige Scans oder Tools liefern Momentaufnahmen. Was fehlt:
                 eine kontinuierliche, nachvollziehbare Dokumentation der
-                Entwicklung. Etwas das IT und Geschaftsfuhrung gemeinsam lesen
-                konnen, ohne Ubersetzungsaufwand.
+                Entwicklung. Etwas das IT und Geschäftsführung gemeinsam lesen
+                können, ohne Übersetzungsaufwand.
               </p>
               <p className="about-p">
                 Deshalb gibt es uns: Damit Sie nicht nur hoffen, dass es besser
                 wird, sondern es{" "}
                 <em className="em-muted">sehen</em>{" "}
-                konnen.
+                können.
               </p>
             </div>
           </div>
@@ -131,12 +131,12 @@ export default function AboutPage() {
               <ValueCard
                 icon={<IconSearch />}
                 title="Radikale Transparenz"
-                body="Wir erklaren jede Grenze unserer Analyse offen und ehrlich. Was wir nicht konnen, sagen wir, bevor Sie fragen."
+                body="Wir erklären jede Grenze unserer Analyse offen und ehrlich. Was wir nicht können, sagen wir, bevor Sie fragen."
               />
               <ValueCard
                 icon={<IconShield />}
                 title="Passiv & risikofrei"
-                body="Keine aktiven Scans, keine Simulationen, keine Angriffe. Ausschliesslich offentliche Datenquellen, rechtlich und technisch sauber."
+                body="Keine aktiven Scans, keine Simulationen, keine Angriffe. Ausschließlich öffentliche Datenquellen, rechtlich und technisch sauber."
               />
               <ValueCard
                 icon={<IconTarget />}
@@ -145,18 +145,18 @@ export default function AboutPage() {
               />
               <ValueCard
                 icon={<IconUser />}
-                title="Personlicher Ansatz"
-                body="Jeder Report wird manuell gepruft. Kein Kunde ist eine Ticket-Nummer. Der optionale Review-Call ist kein Upsell, sondern Teil des Produkts."
+                title="Persönlicher Ansatz"
+                body="Jeder Report wird manuell geprüft. Kein Kunde ist eine Ticket-Nummer. Der optionale Review-Call ist kein Upsell, sondern Teil des Produkts."
               />
               <ValueCard
                 icon={<IconBarChart />}
                 title="Kein Hype, keine Panikmache"
-                body="Wir zeigen Fakten. Wenn etwas unklar ist, sagen wir das. Ein falscher Alarm schadet Ihnen genauso wie ein ubersehenes Risiko."
+                body="Wir zeigen Fakten. Wenn etwas unklar ist, sagen wir das. Ein falscher Alarm schadet Ihnen genauso wie ein übersehenes Risiko."
               />
               <ValueCard
                 icon={<IconTrendingUp />}
-                title="Kontinuitat schlagt Momentaufnahme"
-                body="Einmal hinschauen reicht nicht. Wir dokumentieren monatlich, weil sich Angriffsflachen laufend verandern."
+                title="Kontinuität schlägt Momentaufnahme"
+                body="Einmal hinschauen reicht nicht. Wir dokumentieren monatlich, weil sich Angriffsflächen laufend verändern."
               />
             </div>
           </div>
@@ -168,8 +168,8 @@ export default function AboutPage() {
               <p className="quote-sub">
                 Wir glauben nicht an Blackbox-Tools oder endlose Feature-Listen.
                 Wir glauben daran, dass ein Unternehmen Fortschritte braucht,
-                die es wirklich nachweisen kann, fur den Vorstand, fur Auditoren,
-                fur sich selbst.
+                die es wirklich nachweisen kann, für den Vorstand, für Auditoren,
+                für sich selbst.
               </p>
             </div>
           </div>
@@ -186,7 +186,7 @@ export default function AboutPage() {
 
           {/* CTA */}
           <div className="final-cta">
-            <h2>Wenn Sie Klarheit statt Versprechen wollen -</h2>
+            <h2>Wenn Sie Klarheit statt Versprechen wollen —</h2>
             <p className="cta-sub">schreiben Sie uns. Kostenlos, unverbindlich, innerhalb eines Werktags.</p>
             <Link href="/contact" legacyBehavior>
               <a className="btn-primary">Kontakt aufnehmen →</a>
@@ -210,7 +210,7 @@ export default function AboutPage() {
             padding: 0 24px 80px;
           }
           .iws-page .hero { text-align: center; padding: 80px 0 48px; }
-          .iws-page .slabel { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #334155; margin-bottom: 14px; }
+          .iws-page .slabel { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #94a3b8; margin-bottom: 12px; }
           .page-headline .grad { font-weight: 800; background: linear-gradient(90deg, #0f172a 0%, #475569 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
           .iws-page .hero-sub { font-size: 15px; color: #475569; max-width: 500px; margin: 0 auto; line-height: 1.65; }
           .iws-page .about-section { margin-bottom: 48px; }

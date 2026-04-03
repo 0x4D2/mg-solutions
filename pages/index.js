@@ -88,15 +88,15 @@ export default function Index() {
           <div className="hero-box">
             <div className="hero-split">
               <div className="hero-text">
-                <div className="badge"><span className="dot"></span> Passiv. Ohne Installation. Report in 24h.</div>
+                <div className="badge"><span className="dot"></span> Passiv. Ohne Installation. Ergebnis in 24h.</div>
                 <h1 className="page-headline">
-                  Die Angriffsfläche<br />
+                  <span>Die Angriffsfläche</span><br />
                   <span>Ihres Unternehmens</span><br />
-                  <span className="grad"> wirklich verstehen.</span>
+                  <span className="grad">verstehen.</span>
                 </h1>
                 <p className="hero-sub">Wir analysieren, welche Systeme, Daten und Informationen über Ihr Unternehmen öffentlich erreichbar sind und was davon ein Angreifer sofort nutzen könnte.</p>
                 <div className="cta-row">
-                  <Link href="/contact" legacyBehavior><a className="btn-primary">Kostenlos Risiko prüfen lassen</a></Link>
+                  <Link href="/contact" legacyBehavior><a className="btn-primary">Kostenlos prüfen lassen</a></Link>
                 </div>
               </div>
               <div className="hero-report">
@@ -119,37 +119,43 @@ export default function Index() {
 
         {/* TRUST BAR */}
         <div className="trust">
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Manuell geprüft, kein Automatismus</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>SHA256-gesichert &amp; revisionssicher</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Manuell geprüft, keine Blackbox</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>Kein Abo, keine Verpflichtung</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Shodan, NVD, CISA KEV</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Manuell geprüft, kein automatischer Report</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Nachvollziehbar dokumentiert und revisionssicher</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Keine Blackbox, jeder Befund ist erklärbar</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>Einmalige Analyse ohne Verpflichtung</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Basierend auf realen Angreiferquellen</span>
         </div>
 
         {/* PAIN */}
         <div className="section">
+
           <div className="slabel">Das eigentliche Problem</div>
-          <h2>Das sieht ein Angreifer,<br />bevor Sie es sehen.</h2>
-          <p className="section-sub">Diese Informationen sind nicht versteckt. Sie sind nur selten aktiv überprüft.</p>
+          <h2>Ein Angreifer sieht mehr,<br />als Sie denken.</h2>
+          <p className="section-sub">Diese Informationen sind nicht versteckt. Sie werden nur selten bewusst überprüft. Genau das macht sie gefährlich.</p>
+
           <div className="grid3">
+
             <div className="card">
               <span className="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></span>
               <h3>Öffentlich erreichbare Systeme</h3>
-              <p>Alte Subdomains, Staging-Umgebungen, offene Ports. Sichtbar für jeden der sucht.</p>
-              <span className="tag">Häufig übersehen</span>
+              <p>Vergessene Subdomains, alte Testumgebungen, offene Ports. Dinge, die intern niemand mehr auf dem Schirm hat, sind von außen oft klar sichtbar.</p>
+              <span className="tag">Direkt ausnutzbar</span>
             </div>
+
             <div className="card">
               <span className="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
-              <h3>Daten aus Leaks &amp; Breaches</h3>
-              <p>Firmen-E-Mails und Credentials aus Datenpannen werden aktiv für Angriffe genutzt.</p>
+              <h3>Daten aus Leaks und Vorfällen</h3>
+              <p>Firmen E-Mails und Zugangsdaten sind häufig längst im Umlauf. Sie werden gezielt genutzt, um Systeme ohne großen Aufwand zu kompromittieren.</p>
               <span className="tag">Unterschätztes Risiko</span>
             </div>
+
             <div className="card">
               <span className="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
-              <h3>Rückschlüsse auf interne Struktur</h3>
-              <p>Technologie-Stack, Versionsstände, Dienste. Alles öffentlich, alles verwertbar.</p>
-              <span className="tag">Angreifer-Perspektive</span>
+              <h3>Einblick in Ihre Infrastruktur</h3>
+              <p>Technologien, Versionen und Dienste lassen sich oft eindeutig erkennen. Daraus entsteht ein klares Bild, das gezielte Angriffe möglich macht.</p>
+              <span className="tag">Grundlage für Angriffe</span>
             </div>
+
           </div>
         </div>
 

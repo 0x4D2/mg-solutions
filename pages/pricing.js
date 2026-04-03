@@ -99,14 +99,14 @@ export default function Pricing() {
       <div className="iws-page">
       <main className="pricing-page iws-pricing">
         {/* Hero */}
-        <section className="pricing-hero">
+        <div className="hero">
           <div className="slabel">Preise</div>
           <h1 className="page-headline">Monatlich kündbar.<br /><span className="grad">Keine Fallen.</span></h1>
-          <p className="pricing-sub">
+          <p className="hero-sub">
             Kein Jahresvertrag, kein Lock-in. Kontinuierliche Sicherheitsanalyse —<br className="br-desk" />
             solange sie für Sie sinnvoll ist.
           </p>
-        </section>
+        </div>
 
         {/* Why subscribe */}
         <section className="why-section">
@@ -254,7 +254,9 @@ export default function Pricing() {
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
-        .iws-pricing .pricing-sub { color: #64748b; }
+        .iws-pricing .hero { text-align: center; padding: 80px 0 40px; }
+        .iws-pricing .slabel { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #94a3b8; margin-bottom: 12px; }
+        .iws-pricing .hero-sub { color: #64748b; font-size: 1.05rem; line-height: 1.6; max-width: 580px; margin: 0 auto; }
         .iws-pricing .why-card { background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
         .iws-pricing .why-marker { background: #334155; }
         .iws-pricing .why-title { font-family: 'Inter','DM Sans',sans-serif; color: #0f172a; }

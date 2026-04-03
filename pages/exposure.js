@@ -178,7 +178,7 @@ export default function ExposurePage() {
               <span className="live-dot" />
               Passiv · OSINT · 24h Lieferung
             </div>
-            <h1 className="page-headline">Der Exposure-Report</h1>
+            <h1 className="page-headline">Der <span className="grad">Exposure-Report.</span></h1>
             <p className="hero-sub">
               Ein strukturierter Blick auf das, was über Ihr Unternehmen öffentlich
               sichtbar ist — aus der Perspektive eines Angreifers, bevor er handelt.
@@ -391,6 +391,7 @@ export default function ExposurePage() {
 
           /* Hero */
           .iws-page .hero { text-align: center; padding: 80px 0 56px; }
+          .iws-page .page-headline .grad { font-style: normal; text-decoration: none; font-weight: 800; background: linear-gradient(90deg, #0f172a 0%, #475569 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
           .iws-page .live-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(71,85,105,0.08); border: 1px solid rgba(71,85,105,0.22); color: #334155; margin-bottom: 28px; }
           .iws-page .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #334155; animation: pulse 2s infinite; display: inline-block; }
           @keyframes pulse { 0%,100%{ opacity:1 } 50%{ opacity:0.4 } }
