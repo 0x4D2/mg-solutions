@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import dynamic from "next/dynamic";
 import ReactDOM from "react-dom/client";
 import App from "next/app";
 import Head from "next/head";
@@ -59,7 +58,6 @@ const hidePageChange = () => {
 };
 
 const handleRouteChangeStart = (url) => {
-  console.log(`Loading: ${url}`);
   document.body.classList.add("body-page-transition");
   showPageChange(url);
 };
@@ -74,20 +72,8 @@ const handleRouteChangeError = () => {
   document.body.classList.remove("body-page-transition");
 };
 
-// Lazy-loaded components (client-only to avoid SSR/canvas hydration mismatch)
-const LazyParticles = dynamic(() => import("components/ParticlesBg"), {
-  ssr: false,
-  loading: () => (
-    <div className="absolute inset-0 flex items-center justify-center z-10">
-      <div className="w-12 h-12 border-4 border-blue-400 border-t-transparent rounded-full animate-spin" />
-    </div>
-  ),
-});
-
 export default class MyApp extends App {
   componentDidMount() {
-    this.addCopyrightComment();
-
     Router.events.on("routeChangeStart", handleRouteChangeStart);
     Router.events.on("routeChangeComplete", handleRouteChangeComplete);
     Router.events.on("routeChangeError", handleRouteChangeError);
@@ -99,24 +85,6 @@ export default class MyApp extends App {
     Router.events.off("routeChangeError", handleRouteChangeError);
   }
 
-  addCopyrightComment() {
-    const comment = document.createComment(`
-=========================================================
-* Notus NextJS - v1.1.0 based on Tailwind Starter Kit by Creative Tim
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/notus-nextjs
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/notus-nextjs/blob/main/LICENSE.md)
-
-* Tailwind Starter Kit Page: https://www.creative-tim.com/learning-lab/tailwind-starter-kit/presentation
-
-* Coded by Creative Tim
-=========================================================
-`);
-    document.insertBefore(comment, document.documentElement);
-  }
-
   render() {
     const { Component, pageProps } = this.props;
 
@@ -126,11 +94,6 @@ export default class MyApp extends App {
         <>
           <Navbar />
           <div className="main-container">
-            {Component.background && (
-              <div className="fixed top-0 left-0 w-full h-full z-0">
-                <LazyParticles />
-              </div>
-            )}
             <main className="relative z-10 pt-20">{children}</main>
           </div>
         </>

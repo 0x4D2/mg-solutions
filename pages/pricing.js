@@ -243,7 +243,6 @@ export default function Pricing() {
 
       <style jsx global>{`
         .iws-pricing { color: #1e293b; }
-        .iws-pricing .pricing-eyebrow { color: #334155; }
         .iws-pricing .page-headline { color: #0f172a; }
         .iws-pricing .page-headline .grad {
           font-style: normal;

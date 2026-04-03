@@ -4,10 +4,10 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en">
+      <Html lang="de">
         <Head>
           <meta charSet="utf-8" />
-          <meta name="theme-color" content="#000000" />
+          <meta name="theme-color" content="#f4f7fa" />
           <link rel="shortcut icon" href="/img/brand/favicon.ico" />
           <link
             rel="apple-touch-icon"
@@ -21,13 +21,8 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,700;14..32,800&family=DM+Sans:wght@400;500;600&display=swap"
             rel="stylesheet"
           />
-          {/* Font Awesome CDN */}
-          <link
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-            rel="stylesheet"
-          />
         </Head>
-        <body className="text-blueGray-700 antialiased">
+        <body className="antialiased">
           <div id="page-transition"></div>
           <Main />
           <NextScript />

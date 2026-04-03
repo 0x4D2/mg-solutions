@@ -34,9 +34,6 @@
 5. Use the user's configured `sans` font-feature-settings by default.
 6. Use the user's configured `sans` font-variation-settings by default.
 */
-.neon-effect {
-  filter: drop-shadow(0 0 5px #00ffff) drop-shadow(0 0 10px #00ffff);
-}
 html {
   line-height: 1.5;
   /* 1 */
