@@ -5,9 +5,24 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: "Method not allowed" });
   }
 
-  const { name, email, phone, subject, message, customerType } = req.body;
+  const { name, email, phone, subject, message, token } = req.body;
 
-  // Strato SMTP Einstellungen
+  // 1. Pflichtfelder
+  if (!name?.trim() || !email?.trim() || !subject?.trim() || !message?.trim()) {
+    return res.status(400).json({ message: "Pflichtfelder fehlen." });
+  }
+
+  // 2. reCAPTCHA serverseitig verifizieren
+  const captchaRes = await fetch(
+    `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
+    { method: "POST" }
+  );
+  const captchaData = await captchaRes.json();
+
+  if (!captchaData.success || captchaData.score < 0.5) {
+    return res.status(400).json({ message: "reCAPTCHA fehlgeschlagen." });
+  }
+
   const transporter = nodemailer.createTransport({
     host: "smtp.strato.de",
     port: 465,
@@ -23,12 +38,10 @@ export default async function handler(req, res) {
       from: `Kontaktformular <info@ichwillsicherheit.de>`,
       to: "info@ichwillsicherheit.de",
       subject: `[Kontaktformular] ${subject}`,
-      text: `Kundentyp: ${customerType}\nName: ${name}\nE-Mail: ${email}\nTelefon: ${phone}\nNachricht:\n${message}`,
+      text: `Name: ${name}\nE-Mail: ${email}\nTelefon: ${phone || "—"}\nNachricht:\n${message}`,
     });
     res.status(200).json({ message: "E-Mail gesendet" });
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: "Fehler beim Senden der E-Mail", error: error.message });
+    res.status(500).json({ message: "Fehler beim Senden der E-Mail", error: error.message });
   }
 }
